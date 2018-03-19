@@ -59,5 +59,5 @@ def getUserScore(userName):
 userName = ""
 #score = getUserScore("Benny")
 # print(score)
-updateU = updateUserScore(False, "Darren", "259")
+updateU = updateUserScore(False, "Darren", "299")
 #print('update user {0} \n'.format(updateU))
