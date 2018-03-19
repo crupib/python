@@ -1,4 +1,5 @@
-Ann, 100
-Benny, 102
-Carol, 214
-Darren, 129
+Ann,   100
+Benny,   102
+Crupi,  1501
+Carol,   214
+Darren, 259
