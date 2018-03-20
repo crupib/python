@@ -53,11 +53,3 @@ def getUserScore(userName):
             continue
     filename.close()
     return(-1)
-
-
-# Main  #
-userName = ""
-#score = getUserScore("Benny")
-# print(score)
-updateU = updateUserScore(False, "Darren", "299")
-#print('update user {0} \n'.format(updateU))
