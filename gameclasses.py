@@ -37,14 +37,28 @@ class Game:
             print("Minimum Number of Questions = 1")
             print("Hence, number of questions will be set to 1")
             self._noOfQuestions = 1
+
+
 class BinaryGame(Game):
     def __init__(self, noOfQuestions=0):
         print("Binary class created")
-        #print(noOfQuestions)
+        # print(noOfQuestions)
         self._noOfQuestions = noOfQuestions
+
     def generateQuestions(self):
         from random import randint
-        score = 0 
+        score = 0
         noOfQuestions = self._noOfQuestions
-        for x in (0,noOfQuestions):
-            print(randint(0,9))
+        for x in (0, noOfQuestions):
+            print("give the binary equivalent = ")
+            testcase = randint(0, 9)
+            print(testcase) 
+            userResult = input("Please => ")
+            #binResult = bytes(userResult,"ascii")
+            binResult = int(userResult,2)
+            print(binResult)
+            if binResult == testcase:
+                score += 1 
+            else:
+                print("Wrong answer")
+        print("You got %d out of %d\n" % (score,noOfQuestions))
