@@ -56,6 +56,7 @@ def grow_rectangle(rect, dwidth, dheight):
 
 
 def main():
+    print("run main")
     blank = Point()
     blank.x = 3
     blank.y = 4
