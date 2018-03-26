@@ -54,11 +54,10 @@ class BinaryGame(Game):
             testcase = randint(0, 9)
             print(testcase) 
             userResult = input("Please => ")
-            #binResult = bytes(userResult,"ascii")
             binResult = int(userResult,2)
             print(binResult)
             if binResult == testcase:
                 score += 1 
             else:
-                print("Wrong answer")
+                print("Wrong answer. The correct answer is {:b}.".format(base10))
         print("You got %d out of %d\n" % (score,noOfQuestions))
