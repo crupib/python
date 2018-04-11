@@ -1,5 +1,4 @@
-Ann,    100
-Benny,    102
-Crupi,   1501
-Carol,    214
-Darren, 299
+Bill, 100
+Mary, 1000
+Hobag, 1200
+Bitchface, 300
