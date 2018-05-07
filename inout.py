@@ -1,8 +1,9 @@
-inputFile = open('data.txt','r')
-outputFile = open('dataout.txt','w')
+inputFile = open('data.txt', 'r')
+outputFile = open('dataout.txt', 'w')
 msg = inputFile.read(10)
 while len(msg):
-	outputFile.write(msg)
-	msg = inputFile.read(10)
+    outmsg = msg.replace('\r', '').replace('\n', '')
+    outputFile.write(outmsg)
+    msg = inputFile.read(10)
 inputFile.close()
 outputFile.close()
