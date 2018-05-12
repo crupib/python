@@ -1,24 +1,49 @@
+import pycuda.driver as cuda
 import pycuda.autoinit
-import pycuda.driver as drv
+from pycuda.compiler import SourceModule
+
 import numpy
 
-from pycuda.compiler import SourceModule
+a = numpy.random.randn(6,6)
+
+a = a.astype(numpy.float32)
+
+a_gpu = cuda.mem_alloc(a.size * a.dtype.itemsize)
+
+cuda.memcpy_htod(a_gpu, a)
+
 mod = SourceModule("""
-__global__ void multiply_them(float *dest, float *a, float *b)
-{
-  const int i = threadIdx.x;
-  dest[i] = a[i] * b[i];
-}
-""")
+    __global__ void doublify(float *a)
+    {
+      int idx = threadIdx.x + threadIdx.y*4;
+      a[idx] *= 2;
+    }
+    """)
 
-multiply_them = mod.get_function("multiply_them")
+func = mod.get_function("doublify")
+func(a_gpu, block=(4,4,1))
 
-a = numpy.random.randn(400).astype(numpy.float32)
-b = numpy.random.randn(400).astype(numpy.float32)
+a_doubled = numpy.empty_like(a)
+cuda.memcpy_dtoh(a_doubled, a_gpu)
+print ("original array:")
+print (a)
+print ("doubled with kernel:")
+print (a_doubled)
 
-dest = numpy.zeros_like(a)
-multiply_them(
-        drv.Out(dest), drv.In(a), drv.In(b),
-        block=(400,1,1), grid=(1,1))
+# alternate kernel invocation -------------------------------------------------
 
-print (dest-a*b)
+func(cuda.InOut(a), block=(4, 4, 1))
+print( "doubled with InOut:")
+print (a)
+
+# part 2 ----------------------------------------------------------------------
+
+import pycuda.gpuarray as gpuarray
+a_gpu = gpuarray.to_gpu(numpy.random.randn(6,6).astype(numpy.float32))
+a_doubled = (2*a_gpu).get()
+
+print ("original array:")
+print (a_gpu)
+print ("doubled with gpuarray:")
+print (a_doubled)
+
