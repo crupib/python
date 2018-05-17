@@ -14,7 +14,7 @@ def compute_neighbours(Z):
                     + Z[x-1][y]            +Z[x+1][y]   \
                     + Z[x-1][y+1]+Z[x][y+1]+Z[x+1][y+1]
     return N
-
+#
 def show(Z):
     for l in Z[1:-1]:
         print(l[1:-1])
