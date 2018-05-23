@@ -1,6 +1,6 @@
 try:
 
-    import myPythonFunctions as m
+    import challengeAnswers as m
 
     userName = input('''Please enter your user name or
 create a new one if this is the first time
