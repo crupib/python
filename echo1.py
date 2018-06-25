@@ -32,6 +32,16 @@ def add_args(arg1, arg2):
     print(arg1+arg2)
     return True
 
+def sum_args(*args):
+	return sum(args)
+
+def run_with_positional_args(func,*args):
+	return func(*args)
+
+def outer(a,b):
+	def inner(c,d):
+		return c+d
+	return inner(a,b)
 
 def main():
     print("add_args\n")
@@ -46,7 +56,10 @@ def main():
     print("run_somthing\n")
     print(type(run_something))
     run_something_with_args(add_args, 5, 9)
-
+    print("run_with_pos")
+    print(run_with_positional_args(sum_args,1,2,3,4))
+    print("outer run")
+    print(outer(4,7))
 
 if __name__ == "__main__":
     main()
