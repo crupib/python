@@ -42,6 +42,10 @@ def outer(a,b):
 	def inner(c,d):
 		return c+d
 	return inner(a,b)
+def knights(saying):
+	def inner(quote):
+		return "We are the knights who say: '%s'" % quote
+	return inner(saying)
 
 def main():
     print("add_args\n")
@@ -60,6 +64,8 @@ def main():
     print(run_with_positional_args(sum_args,1,2,3,4))
     print("outer run")
     print(outer(4,7))
+    print("Knights")
+    print(knights('Ni'))
 
 if __name__ == "__main__":
     main()
