@@ -46,7 +46,8 @@ def knights(saying):
 	def inner(quote):
 		return "We are the knights who say: '%s'" % quote
 	return inner(saying)
-
+def dummy():
+	print("dummy")
 def main():
     print("add_args\n")
     print(type(add_args))
