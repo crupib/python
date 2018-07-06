@@ -1,3 +1,8 @@
+def edit_story(words,func):
+	for word in words:
+		print(func(word))
+def enliven(word):
+	return word.capitalize() + '!'
 def echo(anything):
     'echo returns its input argument'
     return(anything)
@@ -46,6 +51,10 @@ def knights(saying):
 	def inner(quote):
 		return "We are the knights who say: '%s'" % quote
 	return inner(saying)
+def knights2(saying):
+	def inner2():
+		return "We are the knights who say: '%s'" % saying
+	return inner2
 def dummy():
 	print("dummy")
 def main():
@@ -67,6 +76,15 @@ def main():
     print(outer(4,7))
     print("Knights")
     print(knights('Ni'))
-
+    print(knights('cunt'))
+    a = knights2('Dick')
+    b = knights2('Hasenpfeffer')
+    print(a)
+    print(b)
+    print(a())
+    print(b())
+    stairs = ['thud', 'meow', 'thud', 'hiss']
+    edit_story(stairs,enliven)
+    edit_story(stairs,lambda word: word.capitalize() + '%')
 if __name__ == "__main__":
     main()
