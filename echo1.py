@@ -86,5 +86,8 @@ def main():
     stairs = ['thud', 'meow', 'thud', 'hiss']
     edit_story(stairs,enliven)
     edit_story(stairs,lambda word: word.capitalize() + '%')
+    edit_story(stairs,lambda word: word.capitalize() + '%')
+
+    
 if __name__ == "__main__":
     main()
