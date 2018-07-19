@@ -1,4 +1,4 @@
-import report
+from report import get_description as do_it
 
-description = report.get_description()
+description = do_it()
 print("Todays weather:" , description)
