@@ -8,10 +8,12 @@ passwordFileName = "samplePasswordFile"
 # The encryption key for the caesar cypher
 encryptionKey = 16
 # Caesar Cypher Encryption
+
 def passwordEncrypt(unencryptedMessage, key):
     # We will start with an empty string as our encryptedMessage
     encryptedMessage = ''
-    # For each symbol in the unencryptedMessage we will add an encrypted symbol into the encryptedMessage
+    # For each symbol in the unencryptedMessage we will add an encrypted
+    # symbol into the encryptedMessage
     for symbol in unencryptedMessage:
         if symbol.isalpha():
             num = ord(symbol)
@@ -33,10 +35,31 @@ def passwordEncrypt(unencryptedMessage, key):
     return encryptedMessage
 
 # Caesar Cypher Decryption
-def passwordDcrypt(todecryptedMessage, key):
+
+
+def passwordDcrypt(message, key):
     # We will start with an empty string as our decryptedMessage
-    decryptedMessage = ''
-    return decryptedMessage
+    key = -key
+    translated = ''
+    for symbol in message:
+        if symbol.isalpha():
+            num = ord(symbol)
+            num += key
+            if symbol.isupper():
+                if num > ord('Z'):
+                    num -= 26
+                elif num < ord('A'):
+                    num += 26
+            elif symbol.islower():
+                if num > ord('z'):
+                    num -= 26
+                elif num < ord('a'):
+                    num += 26
+            translated += chr(num)
+        else:
+            translated += symbol
+    return translated
+
 
 def loadPasswordFile(fileName):
     with open(fileName, newline='') as csvfile:
@@ -49,6 +72,8 @@ def savePasswordFile(passwordList, fileName):
     with open(fileName, 'w+', newline='') as csvfile:
         passwordwriter = csv.writer(csvfile)
         passwordwriter.writerows(passwordList)
+
+
 while True:
     print("What would you like to do:")
     print(" 1. Open password file")
@@ -70,7 +95,8 @@ while True:
         passwordToLookup = input()
         for keyvalue in passwords:
             if(keyvalue[0] == passwordToLookup):
-                print(keyvalue[0]+' '+keyvalue[1])
+                unencrypt = passwordDcrypt(keyvalue[1], 16)
+                print(keyvalue[0] + ' ' + unencrypt)
 
         ####### YOUR CODE HERE ######
         # You will need to find the password that matches the website
@@ -101,7 +127,7 @@ while True:
         encrypted_password = passwordEncrypt(unencryptedPassword, 16)
         testlist = [website, encrypted_password]
         passwords.append(testlist)
-        
+
         ####### YOUR CODE HERE ######
         # You will need to encrypt the password and store it in the list of passwords
         # The encryption function is already written for you
@@ -115,8 +141,10 @@ while True:
     if(choice == '4'):  # Save the passwords to a file
         savePasswordFile(passwords, passwordFileName)
     if(choice == '5'):  # print out the password list
-        for keyvalue in passwords:
-            print(', '.join(keyvalue))
+        passwords = loadPasswordFile(passwordFileName)
+        for id,keyvalue in passwords:
+            unencrypt = passwordDcrypt(keyvalue, 16) 
+            print(id, unencrypt)
     if(choice == '6'):  # quit our program
         sys.exit()
 

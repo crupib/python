@@ -7,7 +7,7 @@ def getMode():
 
     while True:
 
-        print ('Do you wish to encrypt or decrypt a message?')
+        print('Do you wish to encrypt or decrypt a message?')
 
         mode = input().lower()
 
@@ -16,12 +16,12 @@ def getMode():
             return mode
         else:
 
-            print ('Enter either "encrypt" or "e" or "decrypt" or "d".')
+            print('Enter either "encrypt" or "e" or "decrypt" or "d".')
 
 
 def getMessage():
 
-    print ('Enter your message:')
+    print('Enter your message:')
 
     return input()
 
@@ -32,7 +32,7 @@ def getKey():
 
     while True:
 
-        print ('Enter the key number (1-%s)' % MAX_KEY_SIZE)
+        print('Enter the key number (1-%s)' % MAX_KEY_SIZE)
 
         key = int(input())
 
@@ -85,5 +85,5 @@ def getTranslatedMessage(mode, message, key):
 mode = getMode()
 message = getMessage()
 key = getKey()
-print ('Your translated text is:')
-print (getTranslatedMessage(mode, message, key))
+print('Your translated text is:')
+print(getTranslatedMessage(mode, message, key))
