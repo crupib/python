@@ -27,6 +27,9 @@ def arc(t,r,angle):
 #    for i in range(n):
 #        t.fd(step_length)
 #        t.lt(step_angle)
+"""Draws n line segments with the given length and
+angle (in degrees) between them. t is a turtle.
+"""
 def polyline(t,n,length,angle):
    for i in range(n):
        t.fd(length)

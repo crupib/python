@@ -1,22 +1,14 @@
 import turtle
+def	polygon(t,n,length):
+        if n > 0:
+           angle = 360/n
+        else:
+             print("n not a valid number n>0")
+             return -1
+        for i in range(n):
+                t.fd(length)
+                t.lt(angle)
 bob = turtle.Turtle()
-print(bob)
-#print square
-bob.fd(100)
-bob.lt(90)
-bob.fd(100)
-bob.lt(90)
-bob.fd(100)
-bob.lt(90)
-bob.fd(100)
-
-bob.rt(90)
-bob.fd(100)
-bob.rt(90)
-bob.fd(100)
-bob.rt(90)
-bob.fd(100)
-for i in range(4):
-	print('Hello!')
-
+polygon(bob,n=11,length=70)
 turtle.mainloop()
+	
