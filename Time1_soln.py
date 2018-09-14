@@ -1,16 +1,12 @@
-"""This module contains a code example related to
-
-Think Python, 2nd Edition
-by Allen Downey
-http://thinkpython2.com
-
-Copyright 2015 Allen Downey
-
-License: http://creativecommons.org/licenses/by/4.0/
 """
 
-from __future__ import print_function, division
+Code example from Think Python, by Allen B. Downey.
+Available from http://thinkpython.com
 
+Copyright 2012 Allen B. Downey.
+Distributed under the GNU General Public License at gnu.org/licenses/gpl.html.
+
+"""
 
 from datetime import datetime
 
@@ -60,29 +56,27 @@ def double_day(b1, b2):
     """
     assert b1 > b2
     delta = b1 - b2
-    dday = b1 + delta
-    return dday
+    double_day = b1 + delta
+    return double_day
 
 
 def datetime_exercises():
-    """Exercise solutions."""
-
     # print today's day of the week
     today = datetime.today()
-    print(today.weekday())
-    print(today.strftime('%A'))
+    print today.weekday()
+    print today.strftime('%A')
 
     # compute the number of days until the next birthday
     # (note that it usually gets rounded down)
     birthday = datetime(1967, 5, 2)
-    print('Days until birthday', end=' ')
-    print(days_until_birthday(birthday))
+    print 'Days until birthday',
+    print days_until_birthday(birthday)
 
     # compute the day one person is twice as old as another
     b1 = datetime(2006, 12, 26)
     b2 = datetime(2003, 10, 11)
-    print('Double Day', end=' ')
-    print(double_day(b1, b2))
+    print 'Double Day',
+    print double_day(b1, b2)
 
 
 def main():
@@ -92,24 +86,24 @@ def main():
     noon_time.minute = 0
     noon_time.second = 0
 
-    print('Starts at', end=' ')
+    print 'Starts at',
     print_time(noon_time)
 
     # and the run time of the movie is 109 minutes...
     movie_minutes = 109
     run_time = int_to_time(movie_minutes * 60)
-    print('Run time', end=' ')
+    print 'Run time',
     print_time(run_time)
 
     # what time does the movie end?
     end_time = add_times(noon_time, run_time)
-    print('Ends at', end=' ')
+    print 'Ends at',
     print_time(end_time)
 
-    print('Does it end after it begins?', end=' ')
-    print(is_after(end_time, noon_time))
+    print 'Does it end after it begins?',
+    print is_after(end_time, noon_time)
 
-    print('Home by', end=' ')
+    print 'Home by',
     travel_time = 600      # 10 minutes
     home_time = increment(end_time, travel_time)
     print_time(home_time)
@@ -117,15 +111,15 @@ def main():
     race_time = Time()
     race_time.hour = 1
     race_time.minute = 34
-    race_time.second = 5
+    race_time.second = 05
 
-    print('Half marathon time', end=' ')
+    print 'Half marathon time',
     print_time(race_time)
 
     distance = 13.1       # miles
     pace = mul_time(race_time, 1/distance)
 
-    print('Time per mile', end=' ')
+    print 'Time per mile',
     print_time(pace)
 
     datetime_exercises()

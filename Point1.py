@@ -1,30 +1,23 @@
-"""This module contains a code example related to
-
-Think Python, 2nd Edition
-by Allen Downey
-http://thinkpython2.com
-
-Copyright 2015 Allen Downey
-
-License: http://creativecommons.org/licenses/by/4.0/
 """
 
-from __future__ import print_function, division
+Code example from Think Python, by Allen B. Downey.
+Available from http://thinkpython.com
 
+Copyright 2012 Allen B. Downey.
+Distributed under the GNU General Public License at gnu.org/licenses/gpl.html.
 
-class Point:
-    """Represents a point in 2-D space.
+"""
 
-    attributes: x, y
-    """
+class Point(object):
+    """Represents a point in 2-D space."""
 
 
 def print_point(p):
     """Print a Point object in human-readable format."""
-    print('(%g, %g)' % (p.x, p.y))
+    print '(%g, %g)' % (p.x, p.y)
 
 
-class Rectangle:
+class Rectangle(object):
     """Represents a rectangle. 
 
     attributes: width, height, corner.
@@ -32,12 +25,7 @@ class Rectangle:
 
 
 def find_center(rect):
-    """Returns a Point at the center of a Rectangle.
-
-    rect: Rectangle
-
-    returns: new Point
-    """
+    """Returns a Point at the center of a Rectangle."""
     p = Point()
     p.x = rect.corner.x + rect.width/2.0
     p.y = rect.corner.y + rect.height/2.0
@@ -45,7 +33,7 @@ def find_center(rect):
 
 
 def grow_rectangle(rect, dwidth, dheight):
-    """Modifies the Rectangle by adding to its width and height.
+    """Modify the Rectangle by adding to its width and height.
 
     rect: Rectangle object.
     dwidth: change in width (can be negative).
@@ -56,11 +44,10 @@ def grow_rectangle(rect, dwidth, dheight):
 
 
 def main():
-    print("run main")
     blank = Point()
     blank.x = 3
     blank.y = 4
-    print('blank', end=' ')
+    print 'blank',
     print_point(blank)
 
     box = Rectangle()
@@ -71,16 +58,17 @@ def main():
     box.corner.y = 0.0
 
     center = find_center(box)
-    print('center', end=' ')
+    print 'center',
     print_point(center)
 
-    print(box.width)
-    print(box.height)
-    print('grow')
+    print box.width
+    print box.height
+    print 'grow'
     grow_rectangle(box, 50, 100)
-    print(box.width)
-    print(box.height)
+    print box.width
+    print box.height
 
 
 if __name__ == '__main__':
     main()
+
