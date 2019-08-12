@@ -22,25 +22,37 @@ import "jscripts/u_js.js" as Ujs
         color: "#000000"
         width: parent.width - (parent.width / 5)
         height: parent.height
+        property int rzwidth: parent.width - (parent.width/5)
         MouseArea {
             anchors.fill: parent
-            onClicked: rect1.color = "#222222";
+            onClicked: {
+	            rect1.color = "#222222";
+                    rect1.width = rect1.rzwidth;
+                    rect2.visible = true;
         }
     }
     Uqmls.URect {
         id: rect2
         color: "#00293b"
         x: rect1.width
+        visible: false
         width: parent.width / 5 
         height: parent.height
         MouseArea {
             anchors.fill: parent
             onClicked: {
+               rect2.visible: false;
                rect2.color = "#340147";
                utext2.text = "text 2";
                utext3.text = "text 3";
             }
         }
+        Uqmls.UButton {
+		text: "Hide"
+                onClicked: {
+                rect2.visible = false;
+                rect1.width = UQml.Window.width;
+            }
     }
     Uqmls.UText {
             id: utext1
