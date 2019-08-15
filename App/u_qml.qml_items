@@ -6,7 +6,7 @@ UQml.Window {                                // Window object, parent of the
     visible: true                            // rectangles. Set visible
     width: 350                               // property Set width, set the
     height: 590                              // height, set title text.
-    title: qsTr("Rectangles Qml")                 // Adding background color of
+    title: qsTr("First Qml")                 // Adding background color of
     color: "#000F1F"                         // the application window.
     Uqmls.URect {                            // Rectangle 1.
         id: rect1                            // Set id attribute.
