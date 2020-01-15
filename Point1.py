@@ -14,7 +14,7 @@ class Point(object):
 
 def print_point(p):
     """Print a Point object in human-readable format."""
-    print '(%g, %g)' % (p.x, p.y)
+    print( '(%g, %g)' % (p.x, p.y))
 
 
 class Rectangle(object):
@@ -47,7 +47,7 @@ def main():
     blank = Point()
     blank.x = 3
     blank.y = 4
-    print 'blank',
+    print ('blank',)
     print_point(blank)
 
     box = Rectangle()
@@ -58,15 +58,15 @@ def main():
     box.corner.y = 0.0
 
     center = find_center(box)
-    print 'center',
+    print ('center',)
     print_point(center)
 
-    print box.width
-    print box.height
-    print 'grow'
+    print (box.width)
+    print (box.height)
+    print ('grow')
     grow_rectangle(box, 50, 100)
-    print box.width
-    print box.height
+    print (box.width)
+    print (box.height)
 
 
 if __name__ == '__main__':
