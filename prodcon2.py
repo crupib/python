@@ -16,18 +16,17 @@ def producer():
     front = 0
     global N
     while True:
-        produce()
         consumed.acquire()
         produced.release()
         if N > 10 :
            exit(0)
+        produce()
 
 def consume():
     global N
     print("n= ", N)
 
 def consumer():
-    rear = 0
     while True:
         produced.acquire()
         consumed.release()
