@@ -2,6 +2,7 @@
 Solving producer-consumer problem using semaphores
 """
 import threading
+import sys
 
 N = 0
 consumed = threading.Semaphore(0)
@@ -34,6 +35,9 @@ def consumer():
            exit(0)
         consume()
 
+if sys.version_info[0] < 3 :
+   print("Must be python 3 or greater")
+   exit(0)
 producer_thread = threading.Thread(target=producer)
 consumer_thread = threading.Thread(target=consumer)
 producer_thread.start()
