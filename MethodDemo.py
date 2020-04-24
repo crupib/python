@@ -9,3 +9,6 @@ class MethodDemo:
 MethodDemo.classM()
 md1 = MethodDemo()
 md1.classM()
+md1.staticM()
+MethodDemo.staticM()
+
