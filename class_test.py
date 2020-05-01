@@ -35,12 +35,11 @@ class ManagementStaff(Staff):
 	def calculatePerformanceBonus(self):
 		prompt = 'Enter performance grade for %s: ' %(self.name)
 		grade = input(prompt)
-		print("Grade = ",grade)
 		if (grade == "A"):
 			self.bonus = 1000
 		else:
 			self.bonus = 0
-			return self.bonus
+		return self.bonus
 class BasicStaff(Staff):
 		def __init__(self,pName,pPay):
 			super().__init__('Basic',pName,pPay)    
