@@ -9,3 +9,5 @@ class ChildClass(ParentClass):
 		print("Child class object created")
 parent = ParentClass()
 child  = ChildClass()
+print(isinstance(parent,ParentClass))
+print(issubclass(ChildClass,ParentClass))

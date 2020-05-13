@@ -6,6 +6,8 @@ class Staff:
     print('Creating Staff object')
   def __str__(self):
     return "Position = %s, Name = %s, Pay = %d" %(self._position, self.name, self.pay)
+  def __add__(self,other):
+    return self.pay + other.pay
   def calculatePay(self):
     prompt = '\nEnter number of hours worked for %s: ' %(self.name)
     hours = input(prompt)

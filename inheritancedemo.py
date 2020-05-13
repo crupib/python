@@ -6,3 +6,5 @@ print(john)
 print('Peter\'s Pay = ', peter.calculatePay())
 print('John\'s Pay = ', john.calculatePay())
 print('John\'s Performance Bonus = ', john.calculatePerformanceBonus())
+totalPay = john + peter
+print('\nTotal Pay for Both Staff = ',totalPay)
