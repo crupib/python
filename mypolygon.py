@@ -1,14 +1,30 @@
 import turtle
-def	polygon(t,n,length):
-        if n > 0:
-           angle = 360/n
-        else:
-             print("n not a valid number n>0")
-             return -1
-        for i in range(n):
-                t.fd(length)
-                t.lt(angle)
+import math
+
+def circle(t,r):
+   arc(t, r, 360)
+
+def polygon(t,n,length):
+   angle = 360 / n
+   polyline(t, n, length, angle)
+
+def arc(t, r, angle):
+   arc_length = 2 * math.pi * r * angle / 360
+   n = int(arc_length / 3) + 1
+   step_length = arc_length / n
+   step_angle = angle / n
+   
+   for i in range(n):
+       t.fd(step_length)
+       t.lt(step_angle)
+
+def polyline(t, n, length, angle):
+   for i in range(n):
+      t.fd(length)
+      t.lt(angle)      
 bob = turtle.Turtle()
-polygon(bob,n=11,length=70)
+#polygon(bob,n=11,length=70)
+#circle(bob,100)
+arc(bob, 50, 180)
 turtle.mainloop()
 	
