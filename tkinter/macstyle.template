@@ -1,0 +1,7 @@
+style = ttk.Style(root)
+style.theme_use('classic')
+style.configure('Test.TLabel', background= 'yellow')
+style.configure('Test1.TLabel', background= 'blue')
+style.configure('Test2.TLabel', background= 'green')
+style.configure('Test3.TLabel', background= 'orange')
+
