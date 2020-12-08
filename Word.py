@@ -9,6 +9,7 @@ class Word():
 		return self.text + word2.text
 
 def main():
+# nope
 	first = Word('ha')
 	second = Word('HA')
 	third  = Word('eh')
