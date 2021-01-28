@@ -1,9 +1,11 @@
 from flask import Flask
 from prometheus_flask_exporter import PrometheusMetrics
-
+logging.basicConfig(level=logging.INFO)
+logging.info("Setting LOGLEVEL to "INFO")
 app = Flask(__name__)
-metrics = PrometheusMetrics(app=None, path='/metrics')
-
+metrics = PrometheusMetrics(app=app, path='/metrics')
+#metrics = PrometheusMetrics(app=None, path='/metrics')
+metrics.info("app_info", "App Info, this can be anything you want", version="1.0.0")
 app.debug = True
 
 @app.route("/", methods=['GET'])
