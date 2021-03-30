@@ -1,0 +1,6 @@
+version_info = {}
+version_info["model"] = data[0][0]
+version_info["hardware-version"] = data[0][1]
+version_info["serial"] = data[0][2]
+version_info["system-mac"] = data[0][3]
+version_info["software-version"] = data[0][4]
