@@ -1,26 +1,65 @@
 import shellsort
-#import mybubsort
-
-def LinearSearch(list, item):
-  index = 0
-  found = []
-  while index < len(list):
-    if list[index][4] == item:
-      found.append(list[index])
-      index = index + 1
+import linearsearch
+import random
+from datetime import date
+approve = 0
+reject = 0
+def add_person(person,output):
+    appid = get_appid()
+    perid = get_perid() 
+    today = str(date.today())
+    output.write('{} {} {} {} {} {} {}\n'.format(perid, appid, person[0], person[1], person[2], "Approved" , today ))
+    output.close()
+    output=open("hist.txt", "r+")
+    lines=output.readlines()
+    mydata = [tuple(line.strip().split()) for line in lines]
+    for item in mydata:
+       print(item)
+def add_appid(person,perid, output):
+    appid = get_appid()
+    today = str(date.today())
+    output.write('{} {} {} {} {} {} {}\n'.format(perid, appid, person[0], person[1], person[2], "Approved" , today ))
+    output.close()
+    output=open("hist.txt", "r+")
+    lines=output.readlines()
+    mydata = [tuple(line.strip().split()) for line in lines]
+    for item in mydata:
+       print(item)
+def get_perid():
+    perid = random.randint(0,99999)
+    return perid
+def get_appid():
+    appid= random.randint(0,999999)
+    return appid
+def decision_count(data):
+    global approve
+    global reject
+    if data[5] == "Approved":
+     approve = approve + 1
     else:
-      index = index + 1
-  return found
+     reject = reject + 1
+#open hist data files
 
-found = []
-ifile=open("hist.txt", "r")
-lines=ifile.readlines()
+histfile=open("hist.txt", "r+")
+lines=histfile.readlines()
 data=[tuple(line.strip().split()) for line in lines]
+#open input data files
+
+inputfile=open("input.txt", "r")
+lines=inputfile.readlines()
+inputdata=[tuple(line.strip().split()) for line in lines]
+
+#sort data file
+
 shellsort.shellSort(data)
-print("******************************************************")
-for item in data:
-   print(item) 
-j=LinearSearch(data,"2000-09-19")
-print("******************************************************")
-for item in j:
-   print(item)
+
+#read in input file
+
+for inputitem in inputdata:
+   j=linearsearch.LinearSearch(data,inputitem[2],4)
+   if len(j):
+       for item in j:
+          if item[2] == inputitem[0] and item[3] == inputitem[1]:
+             add_appid(inputitem,inputitem[0],histfile)
+   else:
+      add_person(inputitem, histfile)
