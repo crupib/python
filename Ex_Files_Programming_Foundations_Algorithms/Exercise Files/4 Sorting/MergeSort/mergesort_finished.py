@@ -10,8 +10,13 @@ def mergesort(dataset):
         rightarr = dataset[mid:]
 
         # recursively break down the arrays
+<<<<<<< HEAD
         mergeSort(leftarr)
         mergeSort(rightarr)
+=======
+        mergesort(leftarr)
+        mergesort(rightarr)
+>>>>>>> bf1f356919b573a7da1241281434e8ce81c67d27
 
         # now perform the merging
         i=0 # index into the left array
