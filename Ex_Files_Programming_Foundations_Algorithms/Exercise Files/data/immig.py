@@ -15,9 +15,10 @@ def add_person(person,output):
     mydata = [tuple(line.strip().split()) for line in lines]
     for item in mydata:
        print(item)
-def add_appid(person,perid, output):
+def add_appid(person, perid, output):
     appid = get_appid()
     today = str(date.today())
+    print('{} {} {} {} {} {} {}\n'.format(perid, appid, person[0], person[1], person[2], "Approved" , today ))
     output.write('{} {} {} {} {} {} {}\n'.format(perid, appid, person[0], person[1], person[2], "Approved" , today ))
     output.close()
     output=open("hist.txt", "r+")
@@ -60,6 +61,7 @@ for inputitem in inputdata:
    if len(j):
        for item in j:
           if item[2] == inputitem[0] and item[3] == inputitem[1]:
-             add_appid(inputitem,inputitem[0],histfile)
+            print("ok")
+       add_appid(inputitem,item[0],histfile)
    else:
       add_person(inputitem, histfile)
