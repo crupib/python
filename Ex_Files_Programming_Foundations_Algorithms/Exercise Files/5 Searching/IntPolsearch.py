@@ -25,7 +25,11 @@ def main():
     list = [12,33, 11, 99, 22, 55, 90]
     sorted_list = BubbleSort(list)
     print(IntPolsearch(list,99))
+<<<<<<< HEAD
+    print(IntPolsearch(list,11))
+=======
     print(IntPolsearch(list,21))
+>>>>>>> bf1f356919b573a7da1241281434e8ce81c67d27
 
 if __name__ == "__main__":
     main()
