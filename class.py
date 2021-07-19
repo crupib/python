@@ -3,6 +3,9 @@ class Trail():
     def __init__(self, dest, len=0):
        self.dest = dest
        self.len = len
+    def run_trail(self):
+       """Simulate running the trail."""
+       print(f"Running to {self.dest}.")
     def describe_trail(self):
        """Print a description of trail."""
        desc = f"This trail goes to {self.dest}."
@@ -12,4 +15,7 @@ class Trail():
 verst = Trail("Mt. Verstovia", 4)
 print(f"Destination: {verst.dest}")
 verst.describe_trail()
-
+verst.run_trail()
+ms = Trail("Middle Sister",10)
+ms.describe_trail()
+ms.run_trail()
