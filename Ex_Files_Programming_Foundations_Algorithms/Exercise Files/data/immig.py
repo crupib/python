@@ -10,23 +10,11 @@ def add_person(person,output):
     perid = get_perid() 
     today = str(date.today())
     output.write('{} {} {} {} {} {} {}\n'.format(perid, appid, person[0], person[1], person[2], "Approved" , today ))
-    output.close()
-    output=open("hist.txt", "r+")
-    lines=output.readlines()
-    mydata = [tuple(line.strip().split()) for line in lines]
-    for item in mydata:
-       print(item)
 def add_appid(person, perid, output):
     appid = get_appid()
     today = str(date.today())
     print('{} {} {} {} {} {} {}\n'.format(perid, appid, person[0], person[1], person[2], "Approved" , today ))
     output.write('{} {} {} {} {} {} {}\n'.format(perid, appid, person[0], person[1], person[2], "Approved" , today ))
-    output.close()
-    output=open("hist.txt", "r+")
-    lines=output.readlines()
-    mydata = [tuple(line.strip().split()) for line in lines]
-    for item in mydata:
-       print(item)
 def get_perid():
     perid = random.randint(0,99999)
     return perid
@@ -59,10 +47,18 @@ shellsort.shellSort(data)
 
 for inputitem in inputdata:
    j=linearsearch.LinearSearch(data,inputitem[2],4)
+   approve = 0
+   reject = 0
    if len(j):
        for item in j:
           if item[2] == inputitem[0] and item[3] == inputitem[1]:
-            print("ok")
+            if item[5] == "Approved":
+               approve = approve + 1
+            else: 
+               reject = reject + 1            
        add_appid(inputitem,item[0],histfile)
+       print("Number of Approvals = ",approve)
+       print("Number of Rejections = ",reject)
    else:
       add_person(inputitem, histfile)
+      print("Added ",inputitem[0],inputitem[1])
