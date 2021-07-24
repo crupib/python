@@ -3,6 +3,8 @@ import quicksort
 import shellsort
 import linearsearch
 import random
+import time
+
 from datetime import date
 approve = 0
 reject = 0
@@ -26,13 +28,14 @@ def get_appid():
     appid= random.randint(0,999999)
     return appid
 
-#open hist data files
+start = time.time()
 
+#open hist data files
 histfile=open("hist.txt", "r+")
 lines=histfile.readlines()
 data=[tuple(line.strip().split()) for line in lines]
-#open input data files
 
+#open input data files
 inputfile=open("input.txt", "r")
 lines=inputfile.readlines()
 inputdata=[tuple(line.strip().split()) for line in lines]
@@ -40,9 +43,6 @@ inputdata=[tuple(line.strip().split()) for line in lines]
 #sort data file
 
 quicksort.quickSort(data,0,len(data)-1)
-
-for x in data:
-  print("\n",x)
 
 #read in input file
 
@@ -64,3 +64,6 @@ for inputitem in inputdata:
    else:
       add_person(inputitem, histfile)
       print("Added ",inputitem[0],inputitem[1])
+
+end = time.time()
+print("\nRunning time",end - start)
