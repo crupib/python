@@ -3,7 +3,7 @@ findspark.init()
 from pyspark.sql import SparkSession
 spark = SparkSession.builder.master("local[*]").getOrCreate()
 sc = spark.sparkContext
-sc.setLogLevel("off")
+sc.setLogLevel("OFF")
 wordsList = ['python', 'java', 'ottawa', 'ottawa', 'java', 'news']
 wordsRDD = sc.parallelize(wordsList,4)
 print(wordsRDD.collect())
