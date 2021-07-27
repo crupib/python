@@ -15,12 +15,12 @@ def distance_points(first, second): return abs(first - second)
 
 def generate_cities (number_of_cities):
     seed = 111; width = 500; height=300
-    random.seed((number_of_cities))
+    random.seed((number_of_cities,seed))
     return frozenset(aCity(random.randint(1,width), random.randint(1,height))
                      for c in range(number_of_cities))
 
 def brute_force(cities):
-    "Generate all possible tours of the cities and chose the shortest tour."
+    "Generate all possible tours of the cities and choose the shortest tour."
     return shortest_tour(alltours(cities))
 
 def shortest_tour(tours): return min(tours, key=distance_tour)
@@ -52,5 +52,5 @@ def tsp(algorithm,cities):
 
 def name(algorithm): return algorithm.__name__.replace('_tsp', '')
 
-tsp(brute_force,generate_cities(5))
+tsp(brute_force,generate_cities(10))
 plt.show()
