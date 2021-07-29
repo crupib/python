@@ -1,0 +1,7 @@
+Type of Robot       Technician     AI Specialist    Engineer
+Robot A:             3 days          4 days           4 days 
+Advanced
+model
+
+Robot B: basic       2 days          3 days           3 days
+model
