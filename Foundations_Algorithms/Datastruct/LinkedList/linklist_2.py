@@ -76,11 +76,13 @@ itemlist.dump_list()
 
 # exercise the list
 print("Item count: ", itemlist.get_count())
-print("Finding item: ", itemlist.find(13))
-print("Finding item: ", itemlist.find(78))
+print("Finding item: 13", itemlist.find(13))
+print("Finding item: 78", itemlist.find(78))
 
 # delete an item
 itemlist.deleteAt(3)
+print("Delete item # 3")
 print("Item count: ", itemlist.get_count())
-print("Finding item: ", itemlist.find(38))
+print("Finding item: 38", itemlist.find(38))
 itemlist.dump_list()
+print("Finding item: 13", itemlist.find(15))
