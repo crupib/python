@@ -67,5 +67,6 @@ def tsp(algorithm,cities):
 
 def name(algorithm): return algorithm.__name__.replace('_tsp', '')
 
-tsp(greedy_algorithm , generate_cities(10))
+#tsp(greedy_algorithm , generate_cities(10))
+tsp(brute_force, generate_cities(10))
 plt.show()
