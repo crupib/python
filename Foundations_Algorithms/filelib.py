@@ -77,14 +77,14 @@ def main():
     end = time.time()
     print("\nRunning time for create\n",(end-start)/60)
     start = time.time()
-    quickSort(myarray, 0, len(myarray)-1)
-#    mysortedarray = sorted(myarray)
+#    quickSort(myarray, 0, len(myarray)-1)
+    mysortedarray = sorted(myarray)
     end = time.time()
     print("\nRunning time for sort\n",(end-start)/60)
-    with open('sorted_rand.txt','w') as f:
-        for item in myarray:
-            f.write(str(item)+'\n')
 #    with open('sorted_rand.txt','w') as f:
-#        for item in mysortedarray:
+#        for item in myarray:
 #            f.write(str(item)+'\n')
+    with open('sorted_rand_sys.txt','w') as f:
+        for item in mysortedarray:
+            f.write(str(item)+'\n')
 main()
