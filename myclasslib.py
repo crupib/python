@@ -1,4 +1,5 @@
-class Trail():
+c
+ass Trail():
     """A class to represent trails."""
     def __init__(self, dest, len=0):
        self.dest = dest
