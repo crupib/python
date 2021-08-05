@@ -1,7 +1,9 @@
 import random
+from streamlit import caching
 import sys
 import struct
 import time
+from datetime import datetime
 def quickSort(dataset, first, last):
     if first < last:
         # calculate the split point
@@ -53,6 +55,7 @@ def random_Write(num):
     file.close()
 def create_random(num):
     array = []
+    random.seed("re-seed baby")
     for i in range(0,num):
        rand = random.randint(0,10000)
        array.append(rand)
@@ -67,15 +70,21 @@ def random_Read():
 def main():
     num = int(input("How many numbers would you like to generate?: "))
     sys.setrecursionlimit(1000000000)
+    print("Recursion limit after set ",sys.getrecursionlimit())
+    caching.clear_cache()
     start = time.time()
     myarray= create_random(num)
     end = time.time()
     print("\nRunning time for create\n",(end-start)/60)
     start = time.time()
     quickSort(myarray, 0, len(myarray)-1)
+#    mysortedarray = sorted(myarray)
     end = time.time()
     print("\nRunning time for sort\n",(end-start)/60)
     with open('sorted_rand.txt','w') as f:
         for item in myarray:
+            f.write(str(item)+'\n')
+    with open('sorted_rand.txt','w') as f:
+        for item in mysortedarray:
             f.write(str(item)+'\n')
 main()
