@@ -84,7 +84,7 @@ def main():
     with open('sorted_rand.txt','w') as f:
         for item in myarray:
             f.write(str(item)+'\n')
-    with open('sorted_rand.txt','w') as f:
-        for item in mysortedarray:
-            f.write(str(item)+'\n')
+#    with open('sorted_rand.txt','w') as f:
+#        for item in mysortedarray:
+#            f.write(str(item)+'\n')
 main()
