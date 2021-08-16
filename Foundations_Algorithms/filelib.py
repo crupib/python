@@ -69,7 +69,7 @@ def random_Read():
     file.close()
 def main():
     num = int(input("How many numbers would you like to generate?: "))
-    sys.setrecursionlimit(1000000000)
+#    sys.setrecursionlimit(1000000000)
     print("Recursion limit after set ",sys.getrecursionlimit())
     caching.clear_cache()
     start = time.time()
@@ -77,14 +77,17 @@ def main():
     end = time.time()
     print("\nRunning time for create\n",(end-start)/60)
     start = time.time()
-#    quickSort(myarray, 0, len(myarray)-1)
     mysortedarray = sorted(myarray)
     end = time.time()
-    print("\nRunning time for sort\n",(end-start)/60)
+    print("\nRunning time for system sort\n",(end-start)/60)
+#    with open('sorted_rand_sys.txt','w') as f:
+#        for item in mysortedarray:
+#            f.write(str(item)+'\n')
+#    start = time.time()
+#    quickSort(myarray,0,len(myarray)-1) 
+#    end = time.time()
+#    print("\nRunning time for my algorithm sort\n",(end-start)/60)
 #    with open('sorted_rand.txt','w') as f:
 #        for item in myarray:
 #            f.write(str(item)+'\n')
-    with open('sorted_rand_sys.txt','w') as f:
-        for item in mysortedarray:
-            f.write(str(item)+'\n')
 main()
