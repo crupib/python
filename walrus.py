@@ -12,7 +12,7 @@ def out_of_stock():
 
 #count = fresh_fruit.get('lemon',0)
 #print(count)
-if count := fresh_fruit.get('lemon',0):
+if count := fresh_fruit.get('orange',0):
    make_lemonade(count)
 else:
    out_of_stock()
