@@ -28,3 +28,4 @@ if __name__ == '__main__':
  print(is_isogram("six-year-old"))           
  print(is_isogram("six year old"))           
  print(is_isogram("six/year/old"))           
+ print(is_isogram("six.year.old"))           
