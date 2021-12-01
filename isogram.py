@@ -18,10 +18,6 @@ def is_isogram(word):
  return True
 
 if __name__ == '__main__':
-# print(is_isogram("Machine"))       
-# print(is_isogram("isogram"))      
-# print(is_isogram("GeeksforGeeks"))     
-# print(is_isogram("Alphabet"))           
  print(is_isogram("lumberjacks"))           
  print(is_isogram("background"))           
  print(is_isogram("downstream"))           
