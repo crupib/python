@@ -1,7 +1,7 @@
 """ Huffman Encoding"""
 import os
-""" Node class """
 class Node:
+    """ Huffman Encoding"""
     def __init__(self, prob, symbol, left=None, right=None):
         # probability of symbol
         self.prob = prob
@@ -17,49 +17,54 @@ class Node:
 
         # tree direction (0/1)
         self.code = ''
-
-""" A helper function to print the codes of symbols by traveling Huffman Tree"""
+    def __str__(self):
+        return self.__class__.__name__
+    @staticmethod
+    def create():
+        """ nothing """
+        return object()
 codes = dict()
-def To_Bytes(data):
-    b = bytearray()
+def to_bytes(data):
+    """ A helper function to print the codes of symbols by traveling Huffman Tree"""
+    _b = bytearray()
     for i in range(0, len(data), 8):
-        b.append(int(data[i:i+8], 2))
-    return bytes(b)
+        _b.append(int(data[i:i+8], 2))
+    return bytes(_b)
 
-def Calculate_Codes(node, val=''):
+def calculate_codes(node, val=''):
+    """ A helper function to print the codes of symbols by traveling Huffman Tree"""
     # huffman code for current node
-    newVal = val + str(node.code)
+    new_val = val + str(node.code)
 
     if node.left:
-        Calculate_Codes(node.left, newVal)
+        calculate_codes(node.left, new_val)
     if node.right:
-        Calculate_Codes(node.right, newVal)
+        calculate_codes(node.right, new_val)
 
     if(not node.left and not node.right):
-        codes[node.symbol] = newVal
+        codes[node.symbol] = new_val
     return codes
-""" A helper function to calculate the probabilities of symbols in given data"""
 
-def Calculate_Probability(data):
+def calculate_probability(data):
+    """ A helper function to calculate the probabilities of symbols in given data"""
     symbols = dict()
     for element in data:
-        if symbols.get(element) == None:
+        if symbols.get(element) is None:
             symbols[element] = 1
         else:
             symbols[element] += 1
     return symbols
 
-""" A helper function to obtain the encoded output"""
-def Output_Encoded(data, coding):
+def output_encoded(data, coding):
+    """ A helper function to calculate the probabilities of symbols in given data"""
     encoding_output = []
     for _c in data:
       #  print(coding[_c], end = '')
         encoding_output.append(coding[_c])
     string = ''.join([str(item) for item in encoding_output])
     return string
-""" A helper function to calculate the space
-    difference between compressed and non compressed data"""
-def Total_Gain(data, coding):
+def total_gain(data, coding):
+    """ A helper function to calculate the probabilities of symbols in given data"""
     before_compression = len(data) * 8 # total bit space to stor the data before compression
     after_compression = 0
     symbols = coding.keys()
@@ -69,8 +74,9 @@ def Total_Gain(data, coding):
         #calculate how many bit is required for that symbol in total
     print("Space usage before compression (in bits):", before_compression)
     print("Space usage after compression (in bits):",  after_compression)
-def Huffman_Encoding(data):
-    symbol_with_probs = Calculate_Probability(data)
+def huffman_encoding(data):
+    """ A helper function to calculate the probabilities of symbols in given data"""
+    symbol_with_probs = calculate_probability(data)
     symbols = symbol_with_probs.keys()
     probabilities = symbol_with_probs.values()
     print("symbols: ", symbols)
@@ -79,64 +85,61 @@ def Huffman_Encoding(data):
     # converting symbols and probabilities into huffman tree nodes
     for symbol in symbols:
         nodes.append(Node(symbol_with_probs.get(symbol), symbol))
-    
     while len(nodes) > 1:
         # sort all the nodes in ascending order based on their probability
         nodes = sorted(nodes, key=lambda x: x.prob)
         # pick 2 smallest nodes
         right = nodes[0]
         left = nodes[1]
-    
         left.code = 0
         right.code = 1
-    
         # combine the 2 smallest nodes to create new node
-        newNode = Node(left.prob+right.prob, left.symbol+right.symbol, left, right)
-    
+        new_node = Node(left.prob+right.prob, left.symbol+right.symbol, left, right)
         nodes.remove(left)
         nodes.remove(right)
-        nodes.append(newNode)
-            
-    huffman_encoding = Calculate_Codes(nodes[0])
-    print("symbols with codes", huffman_encoding)
-    Total_Gain(data, huffman_encoding)
-    encoded_output = Output_Encoded(data,huffman_encoding)
-    return encoded_output, nodes[0]  
-    
- 
-def Huffman_Decoding(encoded_data, huffman_tree):
+        nodes.append(new_node)
+    huffman_encoding_v = calculate_codes(nodes[0])
+    print("symbols with codes", huffman_encoding_v)
+    total_gain(data, huffman_encoding_v)
+    encoded_output = output_encoded(data,huffman_encoding_v)
+    return encoded_output, nodes[0]
+def huffman_decoding(encoded_data, huffman_tree):
+    """ A helper function to calculate the probabilities of symbols in given data"""
     tree_head = huffman_tree
     decoded_output = []
     for _x in encoded_data:
         if _x == '1':
-            huffman_tree = huffman_tree.right   
+            huffman_tree = huffman_tree.right
         elif _x == '0':
             huffman_tree = huffman_tree.left
         try:
-            if huffman_tree.left.symbol == None and huffman_tree.right.symbol == None:
+            if huffman_tree.left.symbol is None and huffman_tree.right.symbol is None:
                 pass
         except AttributeError:
             decoded_output.append(huffman_tree.symbol)
             huffman_tree = tree_head
-        
     string = ''.join([str(item) for item in decoded_output])
-    return string        
-
-print("First Test\n")
-DATA = "AAAAAAABCCCCCCDDEEEEE"
-print(DATA)
-encoding, tree = Huffman_Encoding(DATA)
-print("Encoded output", encoding)
-print("Decoded Output", Huffman_Decoding(encoding,tree))
-print("Second Test\n")
-f = open("demofile.txt", "r")
-_o = os.path.getsize('demofile.txt')
-DATA = f.read()
-encoding, tree = Huffman_Encoding(DATA)
-with open('test.bin','wb') as ofile:
-    ofile.write(To_Bytes(encoding))
-ofile.close()
-_c = os.path.getsize('test.bin')
-print(f'Original file: {_o} bytes')
-print(f'Compressed file: {_c} bytes')
-print('Compressed file to about {}% of original'.format(round((((_o-_c)/_o)*100), 0)))
+    return string
+def main():
+    """ main routine """
+    print("First Test\n")
+    _data_ = "AAAAAAABCCCCCCDDEEEEE"
+    print(_data_)
+    encoding, tree = huffman_encoding(_data_)
+    print("Encoded output", encoding)
+    print("Decoded Output", huffman_decoding(encoding,tree))
+    print("Second Test\n")
+    _f = open("demofile.txt", "r")
+    _o = os.path.getsize('demofile.txt')
+    _data_ = _f.read()
+    _f.close()
+    encoding, tree = huffman_encoding(_data_)
+    with open('test.bin','wb') as ofile:
+        ofile.write(to_bytes(encoding))
+    ofile.close()
+    _c = os.path.getsize('test.bin')
+    print(f'Original file: {_o} bytes')
+    print(f'Compressed file: {_c} bytes')
+    print('Compressed file to about {}% of original'.format(round((((_o-_c)/_o)*100), 0)))
+if __name__ == "__main__":
+    main()
