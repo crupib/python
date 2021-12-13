@@ -5,16 +5,12 @@ class Node:
     def __init__(self, prob, symbol, left=None, right=None):
         # probability of symbol
         self.prob = prob
-
         # symbol
         self.symbol = symbol
-
         # left node
         self.left = left
-
         # right node
         self.right = right
-
         # tree direction (0/1)
         self.code = ''
     def __str__(self):
@@ -29,14 +25,14 @@ class Node:
 codes = {}
 
 def to_bytes(data):
-    """ A helper function to print the codes of symbols by traveling Huffman Tree"""
+    """ convert string to bytes for saving to file """
     _b = bytearray()
     for i in range(0, len(data), 8):
         _b.append(int(data[i:i+8], 2))
     return bytes(_b)
 
 def calculate_codes(node, val=''):
-    """ A helper function to print the codes of symbols by traveling Huffman Tree"""
+    """ add node to codes tree """
     # huffman code for current node
     new_val = val + str(node.code)
 
@@ -44,7 +40,6 @@ def calculate_codes(node, val=''):
         calculate_codes(node.left, new_val)
     if node.right:
         calculate_codes(node.right, new_val)
-
     if(not node.left and not node.right):
         codes[node.symbol] = new_val
     return codes
@@ -60,7 +55,7 @@ def calculate_probability(data):
     return symbols
 
 def output_encoded(data, coding):
-    """ A helper function to calculate the probabilities of symbols in given data"""
+    """ A helper function to output encoded data """
     encoding_output = []
     for _c in data:
       #  print(coding[_c], end = '')
@@ -68,7 +63,7 @@ def output_encoded(data, coding):
     string = ''.join([str(item) for item in encoding_output])
     return string
 def total_gain(data, coding):
-    """ A helper function to calculate the probabilities of symbols in given data"""
+    """ show compression/ration before and after compression """
     before_compression = len(data) * 8 # total bit space to stor the data before compression
     after_compression = 0
     symbols = coding.keys()
@@ -79,7 +74,7 @@ def total_gain(data, coding):
     print("Space usage before compression (in bits):", before_compression)
     print("Space usage after compression (in bits):",  after_compression)
 def huffman_encoding(data):
-    """ A helper function to calculate the probabilities of symbols in given data"""
+    """ huffman encoding routine """
     symbol_with_probs = calculate_probability(data)
     symbols = symbol_with_probs.keys()
     probabilities = symbol_with_probs.values()
@@ -108,7 +103,7 @@ def huffman_encoding(data):
     encoded_output = output_encoded(data,huffman_encoding_v)
     return encoded_output, nodes[0]
 def huffman_decoding(encoded_data, huffman_tree):
-    """ A helper function to calculate the probabilities of symbols in given data"""
+    """ huffman decoding algorithm - reverse of encoding """
     tree_head = huffman_tree
     decoded_output = []
     for _x in encoded_data:
