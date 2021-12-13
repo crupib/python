@@ -1,7 +1,7 @@
 """ Huffman Encoding"""
 import os
 class Node:
-    """ Huffman Encoding"""
+    """ class for node and its use this program, used to build the tree """
     def __init__(self, prob, symbol, left=None, right=None):
         # probability of symbol
         self.prob = prob
@@ -18,12 +18,16 @@ class Node:
         # tree direction (0/1)
         self.code = ''
     def __str__(self):
+        """ to prevent pylint errors (2 or more methods needed for a class """
         return self.__class__.__name__
     @staticmethod
     def create():
-        """ nothing """
+        """ to prevent pylint errors (2 or more methods needed for a class """
         return object()
-codes = dict()
+# globals
+#codes = dict()
+codes = {}
+
 def to_bytes(data):
     """ A helper function to print the codes of symbols by traveling Huffman Tree"""
     _b = bytearray()
@@ -47,7 +51,7 @@ def calculate_codes(node, val=''):
 
 def calculate_probability(data):
     """ A helper function to calculate the probabilities of symbols in given data"""
-    symbols = dict()
+    symbols = {}
     for element in data:
         if symbols.get(element) is None:
             symbols[element] = 1
@@ -129,9 +133,9 @@ def main():
     print("Encoded output", encoding)
     print("Decoded Output", huffman_decoding(encoding,tree))
     print("Second Test\n")
-    _f = open("demofile.txt", "r")
-    _o = os.path.getsize('demofile.txt')
-    _data_ = _f.read()
+    with open("demofile.txt", "r",encoding="utf-8") as _f:
+        _o = os.path.getsize('demofile.txt')
+        _data_ = _f.read()
     _f.close()
     encoding, tree = huffman_encoding(_data_)
     with open('test.bin','wb') as ofile:
@@ -140,6 +144,7 @@ def main():
     _c = os.path.getsize('test.bin')
     print(f'Original file: {_o} bytes')
     print(f'Compressed file: {_c} bytes')
-    print('Compressed file to about {}% of original'.format(round((((_o-_c)/_o)*100), 0)))
+    comp_ratio = round((((_o-_c)/_o)*100), 0)
+    print(f'Compressed file to about {comp_ratio}% of original')
 if __name__ == "__main__":
     main()
