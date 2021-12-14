@@ -1,7 +1,7 @@
 """ Huffman Encoding"""
 import os
 class Node:
-    """ class for node and its use this program, used to build the tree """
+    """ class for node and its use in this program, 'used to build the tree' """
     def __init__(self, prob, symbol, left=None, right=None):
         # probability of symbol
         self.prob = prob
@@ -20,8 +20,8 @@ class Node:
     def create():
         """ to prevent pylint errors (2 or more methods needed for a class """
         return object()
+
 # globals
-#codes = dict()
 codes = {}
 
 def to_bytes(data):
@@ -64,7 +64,7 @@ def output_encoded(data, coding):
     return string
 def total_gain(data, coding):
     """ show compression/ration before and after compression """
-    before_compression = len(data) * 8 # total bit space to stor the data before compression
+    before_compression = len(data) * 8 # total bit space to store the data before compression
     after_compression = 0
     symbols = coding.keys()
     for symbol in symbols:
@@ -127,6 +127,7 @@ def main():
     encoding, tree = huffman_encoding(_data_)
     print("Encoded output", encoding)
     print("Decoded Output", huffman_decoding(encoding,tree))
+
     print("Second Test\n")
     with open("demofile.txt", "r",encoding="utf-8") as _f:
         _o = os.path.getsize('demofile.txt')
