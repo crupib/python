@@ -1,5 +1,6 @@
 """ Huffman Encoding"""
 import os
+from bitstring import BitStream, BitArray
 class Node:
     """ class for node and its use in this program, 'used to build the tree' """
     def __init__(self, prob, symbol, left=None, right=None):
@@ -62,6 +63,7 @@ def output_encoded(data, coding):
         encoding_output.append(coding[_c])
     string = ''.join([str(item) for item in encoding_output])
     return string
+
 def total_gain(data, coding):
     """ show compression/ration before and after compression """
     before_compression = len(data) * 8 # total bit space to store the data before compression
@@ -71,15 +73,18 @@ def total_gain(data, coding):
         count = data.count(symbol)
         after_compression += count * len(coding[symbol])
         #calculate how many bit is required for that symbol in total
-    print("Space usage before compression (in bits):", before_compression)
-    print("Space usage after compression (in bits):",  after_compression)
+    #print("\n")
+    #print("Space usage before compression (in bits):", before_compression)
+    #print("Space usage after compression (in bits):",  after_compression)
+    #print("\n")
+
 def huffman_encoding(data):
     """ huffman encoding routine """
     symbol_with_probs = calculate_probability(data)
     symbols = symbol_with_probs.keys()
     probabilities = symbol_with_probs.values()
-    print("symbols: ", symbols)
-    print("probabilities: ", probabilities)
+    #print("symbols: ", symbols)
+    #print("probabilities: ", probabilities)
     nodes = []
     # converting symbols and probabilities into huffman tree nodes
     for symbol in symbols:
@@ -98,10 +103,11 @@ def huffman_encoding(data):
         nodes.remove(right)
         nodes.append(new_node)
     huffman_encoding_v = calculate_codes(nodes[0])
-    print("symbols with codes", huffman_encoding_v)
+#   print("symbols with codes", huffman_encoding_v)
     total_gain(data, huffman_encoding_v)
     encoded_output = output_encoded(data,huffman_encoding_v)
     return encoded_output, nodes[0]
+
 def huffman_decoding(encoded_data, huffman_tree):
     """ huffman decoding algorithm - reverse of encoding """
     tree_head = huffman_tree
@@ -119,28 +125,71 @@ def huffman_decoding(encoded_data, huffman_tree):
             huffman_tree = tree_head
     string = ''.join([str(item) for item in decoded_output])
     return string
-def main():
-    """ main routine """
-    print("First Test\n")
-    _data_ = "AAAAAAABCCCCCCDDEEEEE"
-    print(_data_)
-    encoding, tree = huffman_encoding(_data_)
-    print("Encoded output", encoding)
-    print("Decoded Output", huffman_decoding(encoding,tree))
 
-    print("Second Test\n")
+def encode_file():
+    ''' encode a file read from the os '''
     with open("demofile.txt", "r",encoding="utf-8") as _f:
-        _o = os.path.getsize('demofile.txt')
         _data_ = _f.read()
     _f.close()
-    encoding, tree = huffman_encoding(_data_)
+    encoding, _ = huffman_encoding(_data_)
     with open('test.bin','wb') as ofile:
         ofile.write(to_bytes(encoding))
+    print(encoding)
     ofile.close()
+
+def decode_file():
+    ''' decode a file read from the os '''
+    # Determine encoding and tree data
+    with open("demofile.txt", "r",encoding="utf-8") as _f:
+        _data_ = _f.read()
+    _f.close()
+    _, tree = huffman_encoding(_data_)
+    with open('test.bin','rb') as bfile:
+        _bindata_ = bfile.read()
+    mystring = ""
+    for _i in _bindata_:
+        mystring = mystring+str(bin(_i)[2:].zfill(8))
+    print(huffman_decoding(mystring,tree))
+    #print(mystring)
+    bfile.close()
+
+def compression_stats():
+    ''' print compression statistics '''
+    print("Compression statistics")
+    print("\n")
+    _o = os.path.getsize('demofile.txt')
     _c = os.path.getsize('test.bin')
     print(f'Original file: {_o} bytes')
     print(f'Compressed file: {_c} bytes')
     comp_ratio = round((((_o-_c)/_o)*100), 0)
     print(f'Compressed file to about {comp_ratio}% of original')
+    print("\n")
+
+def perform_memory():
+    ''' perform in memory small size '''
+    data_ = "AAAAAAABCCCCCCDDEEEEE"
+    print(_data_)
+    encoding, tree = huffman_encoding(_data_)
+    print("Encoded output", encoding)
+    print("Decoded Output", huffman_decoding(encoding,tree))
+    print("\n")
+
+def main():
+    """ main routine """
+    #print("\n")
+    #print("Memory Test\n")
+    #print("\n")
+    #perform_memory()
+    #print("\n")
+    #print("File Encode Test\n")
+    #print("\n")
+    #encode_file()
+    #print("\n")
+    #compression_stats()
+    #print("\n")
+    #print("File Decode Test\n")
+    #print("\n")
+    decode_file()
+    #print("\n")
 if __name__ == "__main__":
     main()
