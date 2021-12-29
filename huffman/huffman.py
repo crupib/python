@@ -1,6 +1,6 @@
 """ Huffman Encoding"""
 import os
-#from bitstring import BitStream, BitArray
+
 class Node:
     """ class for node and its use in this program, 'used to build the tree' """
     def __init__(self, prob, symbol, left=None, right=None):
@@ -27,10 +27,10 @@ codes = {}
 def to_bytes(data):
     """ convert string to bytes for saving to file """
     _b = bytearray()
-    newlen = len(data)-8
-    for i in range(0, newlen, 8):
-         _b.append(int(data[i:i+8], 2))
+    for i in range(0, len(data), 8):
+        _b.append(int(data[i:i+8], 2))
     return bytes(_b)
+
 def calculate_codes(node, val=''):
     """ add node to codes tree """
     # huffman code for current node
@@ -130,7 +130,6 @@ def encode_file():
     encoding, tree = huffman_encoding(_data_)
     with open('test.bin','wb') as ofile:
         ofile.write(to_bytes(encoding))
-    print(huffman_decoding(encoding, tree))
     ofile.close()
 
 def decode_file():

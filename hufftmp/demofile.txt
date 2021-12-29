@@ -75,4 +75,4 @@ Data differencing is a general term for comparing the contents of two data objec
 
 In virtual desktops, this technique can feature a compression ratio of as much as 100:1. The process is often more closely aligned with deduplication, which looks for identical files or objects, rather than within the content of each object.
 
-Data differencing is sometimes referred to as deduplication. n
+Data differencing is sometimes referred to as deduplication.
