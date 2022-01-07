@@ -11,7 +11,7 @@ def process_multiple_iterables(x,y,z):
 
 def execute_func_using_verstack():
     from verstack import Multicore
-    worker = Multicore(multiple_iterables = True, workers = 2)
+    worker = Multicore(multiple_iterables = True, workers = 8)
     result = worker.execute(process_multiple_iterables, [iterable0, iterable1, iterable2])
     print(result)
 
