@@ -42,7 +42,7 @@ if __name__ == '__main__':
     for currentArgument, currentValue in arguments:
         if currentArgument in ("-h", "--help"):
             print ("python3 statepop.py blank --summary --state='state' --help")
-            print ("python3 statepop.py blank -x "state" -h -s")
+            print ("python3 statepop.py blank -x state -h -s")
         elif currentArgument in ("-s", "--summary"):
             median, mean, stdev = summarize()
             print("Statistics Summary")
