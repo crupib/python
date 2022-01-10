@@ -9,7 +9,6 @@ import sys
 import getopt
 
 def get_state(state):
-
   table_state = pd.read_html('https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_population#State_and_territory_rankings')
   df = table_state[0]
   retstat = None
@@ -19,6 +18,7 @@ def get_state(state):
         retstat = df['State or territory'].values[i]
         retpop = df['Census population[7][8][a]']['April 1, 2020'].values[i]
   return retstat, retpop 
+
 def summarize():
    pop_data_list = []
    table_state = pd.read_html('https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_population#State_and_territory_rankings')
