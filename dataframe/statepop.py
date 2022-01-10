@@ -52,7 +52,8 @@ if __name__ == '__main__':
         elif currentArgument in ("-x", "--state"):
             state, pop = get_state(currentValue)
             print("State            Population")
-            print(state, pop)
+            thousand_sep = (format(pop, ',d'))
+            print(state, str(thousand_sep))
              
    except getopt.error as err:
      print (str(err))
