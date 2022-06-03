@@ -11,7 +11,6 @@ class Solution(object):
         num = 0
         while i < len(s):
            if i+1<len(s) and s[i:i+2] in roman:
-              print(s[i:i+2])
               num+=roman[s[i:i+2]]
               i+=2
            else:
