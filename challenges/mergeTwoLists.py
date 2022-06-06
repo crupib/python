@@ -1,9 +1,5 @@
 import string
-# Definition for singly-linked list.
-# class ListNode(object):
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+from algorithms.sort import merge_sort
 class Solution(object):
     def mergeTwoLists(self, list1, list2):
         """
@@ -11,7 +7,9 @@ class Solution(object):
         :type list2: Optional[ListNode]
         :rtype: Optional[ListNode]
         """
-        
+        combinedLists = list1+list2
+        retlist = merge_sort(combinedLists)
+        return retlist
 def main():
   list1 = [1,2,4] 
   list2 = [1,3,4]
@@ -22,6 +20,7 @@ def main():
   for i in list2:
        assert  i >= -100 and i <= 100, "list2 has a value  out of range"
   sol = Solution()
-
+  retmergedlists = sol.mergeTwoLists(list1, list2)
+  print(retmergedlists)
 if __name__ == "__main__":
     main()
