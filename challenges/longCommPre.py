@@ -17,7 +17,7 @@ class Solution(object):
       precount = 0
       compre = []
       numberOfStrings = len(strs)
-      while precount <= numberOfStrings:
+      while precount < numberOfStrings:
         for item in strs:
            prefixtemp.append(item[precount])
         allEqual = self.allEqual(prefixtemp)
@@ -32,5 +32,8 @@ def main():
   strs = ["flower","flow","flight"]
   sol = Solution()
   print(sol.longestCommonPrefix(strs))
+  strs = ["dog","racecar","car"]
+  print(sol.longestCommonPrefix(strs))
+  
 if __name__ == "__main__":
     main()
