@@ -36,7 +36,8 @@ class Solution(object):
         
         return rbool
 def main():
-  s = "(["
+  s = "{}[]()(){}[]"
+  assert len(s) >= 1 and len(s) <= 10**4, "Failed out of range"
   sol = Solution()
   print(sol.isValid(sorted(s)))
 
