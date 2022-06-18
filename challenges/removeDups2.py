@@ -1,6 +1,22 @@
 # Python3 program to remove duplicate
 # nodes from a sorted linked list
-
+class Solution(object):
+    def deleteDuplicates(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        temp = head
+        if temp is None:
+           return
+        while temp.next is not None:
+           if temp.data == temp.next.data:
+               new = temp.next.next
+               temp.next = None
+               temp.next = new
+           else:
+              temp = temp.next
+        return head
 # Node class
 class Node:
 
@@ -82,22 +98,17 @@ class LinkedList:
 		return self.head
 
 # Driver Code
+obj = Solution()
 llist = LinkedList()
-llist.push(7)
-llist.push(7)
-llist.push(6)
-llist.push(5)
-llist.push(4)
-llist.push(3)
-llist.push(3)
 llist.push(2)
 llist.push(1)
 llist.push(1)
 print ("Created Linked List: ")
 llist.printList()
 print()
+obj.deleteDuplicates(llist.head)
 print("Linked List after removing",
 			"duplicate elements:")
-llist.removeDuplicates()
+#llist.removeDuplicates()
 llist.printList()
 print("\n")
