@@ -5,17 +5,16 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        retlist = []
-        for index, value in enumerate(nums):
-          for jndex, jvalue in enumerate(nums):
-             sum = value+jvalue
-             if sum == target:
-                retlist.append(index)
-        return retlist
+        values = {}
+        for idx, value in enumerate(nums):
+            if target - value in values:
+                return [values[target - value], idx]
+            else:
+                values[value] = idx
 def main():
-       nums = [2,7,11,15]
+       nums = [3,3]
        two_sum = Solution()
-       target = 50
+       target = 6
        print(two_sum.twoSum(nums,target))
 if __name__ == "__main__":
     main()

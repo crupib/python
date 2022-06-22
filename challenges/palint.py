@@ -4,26 +4,20 @@ class Solution(object):
        return int(num != 0) and ((num % 10) * \
              (10**int(math.log(num, 10))) + \
                           self.rev(num // 10))
-    def ispalindrone(self, num):
+    def isPalindrome(self, num):
         if (num) < 0:
-          return 0
-        return self.rev(num)
+          return False
+        if self.rev(num) == num:
+          return True
+        else:
+          return False
 def main():
     mynum = 121
     sol = Solution()
-    if (sol.ispalindrone(mynum)) == mynum:
-      print(mynum,"is a palindrone")
-    else:
-      print(mynum, "is not a palindrone")
+    print(sol.isPalindrone(mynum))
     mynum = -121
-    if (sol.ispalindrone(mynum)) == mynum:
-      print(mynum,"is a palindrone")
-    else:
-      print(mynum, "is not a palindrone")
+    print(sol.isPalindrone(mynum))
     mynum = 10
-    if (sol.ispalindrone(mynum)) == mynum:
-      print(mynum,"is a palindrone")
-    else:
-      print(mynum, "is not a palindrone")
+    print(sol.isPalindrone(mynum))
 if __name__ == "__main__":
     main()
