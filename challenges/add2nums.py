@@ -1,4 +1,6 @@
 # A single node of a singly linked list
+
+
 class ListNode:
     def __init__(self, x):
         self.val = x
@@ -37,6 +39,14 @@ class Solution(object):
       print(item.val)
     # print the next nodes
       self.print_linked_list(item.next)
+    def listToLinkedList(self, list):
+      last=None
+      for item in list:
+          current=ListNode(item)
+          current.val = item
+          current.next = last
+          last=current
+      return current
     def linkedListToList(self,item,output):
     # base case
       if item == None:
@@ -46,9 +56,17 @@ class Solution(object):
     # print the next nodes
       self.linkedListToList(item.next,output)
 if __name__ == '__main__':
-    a, a.next, a.next.next , a.next.next.next= ListNode(2), ListNode(4), ListNode(3), ListNode(9)
-    b, b.next, b.next.next , b.next.next.next = ListNode(5), ListNode(6), ListNode(4), ListNode(2)
-    result = Solution().addTwoNumbers(a, b)
+    alist = [2,4,3,9]
+    blist = [5,6,4,2]
+    alist.reverse()
+    blist.reverse()
+    allist =Solution().listToLinkedList(alist)
+    print("alist = ", alist)
+    #Solution().print_linked_list(allist)
+    bllist =Solution().listToLinkedList(blist)
+    print("blist = ", blist)
+    #Solution().print_linked_list(bllist)
+    result = Solution().addTwoNumbers(allist, bllist)
     output = []
     Solution().print_linked_list(result)
     Solution().linkedListToList(result,output)  
