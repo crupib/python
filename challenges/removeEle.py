@@ -2,7 +2,7 @@ import string
 from collections import Counter
 #nums = [0,0,1,1,1,2,2,3,3,4]
 #nums = [0,1,2,2,3,0,4,2]
-nums = [3,2,2,3]
+#nums = [3,2,2,3]
 class Solution(object):
    def removeElement(self, nums, val):
        """
@@ -23,6 +23,7 @@ class Solution(object):
        return retInt
 
 def main():
+  nums = [3,2,2,3]
   assert len(nums) >= 0 and len(nums) <= 100, "Failed out of range"
   for i in nums:
        assert  i >= 0 and i <= 50, "nums has a value out of range"

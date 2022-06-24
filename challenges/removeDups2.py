@@ -100,7 +100,6 @@ class LinkedList:
 # Driver Code
 obj = Solution()
 llist = LinkedList()
-llist.push(2)
 llist.push(1)
 llist.push(1)
 print ("Created Linked List: ")
