@@ -31,8 +31,8 @@ root1.left = TreeNode(2)
 root1.right = TreeNode(2)
 root1.left.left = TreeNode(3)
 root1.left.right = TreeNode(4)
-root1.right.left = TreeNode(4)
-root1.right.right = TreeNode(3)
+root1.right.left = TreeNode(3)
+root1.right.right = TreeNode(4)
 
 if (obj.isSymmetric(root1)) :
     print("Trees are symmetric")
