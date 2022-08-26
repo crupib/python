@@ -1,6 +1,6 @@
 import cv2
 import sys
-#/usr/local/lib/python3.9/site-packages/cv2/data/haarcascade_frontalface_default.xml
+
 cascPath = sys.argv[1]
 faceCascade = cv2.CascadeClassifier(cascPath)
 
