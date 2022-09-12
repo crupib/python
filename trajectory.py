@@ -10,7 +10,7 @@ xs3 = [0.2,2]
 ys3 = [ball_trajectory(0.2),0]
 xs4 = [0.3,2]
 ys4 = [ball_trajectory(0.3),0]
-plt.title('The Trajectory of a Thrown Ball')
+plt.title('The Trajectory of a Thrown Ball - with Lines of Sight')
 plt.xlabel('Horizontal Postion of Ball')
 plt.ylabel('Vertical Position of Ball')
 plt.axhline(y = 0)
