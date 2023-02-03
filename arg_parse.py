@@ -23,13 +23,13 @@ def main(args):
     print(f"Occupation is {occupation}.\n") 
     print(args)  
     if args.verbose == 1:
-       print(f"\nMore info on {name}.")
+       print(f"\nHello {name} verbose = v.") 
     elif args.verbose == 2:
-       print(f"\nEven more info on {name}.")
+       print(f"\nEven more info on {name} verbose = vv.")
     elif args.verbose == 3:
-       print(f"\nToo much information on {name}.")  
+       print(f"\nToo much information on {name} verbose = vvv.")  
     elif args.verbose > 3:
-       print(f"I will have to kill you for anymore info")
+       print(f"I will have to kill you for anymore info verbose = vvvv.")
 if __name__ == "__main__": 
     args = cli() 
     main(args)
