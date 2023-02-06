@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/local/bin/python3
 #Need function that reads pixel hue value 
 import matplotlib.pyplot as plt
 import cv2

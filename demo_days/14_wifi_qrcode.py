@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/local/bin/python3
 # Import module
 import wifi_qrcode_generator as qr
  

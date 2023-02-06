@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/local/bin/python3
 import base64
 
 mystr = 'O João mordeu o cão!'

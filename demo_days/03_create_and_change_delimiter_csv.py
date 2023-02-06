@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/local/bin/python3
 from argparse import ArgumentParser
 from pathlib import Path
 import pandas as pd
