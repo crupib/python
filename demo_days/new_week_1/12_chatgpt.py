@@ -3,7 +3,7 @@ import openai
 
 
 # Set up the OpenAI API client :
-openai.api_key = "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"
+openai.api_key = "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"
 
 # Set up the model (more models, visit https://beta.openai.com/playground)
 model_engine = "text-davinci-003"
@@ -30,7 +30,7 @@ def conversation_handler(prompt):
     print(f"ChatGPT: {response}")
     
     # End the conversation if ChatGPT says goodbye
-    if "goodbye" in response.lower():
+    if ("goodbye") in response.lower():
         return
     
     # Otherwise, get user input and continue the conversation
