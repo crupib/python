@@ -3,7 +3,7 @@ import openai
 
 
 # Set up the OpenAI API client :
-openai.api_key = "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"
+openai.api_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 # Set up the model (more models, visit https://beta.openai.com/playground)
 model_engine = "text-davinci-003"
