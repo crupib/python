@@ -1,0 +1,1 @@
+uvicorn static_img:app --reload
