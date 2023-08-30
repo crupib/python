@@ -1,0 +1,3 @@
+diff -y file1 file2
+diff -yW 35 file1 file2
+locate diff
