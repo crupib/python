@@ -1,5 +1,5 @@
 import openai
-openai.api_key = "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"
+openai.api_key = ""
 question = None
 
 while(question != "end"):
