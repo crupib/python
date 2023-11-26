@@ -22,10 +22,10 @@ while True:
     print('Python is listening...')
     inp = voice_to_text()
     print(f'You just said {inp}.')
-    if inp == "stop listening":
+    if inp == "goodbye":
         print('Goodbye!')
         break
-    elif "website" in inp: 
-        inp = inp.replace('website','')
-        webbrowser.open("http://"+inp)
+    elif "browser" in inp: 
+        inp = inp.replace('browser ','')
+        webbrowser.open("https://"+inp)
         continue
