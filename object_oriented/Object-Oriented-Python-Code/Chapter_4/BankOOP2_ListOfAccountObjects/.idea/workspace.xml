@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7d53cb3e-6d95-490b-b0d0-fabdf6638f70" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Chapter 1 code/Bank1 (one account).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter 1 code/Bank2 (one account with functions).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter 1 code/Bank3 (two accounts).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter 1 code/Bank4 (n accounts).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter 1 code/Bank5 (dictionary).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter 1 code/BankAccountOOP.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter 1 code/HigherOrLower Non OOP.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter 15 code/RockPaperScissorsWithScenes/.idea/SceneMgr.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter 15 code/RockPaperScissorsWithScenes/.idea/SceneMgr.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter 15 code/RockPaperScissorsWithScenes/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter 15 code/RockPaperScissorsWithScenes/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter 15 code/RockPaperScissorsWithScenes/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter 15 code/RockPaperScissorsWithScenes/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter 15 code/RockPaperScissorsWithScenes/SceneExample.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter 15 code/RockPaperScissorsWithScenes/SceneExample.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter 15 code/SceneDemo/.idea/Three Scenes Example.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter 15 code/SceneDemo/.idea/Three Scenes Example.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter 15 code/SceneDemo/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter 15 code/SceneDemo/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter 15 code/SceneDemo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter 15 code/SceneDemo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter 15 code/SceneDemo/SceneExample.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter 15 code/SceneDemo/SceneExample.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter 16 Code/Dodger/SceneExample.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter 16 Code/Dodger/SceneExample.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter 2 code/DimmerSwitch.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter 2 code/DimmerSwitch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter 2 code/LightSwitch.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter 2 code/OO DimmerSwitch Two instances.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter 2 code/OO DimmerSwitch with Test Code.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter 2 code/OO LightSwitch Two instances.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter 2 code/OO LightSwitch.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter 2 code/OO TV Two Instances with Init Params.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter 2 code/OO TV Two instances.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter 2 code/OO TV with Test Code.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter 2 code/TV.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter 2 code/TV.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter 3 code/OO DimmerSwitch Model 1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter 3 code/OO DimmerSwitch Model 2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bank OOP1 - individual object variables/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bank OOP1 - individual object variables/.pydevproject" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bank OOP1 - individual object variables/Account.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bank OOP1 - individual object variables/Main_Bank_Version1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Bank OOP2 - list of account objects.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Bank OOP2 - list of account objects.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Account.py" beforeDir="false" afterPath="$PROJECT_DIR$/Account.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main_Bank_Version2..py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bank OOP3 - dictionary of account objects/Account.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Bank OOP3 - dictionary of account objects/Account.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bank OOP3 - dictionary of account objects/Main_Bank_Version3.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Bank OOP3 - dictionary of account objects/Main_Bank_Version3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bank OOP4 - interactive menu/.idea/Bank OOP4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Bank OOP4 - interactive menu/.idea/Bank OOP4.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bank OOP4 - interactive menu/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Bank OOP4 - interactive menu/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bank OOP4 - interactive menu/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Bank OOP4 - interactive menu/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bank OOP4 - interactive menu/Account.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Bank OOP4 - interactive menu/Account.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bank OOP4 - interactive menu/Main_Bank_Version4.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Bank OOP4 - interactive menu/Main_Bank_Version4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bank OOP5 - Separate Bank class/.idea/Bank OOP5.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bank OOP5 - Separate Bank class/.idea/dictionaries/irvkalb.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bank OOP5 - Separate Bank class/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Bank OOP5 - Separate Bank class/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bank OOP5 - Separate Bank class/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Bank OOP5 - Separate Bank class/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bank OOP5 - Separate Bank class/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Bank OOP5 - Separate Bank class/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bank OOP5 - Separate Bank class/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bank OOP5 - Separate Bank class/.pydevproject" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bank OOP5 - Separate Bank class/Account.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Bank OOP5 - Separate Bank class/Account.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bank OOP5 - Separate Bank class/Bank.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Bank OOP5 - Separate Bank class/Bank.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bank OOP6 using exceptions for error detection/Account.py" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1860" />
+    <option name="y" value="68" />
+    <option name="width" value="1570" />
+    <option name="height" value="945" />
+  </component>
+  <component name="ProjectId" id="1nO942KXQAkWeTaMPh57IIdURgY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="foldersAlwaysOnTop" value="false" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="/usr/bin/python" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main version 2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Bank OOP2 - list of account objects" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Main version 2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.Main version 2" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7d53cb3e-6d95-490b-b0d0-fabdf6638f70" name="Default Changelist" comment="" />
+      <created>1562625606164</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1562625606164</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

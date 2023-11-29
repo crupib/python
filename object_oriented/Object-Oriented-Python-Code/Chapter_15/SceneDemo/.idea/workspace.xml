@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cdc1b2ee-25dc-41e8-828d-afcaa5f071d0" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/../RockPaperScissorsStateMachine/RockPaperScissors.py" beforeDir="false" afterPath="$PROJECT_DIR$/../RockPaperScissorsStateMachine/RockPaperScissors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RockPaperScissorsWithScenes/SceneExample.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RockPaperScissorsWithScenes/ScenePlay.py" beforeDir="false" afterPath="$PROJECT_DIR$/../RockPaperScissorsWithScenes/ScenePlay.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RockPaperScissorsWithScenes/SceneResults.py" beforeDir="false" afterPath="$PROJECT_DIR$/../RockPaperScissorsWithScenes/SceneResults.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/Constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SceneA.py" beforeDir="false" afterPath="$PROJECT_DIR$/SceneA.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SceneB.py" beforeDir="false" afterPath="$PROJECT_DIR$/SceneB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SceneC.py" beforeDir="false" afterPath="$PROJECT_DIR$/SceneC.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SceneExample.py" beforeDir="false" afterPath="$PROJECT_DIR$/SceneExample.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter_16/Dodger/SceneExample.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter_16/Dodger/SceneExample.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter_3/OO_DimmerSwitch_Model2_Method_Calls ORIG.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter_4/BankOOP1_IndividualVariables/Main_Bank_Version1.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter_4/BankOOP1_IndividualVariables/Main_Bank_Version1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter_4/BankOOP2_ListOfAccountObjects/Main_Bank_Version2.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter_4/BankOOP2_ListOfAccountObjects/Main_Bank_Version2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter_4/BankOOP3_DictionaryOfAcountObjects/Main_Bank_Version3.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter_4/BankOOP3_DictionaryOfAcountObjects/Main_Bank_Version3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter_4/BankOOP4_InteractiveMenu/Main_Bank_Version4.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter_4/BankOOP4_InteractiveMenu/Main_Bank_Version4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter_4/BankOOP5_SeparateBankClass/Bank.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter_4/BankOOP5_SeparateBankClass/Bank.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter_4/BankOOP5_SeparateBankClass/Main_Bank_Version5.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter_4/BankOOP5_SeparateBankClass/Main_Bank_Version5.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter_4/BankOOP6_UsingExceptions/Bank.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter_4/BankOOP6_UsingExceptions/Bank.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter_4/BankOOP6_UsingExceptions/Main_Bank_Version6.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter_4/BankOOP6_UsingExceptions/Main_Bank_Version6.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter_4/MonsterExample.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter_4/MonsterExample.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>TextBu</find>
+      <find>splash</find>
+      <find>OKButton</find>
+      <find>upper</find>
+      <find>upperLeftCorner</find>
+      <find>self.message</find>
+      <find>self.label</find>
+      <find>newScene</find>
+      <find>self.scene</find>
+      <find>pygame</find>
+      <find>dataForNextScene</find>
+      <find>self.nextSceneKey</find>
+      <find>CurrentSceneKey</find>
+      <find>_goTo</find>
+      <find>label</find>
+      <find>leave</find>
+      <find>sys</find>
+      <find>'''</find>
+      <find>sendAll</find>
+      <find>image</find>
+      <find>Image</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>nextScene</replace>
+      <replace>&quot;&quot;&quot;</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1ic6JAGH0ILwVZitZUXPoZ1SmZL" />
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Buildout</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="foldersAlwaysOnTop" value="false" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.Main_SceneDemo">
+    <configuration name="Main_SceneDemo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Three Scenes Example" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Main_SceneDemo.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Scene Demo Main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Three Scenes Example" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scene Demo Main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SceneA" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Three Scenes Example" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SceneA.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Three Scenes Main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Three Scenes Example" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Three Scenes Main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pyghelpers" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Three Scenes Example" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/pyghelpers" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/pyghelpers/pyghelpers.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.Scene Demo Main" />
+      <item itemvalue="Python.Three Scenes Main" />
+      <item itemvalue="Python.Main_SceneDemo" />
+      <item itemvalue="Python.SceneA" />
+      <item itemvalue="Python.pyghelpers" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.Main_SceneDemo" />
+        <item itemvalue="Python.pyghelpers" />
+        <item itemvalue="Python.SceneA" />
+        <item itemvalue="Python.Scene Demo Main" />
+        <item itemvalue="Python.Three Scenes Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cdc1b2ee-25dc-41e8-828d-afcaa5f071d0" name="Default" comment="" />
+      <created>1523142155315</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1523142155315</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url />
+          <line>40</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
