@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2aacef8d-37ac-423f-84ec-95743a26ae7f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Chapter_14/SimpleAnimation/SimpleAnimation.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter_14/SimpleAnimation/SimpleAnimation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter_16/Dodger/Constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter_16/Dodger/Constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter_16/Dodger/HighScores.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter_16/Dodger/HighScores.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter_16/Dodger/HighScoresData.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter_16/Dodger/HighScoresData.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter_16/Dodger/SceneHighScores.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter_16/Dodger/SceneHighScores.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter_16/Dodger/ScenePlay.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter_16/Dodger/ScenePlay.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter_17/MVC_RollTheDice/BarChart.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter_17/MVC_RollTheDice/BarChart.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter_17/MVC_RollTheDice/Bin.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter_17/MVC_RollTheDice/Bin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter_17/MVC_RollTheDice/Constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter_17/MVC_RollTheDice/Constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter_17/MVC_RollTheDice/Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter_17/MVC_RollTheDice/Controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter_17/MVC_RollTheDice/Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter_17/MVC_RollTheDice/Model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter_17/MVC_RollTheDice/PieChart.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter_17/MVC_RollTheDice/PieChart.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter_17/MVC_RollTheDice/TextChart.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Chapter_17/MVC_RollTheDice/TextChart.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Chapter_17/MVC_RollTheDice/View.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PygameDemo1_OneImage/PygameOneImage.py" beforeDir="false" afterPath="$PROJECT_DIR$/../PygameDemo1_OneImage/PygameOneImage.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1kWU3ZGyn1tmSTmFd6ufuOUnt42" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="foldersAlwaysOnTop" value="false" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="/usr/bin/python" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
+  </component>
+  <component name="RunManager">
+    <configuration name="PygameMoveByKeyboardContinuous" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Pygame Demo 3 One Image Move by Keyboard" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PygameMoveByKeyboardContinuous.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.PygameMoveByKeyboardContinuous" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2aacef8d-37ac-423f-84ec-95743a26ae7f" name="Default Changelist" comment="" />
+      <created>1605815643786</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605815643786</updated>
+    </task>
+    <servers />
+  </component>
+</project>

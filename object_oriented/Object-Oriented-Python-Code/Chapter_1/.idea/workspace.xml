@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="760d0049-7a88-46b8-bfea-72255566594d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Bank1 (one account).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bank2 (one account with functions).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bank3 (two accounts).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bank4 (n accounts).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bank5 (dictionary).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankAccountOOP.py" beforeDir="false" afterPath="$PROJECT_DIR$/BankAccountOOP.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HigherOrLower Non OOP.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chapter 15 code/RockPaperScissorsWithScenes/.idea/SceneMgr.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter 15 code/RockPaperScissorsWithScenes/.idea/SceneMgr.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chapter 15 code/RockPaperScissorsWithScenes/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter 15 code/RockPaperScissorsWithScenes/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chapter 15 code/RockPaperScissorsWithScenes/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter 15 code/RockPaperScissorsWithScenes/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chapter 15 code/RockPaperScissorsWithScenes/SceneExample.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter 15 code/RockPaperScissorsWithScenes/SceneExample.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chapter 15 code/SceneDemo/.idea/Three Scenes Example.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter 15 code/SceneDemo/.idea/Three Scenes Example.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chapter 15 code/SceneDemo/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter 15 code/SceneDemo/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chapter 15 code/SceneDemo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter 15 code/SceneDemo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chapter 15 code/SceneDemo/SceneExample.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter 15 code/SceneDemo/SceneExample.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Chapter 16 Code/Dodger/SceneExample.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter 16 Code/Dodger/SceneExample.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1mJJjssBK33H0gaySGC6UHKqNK1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="foldersAlwaysOnTop" value="false" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="/usr/bin/python" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Bank2 OneAccountWithFunctions" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Chapter 1 code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Bank2 OneAccountWithFunctions.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.Bank2 OneAccountWithFunctions" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="760d0049-7a88-46b8-bfea-72255566594d" name="Default Changelist" comment="" />
+      <created>1609205898459</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1609205898459</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1514" height="220" key="GridCell.Tab.0.bottom" timestamp="1609206487773">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state width="1514" height="220" key="GridCell.Tab.0.bottom/0.23.1792.1097/1792.0.1920.1080@0.23.1792.1097" timestamp="1609206487773" />
+    <state width="1514" height="220" key="GridCell.Tab.0.center" timestamp="1609206487772">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state width="1514" height="220" key="GridCell.Tab.0.center/0.23.1792.1097/1792.0.1920.1080@0.23.1792.1097" timestamp="1609206487772" />
+    <state width="1514" height="220" key="GridCell.Tab.0.left" timestamp="1609206487772">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state width="1514" height="220" key="GridCell.Tab.0.left/0.23.1792.1097/1792.0.1920.1080@0.23.1792.1097" timestamp="1609206487772" />
+    <state width="1514" height="220" key="GridCell.Tab.0.right" timestamp="1609206487772">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state width="1514" height="220" key="GridCell.Tab.0.right/0.23.1792.1097/1792.0.1920.1080@0.23.1792.1097" timestamp="1609206487772" />
+  </component>
+</project>
