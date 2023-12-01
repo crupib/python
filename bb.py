@@ -1,12 +1,8 @@
 import os
 import sys
 import argparse
-import json
 import simplejson as json
-
-
 class ExampleInventory(object):
-
     def __init__(self):
         self.inventory = {}
         self.read_cli_args()
