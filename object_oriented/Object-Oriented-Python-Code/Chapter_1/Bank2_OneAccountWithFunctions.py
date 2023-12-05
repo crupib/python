@@ -1,7 +1,7 @@
 # Non-OOP
 # Bank 2
 # Single account
-
+import getpass
 accountName = ''
 accountBalance = 0
 accountPassword = ''
@@ -17,7 +17,7 @@ def show():
     global accountName, accountBalance, accountPassword
     print('       Name', accountName)
     print('       Balance:', accountBalance)
-    print('       Password:', accountPassword)
+    print('       Password:', getpass.getpass(accountPassword))
     print()
 
 def getBalance(password):
