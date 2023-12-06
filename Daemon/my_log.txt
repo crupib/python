@@ -1,0 +1,2 @@
+2023-12-06 11:20:51,891 - __main__ - INFO - This is a message
+2023-12-06 11:20:56,896 - __main__ - INFO - This is a message
