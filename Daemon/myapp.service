@@ -1,0 +1,13 @@
+[Unit]
+Description=My Python App
+After=network.target
+
+[Service]
+Type=simple
+User=your_username
+WorkingDirectory=/path/to/your/python/app/directory
+ExecStart=/usr/bin/python3 /path/to/your/python/app.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
