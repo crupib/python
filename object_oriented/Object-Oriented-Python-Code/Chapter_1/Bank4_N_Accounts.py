@@ -130,6 +130,6 @@ while True:
  
         newBalance = withdraw(userAccountNumber, userWithdrawAmount, userPassword)
         if newBalance is not None:
-            print('Your new balance is:', newBalance)       
-
+            print('Your new balance is:', newBalance)   
 print('Done')
+
