@@ -7,9 +7,14 @@ class Solution(object):
         """
         values = {}
         for idx, value in enumerate(nums):
+            print("values",idx,values)
+            print("target-value",idx,target-value)
             if target - value in values:
+                print("return",values)
+                print("return",idx,target-value)
                 return [values[target - value], idx]
             else:
+                print("past return",idx,value)
                 values[value] = idx
                 print(values)
 def main():
