@@ -17,5 +17,9 @@ def main():
        two_sum = Solution()
        target = 9
        print(two_sum.twoSum(nums,target))
+       junk = {}
+       for x, num in enumerate(nums):
+           junk[num] = x
+           print(junk)
 if __name__ == "__main__":
     main()
