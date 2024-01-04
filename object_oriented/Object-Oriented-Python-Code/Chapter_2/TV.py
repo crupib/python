@@ -93,11 +93,21 @@ oTV.showInfo()
 oTV.volumeDown()
 oTV.mute()
 oTV.showInfo()
-
 # Change the Channel to 11
 oTV.setChannel(11)
 oTV.mute()
 oTV.showInfo()
-
-        
-            
+# Change the Channel to 65
+oTV.setChannel(65)
+oTV.mute()
+oTV.showInfo()
+ll=len(oTV.channelList)
+print("for loop setChannel")
+oTV.mute()
+for i in range(ll):
+    oTV.setChannel(oTV.channelList[i])
+    oTV.showInfo()
+print("for loop channelUp")
+for i in range(ll):
+    oTV.channelUp()
+    oTV.showInfo()
