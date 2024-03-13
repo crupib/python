@@ -1,0 +1,11 @@
+Windows:
+pip install pyx
+
+macOS:
+python3 -m pip install pyx
+
+Raspberry Pi OS or Ubuntu Desktop:
+sudo apt install python3-pyx -y
+
+Alternatively, 
+python3 -m pip install pyx

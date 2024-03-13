@@ -1,0 +1,4 @@
+sudo apt install texlive-science -y
+sudo apt install texlive-latex-extra -y
+sudo apt install texlive-font-utils -y
+sudo apt install texworks -y

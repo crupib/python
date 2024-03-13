@@ -1,0 +1,4 @@
+sudo apt install idle3 -y
+sudo apt install python3-matplotlib -y
+sudo apt install python3-scipy -y
+sudo apt install python3-sympy -y
