@@ -1,6 +1,5 @@
 # Main program for controlling a Bank made up of Accounts
 from Bank import *
-   
 # Create an instance of the Bank
 oBank = Bank('9 to 5', '123 Main Street, Anytown, USA', '(650) 555-1212')
 
