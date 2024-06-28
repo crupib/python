@@ -1,0 +1,7 @@
+sudo apt install idle3 -y
+python3 -m pip install --upgrade --user pip
+~/.local/bin/pip install --user jupyterlab
+~/.local/bin/pip install --user vpython
+sudo apt install python3-matplotlib -y
+sudo apt install python3-scipy -y
+sudo apt install python3-sympy -y

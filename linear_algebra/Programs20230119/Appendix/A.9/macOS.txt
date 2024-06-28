@@ -1,0 +1,2 @@
+brew install --cask mactex
+sudo tlmgr update --self --all
