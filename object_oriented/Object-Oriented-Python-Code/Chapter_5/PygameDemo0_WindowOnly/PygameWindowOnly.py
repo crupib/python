@@ -6,7 +6,7 @@ from pygame.locals import *
 import sys
 
 # 2 - Define constants
-BLACK = (0, 0, 0)
+BLACK = (255, 255, 255)
 WINDOW_WIDTH = 640
 WINDOW_HEIGHT = 480
 FRAMES_PER_SECOND = 30
