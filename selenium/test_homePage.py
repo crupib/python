@@ -1,3 +1,4 @@
+import HtmlTestRunner
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -20,5 +21,4 @@ class Testing(unittest.TestCase):
   def tearDown(self):
      self.driver.quit()
 if __name__ == '__main__':
-   unittest.main()
-     
+   unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='/Users/williamcrupi/Documents/github/python/selenium'))
