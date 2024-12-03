@@ -21,7 +21,7 @@ try:
     search_box.send_keys("python")
     time.sleep(5)    
     search_box.send_keys(Keys.RETURN) 
-    time.sleep(15)    
+    time.sleep(5)    
     
 except Exception as e:
     print(f"Error occurred: {e}")
@@ -29,4 +29,3 @@ except Exception as e:
     
 finally:
     driver.quit()
-
