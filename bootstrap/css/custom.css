@@ -1,0 +1,19 @@
+/* Custom Styles */
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+footer {
+    background-color: #e9ecef;
+    color: #6c757d;
+}
+
+.card-title {
+    color: #007bff;
+}
+
+.card-text {
+    font-size: 0.9rem;
+}
+
