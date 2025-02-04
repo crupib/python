@@ -11,7 +11,7 @@ def generate_deck():
     if not user_prompt:
         return jsonify({"error": "No prompt provided"}), 400
 
-    magic_json2.generate_commander_deck(user_prompt)
+    magic.generate_commander_deck(user_prompt)
     return jsonify({"message": "Deck generated successfully!"})
 
 @app.route('/deck.json')
@@ -27,4 +27,4 @@ def index():
     return send_from_directory(os.getcwd(), "index.html")
 
 if __name__ == '__main__':
-   app.run(debug=True, port=8000)
+   app.run(host='0.0.0.0', port=8000, debug=True)

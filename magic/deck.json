@@ -9,12 +9,68 @@
             "number": 1
         },
         {
-            "name": "Anowon, the Ruin Sage",
-            "image": "https://cards.scryfall.io/normal/front/b/8/b8630ae1-8fe9-4d6e-899b-a28d86d4d729.jpg?1641602275",
-            "type": "Legendary Creature \u2014 Vampire Shaman",
-            "oracle_text": "At the beginning of your upkeep, each player sacrifices a non-Vampire creature of their choice.",
+            "name": "Viscera Seer",
+            "image": "https://cards.scryfall.io/normal/front/4/8/486fd8a2-dd97-4082-84ef-4795c7e559a0.jpg?1698988290",
+            "type": "Creature \u2014 Vampire Wizard",
+            "oracle_text": "Sacrifice a creature: Scry 1. (Look at the top card of your library. You may put that card on the bottom.)",
             "quantity": 1,
             "number": 2
+        },
+        {
+            "name": "Cordial Vampire",
+            "image": "https://cards.scryfall.io/normal/front/0/d/0d91e61d-e3bf-4ddc-9f01-18b1abe35a61.jpg?1698988230",
+            "type": "Creature \u2014 Vampire",
+            "oracle_text": "Whenever Cordial Vampire or another creature dies, put a +1/+1 counter on each Vampire you control.",
+            "quantity": 1,
+            "number": 3
+        },
+        {
+            "name": "Vampire Cutthroat",
+            "image": "https://cards.scryfall.io/normal/front/9/5/954d53f3-ebbe-48e0-9e1a-7019d2b0740c.jpg?1576384454",
+            "type": "Creature \u2014 Vampire Rogue",
+            "oracle_text": "Skulk (This creature can't be blocked by creatures with greater power.)\nLifelink (Damage dealt by this creature also causes you to gain that much life.)",
+            "quantity": 1,
+            "number": 4
+        },
+        {
+            "name": "Insolent Neonate",
+            "image": "https://cards.scryfall.io/normal/front/8/1/813104f6-e6e4-4709-8626-12fe4262a11f.jpg?1576384817",
+            "type": "Creature \u2014 Vampire",
+            "oracle_text": "Menace (This creature can't be blocked except by two or more creatures.)\nDiscard a card, Sacrifice Insolent Neonate: Draw a card.",
+            "quantity": 1,
+            "number": 5
+        },
+        {
+            "name": "Stromkirk Condemned",
+            "image": "https://cards.scryfall.io/normal/front/b/0/b0e0cecb-4f14-438e-a9d0-c6b19a4126c5.jpg?1641602873",
+            "type": "Creature \u2014 Vampire Horror",
+            "oracle_text": "Discard a card: Vampires you control get +1/+1 until end of turn. Activate only once each turn.",
+            "quantity": 1,
+            "number": 6
+        },
+        {
+            "name": "Vampire of the Dire Moon",
+            "image": "https://cards.scryfall.io/normal/front/b/3/b3c185b9-5d97-4a5a-af0b-8b9c44dcd235.jpg?1592516807",
+            "type": "Creature \u2014 Vampire",
+            "oracle_text": "Deathtouch (Any amount of damage this deals to a creature is enough to destroy it.)\nLifelink (Damage dealt by this creature also causes you to gain that much life.)",
+            "quantity": 1,
+            "number": 7
+        },
+        {
+            "name": "Asylum Visitor",
+            "image": "https://cards.scryfall.io/normal/front/0/2/02046824-6c48-40bb-9f0b-4fd280c6ed85.jpg?1736473224",
+            "type": "Creature \u2014 Vampire Wizard",
+            "oracle_text": "At the beginning of each player's upkeep, if that player has no cards in hand, you draw a card and you lose 1 life.\nMadness {1}{B} (If you discard this card, discard it into exile. When you do, cast it for its madness cost or put it into your graveyard.)",
+            "quantity": 1,
+            "number": 8
+        },
+        {
+            "name": "Bloodghast",
+            "image": "https://cards.scryfall.io/normal/front/f/d/fdceefe6-f083-4955-b53a-8e6f8aeb2083.jpg?1738356290",
+            "type": "Creature \u2014 Vampire Spirit",
+            "oracle_text": "Bloodghast can't block.\nBloodghast has haste as long as an opponent has 10 or less life.\nLandfall \u2014 Whenever a land you control enters, you may return Bloodghast from your graveyard to the battlefield.",
+            "quantity": 1,
+            "number": 9
         },
         {
             "name": "Blood Artist",
@@ -22,47 +78,15 @@
             "type": "Creature \u2014 Vampire",
             "oracle_text": "Whenever Blood Artist or another creature dies, target player loses 1 life and you gain 1 life.",
             "quantity": 1,
-            "number": 3
+            "number": 10
         },
         {
-            "name": "Blood Seeker",
-            "image": "https://cards.scryfall.io/normal/front/f/e/fe88cbee-5f6c-47e0-8a84-192c4c2ca984.jpg?1726284431",
-            "type": "Creature \u2014 Vampire Shaman",
-            "oracle_text": "Whenever a creature an opponent controls enters, you may have that player lose 1 life.",
+            "name": "Dusk Legion Zealot",
+            "image": "https://cards.scryfall.io/normal/front/7/2/72048624-e3fd-4e9b-91a9-996ea3a1a74f.jpg?1698988245",
+            "type": "Creature \u2014 Vampire Soldier",
+            "oracle_text": "When Dusk Legion Zealot enters, you draw a card and you lose 1 life.",
             "quantity": 1,
-            "number": 4
-        },
-        {
-            "name": "Bloodline Keeper // Lord of Lineage",
-            "image": "",
-            "type": "Creature \u2014 Vampire // Creature \u2014 Vampire",
-            "oracle_text": "No description available",
-            "quantity": 1,
-            "number": 5
-        },
-        {
-            "name": "Butcher of Malakir",
-            "image": "https://cards.scryfall.io/normal/front/9/d/9d805499-0739-403e-8447-ed2707dc9eb2.jpg?1698988223",
-            "type": "Creature \u2014 Vampire Warrior",
-            "oracle_text": "Flying\nWhenever Butcher of Malakir or another creature you control dies, each opponent sacrifices a creature of their choice.",
-            "quantity": 1,
-            "number": 6
-        },
-        {
-            "name": "Captivating Vampire",
-            "image": "https://cards.scryfall.io/normal/front/0/f/0f87aadf-7638-4691-b5a5-86f928e98462.jpg?1736467903",
-            "type": "Creature \u2014 Vampire",
-            "oracle_text": "Other Vampire creatures you control get +1/+1.\nTap five untapped Vampires you control: Gain control of target creature. It becomes a Vampire in addition to its other types.",
-            "quantity": 1,
-            "number": 7
-        },
-        {
-            "name": "Drana, Liberator of Malakir",
-            "image": "https://cards.scryfall.io/normal/front/0/8/0850b41d-3589-40cd-ae22-cc5b4ddee1c4.jpg?1698988238",
-            "type": "Legendary Creature \u2014 Vampire Ally",
-            "oracle_text": "Flying, first strike\nWhenever Drana, Liberator of Malakir deals combat damage to a player, put a +1/+1 counter on each attacking creature you control.",
-            "quantity": 1,
-            "number": 8
+            "number": 11
         },
         {
             "name": "Gatekeeper of Malakir",
@@ -70,87 +94,79 @@
             "type": "Creature \u2014 Vampire Warrior",
             "oracle_text": "Kicker {B} (You may pay an additional {B} as you cast this spell.)\nWhen this creature enters, if it was kicked, target player sacrifices a creature of their choice.",
             "quantity": 1,
-            "number": 9
-        },
-        {
-            "name": "Guul Draz Assassin",
-            "image": "https://cards.scryfall.io/normal/front/7/2/72de01ef-cdf2-44ad-bf2f-a927d82a4f72.jpg?1562705055",
-            "type": "Creature \u2014 Vampire Assassin",
-            "oracle_text": "Level up {1}{B} ({1}{B}: Put a level counter on this. Level up only as a sorcery.)\nLEVEL 2-3\n2/2\n{B}, {T}: Target creature gets -2/-2 until end of turn.\nLEVEL 4+\n4/4\n{B}, {T}: Target creature gets -4/-4 until end of turn.",
-            "quantity": 1,
-            "number": 10
-        },
-        {
-            "name": "Indulgent Aristocrat",
-            "image": "https://cards.scryfall.io/normal/front/0/7/07015524-874f-4856-a5c1-3148bd126886.jpg?1736467987",
-            "type": "Creature \u2014 Vampire Noble",
-            "oracle_text": "Lifelink\n{2}, Sacrifice a creature: Put a +1/+1 counter on each Vampire you control.",
-            "quantity": 1,
-            "number": 11
-        },
-        {
-            "name": "Kheru Mind-Eater",
-            "image": "https://cards.scryfall.io/normal/front/e/6/e6246cf3-76bd-476b-9cd9-789b6ad48887.jpg?1562626991",
-            "type": "Creature \u2014 Vampire",
-            "oracle_text": "Menace\nWhenever Kheru Mind-Eater deals combat damage to a player, that player exiles a card from their hand face down.\nYou may look at cards exiled with Kheru Mind-Eater, and you may play lands and cast spells from among those cards.",
-            "quantity": 1,
             "number": 12
         },
         {
-            "name": "Malakir Bloodwitch",
-            "image": "https://cards.scryfall.io/normal/front/b/9/b91ceead-5071-43e8-bf90-f379d683acdf.jpg?1641602675",
-            "type": "Creature \u2014 Vampire Shaman",
-            "oracle_text": "Flying, protection from white\nWhen Malakir Bloodwitch enters, each opponent loses life equal to the number of Vampires you control. You gain life equal to the life lost this way.",
+            "name": "Gifted Aetherborn",
+            "image": "https://cards.scryfall.io/normal/front/8/6/8644d4d1-8499-40a8-a01f-68172c82bf58.jpg?1600714489",
+            "type": "Creature \u2014 Aetherborn Vampire",
+            "oracle_text": "Deathtouch, lifelink",
             "quantity": 1,
             "number": 13
         },
         {
-            "name": "Nirkana Revenant",
-            "image": "https://cards.scryfall.io/normal/front/9/6/96da0a4c-2865-4383-875a-9f5d6503baee.jpg?1641602776",
-            "type": "Creature \u2014 Vampire Shade",
-            "oracle_text": "Whenever you tap a Swamp for mana, add an additional {B}.\n{B}: Nirkana Revenant gets +1/+1 until end of turn.",
+            "name": "Stromkirk Noble",
+            "image": "https://cards.scryfall.io/normal/front/0/f/0f306c7e-cacc-4c26-a3f1-fad4f3ff7cf3.jpg?1730490996",
+            "type": "Creature \u2014 Vampire Noble",
+            "oracle_text": "This creature can't be blocked by Humans.\nWhenever this creature deals combat damage to a player, put a +1/+1 counter on it.",
             "quantity": 1,
             "number": 14
         },
         {
-            "name": "Olivia Voldaren",
-            "image": "https://cards.scryfall.io/normal/front/5/6/561d616c-df11-4144-acec-f9fe47efa5c7.jpg?1736468539",
-            "type": "Legendary Creature \u2014 Vampire",
-            "oracle_text": "Flying\n{1}{R}: Olivia Voldaren deals 1 damage to another target creature. That creature becomes a Vampire in addition to its other types. Put a +1/+1 counter on Olivia Voldaren.\n{3}{B}{B}: Gain control of target Vampire for as long as you control Olivia Voldaren.",
+            "name": "Kalastria Highborn",
+            "image": "https://cards.scryfall.io/normal/front/1/a/1a52f6ef-7759-4be3-8b80-a57e9d6ae386.jpg?1730490901",
+            "type": "Creature \u2014 Vampire Shaman",
+            "oracle_text": "Whenever this creature or another Vampire you control dies, you may pay {B}. If you do, target player loses 2 life and you gain 2 life.",
             "quantity": 1,
             "number": 15
         },
         {
-            "name": "Patron of the Vein",
-            "image": "https://cards.scryfall.io/normal/front/a/7/a70d7b65-77d0-41d3-9735-d64b9288fde1.jpg?1698988275",
+            "name": "Vampire Hexmage",
+            "image": "https://cards.scryfall.io/normal/front/9/7/97ec2e55-fa60-4ee1-b9c0-e6b84939697b.jpg?1599706094",
             "type": "Creature \u2014 Vampire Shaman",
-            "oracle_text": "Flying\nWhen Patron of the Vein enters, destroy target creature an opponent controls.\nWhenever a creature an opponent controls dies, exile it and put a +1/+1 counter on each Vampire you control.",
+            "oracle_text": "First strike\nSacrifice Vampire Hexmage: Remove all counters from target permanent.",
             "quantity": 1,
             "number": 16
         },
         {
-            "name": "Pulse Tracker",
-            "image": "https://cards.scryfall.io/normal/front/f/d/fdcbbe4d-5c93-4b14-8123-cd835452870f.jpg?1730490922",
-            "type": "Creature \u2014 Vampire Rogue",
-            "oracle_text": "Whenever this creature attacks, each opponent loses 1 life.",
+            "name": "Vicious Conquistador",
+            "image": "https://cards.scryfall.io/normal/front/2/a/2a4b6ced-e8d3-47e9-bd27-3e0cb644afe4.jpg?1592652364",
+            "type": "Creature \u2014 Vampire Soldier",
+            "oracle_text": "Whenever Vicious Conquistador attacks, each opponent loses 1 life.",
             "quantity": 1,
             "number": 17
         },
         {
-            "name": "Rakish Heir",
-            "image": "https://cards.scryfall.io/normal/front/0/d/0da15652-8207-4be1-b821-3fb3dad66e37.jpg?1641603262",
+            "name": "Captivating Vampire",
+            "image": "https://cards.scryfall.io/normal/front/0/f/0f87aadf-7638-4691-b5a5-86f928e98462.jpg?1736467903",
             "type": "Creature \u2014 Vampire",
-            "oracle_text": "Whenever a Vampire you control deals combat damage to a player, put a +1/+1 counter on it.",
+            "oracle_text": "Other Vampire creatures you control get +1/+1.\nTap five untapped Vampires you control: Gain control of target creature. It becomes a Vampire in addition to its other types.",
             "quantity": 1,
             "number": 18
         },
         {
-            "name": "Sangromancer",
-            "image": "https://cards.scryfall.io/normal/front/5/9/59f7f84c-d0a8-4204-a68e-93075f2a96b0.jpg?1625193335",
-            "type": "Creature \u2014 Vampire Shaman",
-            "oracle_text": "Flying\nWhenever a creature an opponent controls dies, you may gain 3 life.\nWhenever an opponent discards a card, you may gain 3 life.",
+            "name": "Drana, Liberator of Malakir",
+            "image": "https://cards.scryfall.io/normal/front/0/8/0850b41d-3589-40cd-ae22-cc5b4ddee1c4.jpg?1698988238",
+            "type": "Legendary Creature \u2014 Vampire Ally",
+            "oracle_text": "Flying, first strike\nWhenever Drana, Liberator of Malakir deals combat damage to a player, put a +1/+1 counter on each attacking creature you control.",
             "quantity": 1,
             "number": 19
+        },
+        {
+            "name": "Legion Lieutenant",
+            "image": "https://cards.scryfall.io/normal/front/8/5/85c6bd7d-537a-42fe-9c68-742bdf2e7025.jpg?1698988445",
+            "type": "Creature \u2014 Vampire Knight",
+            "oracle_text": "Other Vampires you control get +1/+1.",
+            "quantity": 1,
+            "number": 20
+        },
+        {
+            "name": "Sanctum Seeker",
+            "image": "https://cards.scryfall.io/normal/front/8/9/893279fb-6f51-4d1e-b2fd-a0cdb603785f.jpg?1698988282",
+            "type": "Creature \u2014 Vampire Knight",
+            "oracle_text": "Whenever a Vampire you control attacks, each opponent loses 1 life and you gain 1 life.",
+            "quantity": 1,
+            "number": 21
         },
         {
             "name": "Stromkirk Captain",
@@ -158,39 +174,7 @@
             "type": "Creature \u2014 Vampire Soldier",
             "oracle_text": "First strike\nOther Vampire creatures you control get +1/+1 and have first strike.",
             "quantity": 1,
-            "number": 20
-        },
-        {
-            "name": "Vampire Nighthawk",
-            "image": "https://cards.scryfall.io/normal/front/0/a/0a1934ab-3171-4fc6-8033-ad998899ba73.jpg?1730489287",
-            "type": "Creature \u2014 Vampire Shaman",
-            "oracle_text": "Flying\nDeathtouch (Any amount of damage this deals to a creature is enough to destroy it.)\nLifelink (Damage dealt by this creature also causes you to gain that much life.)",
-            "quantity": 1,
-            "number": 21
-        },
-        {
-            "name": "Vampire Nocturnus",
-            "image": "https://cards.scryfall.io/normal/front/8/d/8daccbbb-6600-4467-810f-277f01a11771.jpg?1562556901",
-            "type": "Creature \u2014 Vampire",
-            "oracle_text": "Play with the top card of your library revealed.\nAs long as the top card of your library is black, Vampire Nocturnus and other Vampire creatures you control get +2/+1 and have flying.",
-            "quantity": 1,
             "number": 22
-        },
-        {
-            "name": "Vein Drinker",
-            "image": "https://cards.scryfall.io/normal/front/2/5/25ad3372-51cb-4b82-a23c-81938b7c01b6.jpg?1562602686",
-            "type": "Creature \u2014 Vampire",
-            "oracle_text": "Flying\n{R}, {T}: Vein Drinker deals damage equal to its power to target creature. That creature deals damage equal to its power to Vein Drinker.\nWhenever a creature dealt damage by Vein Drinker this turn dies, put a +1/+1 counter on Vein Drinker.",
-            "quantity": 1,
-            "number": 23
-        },
-        {
-            "name": "Viscera Seer",
-            "image": "https://cards.scryfall.io/normal/front/4/8/486fd8a2-dd97-4082-84ef-4795c7e559a0.jpg?1698988290",
-            "type": "Creature \u2014 Vampire Wizard",
-            "oracle_text": "Sacrifice a creature: Scry 1. (Look at the top card of your library. You may put that card on the bottom.)",
-            "quantity": 1,
-            "number": 24
         },
         {
             "name": "Yahenni, Undying Partisan",
@@ -198,95 +182,167 @@
             "type": "Legendary Creature \u2014 Aetherborn Vampire",
             "oracle_text": "Haste\nWhenever a creature an opponent controls dies, put a +1/+1 counter on Yahenni, Undying Partisan.\nSacrifice another creature: Yahenni gains indestructible until end of turn.",
             "quantity": 1,
+            "number": 23
+        },
+        {
+            "name": "Bloodline Keeper // Lord of Lineage",
+            "image": "https://cards.scryfall.io/normal/front/6/0/60658907-dd63-478d-a66a-123e4e9d2a00.jpg?1736467890",
+            "type": "Creature \u2014 Vampire // Creature \u2014 Vampire",
+            "oracle_text": "No description available",
+            "quantity": 1,
+            "number": 24
+        },
+        {
+            "name": "Falkenrath Aristocrat",
+            "image": "https://cards.scryfall.io/normal/front/5/7/57ac7f19-bf6f-4a87-ad39-6eb2553d2202.jpg?1599707911",
+            "type": "Creature \u2014 Vampire Noble",
+            "oracle_text": "Flying, haste\nSacrifice a creature: Falkenrath Aristocrat gains indestructible until end of turn. If the sacrificed creature was a Human, put a +1/+1 counter on Falkenrath Aristocrat.",
+            "quantity": 1,
             "number": 25
         },
         {
-            "name": "Marauder's Axe",
-            "image": "https://cards.scryfall.io/normal/front/4/9/49d8aa8a-3e87-42ac-9c79-2baec771c1ef.jpg?1601080796",
-            "type": "Artifact \u2014 Equipment",
-            "oracle_text": "Equipped creature gets +2/+0.\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",
+            "name": "Malakir Bloodwitch",
+            "image": "https://cards.scryfall.io/normal/front/b/9/b91ceead-5071-43e8-bf90-f379d683acdf.jpg?1641602675",
+            "type": "Creature \u2014 Vampire Shaman",
+            "oracle_text": "Flying, protection from white\nWhen Malakir Bloodwitch enters, each opponent loses life equal to the number of Vampires you control. You gain life equal to the life lost this way.",
             "quantity": 1,
             "number": 26
         },
         {
-            "name": "Coat of Arms",
-            "image": "https://cards.scryfall.io/normal/front/5/1/513d4c36-6ad4-4ee9-b161-3136eb59504f.jpg?1592761864",
-            "type": "Artifact",
-            "oracle_text": "Each creature gets +1/+1 for each other creature on the battlefield that shares at least one creature type with it. (For example, if two Goblin Warriors and a Goblin Shaman are on the battlefield, each gets +2/+2.)",
+            "name": "Patron of the Vein",
+            "image": "https://cards.scryfall.io/normal/front/a/7/a70d7b65-77d0-41d3-9735-d64b9288fde1.jpg?1698988275",
+            "type": "Creature \u2014 Vampire Shaman",
+            "oracle_text": "Flying\nWhen Patron of the Vein enters, destroy target creature an opponent controls.\nWhenever a creature an opponent controls dies, exile it and put a +1/+1 counter on each Vampire you control.",
             "quantity": 1,
             "number": 27
         },
         {
-            "name": "Door of Destinies",
-            "image": "https://cards.scryfall.io/normal/front/7/5/75fd3fea-158a-4575-84a8-879ee9404242.jpg?1562612984",
-            "type": "Artifact",
-            "oracle_text": "As Door of Destinies enters, choose a creature type.\nWhenever you cast a spell of the chosen type, put a charge counter on Door of Destinies.\nCreatures you control of the chosen type get +1/+1 for each charge counter on Door of Destinies.",
+            "name": "Butcher of Malakir",
+            "image": "https://cards.scryfall.io/normal/front/9/d/9d805499-0739-403e-8447-ed2707dc9eb2.jpg?1698988223",
+            "type": "Creature \u2014 Vampire Warrior",
+            "oracle_text": "Flying\nWhenever Butcher of Malakir or another creature you control dies, each opponent sacrifices a creature of their choice.",
             "quantity": 1,
             "number": 28
         },
         {
-            "name": "Quietus Spike",
-            "image": "https://cards.scryfall.io/normal/front/7/d/7dc8e9cc-1aac-4709-9629-9f4318c86cb0.jpg?1673485449",
-            "type": "Artifact \u2014 Equipment",
-            "oracle_text": "Equipped creature has deathtouch.\nWhenever equipped creature deals combat damage to a player, that player loses half their life, rounded up.\nEquip {3}",
+            "name": "Anowon, the Ruin Sage",
+            "image": "https://cards.scryfall.io/normal/front/b/8/b8630ae1-8fe9-4d6e-899b-a28d86d4d729.jpg?1641602275",
+            "type": "Legendary Creature \u2014 Vampire Shaman",
+            "oracle_text": "At the beginning of your upkeep, each player sacrifices a non-Vampire creature of their choice.",
             "quantity": 1,
             "number": 29
         },
         {
-            "name": "Skullclamp",
-            "image": "https://cards.scryfall.io/normal/front/a/3/a36fd6d8-66a2-49d1-b9f3-b400ebc03674.jpg?1682210228",
-            "type": "Artifact \u2014 Equipment",
-            "oracle_text": "Equipped creature gets +1/-1.\nWhenever equipped creature dies, draw two cards.\nEquip {1}",
+            "name": "Bloodlord of Vaasgoth",
+            "image": "https://cards.scryfall.io/normal/front/5/1/510c65ea-7c9f-461f-b038-ef119db1ca30.jpg?1641602372",
+            "type": "Creature \u2014 Vampire Warrior",
+            "oracle_text": "Bloodthirst 3 (If an opponent was dealt damage this turn, this creature enters with three +1/+1 counters on it.)\nFlying\nWhenever you cast a Vampire creature spell, it gains bloodthirst 3.",
             "quantity": 1,
             "number": 30
         },
         {
-            "name": "Sol Ring",
-            "image": "https://cards.scryfall.io/normal/front/8/2/82f1a8a3-7fdb-49a3-9649-b5c0b4755cd5.jpg?1726284526",
-            "type": "Artifact",
-            "oracle_text": "{T}: Add {C}{C}.",
+            "name": "Indulgent Aristocrat",
+            "image": "https://cards.scryfall.io/normal/front/0/7/07015524-874f-4856-a5c1-3148bd126886.jpg?1736467987",
+            "type": "Creature \u2014 Vampire Noble",
+            "oracle_text": "Lifelink\n{2}, Sacrifice a creature: Put a +1/+1 counter on each Vampire you control.",
             "quantity": 1,
             "number": 31
         },
         {
-            "name": "Vanquisher's Banner",
-            "image": "https://cards.scryfall.io/normal/front/e/f/efa6944e-b5e2-4584-ae37-f5b59a8ec75e.jpg?1698988541",
-            "type": "Artifact",
-            "oracle_text": "As Vanquisher's Banner enters, choose a creature type.\nCreatures you control of the chosen type get +1/+1.\nWhenever you cast a creature spell of the chosen type, draw a card.",
+            "name": "Voldaren Noble",
+            "image": "",
+            "type": "Unknown",
+            "oracle_text": "Unknown",
             "quantity": 1,
             "number": 32
         },
         {
-            "name": "Vampiric Rites",
-            "image": "https://cards.scryfall.io/normal/front/9/a/9ae0b1e0-a481-4a98-b67b-0cf8bac53fdd.jpg?1730490930",
-            "type": "Enchantment",
-            "oracle_text": "{1}{B}, Sacrifice a creature: You gain 1 life and draw a card.",
+            "name": "Cliffhaven Vampire",
+            "image": "https://cards.scryfall.io/normal/front/5/5/5544247d-1f8f-443f-a4c4-d8461db28a79.jpg?1562912355",
+            "type": "Creature \u2014 Vampire Warrior Ally",
+            "oracle_text": "Flying\nWhenever you gain life, each opponent loses 1 life.",
             "quantity": 1,
             "number": 33
         },
         {
-            "name": "Boros Signet",
-            "image": "https://cards.scryfall.io/normal/front/d/f/df8388ee-5d1d-4144-a8b1-e555da72ad6b.jpg?1706433274",
-            "type": "Artifact",
-            "oracle_text": "{1}, {T}: Add {R}{W}.",
+            "name": "Forerunner of the Legion",
+            "image": "https://cards.scryfall.io/normal/front/1/0/10718d37-63d4-44b7-9450-5d49cffce944.jpg?1555039699",
+            "type": "Creature \u2014 Vampire Knight",
+            "oracle_text": "When Forerunner of the Legion enters, you may search your library for a Vampire card, reveal it, then shuffle and put that card on top.\nWhenever another Vampire you control enters, target creature gets +1/+1 until end of turn.",
             "quantity": 1,
             "number": 34
         },
         {
-            "name": "Orzhov Signet",
-            "image": "https://cards.scryfall.io/normal/front/4/9/4930d5ea-a6a9-4a87-9083-d5cd337cd7fa.jpg?1726285311",
-            "type": "Artifact",
-            "oracle_text": "{1}, {T}: Add {W}{B}.",
+            "name": "Olivia, Mobilized for War",
+            "image": "https://cards.scryfall.io/normal/front/7/2/7297dd81-8367-42e9-abf9-9227e202e7ae.jpg?1576385369",
+            "type": "Legendary Creature \u2014 Vampire Knight",
+            "oracle_text": "Flying\nWhenever another creature you control enters, you may discard a card. If you do, put a +1/+1 counter on that creature, it gains haste until end of turn, and it becomes a Vampire in addition to its other types.",
             "quantity": 1,
             "number": 35
         },
         {
-            "name": "Rakdos Signet",
-            "image": "https://cards.scryfall.io/normal/front/0/1/01cc9536-f710-4c47-9e3f-d7e83cc888f2.jpg?1726285319",
-            "type": "Artifact",
-            "oracle_text": "{1}, {T}: Add {B}{R}.",
+            "name": "Rakish Heir",
+            "image": "https://cards.scryfall.io/normal/front/0/d/0da15652-8207-4be1-b821-3fb3dad66e37.jpg?1641603262",
+            "type": "Creature \u2014 Vampire",
+            "oracle_text": "Whenever a Vampire you control deals combat damage to a player, put a +1/+1 counter on it.",
             "quantity": 1,
             "number": 36
+        },
+        {
+            "name": "Bloodline Necromancer",
+            "image": "https://cards.scryfall.io/normal/front/6/b/6b1e719c-4679-4cf0-8ca4-ae740eb0ba92.jpg?1698988220",
+            "type": "Creature \u2014 Vampire Wizard",
+            "oracle_text": "Lifelink\nWhen Bloodline Necromancer enters, you may return target Vampire or Wizard creature card from your graveyard to the battlefield.",
+            "quantity": 1,
+            "number": 37
+        },
+        {
+            "name": "Chancellor of the Dross",
+            "image": "https://cards.scryfall.io/normal/front/e/e/eec6d85e-6263-44b4-a91f-d51585c561c2.jpg?1562882613",
+            "type": "Creature \u2014 Phyrexian Vampire",
+            "oracle_text": "You may reveal this card from your opening hand. If you do, at the beginning of the first upkeep, each opponent loses 3 life, then you gain life equal to the life lost this way.\nFlying, lifelink",
+            "quantity": 1,
+            "number": 38
+        },
+        {
+            "name": "Mirror Entity",
+            "image": "https://cards.scryfall.io/normal/front/f/2/f2a3107d-bb96-45c6-97ac-b6c6b84cbad4.jpg?1712354084",
+            "type": "Creature \u2014 Shapeshifter",
+            "oracle_text": "Changeling (This card is every creature type.)\n{X}: Until end of turn, creatures you control have base power and toughness X/X and gain all creature types.",
+            "quantity": 1,
+            "number": 39
+        },
+        {
+            "name": "Anointed Procession",
+            "image": "https://cards.scryfall.io/normal/front/9/a/9a52c265-6920-4929-ba0a-70da08df01f1.jpg?1543674565",
+            "type": "Enchantment",
+            "oracle_text": "If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead.",
+            "quantity": 1,
+            "number": 40
+        },
+        {
+            "name": "Blind Obedience",
+            "image": "https://cards.scryfall.io/normal/front/d/8/d859e1f9-feb3-497a-af0b-f74fee46861f.jpg?1702429264",
+            "type": "Enchantment",
+            "oracle_text": "Extort (Whenever you cast a spell, you may pay {W/B}. If you do, each opponent loses 1 life and you gain that much life.)\nArtifacts and creatures your opponents control enter tapped.",
+            "quantity": 1,
+            "number": 41
+        },
+        {
+            "name": "Kindred Dominance",
+            "image": "https://cards.scryfall.io/normal/front/a/f/af613b69-b9f6-4221-a21b-c8e4b0f010f1.jpg?1689997269",
+            "type": "Sorcery",
+            "oracle_text": "Choose a creature type. Destroy all creatures that aren't of the chosen type.",
+            "quantity": 1,
+            "number": 42
+        },
+        {
+            "name": "Cover of Darkness",
+            "image": "https://cards.scryfall.io/normal/front/0/d/0d6d7d88-d82b-40f4-bf57-ec5d7c480689.jpg?1562898088",
+            "type": "Enchantment",
+            "oracle_text": "As Cover of Darkness enters, choose a creature type.\nCreatures of the chosen type have fear. (They can't be blocked except by artifact creatures and/or black creatures.)",
+            "quantity": 1,
+            "number": 43
         },
         {
             "name": "Shared Animosity",
@@ -294,23 +350,111 @@
             "type": "Enchantment",
             "oracle_text": "Whenever a creature you control attacks, it gets +1/+0 until end of turn for each other attacking creature that shares a creature type with it.",
             "quantity": 1,
-            "number": 37
+            "number": 44
         },
         {
-            "name": "Sorin, Imperious Bloodlord",
-            "image": "https://cards.scryfall.io/normal/front/2/1/219d3e48-e0b1-472d-ac45-11c14b292c9e.jpg?1736468052",
-            "type": "Legendary Planeswalker \u2014 Sorin",
-            "oracle_text": "+1: Target creature you control gains deathtouch and lifelink until end of turn. If it's a Vampire, put a +1/+1 counter on it.\n+1: You may sacrifice a Vampire. When you do, Sorin, Imperious Bloodlord deals 3 damage to any target and you gain 3 life.\n\u22123: You may put a Vampire creature card from your hand onto the battlefield.",
+            "name": "Stensia Masquerade",
+            "image": "https://cards.scryfall.io/normal/front/f/a/faaf031f-2c77-4248-8a29-f47e64773cfd.jpg?1736468223",
+            "type": "Enchantment",
+            "oracle_text": "Attacking creatures you control have first strike.\nWhenever a Vampire you control deals combat damage to a player, put a +1/+1 counter on it.\nMadness {2}{R} (If you discard this card, discard it into exile. When you do, cast it for its madness cost or put it into your graveyard.)",
             "quantity": 1,
-            "number": 38
+            "number": 45
         },
         {
-            "name": "Teferi's Protection",
-            "image": "https://cards.scryfall.io/normal/front/4/8/483fa1cb-1e35-44f2-a143-98c0f107f5ca.jpg?1673147148",
-            "type": "Instant",
-            "oracle_text": "Until your next turn, your life total can't change and you gain protection from everything. All permanents you control phase out. (While they're phased out, they're treated as though they don't exist. They phase in before you untap during your untap step.)\nExile Teferi's Protection.",
+            "name": "Underworld Connections",
+            "image": "https://cards.scryfall.io/normal/front/1/d/1df71add-7bb6-4687-bb69-cf4450adb7dc.jpg?1641602908",
+            "type": "Enchantment \u2014 Aura",
+            "oracle_text": "Enchant land\nEnchanted land has \"{T}, Pay 1 life: Draw a card.\"",
             "quantity": 1,
-            "number": 39
+            "number": 46
+        },
+        {
+            "name": "Door of Destinies",
+            "image": "https://cards.scryfall.io/normal/front/7/5/75fd3fea-158a-4575-84a8-879ee9404242.jpg?1562612984",
+            "type": "Artifact",
+            "oracle_text": "As Door of Destinies enters, choose a creature type.\nWhenever you cast a spell of the chosen type, put a charge counter on Door of Destinies.\nCreatures you control of the chosen type get +1/+1 for each charge counter on Door of Destinies.",
+            "quantity": 1,
+            "number": 47
+        },
+        {
+            "name": "Herald's Horn",
+            "image": "https://cards.scryfall.io/normal/front/4/b/4bfa71d4-4125-4404-9c24-979401bae592.jpg?1698988513",
+            "type": "Artifact",
+            "oracle_text": "As Herald's Horn enters, choose a creature type.\nCreature spells you cast of the chosen type cost {1} less to cast.\nAt the beginning of your upkeep, look at the top card of your library. If it's a creature card of the chosen type, you may reveal it and put it into your hand.",
+            "quantity": 1,
+            "number": 48
+        },
+        {
+            "name": "Vanquisher's Banner",
+            "image": "https://cards.scryfall.io/normal/front/e/f/efa6944e-b5e2-4584-ae37-f5b59a8ec75e.jpg?1698988541",
+            "type": "Artifact",
+            "oracle_text": "As Vanquisher's Banner enters, choose a creature type.\nCreatures you control of the chosen type get +1/+1.\nWhenever you cast a creature spell of the chosen type, draw a card.",
+            "quantity": 1,
+            "number": 49
+        },
+        {
+            "name": "Commander's Sphere",
+            "image": "https://cards.scryfall.io/normal/front/a/4/a4ce6b63-0b38-4582-94d5-c733af087038.jpg?1726285297",
+            "type": "Artifact",
+            "oracle_text": "{T}: Add one mana of any color in your commander's color identity.\nSacrifice Commander's Sphere: Draw a card.",
+            "quantity": 1,
+            "number": 50
+        },
+        {
+            "name": "Sol Ring",
+            "image": "https://cards.scryfall.io/normal/front/8/2/82f1a8a3-7fdb-49a3-9649-b5c0b4755cd5.jpg?1726284526",
+            "type": "Artifact",
+            "oracle_text": "{T}: Add {C}{C}.",
+            "quantity": 1,
+            "number": 51
+        },
+        {
+            "name": "Bloodline Pretender",
+            "image": "https://cards.scryfall.io/normal/front/7/3/73f2d0bb-f6d6-4073-8959-31643f3b2bb6.jpg?1682209960",
+            "type": "Artifact Creature \u2014 Shapeshifter",
+            "oracle_text": "Changeling (This card is every creature type.)\nAs Bloodline Pretender enters, choose a creature type.\nWhenever another creature you control of the chosen type enters, put a +1/+1 counter on Bloodline Pretender.",
+            "quantity": 1,
+            "number": 52
+        },
+        {
+            "name": "Chromatic Lantern",
+            "image": "https://cards.scryfall.io/normal/front/8/f/8f6448b1-ffc7-43f0-b713-881016ce9485.jpg?1712354852",
+            "type": "Artifact",
+            "oracle_text": "Lands you control have \"{T}: Add one mana of any color.\"\n{T}: Add one mana of any color.",
+            "quantity": 1,
+            "number": 53
+        },
+        {
+            "name": "Rakdos Signet",
+            "image": "https://cards.scryfall.io/normal/front/0/1/01cc9536-f710-4c47-9e3f-d7e83cc888f2.jpg?1726285319",
+            "type": "Artifact",
+            "oracle_text": "{1}, {T}: Add {B}{R}.",
+            "quantity": 1,
+            "number": 54
+        },
+        {
+            "name": "Boros Signet",
+            "image": "https://cards.scryfall.io/normal/front/d/f/df8388ee-5d1d-4144-a8b1-e555da72ad6b.jpg?1706433274",
+            "type": "Artifact",
+            "oracle_text": "{1}, {T}: Add {R}{W}.",
+            "quantity": 1,
+            "number": 55
+        },
+        {
+            "name": "Smothering Tithe",
+            "image": "https://cards.scryfall.io/normal/front/8/6/861b5889-0183-4bee-afeb-a4b2aa700a8e.jpg?1689996018",
+            "type": "Enchantment",
+            "oracle_text": "Whenever an opponent draws a card, that player may pay {2}. If the player doesn't, you create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")",
+            "quantity": 1,
+            "number": 56
+        },
+        {
+            "name": "Phyrexian Arena",
+            "image": "https://cards.scryfall.io/normal/front/0/7/0784b6f0-9ebf-43d2-ba0f-a6bc93ba0c48.jpg?1730489269",
+            "type": "Enchantment",
+            "oracle_text": "At the beginning of your upkeep, you draw a card and you lose 1 life.",
+            "quantity": 1,
+            "number": 57
         },
         {
             "name": "Vampire's Zeal",
@@ -318,7 +462,31 @@
             "type": "Instant",
             "oracle_text": "Target creature gets +2/+2 until end of turn. If it's a Vampire, it gains first strike until end of turn.",
             "quantity": 1,
-            "number": 40
+            "number": 58
+        },
+        {
+            "name": "Sorin, Imperious Bloodlord",
+            "image": "https://cards.scryfall.io/normal/front/2/1/219d3e48-e0b1-472d-ac45-11c14b292c9e.jpg?1736468052",
+            "type": "Legendary Planeswalker \u2014 Sorin",
+            "oracle_text": "+1: Target creature you control gains deathtouch and lifelink until end of turn. If it's a Vampire, put a +1/+1 counter on it.\n+1: You may sacrifice a Vampire. When you do, Sorin, Imperious Bloodlord deals 3 damage to any target and you gain 3 life.\n\u22123: You may put a Vampire creature card from your hand onto the battlefield.",
+            "quantity": 1,
+            "number": 59
+        },
+        {
+            "name": "Boros Charm",
+            "image": "https://cards.scryfall.io/normal/front/e/0/e0d8c9f6-cbbd-4694-b100-01cfb81036cc.jpg?1736305704",
+            "type": "Instant",
+            "oracle_text": "Choose one \u2014\n\u2022 Boros Charm deals 4 damage to target player or planeswalker.\n\u2022 Permanents you control gain indestructible until end of turn.\n\u2022 Target creature gains double strike until end of turn.",
+            "quantity": 1,
+            "number": 60
+        },
+        {
+            "name": "Vampiric Tutor",
+            "image": "https://cards.scryfall.io/normal/front/3/4/34a0203f-9cce-43a4-9cb7-8ce6647895cd.jpg?1675199860",
+            "type": "Instant",
+            "oracle_text": "Search your library for a card, then shuffle and put that card on top. You lose 2 life.",
+            "quantity": 1,
+            "number": 61
         },
         {
             "name": "Anguished Unmaking",
@@ -326,295 +494,23 @@
             "type": "Instant",
             "oracle_text": "Exile target nonland permanent. You lose 3 life.",
             "quantity": 1,
-            "number": 41
-        },
-        {
-            "name": "Tragic Slip",
-            "image": "https://cards.scryfall.io/normal/front/1/3/132ccc20-cb42-4474-b747-7e41a661060e.jpg?1736468053",
-            "type": "Instant",
-            "oracle_text": "Target creature gets -1/-1 until end of turn.\nMorbid \u2014 That creature gets -13/-13 until end of turn instead if a creature died this turn.",
-            "quantity": 1,
-            "number": 42
-        },
-        {
-            "name": "Urge to Feed",
-            "image": "https://cards.scryfall.io/normal/front/0/4/041606a6-d20b-4241-ae5a-2dd004c47487.jpg?1641602937",
-            "type": "Instant",
-            "oracle_text": "Target creature gets -3/-3 until end of turn. You may tap any number of untapped Vampire creatures you control. If you do, put a +1/+1 counter on each of those Vampires.",
-            "quantity": 1,
-            "number": 43
-        },
-        {
-            "name": "Vandalblast",
-            "image": "https://cards.scryfall.io/normal/front/e/7/e781b55f-6388-4ab8-be74-7c56eaba1c4d.jpg?1712354517",
-            "type": "Sorcery",
-            "oracle_text": "Destroy target artifact you don't control.\nOverload {4}{R} (You may cast this spell for its overload cost. If you do, change \"target\" in its text to \"each.\")",
-            "quantity": 1,
-            "number": 44
-        },
-        {
-            "name": "Vindicate",
-            "image": "https://cards.scryfall.io/normal/front/6/8/683c4e13-525c-45c9-8832-bfe67965c34e.jpg?1626100840",
-            "type": "Sorcery",
-            "oracle_text": "Destroy target permanent.",
-            "quantity": 1,
-            "number": 45
-        },
-        {
-            "name": "Call the Bloodline",
-            "image": "https://cards.scryfall.io/normal/front/3/e/3ec85cca-ac2c-4b1b-850b-6a762df72bd0.jpg?1576384367",
-            "type": "Enchantment",
-            "oracle_text": "{1}, Discard a card: Create a 1/1 black Vampire Knight creature token with lifelink. Activate only once each turn.",
-            "quantity": 1,
-            "number": 46
-        },
-        {
-            "name": "Disrupt Decorum",
-            "image": "https://cards.scryfall.io/normal/front/c/5/c5323fe7-d9df-4287-ae13-d9db35f7973b.jpg?1706240831",
-            "type": "Sorcery",
-            "oracle_text": "Goad all creatures you don't control. (Until your next turn, those creatures attack each combat if able and attack a player other than you if able.)",
-            "quantity": 1,
-            "number": 47
-        },
-        {
-            "name": "Kindred Charge",
-            "image": "https://cards.scryfall.io/normal/front/3/e/3e7dc7f0-ba05-4a13-b8e0-7f536fbf0f34.jpg?1562605798",
-            "type": "Sorcery",
-            "oracle_text": "Choose a creature type. For each creature you control of the chosen type, create a token that's a copy of that creature. Those tokens gain haste. Exile them at the beginning of the next end step.",
-            "quantity": 1,
-            "number": 48
-        },
-        {
-            "name": "Merciless Eviction",
-            "image": "https://cards.scryfall.io/normal/front/1/d/1d395707-4e6d-4e2c-b977-d9b8c0c9eb80.jpg?1673305593",
-            "type": "Sorcery",
-            "oracle_text": "Choose one \u2014\n\u2022 Exile all artifacts.\n\u2022 Exile all creatures.\n\u2022 Exile all enchantments.\n\u2022 Exile all planeswalkers.",
-            "quantity": 1,
-            "number": 49
-        },
-        {
-            "name": "Olivia's Revenge",
-            "image": "",
-            "type": "Unknown",
-            "oracle_text": "Unknown",
-            "quantity": 1,
-            "number": 50
-        },
-        {
-            "name": "Read the Bones",
-            "image": "https://cards.scryfall.io/normal/front/b/3/b3198f96-f9d8-494f-a556-24ce3ad3895d.jpg?1726284891",
-            "type": "Sorcery",
-            "oracle_text": "Scry 2, then draw two cards. You lose 2 life. (To scry 2, look at the top two cards of your library, then put any number of them on the bottom and the rest on top in any order.)",
-            "quantity": 1,
-            "number": 51
-        },
-        {
-            "name": "Walk the Plank",
-            "image": "https://cards.scryfall.io/normal/front/0/0/0038ac6a-318f-44fb-bb64-7ae172c4aca3.jpg?1562549640",
-            "type": "Sorcery",
-            "oracle_text": "Destroy target non-Merfolk creature.",
-            "quantity": 1,
-            "number": 52
-        },
-        {
-            "name": "Harrowing Journey",
-            "image": "https://cards.scryfall.io/normal/front/9/c/9cf96a6c-8481-4954-b149-7153b80480be.jpg?1562932063",
-            "type": "Sorcery",
-            "oracle_text": "Target player draws three cards and loses 3 life.",
-            "quantity": 1,
-            "number": 53
-        },
-        {
-            "name": "Increasing Ambition",
-            "image": "https://cards.scryfall.io/normal/front/c/8/c8f508dc-7c7d-47e8-a4ef-0e8fd99cbd74.jpg?1562942476",
-            "type": "Sorcery",
-            "oracle_text": "Search your library for a card and put that card into your hand. If this spell was cast from a graveyard, instead search your library for two cards and put those cards into your hand. Then shuffle.\nFlashback {7}{B} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
-            "quantity": 1,
-            "number": 54
-        },
-        {
-            "name": "Promise of Power",
-            "image": "https://cards.scryfall.io/normal/front/b/1/b1b54b37-69f4-46bd-8ee7-216e65507478.jpg?1561771533",
-            "type": "Sorcery",
-            "oracle_text": "Choose one \u2014\n\u2022 You draw five cards and you lose 5 life.\n\u2022 Create an X/X black Demon creature token with flying, where X is the number of cards in your hand.\nEntwine {4} (Choose both if you pay the entwine cost.)",
-            "quantity": 1,
-            "number": 55
-        },
-        {
-            "name": "Merciless Resolve",
-            "image": "https://cards.scryfall.io/normal/front/3/5/356af156-a059-416c-b78b-d9058b742818.jpg?1576384515",
-            "type": "Instant",
-            "oracle_text": "As an additional cost to cast this spell, sacrifice a creature or land.\nDraw two cards.",
-            "quantity": 1,
-            "number": 56
-        },
-        {
-            "name": "Command Tower",
-            "image": "https://cards.scryfall.io/normal/front/1/2/129d1bbd-83ad-4953-bf6d-b55989b2529c.jpg?1733640092",
-            "type": "Land",
-            "oracle_text": "{T}: Add one mana of any color in your commander's color identity.",
-            "quantity": 1,
-            "number": 57
-        },
-        {
-            "name": "Dragonskull Summit",
-            "image": "https://cards.scryfall.io/normal/front/3/b/3b96a40e-828a-4cec-99cd-130dbcbdc67c.jpg?1726285394",
-            "type": "Land",
-            "oracle_text": "Dragonskull Summit enters tapped unless you control a Swamp or a Mountain.\n{T}: Add {B} or {R}.",
-            "quantity": 1,
-            "number": 58
-        },
-        {
-            "name": "Isolated Chapel",
-            "image": "https://cards.scryfall.io/normal/front/a/f/af5398d1-804b-4a38-b16a-57a855e9c3b0.jpg?1712355045",
-            "type": "Land",
-            "oracle_text": "Isolated Chapel enters tapped unless you control a Plains or a Swamp.\n{T}: Add {W} or {B}.",
-            "quantity": 1,
-            "number": 59
-        },
-        {
-            "name": "Blood Crypt",
-            "image": "https://cards.scryfall.io/normal/front/0/9/0994aef4-b341-45f4-8881-523565a5956e.jpg?1702429795",
-            "type": "Land \u2014 Swamp Mountain",
-            "oracle_text": "({T}: Add {B} or {R}.)\nAs Blood Crypt enters, you may pay 2 life. If you don't, it enters tapped.",
-            "quantity": 1,
-            "number": 60
-        },
-        {
-            "name": "Evolving Wilds",
-            "image": "https://cards.scryfall.io/normal/front/e/3/e3056678-4ef0-4847-af08-df218ef5fb2b.jpg?1736468674",
-            "type": "Land",
-            "oracle_text": "{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",
-            "quantity": 1,
-            "number": 61
-        },
-        {
-            "name": "Godless Shrine",
-            "image": "https://cards.scryfall.io/normal/front/9/e/9e26f6ad-c1b8-4ec6-a179-e86ce09824c1.jpg?1702429803",
-            "type": "Land \u2014 Plains Swamp",
-            "oracle_text": "({T}: Add {W} or {B}.)\nAs Godless Shrine enters, you may pay 2 life. If you don't, it enters tapped.",
-            "quantity": 1,
             "number": 62
         },
         {
-            "name": "Sacred Foundry",
-            "image": "https://cards.scryfall.io/normal/front/8/0/8076a8c3-7c6c-4636-b5d8-9b09ee95f92c.jpg?1702429818",
-            "type": "Land \u2014 Mountain Plains",
-            "oracle_text": "({T}: Add {R} or {W}.)\nAs Sacred Foundry enters, you may pay 2 life. If you don't, it enters tapped.",
+            "name": "Crackling Doom",
+            "image": "https://cards.scryfall.io/normal/front/a/6/a66e5673-e34b-46e8-a0e4-55f3ee20f99a.jpg?1673148477",
+            "type": "Instant",
+            "oracle_text": "Crackling Doom deals 2 damage to each opponent. Each opponent sacrifices a creature with the greatest power among creatures that player controls.",
             "quantity": 1,
             "number": 63
         },
         {
-            "name": "Scoured Barrens",
-            "image": "https://cards.scryfall.io/normal/front/a/c/ac52be0c-49f4-4956-820e-bdd7d2744d2f.jpg?1738356941",
-            "type": "Land",
-            "oracle_text": "This land enters tapped.\nWhen this land enters, you gain 1 life.\n{T}: Add {W} or {B}.",
+            "name": "Utter End",
+            "image": "https://cards.scryfall.io/normal/front/1/8/1819a0af-0775-431d-9637-13f8f10830f5.jpg?1726284512",
+            "type": "Instant",
+            "oracle_text": "Exile target nonland permanent.",
             "quantity": 1,
             "number": 64
-        },
-        {
-            "name": "Mountain",
-            "image": "https://cards.scryfall.io/normal/front/f/b/fb76cb6c-2f4d-4ca2-876f-d49ea529e59b.jpg?1738357054",
-            "type": "Basic Land \u2014 Mountain",
-            "oracle_text": "({T}: Add {R}.)",
-            "quantity": 5,
-            "number": 65
-        },
-        {
-            "name": "Plains",
-            "image": "https://cards.scryfall.io/normal/front/4/6/464723b3-0723-45f2-a258-32d098c39039.jpg?1738357013",
-            "type": "Basic Land \u2014 Plains",
-            "oracle_text": "({T}: Add {W}.)",
-            "quantity": 5,
-            "number": 66
-        },
-        {
-            "name": "Swamp",
-            "image": "https://cards.scryfall.io/normal/front/0/4/040d064e-b023-4750-afeb-1f58e36bc4ab.jpg?1738357042",
-            "type": "Basic Land \u2014 Swamp",
-            "oracle_text": "({T}: Add {B}.)",
-            "quantity": 10,
-            "number": 67
-        },
-        {
-            "name": "Wind-Scarred Crag",
-            "image": "https://cards.scryfall.io/normal/front/8/8/882969d8-7e3e-4f32-858a-00da20c67b83.jpg?1738356981",
-            "type": "Land",
-            "oracle_text": "This land enters tapped.\nWhen this land enters, you gain 1 life.\n{T}: Add {R} or {W}.",
-            "quantity": 1,
-            "number": 68
-        },
-        {
-            "name": "Rakdos Carnarium",
-            "image": "https://cards.scryfall.io/normal/front/b/2/b2eaa0f2-9f8e-4b41-8916-9c9a985c39de.jpg?1706240271",
-            "type": "Land",
-            "oracle_text": "Rakdos Carnarium enters tapped.\nWhen Rakdos Carnarium enters, return a land you control to its owner's hand.\n{T}: Add {B}{R}.",
-            "quantity": 1,
-            "number": 69
-        },
-        {
-            "name": "Terramorphic Expanse",
-            "image": "https://cards.scryfall.io/normal/front/b/3/b379c8f1-817c-4f18-8f58-45c40504433e.jpg?1726286878",
-            "type": "Land",
-            "oracle_text": "{T}, Sacrifice Terramorphic Expanse: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",
-            "quantity": 1,
-            "number": 70
-        },
-        {
-            "name": "Bojuka Bog",
-            "image": "https://cards.scryfall.io/normal/front/e/2/e286c618-ef42-433f-ade9-0c1235a295e3.jpg?1726285372",
-            "type": "Land",
-            "oracle_text": "Bojuka Bog enters tapped.\nWhen Bojuka Bog enters, exile target player's graveyard.\n{T}: Add {B}.",
-            "quantity": 1,
-            "number": 71
-        },
-        {
-            "name": "Tainted Field",
-            "image": "https://cards.scryfall.io/normal/front/c/6/c6eeab6f-a738-4005-91c2-a5f81df5c569.jpg?1726285507",
-            "type": "Land",
-            "oracle_text": "{T}: Add {C}.\n{T}: Add {W} or {B}. Activate only if you control a Swamp.",
-            "quantity": 1,
-            "number": 72
-        },
-        {
-            "name": "Tainted Peak",
-            "image": "https://cards.scryfall.io/normal/front/7/e/7e6f1a55-0fec-4b94-9640-9110ca8d0212.jpg?1726285513",
-            "type": "Land",
-            "oracle_text": "{T}: Add {C}.\n{T}: Add {B} or {R}. Activate only if you control a Swamp.",
-            "quantity": 1,
-            "number": 73
-        },
-        {
-            "name": "Temple of the False God",
-            "image": "https://cards.scryfall.io/normal/front/2/3/23d62c88-3a7a-4eef-8ec4-ff1243e6ce93.jpg?1726285545",
-            "type": "Land",
-            "oracle_text": "{T}: Add {C}{C}. Activate only if you control five or more lands.",
-            "quantity": 1,
-            "number": 74
-        },
-        {
-            "name": "Kabira Crossroads",
-            "image": "https://cards.scryfall.io/normal/front/7/f/7f6a18b8-d490-490d-83a5-227a416ccf92.jpg?1562614414",
-            "type": "Land",
-            "oracle_text": "Kabira Crossroads enters tapped.\nWhen Kabira Crossroads enters, you gain 2 life.\n{T}: Add {W}.",
-            "quantity": 1,
-            "number": 75
-        },
-        {
-            "name": "Stensia Bloodhall",
-            "image": "https://cards.scryfall.io/normal/front/c/c/cc2741d8-2c02-4acd-8ca2-55b4bf6aef1c.jpg?1562837116",
-            "type": "Land",
-            "oracle_text": "{T}: Add {C}.\n{3}{B}{R}, {T}: Stensia Bloodhall deals 2 damage to target player or planeswalker.",
-            "quantity": 1,
-            "number": 76
-        },
-        {
-            "name": "Transguild Promenade",
-            "image": "https://cards.scryfall.io/normal/front/a/0/a0baaa39-7fce-4feb-9118-b1d6bc24f548.jpg?1608918152",
-            "type": "Land",
-            "oracle_text": "Transguild Promenade enters tapped.\nWhen Transguild Promenade enters, sacrifice it unless you pay {1}.\n{T}: Add one mana of any color.",
-            "quantity": 1,
-            "number": 77
         },
         {
             "name": "Path of Ancestry",
@@ -622,15 +518,87 @@
             "type": "Land",
             "oracle_text": "Path of Ancestry enters tapped.\n{T}: Add one mana of any color in your commander's color identity. When that mana is spent to cast a creature spell that shares a creature type with your commander, scry 1. (Look at the top card of your library. You may put that card on the bottom.)",
             "quantity": 1,
-            "number": 78
+            "number": 65
         },
         {
-            "name": "Vault of the Archangel",
-            "image": "https://cards.scryfall.io/normal/front/3/f/3fb781da-2b8b-44c6-999f-5038e79a7d57.jpg?1712355208",
+            "name": "Unclaimed Territory",
+            "image": "https://cards.scryfall.io/normal/front/e/7/e7bd3aaa-864c-4cbb-bbab-68d87c824e3d.jpg?1698988658",
             "type": "Land",
-            "oracle_text": "{T}: Add {C}.\n{2}{W}{B}, {T}: Creatures you control gain deathtouch and lifelink until end of turn.",
+            "oracle_text": "As Unclaimed Territory enters, choose a creature type.\n{T}: Add {C}.\n{T}: Add one mana of any color. Spend this mana only to cast a creature spell of the chosen type.",
             "quantity": 1,
-            "number": 79
+            "number": 66
+        },
+        {
+            "name": "Command Tower",
+            "image": "https://cards.scryfall.io/normal/front/1/2/129d1bbd-83ad-4953-bf6d-b55989b2529c.jpg?1733640092",
+            "type": "Land",
+            "oracle_text": "{T}: Add one mana of any color in your commander's color identity.",
+            "quantity": 1,
+            "number": 67
+        },
+        {
+            "name": "Cavern of Souls",
+            "image": "https://cards.scryfall.io/normal/front/3/a/3aad15a2-8a1b-4460-9b06-e85863081878.jpg?1706884128",
+            "type": "Land",
+            "oracle_text": "As Cavern of Souls enters, choose a creature type.\n{T}: Add {C}.\n{T}: Add one mana of any color. Spend this mana only to cast a creature spell of the chosen type, and that spell can't be countered.",
+            "quantity": 1,
+            "number": 68
+        },
+        {
+            "name": "Arid Mesa",
+            "image": "https://cards.scryfall.io/normal/front/2/5/25ac5405-df7b-4097-914a-022cb18e20d4.jpg?1719135331",
+            "type": "Land",
+            "oracle_text": "{T}, Pay 1 life, Sacrifice Arid Mesa: Search your library for a Mountain or Plains card, put it onto the battlefield, then shuffle.",
+            "quantity": 1,
+            "number": 69
+        },
+        {
+            "name": "Bloodstained Mire",
+            "image": "https://cards.scryfall.io/normal/front/5/7/579743fe-f71e-4cb2-8629-d6b02ed1591d.jpg?1717012950",
+            "type": "Land",
+            "oracle_text": "{T}, Pay 1 life, Sacrifice Bloodstained Mire: Search your library for a Swamp or Mountain card, put it onto the battlefield, then shuffle.",
+            "quantity": 1,
+            "number": 70
+        },
+        {
+            "name": "Marsh Flats",
+            "image": "https://cards.scryfall.io/normal/front/9/d/9db3ba6d-eb7f-4f5b-9a3b-c6239c3baa42.jpg?1719135329",
+            "type": "Land",
+            "oracle_text": "{T}, Pay 1 life, Sacrifice Marsh Flats: Search your library for a Plains or Swamp card, put it onto the battlefield, then shuffle.",
+            "quantity": 1,
+            "number": 71
+        },
+        {
+            "name": "Scalding Tarn",
+            "image": "https://cards.scryfall.io/normal/front/7/1/71e491c5-8c07-449b-b2f1-ffa052e6d311.jpg?1719135325",
+            "type": "Land",
+            "oracle_text": "{T}, Pay 1 life, Sacrifice Scalding Tarn: Search your library for an Island or Mountain card, put it onto the battlefield, then shuffle.",
+            "quantity": 1,
+            "number": 72
+        },
+        {
+            "name": "Verdant Catacombs",
+            "image": "https://cards.scryfall.io/normal/front/9/4/94c229ea-90da-4aa0-bfda-b162fb3b5b8b.jpg?1719135323",
+            "type": "Land",
+            "oracle_text": "{T}, Pay 1 life, Sacrifice Verdant Catacombs: Search your library for a Swamp or Forest card, put it onto the battlefield, then shuffle.",
+            "quantity": 1,
+            "number": 73
+        },
+        {
+            "name": "Windswept Heath",
+            "image": "https://cards.scryfall.io/normal/front/b/d/bd1d13f7-fd38-4f0b-a8e0-1eac78668117.jpg?1717013102",
+            "type": "Land",
+            "oracle_text": "{T}, Pay 1 life, Sacrifice Windswept Heath: Search your library for a Forest or Plains card, put it onto the battlefield, then shuffle.",
+            "quantity": 1,
+            "number": 74
+        },
+        {
+            "name": "Wooded Foothills",
+            "image": "https://cards.scryfall.io/normal/front/4/e/4e11ea8a-f895-438d-a3b7-f070238e4161.jpg?1717013111",
+            "type": "Land",
+            "oracle_text": "{T}, Pay 1 life, Sacrifice Wooded Foothills: Search your library for a Mountain or Forest card, put it onto the battlefield, then shuffle.",
+            "quantity": 1,
+            "number": 75
         },
         {
             "name": "Exotic Orchard",
@@ -638,31 +606,151 @@
             "type": "Land",
             "oracle_text": "{T}: Add one mana of any color that a land an opponent controls could produce.",
             "quantity": 1,
+            "number": 76
+        },
+        {
+            "name": "Dragonskull Summit",
+            "image": "https://cards.scryfall.io/normal/front/3/b/3b96a40e-828a-4cec-99cd-130dbcbdc67c.jpg?1726285394",
+            "type": "Land",
+            "oracle_text": "Dragonskull Summit enters tapped unless you control a Swamp or a Mountain.\n{T}: Add {B} or {R}.",
+            "quantity": 1,
+            "number": 77
+        },
+        {
+            "name": "Clifftop Retreat",
+            "image": "https://cards.scryfall.io/normal/front/5/f/5f6b7995-faf8-4fba-8be8-12ee71bd53bf.jpg?1712354945",
+            "type": "Land",
+            "oracle_text": "Clifftop Retreat enters tapped unless you control a Mountain or a Plains.\n{T}: Add {R} or {W}.",
+            "quantity": 1,
+            "number": 78
+        },
+        {
+            "name": "Isolated Chapel",
+            "image": "https://cards.scryfall.io/normal/front/a/f/af5398d1-804b-4a38-b16a-57a855e9c3b0.jpg?1712355045",
+            "type": "Land",
+            "oracle_text": "Isolated Chapel enters tapped unless you control a Plains or a Swamp.\n{T}: Add {W} or {B}.",
+            "quantity": 1,
+            "number": 79
+        },
+        {
+            "name": "Sacred Foundry",
+            "image": "https://cards.scryfall.io/normal/front/8/0/8076a8c3-7c6c-4636-b5d8-9b09ee95f92c.jpg?1702429818",
+            "type": "Land \u2014 Mountain Plains",
+            "oracle_text": "({T}: Add {R} or {W}.)\nAs Sacred Foundry enters, you may pay 2 life. If you don't, it enters tapped.",
+            "quantity": 1,
             "number": 80
         },
         {
-            "name": "Orzhov Basilica",
-            "image": "https://cards.scryfall.io/normal/front/9/c/9c7c08fc-b6ee-498c-8ab6-fd6be27c9d97.jpg?1726285470",
-            "type": "Land",
-            "oracle_text": "Orzhov Basilica enters tapped.\nWhen Orzhov Basilica enters, return a land you control to its owner's hand.\n{T}: Add {W}{B}.",
+            "name": "Blood Crypt",
+            "image": "https://cards.scryfall.io/normal/front/0/9/0994aef4-b341-45f4-8881-523565a5956e.jpg?1702429795",
+            "type": "Land \u2014 Swamp Mountain",
+            "oracle_text": "({T}: Add {B} or {R}.)\nAs Blood Crypt enters, you may pay 2 life. If you don't, it enters tapped.",
             "quantity": 1,
             "number": 81
         },
         {
-            "name": "Boros Garrison",
-            "image": "https://cards.scryfall.io/normal/front/7/6/76ec3366-98f3-4903-8f7b-cfcdd60e3be1.jpg?1706240240",
-            "type": "Land",
-            "oracle_text": "Boros Garrison enters tapped.\nWhen Boros Garrison enters, return a land you control to its owner's hand.\n{T}: Add {R}{W}.",
+            "name": "Godless Shrine",
+            "image": "https://cards.scryfall.io/normal/front/9/e/9e26f6ad-c1b8-4ec6-a179-e86ce09824c1.jpg?1702429803",
+            "type": "Land \u2014 Plains Swamp",
+            "oracle_text": "({T}: Add {W} or {B}.)\nAs Godless Shrine enters, you may pay 2 life. If you don't, it enters tapped.",
             "quantity": 1,
             "number": 82
         },
         {
-            "name": "Rupture Spire",
-            "image": "https://cards.scryfall.io/normal/front/c/7/c7ef4b15-efab-4255-ac2d-7794f253aa52.jpg?1608911838",
-            "type": "Land",
-            "oracle_text": "Rupture Spire enters tapped.\nWhen Rupture Spire enters, sacrifice it unless you pay {1}.\n{T}: Add one mana of any color.",
-            "quantity": 1,
+            "name": "Swamp",
+            "image": "https://cards.scryfall.io/normal/front/0/4/040d064e-b023-4750-afeb-1f58e36bc4ab.jpg?1738357042",
+            "type": "Basic Land \u2014 Swamp",
+            "oracle_text": "({T}: Add {B}.)",
+            "quantity": 5,
             "number": 83
+        },
+        {
+            "name": "Mountain",
+            "image": "https://cards.scryfall.io/normal/front/f/b/fb76cb6c-2f4d-4ca2-876f-d49ea529e59b.jpg?1738357054",
+            "type": "Basic Land \u2014 Mountain",
+            "oracle_text": "({T}: Add {R}.)",
+            "quantity": 3,
+            "number": 84
+        },
+        {
+            "name": "Plains",
+            "image": "https://cards.scryfall.io/normal/front/4/6/464723b3-0723-45f2-a258-32d098c39039.jpg?1738357013",
+            "type": "Basic Land \u2014 Plains",
+            "oracle_text": "({T}: Add {W}.)",
+            "quantity": 2,
+            "number": 85
+        },
+        {
+            "name": "Bojuka Bog",
+            "image": "https://cards.scryfall.io/normal/front/e/2/e286c618-ef42-433f-ade9-0c1235a295e3.jpg?1726285372",
+            "type": "Land",
+            "oracle_text": "Bojuka Bog enters tapped.\nWhen Bojuka Bog enters, exile target player's graveyard.\n{T}: Add {B}.",
+            "quantity": 1,
+            "number": 86
+        },
+        {
+            "name": "Emergence Zone",
+            "image": "https://cards.scryfall.io/normal/front/a/b/ab95f6e7-b806-47fe-a071-6c38b3176d94.jpg?1557577458",
+            "type": "Land",
+            "oracle_text": "{T}: Add {C}.\n{1}, {T}, Sacrifice Emergence Zone: You may cast spells this turn as though they had flash.",
+            "quantity": 1,
+            "number": 87
+        },
+        {
+            "name": "Hall of Heliod's Generosity",
+            "image": "https://cards.scryfall.io/normal/front/f/0/f08dfd99-59fa-4a6c-bd69-c647f639de4d.jpg?1726285434",
+            "type": "Legendary Land",
+            "oracle_text": "{T}: Add {C}.\n{1}{W}, {T}: Put target enchantment card from your graveyard on top of your library.",
+            "quantity": 1,
+            "number": 88
+        },
+        {
+            "name": "Castle Locthwain",
+            "image": "https://cards.scryfall.io/normal/front/1/9/19336e3a-2242-4a30-a563-32f2e4fc18e9.jpg?1674142821",
+            "type": "Land",
+            "oracle_text": "Castle Locthwain enters tapped unless you control a Swamp.\n{T}: Add {B}.\n{1}{B}{B}, {T}: Draw a card, then you lose life equal to the number of cards in your hand.",
+            "quantity": 1,
+            "number": 89
+        },
+        {
+            "name": "Vault of Champions",
+            "image": "https://cards.scryfall.io/normal/front/c/a/cafd7db6-b04e-4fa2-bccd-981211132a93.jpg?1690000058",
+            "type": "Land",
+            "oracle_text": "Vault of Champions enters tapped unless you have two or more opponents.\n{T}: Add {W} or {B}.",
+            "quantity": 1,
+            "number": 90
+        },
+        {
+            "name": "Shineshadow Snarl",
+            "image": "https://cards.scryfall.io/normal/front/3/d/3d483bcf-438a-499b-86a5-6357d718faf1.jpg?1698988623",
+            "type": "Land",
+            "oracle_text": "As Shineshadow Snarl enters, you may reveal a Plains or Swamp card from your hand. If you don't, Shineshadow Snarl enters tapped.\n{T}: Add {W} or {B}.",
+            "quantity": 1,
+            "number": 91
+        },
+        {
+            "name": "Necropolis Regent",
+            "image": "https://cards.scryfall.io/normal/front/9/c/9cd548d5-6162-4eff-adfc-69b7e3b45712.jpg?1641602708",
+            "type": "Creature \u2014 Vampire",
+            "oracle_text": "Flying\nWhenever a creature you control deals combat damage to a player, put that many +1/+1 counters on it.",
+            "quantity": 1,
+            "number": 92
+        },
+        {
+            "name": "Exquisite Blood",
+            "image": "https://cards.scryfall.io/normal/front/0/e/0e8ccfa7-4178-476a-a155-0ca1c98556c9.jpg?1698988246",
+            "type": "Enchantment",
+            "oracle_text": "Whenever an opponent loses life, you gain that much life.",
+            "quantity": 1,
+            "number": 93
+        },
+        {
+            "name": "Blood Tribute",
+            "image": "https://cards.scryfall.io/normal/front/3/6/361912f4-5205-44a5-b21e-17402526c1fd.jpg?1562605049",
+            "type": "Sorcery",
+            "oracle_text": "Kicker\u2014Tap an untapped Vampire you control. (You may tap a Vampire you control in addition to any other costs as you cast this spell.)\nTarget opponent loses half their life, rounded up. If this spell was kicked, you gain life equal to the life lost this way.",
+            "quantity": 1,
+            "number": 94
         }
     ],
     "categories": {
@@ -676,12 +764,68 @@
                 "number": 1
             },
             {
-                "name": "Anowon, the Ruin Sage",
-                "image": "https://cards.scryfall.io/normal/front/b/8/b8630ae1-8fe9-4d6e-899b-a28d86d4d729.jpg?1641602275",
-                "type": "Legendary Creature \u2014 Vampire Shaman",
-                "oracle_text": "At the beginning of your upkeep, each player sacrifices a non-Vampire creature of their choice.",
+                "name": "Viscera Seer",
+                "image": "https://cards.scryfall.io/normal/front/4/8/486fd8a2-dd97-4082-84ef-4795c7e559a0.jpg?1698988290",
+                "type": "Creature \u2014 Vampire Wizard",
+                "oracle_text": "Sacrifice a creature: Scry 1. (Look at the top card of your library. You may put that card on the bottom.)",
                 "quantity": 1,
                 "number": 2
+            },
+            {
+                "name": "Cordial Vampire",
+                "image": "https://cards.scryfall.io/normal/front/0/d/0d91e61d-e3bf-4ddc-9f01-18b1abe35a61.jpg?1698988230",
+                "type": "Creature \u2014 Vampire",
+                "oracle_text": "Whenever Cordial Vampire or another creature dies, put a +1/+1 counter on each Vampire you control.",
+                "quantity": 1,
+                "number": 3
+            },
+            {
+                "name": "Vampire Cutthroat",
+                "image": "https://cards.scryfall.io/normal/front/9/5/954d53f3-ebbe-48e0-9e1a-7019d2b0740c.jpg?1576384454",
+                "type": "Creature \u2014 Vampire Rogue",
+                "oracle_text": "Skulk (This creature can't be blocked by creatures with greater power.)\nLifelink (Damage dealt by this creature also causes you to gain that much life.)",
+                "quantity": 1,
+                "number": 4
+            },
+            {
+                "name": "Insolent Neonate",
+                "image": "https://cards.scryfall.io/normal/front/8/1/813104f6-e6e4-4709-8626-12fe4262a11f.jpg?1576384817",
+                "type": "Creature \u2014 Vampire",
+                "oracle_text": "Menace (This creature can't be blocked except by two or more creatures.)\nDiscard a card, Sacrifice Insolent Neonate: Draw a card.",
+                "quantity": 1,
+                "number": 5
+            },
+            {
+                "name": "Stromkirk Condemned",
+                "image": "https://cards.scryfall.io/normal/front/b/0/b0e0cecb-4f14-438e-a9d0-c6b19a4126c5.jpg?1641602873",
+                "type": "Creature \u2014 Vampire Horror",
+                "oracle_text": "Discard a card: Vampires you control get +1/+1 until end of turn. Activate only once each turn.",
+                "quantity": 1,
+                "number": 6
+            },
+            {
+                "name": "Vampire of the Dire Moon",
+                "image": "https://cards.scryfall.io/normal/front/b/3/b3c185b9-5d97-4a5a-af0b-8b9c44dcd235.jpg?1592516807",
+                "type": "Creature \u2014 Vampire",
+                "oracle_text": "Deathtouch (Any amount of damage this deals to a creature is enough to destroy it.)\nLifelink (Damage dealt by this creature also causes you to gain that much life.)",
+                "quantity": 1,
+                "number": 7
+            },
+            {
+                "name": "Asylum Visitor",
+                "image": "https://cards.scryfall.io/normal/front/0/2/02046824-6c48-40bb-9f0b-4fd280c6ed85.jpg?1736473224",
+                "type": "Creature \u2014 Vampire Wizard",
+                "oracle_text": "At the beginning of each player's upkeep, if that player has no cards in hand, you draw a card and you lose 1 life.\nMadness {1}{B} (If you discard this card, discard it into exile. When you do, cast it for its madness cost or put it into your graveyard.)",
+                "quantity": 1,
+                "number": 8
+            },
+            {
+                "name": "Bloodghast",
+                "image": "https://cards.scryfall.io/normal/front/f/d/fdceefe6-f083-4955-b53a-8e6f8aeb2083.jpg?1738356290",
+                "type": "Creature \u2014 Vampire Spirit",
+                "oracle_text": "Bloodghast can't block.\nBloodghast has haste as long as an opponent has 10 or less life.\nLandfall \u2014 Whenever a land you control enters, you may return Bloodghast from your graveyard to the battlefield.",
+                "quantity": 1,
+                "number": 9
             },
             {
                 "name": "Blood Artist",
@@ -689,47 +833,15 @@
                 "type": "Creature \u2014 Vampire",
                 "oracle_text": "Whenever Blood Artist or another creature dies, target player loses 1 life and you gain 1 life.",
                 "quantity": 1,
-                "number": 3
+                "number": 10
             },
             {
-                "name": "Blood Seeker",
-                "image": "https://cards.scryfall.io/normal/front/f/e/fe88cbee-5f6c-47e0-8a84-192c4c2ca984.jpg?1726284431",
-                "type": "Creature \u2014 Vampire Shaman",
-                "oracle_text": "Whenever a creature an opponent controls enters, you may have that player lose 1 life.",
+                "name": "Dusk Legion Zealot",
+                "image": "https://cards.scryfall.io/normal/front/7/2/72048624-e3fd-4e9b-91a9-996ea3a1a74f.jpg?1698988245",
+                "type": "Creature \u2014 Vampire Soldier",
+                "oracle_text": "When Dusk Legion Zealot enters, you draw a card and you lose 1 life.",
                 "quantity": 1,
-                "number": 4
-            },
-            {
-                "name": "Bloodline Keeper // Lord of Lineage",
-                "image": "",
-                "type": "Creature \u2014 Vampire // Creature \u2014 Vampire",
-                "oracle_text": "No description available",
-                "quantity": 1,
-                "number": 5
-            },
-            {
-                "name": "Butcher of Malakir",
-                "image": "https://cards.scryfall.io/normal/front/9/d/9d805499-0739-403e-8447-ed2707dc9eb2.jpg?1698988223",
-                "type": "Creature \u2014 Vampire Warrior",
-                "oracle_text": "Flying\nWhenever Butcher of Malakir or another creature you control dies, each opponent sacrifices a creature of their choice.",
-                "quantity": 1,
-                "number": 6
-            },
-            {
-                "name": "Captivating Vampire",
-                "image": "https://cards.scryfall.io/normal/front/0/f/0f87aadf-7638-4691-b5a5-86f928e98462.jpg?1736467903",
-                "type": "Creature \u2014 Vampire",
-                "oracle_text": "Other Vampire creatures you control get +1/+1.\nTap five untapped Vampires you control: Gain control of target creature. It becomes a Vampire in addition to its other types.",
-                "quantity": 1,
-                "number": 7
-            },
-            {
-                "name": "Drana, Liberator of Malakir",
-                "image": "https://cards.scryfall.io/normal/front/0/8/0850b41d-3589-40cd-ae22-cc5b4ddee1c4.jpg?1698988238",
-                "type": "Legendary Creature \u2014 Vampire Ally",
-                "oracle_text": "Flying, first strike\nWhenever Drana, Liberator of Malakir deals combat damage to a player, put a +1/+1 counter on each attacking creature you control.",
-                "quantity": 1,
-                "number": 8
+                "number": 11
             },
             {
                 "name": "Gatekeeper of Malakir",
@@ -737,87 +849,79 @@
                 "type": "Creature \u2014 Vampire Warrior",
                 "oracle_text": "Kicker {B} (You may pay an additional {B} as you cast this spell.)\nWhen this creature enters, if it was kicked, target player sacrifices a creature of their choice.",
                 "quantity": 1,
-                "number": 9
-            },
-            {
-                "name": "Guul Draz Assassin",
-                "image": "https://cards.scryfall.io/normal/front/7/2/72de01ef-cdf2-44ad-bf2f-a927d82a4f72.jpg?1562705055",
-                "type": "Creature \u2014 Vampire Assassin",
-                "oracle_text": "Level up {1}{B} ({1}{B}: Put a level counter on this. Level up only as a sorcery.)\nLEVEL 2-3\n2/2\n{B}, {T}: Target creature gets -2/-2 until end of turn.\nLEVEL 4+\n4/4\n{B}, {T}: Target creature gets -4/-4 until end of turn.",
-                "quantity": 1,
-                "number": 10
-            },
-            {
-                "name": "Indulgent Aristocrat",
-                "image": "https://cards.scryfall.io/normal/front/0/7/07015524-874f-4856-a5c1-3148bd126886.jpg?1736467987",
-                "type": "Creature \u2014 Vampire Noble",
-                "oracle_text": "Lifelink\n{2}, Sacrifice a creature: Put a +1/+1 counter on each Vampire you control.",
-                "quantity": 1,
-                "number": 11
-            },
-            {
-                "name": "Kheru Mind-Eater",
-                "image": "https://cards.scryfall.io/normal/front/e/6/e6246cf3-76bd-476b-9cd9-789b6ad48887.jpg?1562626991",
-                "type": "Creature \u2014 Vampire",
-                "oracle_text": "Menace\nWhenever Kheru Mind-Eater deals combat damage to a player, that player exiles a card from their hand face down.\nYou may look at cards exiled with Kheru Mind-Eater, and you may play lands and cast spells from among those cards.",
-                "quantity": 1,
                 "number": 12
             },
             {
-                "name": "Malakir Bloodwitch",
-                "image": "https://cards.scryfall.io/normal/front/b/9/b91ceead-5071-43e8-bf90-f379d683acdf.jpg?1641602675",
-                "type": "Creature \u2014 Vampire Shaman",
-                "oracle_text": "Flying, protection from white\nWhen Malakir Bloodwitch enters, each opponent loses life equal to the number of Vampires you control. You gain life equal to the life lost this way.",
+                "name": "Gifted Aetherborn",
+                "image": "https://cards.scryfall.io/normal/front/8/6/8644d4d1-8499-40a8-a01f-68172c82bf58.jpg?1600714489",
+                "type": "Creature \u2014 Aetherborn Vampire",
+                "oracle_text": "Deathtouch, lifelink",
                 "quantity": 1,
                 "number": 13
             },
             {
-                "name": "Nirkana Revenant",
-                "image": "https://cards.scryfall.io/normal/front/9/6/96da0a4c-2865-4383-875a-9f5d6503baee.jpg?1641602776",
-                "type": "Creature \u2014 Vampire Shade",
-                "oracle_text": "Whenever you tap a Swamp for mana, add an additional {B}.\n{B}: Nirkana Revenant gets +1/+1 until end of turn.",
+                "name": "Stromkirk Noble",
+                "image": "https://cards.scryfall.io/normal/front/0/f/0f306c7e-cacc-4c26-a3f1-fad4f3ff7cf3.jpg?1730490996",
+                "type": "Creature \u2014 Vampire Noble",
+                "oracle_text": "This creature can't be blocked by Humans.\nWhenever this creature deals combat damage to a player, put a +1/+1 counter on it.",
                 "quantity": 1,
                 "number": 14
             },
             {
-                "name": "Olivia Voldaren",
-                "image": "https://cards.scryfall.io/normal/front/5/6/561d616c-df11-4144-acec-f9fe47efa5c7.jpg?1736468539",
-                "type": "Legendary Creature \u2014 Vampire",
-                "oracle_text": "Flying\n{1}{R}: Olivia Voldaren deals 1 damage to another target creature. That creature becomes a Vampire in addition to its other types. Put a +1/+1 counter on Olivia Voldaren.\n{3}{B}{B}: Gain control of target Vampire for as long as you control Olivia Voldaren.",
+                "name": "Kalastria Highborn",
+                "image": "https://cards.scryfall.io/normal/front/1/a/1a52f6ef-7759-4be3-8b80-a57e9d6ae386.jpg?1730490901",
+                "type": "Creature \u2014 Vampire Shaman",
+                "oracle_text": "Whenever this creature or another Vampire you control dies, you may pay {B}. If you do, target player loses 2 life and you gain 2 life.",
                 "quantity": 1,
                 "number": 15
             },
             {
-                "name": "Patron of the Vein",
-                "image": "https://cards.scryfall.io/normal/front/a/7/a70d7b65-77d0-41d3-9735-d64b9288fde1.jpg?1698988275",
+                "name": "Vampire Hexmage",
+                "image": "https://cards.scryfall.io/normal/front/9/7/97ec2e55-fa60-4ee1-b9c0-e6b84939697b.jpg?1599706094",
                 "type": "Creature \u2014 Vampire Shaman",
-                "oracle_text": "Flying\nWhen Patron of the Vein enters, destroy target creature an opponent controls.\nWhenever a creature an opponent controls dies, exile it and put a +1/+1 counter on each Vampire you control.",
+                "oracle_text": "First strike\nSacrifice Vampire Hexmage: Remove all counters from target permanent.",
                 "quantity": 1,
                 "number": 16
             },
             {
-                "name": "Pulse Tracker",
-                "image": "https://cards.scryfall.io/normal/front/f/d/fdcbbe4d-5c93-4b14-8123-cd835452870f.jpg?1730490922",
-                "type": "Creature \u2014 Vampire Rogue",
-                "oracle_text": "Whenever this creature attacks, each opponent loses 1 life.",
+                "name": "Vicious Conquistador",
+                "image": "https://cards.scryfall.io/normal/front/2/a/2a4b6ced-e8d3-47e9-bd27-3e0cb644afe4.jpg?1592652364",
+                "type": "Creature \u2014 Vampire Soldier",
+                "oracle_text": "Whenever Vicious Conquistador attacks, each opponent loses 1 life.",
                 "quantity": 1,
                 "number": 17
             },
             {
-                "name": "Rakish Heir",
-                "image": "https://cards.scryfall.io/normal/front/0/d/0da15652-8207-4be1-b821-3fb3dad66e37.jpg?1641603262",
+                "name": "Captivating Vampire",
+                "image": "https://cards.scryfall.io/normal/front/0/f/0f87aadf-7638-4691-b5a5-86f928e98462.jpg?1736467903",
                 "type": "Creature \u2014 Vampire",
-                "oracle_text": "Whenever a Vampire you control deals combat damage to a player, put a +1/+1 counter on it.",
+                "oracle_text": "Other Vampire creatures you control get +1/+1.\nTap five untapped Vampires you control: Gain control of target creature. It becomes a Vampire in addition to its other types.",
                 "quantity": 1,
                 "number": 18
             },
             {
-                "name": "Sangromancer",
-                "image": "https://cards.scryfall.io/normal/front/5/9/59f7f84c-d0a8-4204-a68e-93075f2a96b0.jpg?1625193335",
-                "type": "Creature \u2014 Vampire Shaman",
-                "oracle_text": "Flying\nWhenever a creature an opponent controls dies, you may gain 3 life.\nWhenever an opponent discards a card, you may gain 3 life.",
+                "name": "Drana, Liberator of Malakir",
+                "image": "https://cards.scryfall.io/normal/front/0/8/0850b41d-3589-40cd-ae22-cc5b4ddee1c4.jpg?1698988238",
+                "type": "Legendary Creature \u2014 Vampire Ally",
+                "oracle_text": "Flying, first strike\nWhenever Drana, Liberator of Malakir deals combat damage to a player, put a +1/+1 counter on each attacking creature you control.",
                 "quantity": 1,
                 "number": 19
+            },
+            {
+                "name": "Legion Lieutenant",
+                "image": "https://cards.scryfall.io/normal/front/8/5/85c6bd7d-537a-42fe-9c68-742bdf2e7025.jpg?1698988445",
+                "type": "Creature \u2014 Vampire Knight",
+                "oracle_text": "Other Vampires you control get +1/+1.",
+                "quantity": 1,
+                "number": 20
+            },
+            {
+                "name": "Sanctum Seeker",
+                "image": "https://cards.scryfall.io/normal/front/8/9/893279fb-6f51-4d1e-b2fd-a0cdb603785f.jpg?1698988282",
+                "type": "Creature \u2014 Vampire Knight",
+                "oracle_text": "Whenever a Vampire you control attacks, each opponent loses 1 life and you gain 1 life.",
+                "quantity": 1,
+                "number": 21
             },
             {
                 "name": "Stromkirk Captain",
@@ -825,39 +929,7 @@
                 "type": "Creature \u2014 Vampire Soldier",
                 "oracle_text": "First strike\nOther Vampire creatures you control get +1/+1 and have first strike.",
                 "quantity": 1,
-                "number": 20
-            },
-            {
-                "name": "Vampire Nighthawk",
-                "image": "https://cards.scryfall.io/normal/front/0/a/0a1934ab-3171-4fc6-8033-ad998899ba73.jpg?1730489287",
-                "type": "Creature \u2014 Vampire Shaman",
-                "oracle_text": "Flying\nDeathtouch (Any amount of damage this deals to a creature is enough to destroy it.)\nLifelink (Damage dealt by this creature also causes you to gain that much life.)",
-                "quantity": 1,
-                "number": 21
-            },
-            {
-                "name": "Vampire Nocturnus",
-                "image": "https://cards.scryfall.io/normal/front/8/d/8daccbbb-6600-4467-810f-277f01a11771.jpg?1562556901",
-                "type": "Creature \u2014 Vampire",
-                "oracle_text": "Play with the top card of your library revealed.\nAs long as the top card of your library is black, Vampire Nocturnus and other Vampire creatures you control get +2/+1 and have flying.",
-                "quantity": 1,
                 "number": 22
-            },
-            {
-                "name": "Vein Drinker",
-                "image": "https://cards.scryfall.io/normal/front/2/5/25ad3372-51cb-4b82-a23c-81938b7c01b6.jpg?1562602686",
-                "type": "Creature \u2014 Vampire",
-                "oracle_text": "Flying\n{R}, {T}: Vein Drinker deals damage equal to its power to target creature. That creature deals damage equal to its power to Vein Drinker.\nWhenever a creature dealt damage by Vein Drinker this turn dies, put a +1/+1 counter on Vein Drinker.",
-                "quantity": 1,
-                "number": 23
-            },
-            {
-                "name": "Viscera Seer",
-                "image": "https://cards.scryfall.io/normal/front/4/8/486fd8a2-dd97-4082-84ef-4795c7e559a0.jpg?1698988290",
-                "type": "Creature \u2014 Vampire Wizard",
-                "oracle_text": "Sacrifice a creature: Scry 1. (Look at the top card of your library. You may put that card on the bottom.)",
-                "quantity": 1,
-                "number": 24
             },
             {
                 "name": "Yahenni, Undying Partisan",
@@ -865,25 +937,169 @@
                 "type": "Legendary Creature \u2014 Aetherborn Vampire",
                 "oracle_text": "Haste\nWhenever a creature an opponent controls dies, put a +1/+1 counter on Yahenni, Undying Partisan.\nSacrifice another creature: Yahenni gains indestructible until end of turn.",
                 "quantity": 1,
-                "number": 25
-            }
-        ],
-        "Instants": [
+                "number": 23
+            },
             {
-                "name": "Teferi's Protection",
-                "image": "https://cards.scryfall.io/normal/front/4/8/483fa1cb-1e35-44f2-a143-98c0f107f5ca.jpg?1673147148",
-                "type": "Instant",
-                "oracle_text": "Until your next turn, your life total can't change and you gain protection from everything. All permanents you control phase out. (While they're phased out, they're treated as though they don't exist. They phase in before you untap during your untap step.)\nExile Teferi's Protection.",
+                "name": "Bloodline Keeper // Lord of Lineage",
+                "image": "https://cards.scryfall.io/normal/front/6/0/60658907-dd63-478d-a66a-123e4e9d2a00.jpg?1736467890",
+                "type": "Creature \u2014 Vampire // Creature \u2014 Vampire",
+                "oracle_text": "No description available",
+                "quantity": 1,
+                "number": 24
+            },
+            {
+                "name": "Falkenrath Aristocrat",
+                "image": "https://cards.scryfall.io/normal/front/5/7/57ac7f19-bf6f-4a87-ad39-6eb2553d2202.jpg?1599707911",
+                "type": "Creature \u2014 Vampire Noble",
+                "oracle_text": "Flying, haste\nSacrifice a creature: Falkenrath Aristocrat gains indestructible until end of turn. If the sacrificed creature was a Human, put a +1/+1 counter on Falkenrath Aristocrat.",
+                "quantity": 1,
+                "number": 25
+            },
+            {
+                "name": "Malakir Bloodwitch",
+                "image": "https://cards.scryfall.io/normal/front/b/9/b91ceead-5071-43e8-bf90-f379d683acdf.jpg?1641602675",
+                "type": "Creature \u2014 Vampire Shaman",
+                "oracle_text": "Flying, protection from white\nWhen Malakir Bloodwitch enters, each opponent loses life equal to the number of Vampires you control. You gain life equal to the life lost this way.",
+                "quantity": 1,
+                "number": 26
+            },
+            {
+                "name": "Patron of the Vein",
+                "image": "https://cards.scryfall.io/normal/front/a/7/a70d7b65-77d0-41d3-9735-d64b9288fde1.jpg?1698988275",
+                "type": "Creature \u2014 Vampire Shaman",
+                "oracle_text": "Flying\nWhen Patron of the Vein enters, destroy target creature an opponent controls.\nWhenever a creature an opponent controls dies, exile it and put a +1/+1 counter on each Vampire you control.",
+                "quantity": 1,
+                "number": 27
+            },
+            {
+                "name": "Butcher of Malakir",
+                "image": "https://cards.scryfall.io/normal/front/9/d/9d805499-0739-403e-8447-ed2707dc9eb2.jpg?1698988223",
+                "type": "Creature \u2014 Vampire Warrior",
+                "oracle_text": "Flying\nWhenever Butcher of Malakir or another creature you control dies, each opponent sacrifices a creature of their choice.",
+                "quantity": 1,
+                "number": 28
+            },
+            {
+                "name": "Anowon, the Ruin Sage",
+                "image": "https://cards.scryfall.io/normal/front/b/8/b8630ae1-8fe9-4d6e-899b-a28d86d4d729.jpg?1641602275",
+                "type": "Legendary Creature \u2014 Vampire Shaman",
+                "oracle_text": "At the beginning of your upkeep, each player sacrifices a non-Vampire creature of their choice.",
+                "quantity": 1,
+                "number": 29
+            },
+            {
+                "name": "Bloodlord of Vaasgoth",
+                "image": "https://cards.scryfall.io/normal/front/5/1/510c65ea-7c9f-461f-b038-ef119db1ca30.jpg?1641602372",
+                "type": "Creature \u2014 Vampire Warrior",
+                "oracle_text": "Bloodthirst 3 (If an opponent was dealt damage this turn, this creature enters with three +1/+1 counters on it.)\nFlying\nWhenever you cast a Vampire creature spell, it gains bloodthirst 3.",
+                "quantity": 1,
+                "number": 30
+            },
+            {
+                "name": "Indulgent Aristocrat",
+                "image": "https://cards.scryfall.io/normal/front/0/7/07015524-874f-4856-a5c1-3148bd126886.jpg?1736467987",
+                "type": "Creature \u2014 Vampire Noble",
+                "oracle_text": "Lifelink\n{2}, Sacrifice a creature: Put a +1/+1 counter on each Vampire you control.",
+                "quantity": 1,
+                "number": 31
+            },
+            {
+                "name": "Cliffhaven Vampire",
+                "image": "https://cards.scryfall.io/normal/front/5/5/5544247d-1f8f-443f-a4c4-d8461db28a79.jpg?1562912355",
+                "type": "Creature \u2014 Vampire Warrior Ally",
+                "oracle_text": "Flying\nWhenever you gain life, each opponent loses 1 life.",
+                "quantity": 1,
+                "number": 33
+            },
+            {
+                "name": "Forerunner of the Legion",
+                "image": "https://cards.scryfall.io/normal/front/1/0/10718d37-63d4-44b7-9450-5d49cffce944.jpg?1555039699",
+                "type": "Creature \u2014 Vampire Knight",
+                "oracle_text": "When Forerunner of the Legion enters, you may search your library for a Vampire card, reveal it, then shuffle and put that card on top.\nWhenever another Vampire you control enters, target creature gets +1/+1 until end of turn.",
+                "quantity": 1,
+                "number": 34
+            },
+            {
+                "name": "Olivia, Mobilized for War",
+                "image": "https://cards.scryfall.io/normal/front/7/2/7297dd81-8367-42e9-abf9-9227e202e7ae.jpg?1576385369",
+                "type": "Legendary Creature \u2014 Vampire Knight",
+                "oracle_text": "Flying\nWhenever another creature you control enters, you may discard a card. If you do, put a +1/+1 counter on that creature, it gains haste until end of turn, and it becomes a Vampire in addition to its other types.",
+                "quantity": 1,
+                "number": 35
+            },
+            {
+                "name": "Rakish Heir",
+                "image": "https://cards.scryfall.io/normal/front/0/d/0da15652-8207-4be1-b821-3fb3dad66e37.jpg?1641603262",
+                "type": "Creature \u2014 Vampire",
+                "oracle_text": "Whenever a Vampire you control deals combat damage to a player, put a +1/+1 counter on it.",
+                "quantity": 1,
+                "number": 36
+            },
+            {
+                "name": "Bloodline Necromancer",
+                "image": "https://cards.scryfall.io/normal/front/6/b/6b1e719c-4679-4cf0-8ca4-ae740eb0ba92.jpg?1698988220",
+                "type": "Creature \u2014 Vampire Wizard",
+                "oracle_text": "Lifelink\nWhen Bloodline Necromancer enters, you may return target Vampire or Wizard creature card from your graveyard to the battlefield.",
+                "quantity": 1,
+                "number": 37
+            },
+            {
+                "name": "Chancellor of the Dross",
+                "image": "https://cards.scryfall.io/normal/front/e/e/eec6d85e-6263-44b4-a91f-d51585c561c2.jpg?1562882613",
+                "type": "Creature \u2014 Phyrexian Vampire",
+                "oracle_text": "You may reveal this card from your opening hand. If you do, at the beginning of the first upkeep, each opponent loses 3 life, then you gain life equal to the life lost this way.\nFlying, lifelink",
+                "quantity": 1,
+                "number": 38
+            },
+            {
+                "name": "Mirror Entity",
+                "image": "https://cards.scryfall.io/normal/front/f/2/f2a3107d-bb96-45c6-97ac-b6c6b84cbad4.jpg?1712354084",
+                "type": "Creature \u2014 Shapeshifter",
+                "oracle_text": "Changeling (This card is every creature type.)\n{X}: Until end of turn, creatures you control have base power and toughness X/X and gain all creature types.",
                 "quantity": 1,
                 "number": 39
             },
+            {
+                "name": "Bloodline Pretender",
+                "image": "https://cards.scryfall.io/normal/front/7/3/73f2d0bb-f6d6-4073-8959-31643f3b2bb6.jpg?1682209960",
+                "type": "Artifact Creature \u2014 Shapeshifter",
+                "oracle_text": "Changeling (This card is every creature type.)\nAs Bloodline Pretender enters, choose a creature type.\nWhenever another creature you control of the chosen type enters, put a +1/+1 counter on Bloodline Pretender.",
+                "quantity": 1,
+                "number": 52
+            },
+            {
+                "name": "Necropolis Regent",
+                "image": "https://cards.scryfall.io/normal/front/9/c/9cd548d5-6162-4eff-adfc-69b7e3b45712.jpg?1641602708",
+                "type": "Creature \u2014 Vampire",
+                "oracle_text": "Flying\nWhenever a creature you control deals combat damage to a player, put that many +1/+1 counters on it.",
+                "quantity": 1,
+                "number": 92
+            }
+        ],
+        "Instants": [
             {
                 "name": "Vampire's Zeal",
                 "image": "https://cards.scryfall.io/normal/front/8/8/88c507f6-c178-40be-bca7-3bd5adb1c5b1.jpg?1562559490",
                 "type": "Instant",
                 "oracle_text": "Target creature gets +2/+2 until end of turn. If it's a Vampire, it gains first strike until end of turn.",
                 "quantity": 1,
-                "number": 40
+                "number": 58
+            },
+            {
+                "name": "Boros Charm",
+                "image": "https://cards.scryfall.io/normal/front/e/0/e0d8c9f6-cbbd-4694-b100-01cfb81036cc.jpg?1736305704",
+                "type": "Instant",
+                "oracle_text": "Choose one \u2014\n\u2022 Boros Charm deals 4 damage to target player or planeswalker.\n\u2022 Permanents you control gain indestructible until end of turn.\n\u2022 Target creature gains double strike until end of turn.",
+                "quantity": 1,
+                "number": 60
+            },
+            {
+                "name": "Vampiric Tutor",
+                "image": "https://cards.scryfall.io/normal/front/3/4/34a0203f-9cce-43a4-9cb7-8ce6647895cd.jpg?1675199860",
+                "type": "Instant",
+                "oracle_text": "Search your library for a card, then shuffle and put that card on top. You lose 2 life.",
+                "quantity": 1,
+                "number": 61
             },
             {
                 "name": "Anguished Unmaking",
@@ -891,163 +1107,59 @@
                 "type": "Instant",
                 "oracle_text": "Exile target nonland permanent. You lose 3 life.",
                 "quantity": 1,
-                "number": 41
+                "number": 62
             },
             {
-                "name": "Tragic Slip",
-                "image": "https://cards.scryfall.io/normal/front/1/3/132ccc20-cb42-4474-b747-7e41a661060e.jpg?1736468053",
+                "name": "Crackling Doom",
+                "image": "https://cards.scryfall.io/normal/front/a/6/a66e5673-e34b-46e8-a0e4-55f3ee20f99a.jpg?1673148477",
                 "type": "Instant",
-                "oracle_text": "Target creature gets -1/-1 until end of turn.\nMorbid \u2014 That creature gets -13/-13 until end of turn instead if a creature died this turn.",
+                "oracle_text": "Crackling Doom deals 2 damage to each opponent. Each opponent sacrifices a creature with the greatest power among creatures that player controls.",
                 "quantity": 1,
-                "number": 42
+                "number": 63
             },
             {
-                "name": "Urge to Feed",
-                "image": "https://cards.scryfall.io/normal/front/0/4/041606a6-d20b-4241-ae5a-2dd004c47487.jpg?1641602937",
+                "name": "Utter End",
+                "image": "https://cards.scryfall.io/normal/front/1/8/1819a0af-0775-431d-9637-13f8f10830f5.jpg?1726284512",
                 "type": "Instant",
-                "oracle_text": "Target creature gets -3/-3 until end of turn. You may tap any number of untapped Vampire creatures you control. If you do, put a +1/+1 counter on each of those Vampires.",
+                "oracle_text": "Exile target nonland permanent.",
                 "quantity": 1,
-                "number": 43
-            },
-            {
-                "name": "Merciless Resolve",
-                "image": "https://cards.scryfall.io/normal/front/3/5/356af156-a059-416c-b78b-d9058b742818.jpg?1576384515",
-                "type": "Instant",
-                "oracle_text": "As an additional cost to cast this spell, sacrifice a creature or land.\nDraw two cards.",
-                "quantity": 1,
-                "number": 56
+                "number": 64
             }
         ],
         "Sorceries": [
             {
-                "name": "Vandalblast",
-                "image": "https://cards.scryfall.io/normal/front/e/7/e781b55f-6388-4ab8-be74-7c56eaba1c4d.jpg?1712354517",
+                "name": "Kindred Dominance",
+                "image": "https://cards.scryfall.io/normal/front/a/f/af613b69-b9f6-4221-a21b-c8e4b0f010f1.jpg?1689997269",
                 "type": "Sorcery",
-                "oracle_text": "Destroy target artifact you don't control.\nOverload {4}{R} (You may cast this spell for its overload cost. If you do, change \"target\" in its text to \"each.\")",
+                "oracle_text": "Choose a creature type. Destroy all creatures that aren't of the chosen type.",
                 "quantity": 1,
-                "number": 44
+                "number": 42
             },
             {
-                "name": "Vindicate",
-                "image": "https://cards.scryfall.io/normal/front/6/8/683c4e13-525c-45c9-8832-bfe67965c34e.jpg?1626100840",
+                "name": "Blood Tribute",
+                "image": "https://cards.scryfall.io/normal/front/3/6/361912f4-5205-44a5-b21e-17402526c1fd.jpg?1562605049",
                 "type": "Sorcery",
-                "oracle_text": "Destroy target permanent.",
+                "oracle_text": "Kicker\u2014Tap an untapped Vampire you control. (You may tap a Vampire you control in addition to any other costs as you cast this spell.)\nTarget opponent loses half their life, rounded up. If this spell was kicked, you gain life equal to the life lost this way.",
                 "quantity": 1,
-                "number": 45
-            },
-            {
-                "name": "Disrupt Decorum",
-                "image": "https://cards.scryfall.io/normal/front/c/5/c5323fe7-d9df-4287-ae13-d9db35f7973b.jpg?1706240831",
-                "type": "Sorcery",
-                "oracle_text": "Goad all creatures you don't control. (Until your next turn, those creatures attack each combat if able and attack a player other than you if able.)",
-                "quantity": 1,
-                "number": 47
-            },
-            {
-                "name": "Kindred Charge",
-                "image": "https://cards.scryfall.io/normal/front/3/e/3e7dc7f0-ba05-4a13-b8e0-7f536fbf0f34.jpg?1562605798",
-                "type": "Sorcery",
-                "oracle_text": "Choose a creature type. For each creature you control of the chosen type, create a token that's a copy of that creature. Those tokens gain haste. Exile them at the beginning of the next end step.",
-                "quantity": 1,
-                "number": 48
-            },
-            {
-                "name": "Merciless Eviction",
-                "image": "https://cards.scryfall.io/normal/front/1/d/1d395707-4e6d-4e2c-b977-d9b8c0c9eb80.jpg?1673305593",
-                "type": "Sorcery",
-                "oracle_text": "Choose one \u2014\n\u2022 Exile all artifacts.\n\u2022 Exile all creatures.\n\u2022 Exile all enchantments.\n\u2022 Exile all planeswalkers.",
-                "quantity": 1,
-                "number": 49
-            },
-            {
-                "name": "Read the Bones",
-                "image": "https://cards.scryfall.io/normal/front/b/3/b3198f96-f9d8-494f-a556-24ce3ad3895d.jpg?1726284891",
-                "type": "Sorcery",
-                "oracle_text": "Scry 2, then draw two cards. You lose 2 life. (To scry 2, look at the top two cards of your library, then put any number of them on the bottom and the rest on top in any order.)",
-                "quantity": 1,
-                "number": 51
-            },
-            {
-                "name": "Walk the Plank",
-                "image": "https://cards.scryfall.io/normal/front/0/0/0038ac6a-318f-44fb-bb64-7ae172c4aca3.jpg?1562549640",
-                "type": "Sorcery",
-                "oracle_text": "Destroy target non-Merfolk creature.",
-                "quantity": 1,
-                "number": 52
-            },
-            {
-                "name": "Harrowing Journey",
-                "image": "https://cards.scryfall.io/normal/front/9/c/9cf96a6c-8481-4954-b149-7153b80480be.jpg?1562932063",
-                "type": "Sorcery",
-                "oracle_text": "Target player draws three cards and loses 3 life.",
-                "quantity": 1,
-                "number": 53
-            },
-            {
-                "name": "Increasing Ambition",
-                "image": "https://cards.scryfall.io/normal/front/c/8/c8f508dc-7c7d-47e8-a4ef-0e8fd99cbd74.jpg?1562942476",
-                "type": "Sorcery",
-                "oracle_text": "Search your library for a card and put that card into your hand. If this spell was cast from a graveyard, instead search your library for two cards and put those cards into your hand. Then shuffle.\nFlashback {7}{B} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
-                "quantity": 1,
-                "number": 54
-            },
-            {
-                "name": "Promise of Power",
-                "image": "https://cards.scryfall.io/normal/front/b/1/b1b54b37-69f4-46bd-8ee7-216e65507478.jpg?1561771533",
-                "type": "Sorcery",
-                "oracle_text": "Choose one \u2014\n\u2022 You draw five cards and you lose 5 life.\n\u2022 Create an X/X black Demon creature token with flying, where X is the number of cards in your hand.\nEntwine {4} (Choose both if you pay the entwine cost.)",
-                "quantity": 1,
-                "number": 55
+                "number": 94
             }
         ],
         "Artifacts": [
-            {
-                "name": "Marauder's Axe",
-                "image": "https://cards.scryfall.io/normal/front/4/9/49d8aa8a-3e87-42ac-9c79-2baec771c1ef.jpg?1601080796",
-                "type": "Artifact \u2014 Equipment",
-                "oracle_text": "Equipped creature gets +2/+0.\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",
-                "quantity": 1,
-                "number": 26
-            },
-            {
-                "name": "Coat of Arms",
-                "image": "https://cards.scryfall.io/normal/front/5/1/513d4c36-6ad4-4ee9-b161-3136eb59504f.jpg?1592761864",
-                "type": "Artifact",
-                "oracle_text": "Each creature gets +1/+1 for each other creature on the battlefield that shares at least one creature type with it. (For example, if two Goblin Warriors and a Goblin Shaman are on the battlefield, each gets +2/+2.)",
-                "quantity": 1,
-                "number": 27
-            },
             {
                 "name": "Door of Destinies",
                 "image": "https://cards.scryfall.io/normal/front/7/5/75fd3fea-158a-4575-84a8-879ee9404242.jpg?1562612984",
                 "type": "Artifact",
                 "oracle_text": "As Door of Destinies enters, choose a creature type.\nWhenever you cast a spell of the chosen type, put a charge counter on Door of Destinies.\nCreatures you control of the chosen type get +1/+1 for each charge counter on Door of Destinies.",
                 "quantity": 1,
-                "number": 28
+                "number": 47
             },
             {
-                "name": "Quietus Spike",
-                "image": "https://cards.scryfall.io/normal/front/7/d/7dc8e9cc-1aac-4709-9629-9f4318c86cb0.jpg?1673485449",
-                "type": "Artifact \u2014 Equipment",
-                "oracle_text": "Equipped creature has deathtouch.\nWhenever equipped creature deals combat damage to a player, that player loses half their life, rounded up.\nEquip {3}",
-                "quantity": 1,
-                "number": 29
-            },
-            {
-                "name": "Skullclamp",
-                "image": "https://cards.scryfall.io/normal/front/a/3/a36fd6d8-66a2-49d1-b9f3-b400ebc03674.jpg?1682210228",
-                "type": "Artifact \u2014 Equipment",
-                "oracle_text": "Equipped creature gets +1/-1.\nWhenever equipped creature dies, draw two cards.\nEquip {1}",
-                "quantity": 1,
-                "number": 30
-            },
-            {
-                "name": "Sol Ring",
-                "image": "https://cards.scryfall.io/normal/front/8/2/82f1a8a3-7fdb-49a3-9649-b5c0b4755cd5.jpg?1726284526",
+                "name": "Herald's Horn",
+                "image": "https://cards.scryfall.io/normal/front/4/b/4bfa71d4-4125-4404-9c24-979401bae592.jpg?1698988513",
                 "type": "Artifact",
-                "oracle_text": "{T}: Add {C}{C}.",
+                "oracle_text": "As Herald's Horn enters, choose a creature type.\nCreature spells you cast of the chosen type cost {1} less to cast.\nAt the beginning of your upkeep, look at the top card of your library. If it's a creature card of the chosen type, you may reveal it and put it into your hand.",
                 "quantity": 1,
-                "number": 31
+                "number": 48
             },
             {
                 "name": "Vanquisher's Banner",
@@ -1055,23 +1167,31 @@
                 "type": "Artifact",
                 "oracle_text": "As Vanquisher's Banner enters, choose a creature type.\nCreatures you control of the chosen type get +1/+1.\nWhenever you cast a creature spell of the chosen type, draw a card.",
                 "quantity": 1,
-                "number": 32
+                "number": 49
             },
             {
-                "name": "Boros Signet",
-                "image": "https://cards.scryfall.io/normal/front/d/f/df8388ee-5d1d-4144-a8b1-e555da72ad6b.jpg?1706433274",
+                "name": "Commander's Sphere",
+                "image": "https://cards.scryfall.io/normal/front/a/4/a4ce6b63-0b38-4582-94d5-c733af087038.jpg?1726285297",
                 "type": "Artifact",
-                "oracle_text": "{1}, {T}: Add {R}{W}.",
+                "oracle_text": "{T}: Add one mana of any color in your commander's color identity.\nSacrifice Commander's Sphere: Draw a card.",
                 "quantity": 1,
-                "number": 34
+                "number": 50
             },
             {
-                "name": "Orzhov Signet",
-                "image": "https://cards.scryfall.io/normal/front/4/9/4930d5ea-a6a9-4a87-9083-d5cd337cd7fa.jpg?1726285311",
+                "name": "Sol Ring",
+                "image": "https://cards.scryfall.io/normal/front/8/2/82f1a8a3-7fdb-49a3-9649-b5c0b4755cd5.jpg?1726284526",
                 "type": "Artifact",
-                "oracle_text": "{1}, {T}: Add {W}{B}.",
+                "oracle_text": "{T}: Add {C}{C}.",
                 "quantity": 1,
-                "number": 35
+                "number": 51
+            },
+            {
+                "name": "Chromatic Lantern",
+                "image": "https://cards.scryfall.io/normal/front/8/f/8f6448b1-ffc7-43f0-b713-881016ce9485.jpg?1712354852",
+                "type": "Artifact",
+                "oracle_text": "Lands you control have \"{T}: Add one mana of any color.\"\n{T}: Add one mana of any color.",
+                "quantity": 1,
+                "number": 53
             },
             {
                 "name": "Rakdos Signet",
@@ -1079,17 +1199,41 @@
                 "type": "Artifact",
                 "oracle_text": "{1}, {T}: Add {B}{R}.",
                 "quantity": 1,
-                "number": 36
+                "number": 54
+            },
+            {
+                "name": "Boros Signet",
+                "image": "https://cards.scryfall.io/normal/front/d/f/df8388ee-5d1d-4144-a8b1-e555da72ad6b.jpg?1706433274",
+                "type": "Artifact",
+                "oracle_text": "{1}, {T}: Add {R}{W}.",
+                "quantity": 1,
+                "number": 55
             }
         ],
         "Enchantments": [
             {
-                "name": "Vampiric Rites",
-                "image": "https://cards.scryfall.io/normal/front/9/a/9ae0b1e0-a481-4a98-b67b-0cf8bac53fdd.jpg?1730490930",
+                "name": "Anointed Procession",
+                "image": "https://cards.scryfall.io/normal/front/9/a/9a52c265-6920-4929-ba0a-70da08df01f1.jpg?1543674565",
                 "type": "Enchantment",
-                "oracle_text": "{1}{B}, Sacrifice a creature: You gain 1 life and draw a card.",
+                "oracle_text": "If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead.",
                 "quantity": 1,
-                "number": 33
+                "number": 40
+            },
+            {
+                "name": "Blind Obedience",
+                "image": "https://cards.scryfall.io/normal/front/d/8/d859e1f9-feb3-497a-af0b-f74fee46861f.jpg?1702429264",
+                "type": "Enchantment",
+                "oracle_text": "Extort (Whenever you cast a spell, you may pay {W/B}. If you do, each opponent loses 1 life and you gain that much life.)\nArtifacts and creatures your opponents control enter tapped.",
+                "quantity": 1,
+                "number": 41
+            },
+            {
+                "name": "Cover of Darkness",
+                "image": "https://cards.scryfall.io/normal/front/0/d/0d6d7d88-d82b-40f4-bf57-ec5d7c480689.jpg?1562898088",
+                "type": "Enchantment",
+                "oracle_text": "As Cover of Darkness enters, choose a creature type.\nCreatures of the chosen type have fear. (They can't be blocked except by artifact creatures and/or black creatures.)",
+                "quantity": 1,
+                "number": 43
             },
             {
                 "name": "Shared Animosity",
@@ -1097,15 +1241,47 @@
                 "type": "Enchantment",
                 "oracle_text": "Whenever a creature you control attacks, it gets +1/+0 until end of turn for each other attacking creature that shares a creature type with it.",
                 "quantity": 1,
-                "number": 37
+                "number": 44
             },
             {
-                "name": "Call the Bloodline",
-                "image": "https://cards.scryfall.io/normal/front/3/e/3ec85cca-ac2c-4b1b-850b-6a762df72bd0.jpg?1576384367",
+                "name": "Stensia Masquerade",
+                "image": "https://cards.scryfall.io/normal/front/f/a/faaf031f-2c77-4248-8a29-f47e64773cfd.jpg?1736468223",
                 "type": "Enchantment",
-                "oracle_text": "{1}, Discard a card: Create a 1/1 black Vampire Knight creature token with lifelink. Activate only once each turn.",
+                "oracle_text": "Attacking creatures you control have first strike.\nWhenever a Vampire you control deals combat damage to a player, put a +1/+1 counter on it.\nMadness {2}{R} (If you discard this card, discard it into exile. When you do, cast it for its madness cost or put it into your graveyard.)",
+                "quantity": 1,
+                "number": 45
+            },
+            {
+                "name": "Underworld Connections",
+                "image": "https://cards.scryfall.io/normal/front/1/d/1df71add-7bb6-4687-bb69-cf4450adb7dc.jpg?1641602908",
+                "type": "Enchantment \u2014 Aura",
+                "oracle_text": "Enchant land\nEnchanted land has \"{T}, Pay 1 life: Draw a card.\"",
                 "quantity": 1,
                 "number": 46
+            },
+            {
+                "name": "Smothering Tithe",
+                "image": "https://cards.scryfall.io/normal/front/8/6/861b5889-0183-4bee-afeb-a4b2aa700a8e.jpg?1689996018",
+                "type": "Enchantment",
+                "oracle_text": "Whenever an opponent draws a card, that player may pay {2}. If the player doesn't, you create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")",
+                "quantity": 1,
+                "number": 56
+            },
+            {
+                "name": "Phyrexian Arena",
+                "image": "https://cards.scryfall.io/normal/front/0/7/0784b6f0-9ebf-43d2-ba0f-a6bc93ba0c48.jpg?1730489269",
+                "type": "Enchantment",
+                "oracle_text": "At the beginning of your upkeep, you draw a card and you lose 1 life.",
+                "quantity": 1,
+                "number": 57
+            },
+            {
+                "name": "Exquisite Blood",
+                "image": "https://cards.scryfall.io/normal/front/0/e/0e8ccfa7-4178-476a-a155-0ca1c98556c9.jpg?1698988246",
+                "type": "Enchantment",
+                "oracle_text": "Whenever an opponent loses life, you gain that much life.",
+                "quantity": 1,
+                "number": 93
             }
         ],
         "Planeswalkers": [
@@ -1115,193 +1291,97 @@
                 "type": "Legendary Planeswalker \u2014 Sorin",
                 "oracle_text": "+1: Target creature you control gains deathtouch and lifelink until end of turn. If it's a Vampire, put a +1/+1 counter on it.\n+1: You may sacrifice a Vampire. When you do, Sorin, Imperious Bloodlord deals 3 damage to any target and you gain 3 life.\n\u22123: You may put a Vampire creature card from your hand onto the battlefield.",
                 "quantity": 1,
-                "number": 38
+                "number": 59
             }
         ],
         "Lands": [
-            {
-                "name": "Command Tower",
-                "image": "https://cards.scryfall.io/normal/front/1/2/129d1bbd-83ad-4953-bf6d-b55989b2529c.jpg?1733640092",
-                "type": "Land",
-                "oracle_text": "{T}: Add one mana of any color in your commander's color identity.",
-                "quantity": 1,
-                "number": 57
-            },
-            {
-                "name": "Dragonskull Summit",
-                "image": "https://cards.scryfall.io/normal/front/3/b/3b96a40e-828a-4cec-99cd-130dbcbdc67c.jpg?1726285394",
-                "type": "Land",
-                "oracle_text": "Dragonskull Summit enters tapped unless you control a Swamp or a Mountain.\n{T}: Add {B} or {R}.",
-                "quantity": 1,
-                "number": 58
-            },
-            {
-                "name": "Isolated Chapel",
-                "image": "https://cards.scryfall.io/normal/front/a/f/af5398d1-804b-4a38-b16a-57a855e9c3b0.jpg?1712355045",
-                "type": "Land",
-                "oracle_text": "Isolated Chapel enters tapped unless you control a Plains or a Swamp.\n{T}: Add {W} or {B}.",
-                "quantity": 1,
-                "number": 59
-            },
-            {
-                "name": "Blood Crypt",
-                "image": "https://cards.scryfall.io/normal/front/0/9/0994aef4-b341-45f4-8881-523565a5956e.jpg?1702429795",
-                "type": "Land \u2014 Swamp Mountain",
-                "oracle_text": "({T}: Add {B} or {R}.)\nAs Blood Crypt enters, you may pay 2 life. If you don't, it enters tapped.",
-                "quantity": 1,
-                "number": 60
-            },
-            {
-                "name": "Evolving Wilds",
-                "image": "https://cards.scryfall.io/normal/front/e/3/e3056678-4ef0-4847-af08-df218ef5fb2b.jpg?1736468674",
-                "type": "Land",
-                "oracle_text": "{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",
-                "quantity": 1,
-                "number": 61
-            },
-            {
-                "name": "Godless Shrine",
-                "image": "https://cards.scryfall.io/normal/front/9/e/9e26f6ad-c1b8-4ec6-a179-e86ce09824c1.jpg?1702429803",
-                "type": "Land \u2014 Plains Swamp",
-                "oracle_text": "({T}: Add {W} or {B}.)\nAs Godless Shrine enters, you may pay 2 life. If you don't, it enters tapped.",
-                "quantity": 1,
-                "number": 62
-            },
-            {
-                "name": "Sacred Foundry",
-                "image": "https://cards.scryfall.io/normal/front/8/0/8076a8c3-7c6c-4636-b5d8-9b09ee95f92c.jpg?1702429818",
-                "type": "Land \u2014 Mountain Plains",
-                "oracle_text": "({T}: Add {R} or {W}.)\nAs Sacred Foundry enters, you may pay 2 life. If you don't, it enters tapped.",
-                "quantity": 1,
-                "number": 63
-            },
-            {
-                "name": "Scoured Barrens",
-                "image": "https://cards.scryfall.io/normal/front/a/c/ac52be0c-49f4-4956-820e-bdd7d2744d2f.jpg?1738356941",
-                "type": "Land",
-                "oracle_text": "This land enters tapped.\nWhen this land enters, you gain 1 life.\n{T}: Add {W} or {B}.",
-                "quantity": 1,
-                "number": 64
-            },
-            {
-                "name": "Mountain",
-                "image": "https://cards.scryfall.io/normal/front/f/b/fb76cb6c-2f4d-4ca2-876f-d49ea529e59b.jpg?1738357054",
-                "type": "Basic Land \u2014 Mountain",
-                "oracle_text": "({T}: Add {R}.)",
-                "quantity": 5,
-                "number": 65
-            },
-            {
-                "name": "Plains",
-                "image": "https://cards.scryfall.io/normal/front/4/6/464723b3-0723-45f2-a258-32d098c39039.jpg?1738357013",
-                "type": "Basic Land \u2014 Plains",
-                "oracle_text": "({T}: Add {W}.)",
-                "quantity": 5,
-                "number": 66
-            },
-            {
-                "name": "Swamp",
-                "image": "https://cards.scryfall.io/normal/front/0/4/040d064e-b023-4750-afeb-1f58e36bc4ab.jpg?1738357042",
-                "type": "Basic Land \u2014 Swamp",
-                "oracle_text": "({T}: Add {B}.)",
-                "quantity": 10,
-                "number": 67
-            },
-            {
-                "name": "Wind-Scarred Crag",
-                "image": "https://cards.scryfall.io/normal/front/8/8/882969d8-7e3e-4f32-858a-00da20c67b83.jpg?1738356981",
-                "type": "Land",
-                "oracle_text": "This land enters tapped.\nWhen this land enters, you gain 1 life.\n{T}: Add {R} or {W}.",
-                "quantity": 1,
-                "number": 68
-            },
-            {
-                "name": "Rakdos Carnarium",
-                "image": "https://cards.scryfall.io/normal/front/b/2/b2eaa0f2-9f8e-4b41-8916-9c9a985c39de.jpg?1706240271",
-                "type": "Land",
-                "oracle_text": "Rakdos Carnarium enters tapped.\nWhen Rakdos Carnarium enters, return a land you control to its owner's hand.\n{T}: Add {B}{R}.",
-                "quantity": 1,
-                "number": 69
-            },
-            {
-                "name": "Terramorphic Expanse",
-                "image": "https://cards.scryfall.io/normal/front/b/3/b379c8f1-817c-4f18-8f58-45c40504433e.jpg?1726286878",
-                "type": "Land",
-                "oracle_text": "{T}, Sacrifice Terramorphic Expanse: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",
-                "quantity": 1,
-                "number": 70
-            },
-            {
-                "name": "Bojuka Bog",
-                "image": "https://cards.scryfall.io/normal/front/e/2/e286c618-ef42-433f-ade9-0c1235a295e3.jpg?1726285372",
-                "type": "Land",
-                "oracle_text": "Bojuka Bog enters tapped.\nWhen Bojuka Bog enters, exile target player's graveyard.\n{T}: Add {B}.",
-                "quantity": 1,
-                "number": 71
-            },
-            {
-                "name": "Tainted Field",
-                "image": "https://cards.scryfall.io/normal/front/c/6/c6eeab6f-a738-4005-91c2-a5f81df5c569.jpg?1726285507",
-                "type": "Land",
-                "oracle_text": "{T}: Add {C}.\n{T}: Add {W} or {B}. Activate only if you control a Swamp.",
-                "quantity": 1,
-                "number": 72
-            },
-            {
-                "name": "Tainted Peak",
-                "image": "https://cards.scryfall.io/normal/front/7/e/7e6f1a55-0fec-4b94-9640-9110ca8d0212.jpg?1726285513",
-                "type": "Land",
-                "oracle_text": "{T}: Add {C}.\n{T}: Add {B} or {R}. Activate only if you control a Swamp.",
-                "quantity": 1,
-                "number": 73
-            },
-            {
-                "name": "Temple of the False God",
-                "image": "https://cards.scryfall.io/normal/front/2/3/23d62c88-3a7a-4eef-8ec4-ff1243e6ce93.jpg?1726285545",
-                "type": "Land",
-                "oracle_text": "{T}: Add {C}{C}. Activate only if you control five or more lands.",
-                "quantity": 1,
-                "number": 74
-            },
-            {
-                "name": "Kabira Crossroads",
-                "image": "https://cards.scryfall.io/normal/front/7/f/7f6a18b8-d490-490d-83a5-227a416ccf92.jpg?1562614414",
-                "type": "Land",
-                "oracle_text": "Kabira Crossroads enters tapped.\nWhen Kabira Crossroads enters, you gain 2 life.\n{T}: Add {W}.",
-                "quantity": 1,
-                "number": 75
-            },
-            {
-                "name": "Stensia Bloodhall",
-                "image": "https://cards.scryfall.io/normal/front/c/c/cc2741d8-2c02-4acd-8ca2-55b4bf6aef1c.jpg?1562837116",
-                "type": "Land",
-                "oracle_text": "{T}: Add {C}.\n{3}{B}{R}, {T}: Stensia Bloodhall deals 2 damage to target player or planeswalker.",
-                "quantity": 1,
-                "number": 76
-            },
-            {
-                "name": "Transguild Promenade",
-                "image": "https://cards.scryfall.io/normal/front/a/0/a0baaa39-7fce-4feb-9118-b1d6bc24f548.jpg?1608918152",
-                "type": "Land",
-                "oracle_text": "Transguild Promenade enters tapped.\nWhen Transguild Promenade enters, sacrifice it unless you pay {1}.\n{T}: Add one mana of any color.",
-                "quantity": 1,
-                "number": 77
-            },
             {
                 "name": "Path of Ancestry",
                 "image": "https://cards.scryfall.io/normal/front/1/b/1b0431c1-4310-46f8-8d1e-b6e56de7453d.jpg?1712355087",
                 "type": "Land",
                 "oracle_text": "Path of Ancestry enters tapped.\n{T}: Add one mana of any color in your commander's color identity. When that mana is spent to cast a creature spell that shares a creature type with your commander, scry 1. (Look at the top card of your library. You may put that card on the bottom.)",
                 "quantity": 1,
-                "number": 78
+                "number": 65
             },
             {
-                "name": "Vault of the Archangel",
-                "image": "https://cards.scryfall.io/normal/front/3/f/3fb781da-2b8b-44c6-999f-5038e79a7d57.jpg?1712355208",
+                "name": "Unclaimed Territory",
+                "image": "https://cards.scryfall.io/normal/front/e/7/e7bd3aaa-864c-4cbb-bbab-68d87c824e3d.jpg?1698988658",
                 "type": "Land",
-                "oracle_text": "{T}: Add {C}.\n{2}{W}{B}, {T}: Creatures you control gain deathtouch and lifelink until end of turn.",
+                "oracle_text": "As Unclaimed Territory enters, choose a creature type.\n{T}: Add {C}.\n{T}: Add one mana of any color. Spend this mana only to cast a creature spell of the chosen type.",
                 "quantity": 1,
-                "number": 79
+                "number": 66
+            },
+            {
+                "name": "Command Tower",
+                "image": "https://cards.scryfall.io/normal/front/1/2/129d1bbd-83ad-4953-bf6d-b55989b2529c.jpg?1733640092",
+                "type": "Land",
+                "oracle_text": "{T}: Add one mana of any color in your commander's color identity.",
+                "quantity": 1,
+                "number": 67
+            },
+            {
+                "name": "Cavern of Souls",
+                "image": "https://cards.scryfall.io/normal/front/3/a/3aad15a2-8a1b-4460-9b06-e85863081878.jpg?1706884128",
+                "type": "Land",
+                "oracle_text": "As Cavern of Souls enters, choose a creature type.\n{T}: Add {C}.\n{T}: Add one mana of any color. Spend this mana only to cast a creature spell of the chosen type, and that spell can't be countered.",
+                "quantity": 1,
+                "number": 68
+            },
+            {
+                "name": "Arid Mesa",
+                "image": "https://cards.scryfall.io/normal/front/2/5/25ac5405-df7b-4097-914a-022cb18e20d4.jpg?1719135331",
+                "type": "Land",
+                "oracle_text": "{T}, Pay 1 life, Sacrifice Arid Mesa: Search your library for a Mountain or Plains card, put it onto the battlefield, then shuffle.",
+                "quantity": 1,
+                "number": 69
+            },
+            {
+                "name": "Bloodstained Mire",
+                "image": "https://cards.scryfall.io/normal/front/5/7/579743fe-f71e-4cb2-8629-d6b02ed1591d.jpg?1717012950",
+                "type": "Land",
+                "oracle_text": "{T}, Pay 1 life, Sacrifice Bloodstained Mire: Search your library for a Swamp or Mountain card, put it onto the battlefield, then shuffle.",
+                "quantity": 1,
+                "number": 70
+            },
+            {
+                "name": "Marsh Flats",
+                "image": "https://cards.scryfall.io/normal/front/9/d/9db3ba6d-eb7f-4f5b-9a3b-c6239c3baa42.jpg?1719135329",
+                "type": "Land",
+                "oracle_text": "{T}, Pay 1 life, Sacrifice Marsh Flats: Search your library for a Plains or Swamp card, put it onto the battlefield, then shuffle.",
+                "quantity": 1,
+                "number": 71
+            },
+            {
+                "name": "Scalding Tarn",
+                "image": "https://cards.scryfall.io/normal/front/7/1/71e491c5-8c07-449b-b2f1-ffa052e6d311.jpg?1719135325",
+                "type": "Land",
+                "oracle_text": "{T}, Pay 1 life, Sacrifice Scalding Tarn: Search your library for an Island or Mountain card, put it onto the battlefield, then shuffle.",
+                "quantity": 1,
+                "number": 72
+            },
+            {
+                "name": "Verdant Catacombs",
+                "image": "https://cards.scryfall.io/normal/front/9/4/94c229ea-90da-4aa0-bfda-b162fb3b5b8b.jpg?1719135323",
+                "type": "Land",
+                "oracle_text": "{T}, Pay 1 life, Sacrifice Verdant Catacombs: Search your library for a Swamp or Forest card, put it onto the battlefield, then shuffle.",
+                "quantity": 1,
+                "number": 73
+            },
+            {
+                "name": "Windswept Heath",
+                "image": "https://cards.scryfall.io/normal/front/b/d/bd1d13f7-fd38-4f0b-a8e0-1eac78668117.jpg?1717013102",
+                "type": "Land",
+                "oracle_text": "{T}, Pay 1 life, Sacrifice Windswept Heath: Search your library for a Forest or Plains card, put it onto the battlefield, then shuffle.",
+                "quantity": 1,
+                "number": 74
+            },
+            {
+                "name": "Wooded Foothills",
+                "image": "https://cards.scryfall.io/normal/front/4/e/4e11ea8a-f895-438d-a3b7-f070238e4161.jpg?1717013111",
+                "type": "Land",
+                "oracle_text": "{T}, Pay 1 life, Sacrifice Wooded Foothills: Search your library for a Mountain or Forest card, put it onto the battlefield, then shuffle.",
+                "quantity": 1,
+                "number": 75
             },
             {
                 "name": "Exotic Orchard",
@@ -1309,31 +1389,127 @@
                 "type": "Land",
                 "oracle_text": "{T}: Add one mana of any color that a land an opponent controls could produce.",
                 "quantity": 1,
+                "number": 76
+            },
+            {
+                "name": "Dragonskull Summit",
+                "image": "https://cards.scryfall.io/normal/front/3/b/3b96a40e-828a-4cec-99cd-130dbcbdc67c.jpg?1726285394",
+                "type": "Land",
+                "oracle_text": "Dragonskull Summit enters tapped unless you control a Swamp or a Mountain.\n{T}: Add {B} or {R}.",
+                "quantity": 1,
+                "number": 77
+            },
+            {
+                "name": "Clifftop Retreat",
+                "image": "https://cards.scryfall.io/normal/front/5/f/5f6b7995-faf8-4fba-8be8-12ee71bd53bf.jpg?1712354945",
+                "type": "Land",
+                "oracle_text": "Clifftop Retreat enters tapped unless you control a Mountain or a Plains.\n{T}: Add {R} or {W}.",
+                "quantity": 1,
+                "number": 78
+            },
+            {
+                "name": "Isolated Chapel",
+                "image": "https://cards.scryfall.io/normal/front/a/f/af5398d1-804b-4a38-b16a-57a855e9c3b0.jpg?1712355045",
+                "type": "Land",
+                "oracle_text": "Isolated Chapel enters tapped unless you control a Plains or a Swamp.\n{T}: Add {W} or {B}.",
+                "quantity": 1,
+                "number": 79
+            },
+            {
+                "name": "Sacred Foundry",
+                "image": "https://cards.scryfall.io/normal/front/8/0/8076a8c3-7c6c-4636-b5d8-9b09ee95f92c.jpg?1702429818",
+                "type": "Land \u2014 Mountain Plains",
+                "oracle_text": "({T}: Add {R} or {W}.)\nAs Sacred Foundry enters, you may pay 2 life. If you don't, it enters tapped.",
+                "quantity": 1,
                 "number": 80
             },
             {
-                "name": "Orzhov Basilica",
-                "image": "https://cards.scryfall.io/normal/front/9/c/9c7c08fc-b6ee-498c-8ab6-fd6be27c9d97.jpg?1726285470",
-                "type": "Land",
-                "oracle_text": "Orzhov Basilica enters tapped.\nWhen Orzhov Basilica enters, return a land you control to its owner's hand.\n{T}: Add {W}{B}.",
+                "name": "Blood Crypt",
+                "image": "https://cards.scryfall.io/normal/front/0/9/0994aef4-b341-45f4-8881-523565a5956e.jpg?1702429795",
+                "type": "Land \u2014 Swamp Mountain",
+                "oracle_text": "({T}: Add {B} or {R}.)\nAs Blood Crypt enters, you may pay 2 life. If you don't, it enters tapped.",
                 "quantity": 1,
                 "number": 81
             },
             {
-                "name": "Boros Garrison",
-                "image": "https://cards.scryfall.io/normal/front/7/6/76ec3366-98f3-4903-8f7b-cfcdd60e3be1.jpg?1706240240",
-                "type": "Land",
-                "oracle_text": "Boros Garrison enters tapped.\nWhen Boros Garrison enters, return a land you control to its owner's hand.\n{T}: Add {R}{W}.",
+                "name": "Godless Shrine",
+                "image": "https://cards.scryfall.io/normal/front/9/e/9e26f6ad-c1b8-4ec6-a179-e86ce09824c1.jpg?1702429803",
+                "type": "Land \u2014 Plains Swamp",
+                "oracle_text": "({T}: Add {W} or {B}.)\nAs Godless Shrine enters, you may pay 2 life. If you don't, it enters tapped.",
                 "quantity": 1,
                 "number": 82
             },
             {
-                "name": "Rupture Spire",
-                "image": "https://cards.scryfall.io/normal/front/c/7/c7ef4b15-efab-4255-ac2d-7794f253aa52.jpg?1608911838",
-                "type": "Land",
-                "oracle_text": "Rupture Spire enters tapped.\nWhen Rupture Spire enters, sacrifice it unless you pay {1}.\n{T}: Add one mana of any color.",
-                "quantity": 1,
+                "name": "Swamp",
+                "image": "https://cards.scryfall.io/normal/front/0/4/040d064e-b023-4750-afeb-1f58e36bc4ab.jpg?1738357042",
+                "type": "Basic Land \u2014 Swamp",
+                "oracle_text": "({T}: Add {B}.)",
+                "quantity": 5,
                 "number": 83
+            },
+            {
+                "name": "Mountain",
+                "image": "https://cards.scryfall.io/normal/front/f/b/fb76cb6c-2f4d-4ca2-876f-d49ea529e59b.jpg?1738357054",
+                "type": "Basic Land \u2014 Mountain",
+                "oracle_text": "({T}: Add {R}.)",
+                "quantity": 3,
+                "number": 84
+            },
+            {
+                "name": "Plains",
+                "image": "https://cards.scryfall.io/normal/front/4/6/464723b3-0723-45f2-a258-32d098c39039.jpg?1738357013",
+                "type": "Basic Land \u2014 Plains",
+                "oracle_text": "({T}: Add {W}.)",
+                "quantity": 2,
+                "number": 85
+            },
+            {
+                "name": "Bojuka Bog",
+                "image": "https://cards.scryfall.io/normal/front/e/2/e286c618-ef42-433f-ade9-0c1235a295e3.jpg?1726285372",
+                "type": "Land",
+                "oracle_text": "Bojuka Bog enters tapped.\nWhen Bojuka Bog enters, exile target player's graveyard.\n{T}: Add {B}.",
+                "quantity": 1,
+                "number": 86
+            },
+            {
+                "name": "Emergence Zone",
+                "image": "https://cards.scryfall.io/normal/front/a/b/ab95f6e7-b806-47fe-a071-6c38b3176d94.jpg?1557577458",
+                "type": "Land",
+                "oracle_text": "{T}: Add {C}.\n{1}, {T}, Sacrifice Emergence Zone: You may cast spells this turn as though they had flash.",
+                "quantity": 1,
+                "number": 87
+            },
+            {
+                "name": "Hall of Heliod's Generosity",
+                "image": "https://cards.scryfall.io/normal/front/f/0/f08dfd99-59fa-4a6c-bd69-c647f639de4d.jpg?1726285434",
+                "type": "Legendary Land",
+                "oracle_text": "{T}: Add {C}.\n{1}{W}, {T}: Put target enchantment card from your graveyard on top of your library.",
+                "quantity": 1,
+                "number": 88
+            },
+            {
+                "name": "Castle Locthwain",
+                "image": "https://cards.scryfall.io/normal/front/1/9/19336e3a-2242-4a30-a563-32f2e4fc18e9.jpg?1674142821",
+                "type": "Land",
+                "oracle_text": "Castle Locthwain enters tapped unless you control a Swamp.\n{T}: Add {B}.\n{1}{B}{B}, {T}: Draw a card, then you lose life equal to the number of cards in your hand.",
+                "quantity": 1,
+                "number": 89
+            },
+            {
+                "name": "Vault of Champions",
+                "image": "https://cards.scryfall.io/normal/front/c/a/cafd7db6-b04e-4fa2-bccd-981211132a93.jpg?1690000058",
+                "type": "Land",
+                "oracle_text": "Vault of Champions enters tapped unless you have two or more opponents.\n{T}: Add {W} or {B}.",
+                "quantity": 1,
+                "number": 90
+            },
+            {
+                "name": "Shineshadow Snarl",
+                "image": "https://cards.scryfall.io/normal/front/3/d/3d483bcf-438a-499b-86a5-6357d718faf1.jpg?1698988623",
+                "type": "Land",
+                "oracle_text": "As Shineshadow Snarl enters, you may reveal a Plains or Swamp card from your hand. If you don't, Shineshadow Snarl enters tapped.\n{T}: Add {W} or {B}.",
+                "quantity": 1,
+                "number": 91
             }
         ]
     }
