@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MTG Commander Deck Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2em;
+      background-image: url("{{ url_for('static', filename='default.jpg') }}");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      transition: background 0.5s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    h1 {
+      color: red;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      display: inline-block;
+      text-align: center;
+    }
+    /* Updated form to be centered and wider */
+    form {
+      margin-bottom: 2em;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+      width: 80%;
+      text-align: center;
+    }
+    /* Increase width of the prompt input box */
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 1em;
+      background-color: #333;
+      color: white;
+      border: 1px solid #555;
+      box-sizing: border-box;
+    }
+    /* Container for the submit button so it can be centered */
+    .button-container {
+      margin-top: 1em;
+      text-align: center;
+    }
+    input[type="submit"] {
+      width: 200px; /* Fixed width for the button */
+      padding: 8px 16px;
+      font-size: 1em;
+      background-color: #333;
+      color: white;
+      border: 1px solid #555;
+      cursor: pointer;
+    }
+    .error, .notes {
+      color: red;
+      margin-bottom: 1em;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      width: 80%;
+      text-align: center;
+    }
+    .section {
+      margin-bottom: 1.5em;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      width: 80%;
+    }
+    textarea {
+      width: 100%;
+      height: 200px;
+      padding: 8px;
+      font-family: monospace;
+      font-size: 0.95em;
+      resize: vertical;
+      background-color: #222;
+      color: #eee;
+      border: 1px solid #555;
+    }
+    /* Spinner and overlay styles */
+    #spinner {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      font-size: 40px;
+      transform: translate(-50%, -50%) rotate(0deg);
+      animation: spin 1s linear infinite;
+      z-index: 1001;
+    }
+    @keyframes spin {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+    /* A semi-transparent overlay to block user input */
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+  <h1>Magic: The Gathering Commander Deck Generator</h1>
+  
+  <form id="deckForm" method="POST" action="/">
+    <label for="prompt">Enter your prompt:</label><br>
+    <input type="text" id="prompt" name="prompt" placeholder="e.g., Give me a magic the gathering commander deck based on the vampires with Edgar Markov"><br>
+    <div class="button-container">
+      <input type="submit" value="Generate Deck">
+    </div>
+  </form>
+
+  <!-- Overlay and spinner -->
+  <div id="overlay"></div>
+  <div id="spinner">⌛</div>
+
+  {% if error_message %}
+    <div class="error" id="error-message">{{ error_message }}</div>
+  {% endif %}
+
+  <!-- Display deck card sections (each section is in its own text box) -->
+  {% if card_sections %}
+    {% for section in card_sections %}
+      <div class="section">
+        <h2>{{ section.title }}</h2>
+        <textarea readonly>{{ section.content }}</textarea>
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  <!-- Display Strategy & Notes in its own text box -->
+  {% if notes_sections %}
+    <div class="notes">
+      <h2>Strategy & Notes</h2>
+      <textarea readonly>
+{% for section in notes_sections %}
+{{ section.title }}:
+{{ section.content }}
+
+{% endfor %}
+      </textarea>
+    </div>
+  {% endif %}
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const form = document.getElementById("deckForm");
+      const errorMessage = document.getElementById("error-message");
+
+      form.addEventListener("submit", function(e) {
+        if (errorMessage) {
+          errorMessage.style.display = "none";
+        }
+
+        setTimeout(function() {
+          const inputs = form.querySelectorAll("input, textarea, button");
+          inputs.forEach(input => input.disabled = true);
+          document.getElementById("overlay").style.display = "block";
+          document.getElementById("spinner").style.display = "block";
+        }, 100);
+      });
+    });
+  </script>
+</body>
+</html>
+

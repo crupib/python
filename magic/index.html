@@ -174,7 +174,7 @@
         document.getElementById("loadingMessage").style.display = "none";
         const categoriesContainer = document.getElementById("deck-categories");
         categoriesContainer.innerHTML = "";
-        // Iterate over each category and display cards without showing card numbers.
+        // Iterate over each category and display cards without showing card descriptions.
         Object.entries(data.categories).forEach(([category, cards]) => {
           if (cards.length === 0) return;
           let sectionHTML = `<div class="deck-section"><h2>${category}</h2><div class="card-container">`;
@@ -188,7 +188,7 @@
               <div class="card">
                 <h3>${cardName}</h3>
                 <img src="${card.image}" alt="${card.name}">
-                <p>${card.oracle_text}</p>
+                <!-- Description removed on purpose -->
               </div>`;
           });
           sectionHTML += `</div></div>`;

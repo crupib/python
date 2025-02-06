@@ -13,7 +13,7 @@ def ask_openai(prompt):
     openai.api_key = oaikey
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-4",
+            model="o3-mini",
             messages=[{
                 "role": "user", 
                 "content": prompt + " Please generate a full 100-card deck list with each line in the format '1x Card Name'."
