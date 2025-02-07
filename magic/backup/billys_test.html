@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Basic Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #333;
+            color: white;
+            padding: 15px;
+        }
+        nav {
+            margin: 10px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+        }
+        section {
+            padding: 20px;
+        }
+  /* CSS for the image container */
+        #image-container {
+            display: none; /* Initially hide the image */
+        }
+
+        /* Optional: Make the image responsive */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Style for the text link */
+        .toggle-text {
+            color: blue;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hello, I am Arcana Incantis</h1>
+    </header>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">Deckbuilder</a>
+        <a href="#contact">Collection</a>
+    </nav>
+    <section>
+        <h2>Commander Deck Analysis & Optimization Guide</h2>
+    
+        <p>Commander Overview</p>
+        <p>Commander Name:</p>
+        <p>Mana Cost & Colors:</p>
+        <p>Playstyle & Role: (Aggro, Control, Combo, Midrange, etc.)</p>
+        <p>Key Strengths: (Card draw, recursion, ramp, interaction, etc.)</p>
+        <p>Weaknesses & Limitations: (High mana cost, vulnerability to removal, color restrictions, etc.)</p>
+        <p> 1. Deck List</p>
+        <p>Artifacts</p>  
+        <p>Creatures</p>  
+        <p>Enchantments</p> 
+        <p>Lands</p> 
+        <p>Sorceries</p> 
+    <!-- Text link to toggle the image visibility -->
+    <span class="toggle-text" onclick="toggleImage()">Illuminate History</span>
+
+    <!-- Image container that will be toggled -->
+    <div id="image-container">
+        <img id="image" src="https://cards.scryfall.io/large/front/9/8/98739789-80b5-4224-a2e4-09e00654aa9d.jpg?1637082308" alt="Sample Image" />
+    </div>
+
+    <!-- JavaScript to toggle image visibility -->
+    <script>
+        function toggleImage() {
+            var imageContainer = document.getElementById('image-container');
+            if (imageContainer.style.display === 'none' || imageContainer.style.display === '') {
+                imageContainer.style.display = 'block'; // Show the image
+            } else {
+                imageContainer.style.display = 'none'; // Hide the image
+            }
+        }</script>
+        <p>Instants</p>
+        <p>2. Core Strategy & Win Conditions</p>
+        <p>Primary Game Plan: (How does the deck win?)</p>
+        <p>Alternative Win Conditions: (Backup strategies in case of disruption.)</p>
+        <p>Key Synergies & Combos: (Interactions that create game-winning scenarios.)</p>
+        <p>3. Key Cards & Roleplayers</p>
+        <p>Staples & Auto-Includes: (Cards essential to the deck's function.)</p>
+        <p>Underrated Tech Choices: (Less common but effective cards.)</p>
+        <p>Meta Considerations: (Cards chosen based on common threats in your playgroup.)</p>
+        <p>4. Deck Breakdown</p>
+        <p>Ramp (10-15 cards): (Mana rocks, land ramp, cost reduction.)</p>
+        <p>Card Draw (8-12 cards): (Continuous draw engines vs. burst draw.)</p>
+        <p>Removal & Interaction (10-15 cards): (Single-target & board wipes, counterspells.)</p>
+        <p>Protection (5-10 cards): (Hexproof, indestructible, counter magic.)</p>
+        <p>Win Conditions (5-10 cards): (Overrun effects, infinite combos, damage output.)</p>
+        <p>5. Early, Mid, and Late Game Plan</p>
+        <p>Early Game Priorities (Turns 1-3): (Ramp, setup, early threats, protection.)</p>
+        <p>Mid Game (Turns 4-7): (Board presence, pressure, interaction.)</p>
+        <p>Late Game (Turns 8+): (Closing the game, recursion, lockout strategies.)</p>
+        <p>6. Power Level & Optimization</p>
+        <p>Casual, Mid-Power, or cEDH?</p>
+        <p>Budget vs. High-Value Upgrades:</p>
+        <p>Consistency Improvements: (More tutors, redundancy, mana smoothing.)</p>
+        <p>7. Playstyle Tips & Matchups</p>
+        <p>How to Mulligan: (What starting hands are ideal?)</p>
+        <p>Matchups Against Aggro, Control, Combo: (How does the deck fare vs. different strategies?)</p>
+        <p>Common Mistakes & Misplays: (Things to avoid when piloting the deck)</p>
+    </section>
+</body>
+</html>
