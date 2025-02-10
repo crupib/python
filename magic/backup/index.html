@@ -225,13 +225,14 @@
           } else {
             headerCount = cards.length;
           }
+          // Display the category name with the count appended only once.
           let categoryTitle = `${category} (${headerCount})`;
           let sectionHTML = `<div class="deck-section"><h2>${categoryTitle}</h2><div class="card-container">`;
 
           cards.forEach((card, index) => {
             let quantityText = "";
             if (category.toLowerCase().includes("land") &&
-                (card.name === "Plains" || card.name === "Swamp" || card.name === "Mountain") &&
+                (card.name.toLowerCase() === "plains" || card.name.toLowerCase() === "swamp" || card.name.toLowerCase() === "mountain") &&
                 card.quantity > 1) {
               quantityText = ` (x${card.quantity})`;
             }

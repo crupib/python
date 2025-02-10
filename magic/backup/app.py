@@ -101,26 +101,27 @@ def generate_deck():
                 continue
 
             # --- Header Detection ---
-            # Check if the line is a category header.
             # For your prompt, headers are like "Commander:" or "Creatures:".
             header_match = re.match(r"^(.*):\s*$", line)
             if header_match:
-                current_category = header_match.group(1).strip()
+                raw_category = header_match.group(1).strip()
+                # Remove any trailing count in parentheses so counts aren't duplicated.
+                current_category = re.sub(r"\s*\(\d+\)$", "", raw_category)
                 if current_category not in categories:
                     categories[current_category] = {}
                 print(f"📂 New category detected: {current_category} from line: {repr(original_line)}")
                 continue
 
             # --- Card Processing ---
-            # Remove the leading index and dot.
+            # Remove the leading index and dot if present.
             index_match = re.match(r"^\d+\.\s*(.*)$", line)
             if index_match:
                 card_line = index_match.group(1)
             else:
                 card_line = line
 
-            # Now check if the card_line starts with a quantity.
-            qty_match = re.match(r"^(\d+)\s+(.*)$", card_line)
+            # Now remove the quantity prefix (allowing an optional "x").
+            qty_match = re.match(r"^(\d+)[x]?\s+(.*)$", card_line)
             if qty_match:
                 quantity = int(qty_match.group(1))
                 card_name = qty_match.group(2).strip()

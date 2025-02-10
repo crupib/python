@@ -1,0 +1,295 @@
+import os
+import re
+import json
+import requests
+import openai
+from flask import Flask, render_template, request, jsonify
+
+app = Flask(__name__)
+
+# Ensure static/cards directory exists
+STATIC_IMAGE_DIR = "static/cards"
+os.makedirs(STATIC_IMAGE_DIR, exist_ok=True)
+
+# Set your OpenAI API key
+openai.api_key = os.getenv("OPENAI_KEY", "your_api_key_here")
+
+def get_card_image_url(card_name):
+    """Fetch the card image URL from Scryfall API."""
+    print(f"🔍 Fetching image URL for card: {card_name}...")
+    url = f"https://api.scryfall.com/cards/named?fuzzy={card_name}"
+    response = requests.get(url)
+    if response.status_code != 200:
+        print(f"⚠️ Error: Card '{card_name}' not found.")
+        return None
+    card_data = response.json()
+    if "image_uris" in card_data:
+        return card_data["image_uris"].get("normal")
+    elif "card_faces" in card_data:
+        return card_data["card_faces"][0]["image_uris"].get("normal")
+    print(f"⚠️ No image found for {card_name}.")
+    return None
+
+def download_card_image(card_name):
+    """Download and save the card image locally."""
+    sanitized_name = re.sub(r'\W+', '_', card_name)
+    local_image_path = os.path.join(STATIC_IMAGE_DIR, f"{sanitized_name}.jpg")
+    if os.path.exists(local_image_path):
+        print(f"✅ Image already exists for {card_name}, skipping download.")
+        return f"/{local_image_path}"
+    image_url = get_card_image_url(card_name)
+    if not image_url:
+        return None
+    try:
+        print(f"⬇️ Downloading image for {card_name}...")
+        img_data = requests.get(image_url).content
+        with open(local_image_path, 'wb') as img_file:
+            img_file.write(img_data)
+        print(f"✅ Image saved: {local_image_path}")
+        return f"/{local_image_path}"
+    except Exception as e:
+        print(f"⚠️ Failed to download {card_name}: {e}")
+        return None
+
+@app.route("/")
+def index():
+    print("📢 Serving index.html...")
+    return render_template("index.html")
+
+@app.route("/generate_deck", methods=["POST"])
+def generate_deck():
+    data = request.json
+    prompt = data.get("prompt", "").strip()
+    if not prompt:
+        print("⚠️ No prompt provided!")
+        return jsonify({"error": "No prompt provided"}), 400
+    try:
+        print(f"📢 Generating deck for prompt: {prompt}")
+        response = openai.ChatCompletion.create(
+            model="gpt-4",
+            messages=[{"role": "user", "content": prompt}]
+        )
+        deck_text = response["choices"][0]["message"]["content"]
+        print("✅ OpenAI response received.")
+        print("🔍 OpenAI API Response:")
+        print(deck_text)  # Debug output
+
+        # --- Split raw text into deck part and notes part ---
+        raw_lines = deck_text.split("\n")
+        deck_lines = []
+        notes_lines = []
+        # We assume that any line matching a header (e.g. "Commander:") or a card line (e.g. "1x Niv-Mizzet, Parun")
+        # belongs to the deck part. All other nonempty lines go to the notes.
+        for line in raw_lines:
+            tline = line.strip()
+            if not tline:
+                continue
+            # Card lines: start with a number and an optional "x" (case-insensitive) followed by some text
+            if re.match(r"^\d+[xX]?\s+.*", tline) or re.match(r"^(.*):\s*$", tline):
+                deck_lines.append(tline)
+            else:
+                notes_lines.append(tline)
+        notes_text = " ".join(notes_lines).strip()
+
+        # --- Process deck part into categories ---
+        categories = {}
+        current_category = None
+        for line in deck_lines:
+            # Header Detection (e.g. "Commander:")
+            header_match = re.match(r"^(.*):\s*$", line)
+            if header_match:
+                raw_category = header_match.group(1).strip()
+                current_category = re.sub(r"\s*\(\d+\)$", "", raw_category)  # remove trailing count if any
+                if current_category not in categories:
+                    categories[current_category] = {}
+                print(f"📂 New category detected: {current_category} from line: {repr(line)}")
+                continue
+
+            # Check for a mix pattern (e.g. "13x Mix of basic Islands and Mountains")
+            mix_match = re.match(r"^(\d+)-(\d+)\s+Mix of basic\s+(.*)$", line, re.I)
+            if mix_match:
+                if current_category is None:
+                    print(f"⚠️ Error: No category found for mix line: {line}, skipping.")
+                    continue
+                lower_bound = int(mix_match.group(1))
+                types_str = mix_match.group(3).strip()
+                land_types = [t.strip() for t in re.split(r",|and", types_str) if t.strip()]
+                if not land_types:
+                    print(f"⚠️ Error: No basic land types found in mix: {line}")
+                    continue
+                num_types = len(land_types)
+                quantity_per_type = lower_bound // num_types
+                remainder = lower_bound % num_types
+                for i, land in enumerate(land_types):
+                    qty = quantity_per_type + (1 if i < remainder else 0)
+                    print(f"🃏 Processing mixed basic land: {land} (x{qty})")
+                    card_image = download_card_image(land)
+                    land_key = land.lower()
+                    if "land" in current_category.lower() and land_key in categories[current_category]:
+                        categories[current_category][land_key]["quantity"] += qty
+                    else:
+                        categories[current_category][land_key] = {
+                            "name": land,
+                            "quantity": qty,
+                            "image": card_image
+                        }
+                continue
+
+            # Process a normal card line (e.g. "1x Niv-Mizzet, Parun")
+            qty_match = re.match(r"^(\d+)[xX]?\s+(.*)$", line)
+            if qty_match:
+                quantity = int(qty_match.group(1))
+                card_name = qty_match.group(2).strip()
+            else:
+                # If a line does not match a card pattern, skip it (it should have been captured as notes)
+                print(f"⚠️ Skipping unrecognized line: {line}")
+                continue
+
+            print(f"🃏 Processing card: {card_name} (x{quantity})")
+            card_image = download_card_image(card_name)
+            if current_category is None:
+                print(f"⚠️ Error: No category found for {card_name}, skipping.")
+                continue
+            card_key = card_name.lower()
+            if "land" in current_category.lower() and card_key in categories[current_category]:
+                categories[current_category][card_key]["quantity"] += quantity
+            else:
+                categories[current_category][card_key] = {
+                    "name": card_name,
+                    "quantity": quantity,
+                    "image": card_image
+                }
+
+        # Convert each category's cards from dict to list.
+        for category, cards in categories.items():
+            categories[category] = list(cards.values())
+
+        # Compute overall total card count.
+        overall_total = 0
+        for cat, cards in categories.items():
+            if "land" in cat.lower():
+                overall_total += sum(card["quantity"] for card in cards)
+            else:
+                overall_total += len(cards)
+        print(f"🔍 Deck card count before adjustments: {overall_total}")
+
+        # (Additional trimming or filling to exactly 100 cards is done here as before.)
+        # For brevity, we assume that part remains unchanged.
+        # ----- Ensure exactly one commander is present -----
+        commander_found = False
+        for cat in list(categories.keys()):
+            if cat.lower() == "commander":
+                commander_found = True
+                if len(categories[cat]) != 1:
+                    print(f"⚠️ Debug: Commander category has {len(categories[cat])} cards. Expected exactly 1 commander. Trimming to first entry.")
+                    categories[cat] = categories[cat][:1]
+                break
+        if not commander_found:
+            print("⚠️ Debug: No commander found in deck!")
+
+        # ----- Adjust deck size to exactly 100 cards -----
+        if overall_total > 100:
+            excess = overall_total - 100
+            print(f"Trimming deck: overall_total={overall_total}, excess={excess}")
+            for cat in list(categories.keys()):
+                if cat.lower() in ["commander"] or "land" in cat.lower():
+                    continue
+                new_list = []
+                for card in categories[cat]:
+                    if excess <= 0:
+                        new_list.append(card)
+                    else:
+                        excess -= 1
+                        print(f"⚠️ Trimming card: {card['name']}")
+                categories[cat] = new_list
+                if excess <= 0:
+                    break
+            if excess > 0:
+                for cat in list(categories.keys()):
+                    if "land" not in cat.lower():
+                        continue
+                    new_list = []
+                    for card in categories[cat]:
+                        if excess <= 0:
+                            new_list.append(card)
+                        else:
+                            if card["quantity"] <= excess:
+                                excess -= card["quantity"]
+                                print(f"⚠️ Trimming entire land card: {card['name']} (x{card['quantity']})")
+                            else:
+                                print(f"⚠️ Reducing quantity of land card: {card['name']} from {card['quantity']} by {excess}")
+                                card["quantity"] -= excess
+                                excess = 0
+                                new_list.append(card)
+                    categories[cat] = new_list
+                    if excess <= 0:
+                        break
+            overall_total = 100
+
+        if overall_total < 100:
+            missing = 100 - overall_total
+            print(f"Deck has less than 100 cards: {overall_total}. Adding {missing} generic land(s).")
+            land_category = None
+            for cat in categories.keys():
+                if "land" in cat.lower():
+                    land_category = cat
+                    break
+            if not land_category:
+                land_category = "Lands"
+                categories[land_category] = []
+            basic_land_types = ["plains", "island", "swamp", "mountain", "forest"]
+            existing_generic_lands = [card for card in categories[land_category] if card["name"].lower() in basic_land_types]
+            if existing_generic_lands:
+                count = len(existing_generic_lands)
+                add_per_land = missing // count
+                remainder = missing % count
+                for i, card in enumerate(existing_generic_lands):
+                    add_qty = add_per_land + (1 if i < remainder else 0)
+                    print(f"➕ Adding {add_qty} extra copies to {card['name']}")
+                    card["quantity"] += add_qty
+            else:
+                categories[land_category].append({
+                    "name": "Plains",
+                    "quantity": missing,
+                    "image": download_card_image("Plains")
+                })
+            overall_total = 100
+
+        final_total = 0
+        for cat, cards in categories.items():
+            if "land" in cat.lower():
+                final_total += sum(card["quantity"] for card in cards)
+            else:
+                final_total += len(cards)
+        if final_total != 100:
+            print(f"⚠️ Debug: Final deck total is {final_total} instead of 100.")
+
+        deck_data = {"categories": categories, "total": final_total}
+        if notes_text:
+            deck_data["notes"] = notes_text
+        deck_data["raw_response"] = deck_text
+
+        print("📄 Final Deck Data:")
+        print(json.dumps(deck_data, indent=2))
+        with open("static/deck.json", "w") as f:
+            json.dump(deck_data, f)
+        print("✅ Deck successfully saved!")
+        return jsonify({"message": "Deck generated successfully.", "raw_response": deck_text})
+    except Exception as e:
+        print(f"⚠️ Error during deck generation: {e}")
+        return jsonify({"error": f"Failed to generate deck: {e}"}), 500
+
+@app.route("/deck.json")
+def get_deck():
+    try:
+        print("📢 Serving deck.json...")
+        with open("static/deck.json", "r") as f:
+            return f.read(), 200, {'Content-Type': 'application/json'}
+    except FileNotFoundError:
+        print("⚠️ Error: Deck file not found.")
+        return jsonify({"error": "Deck not found"}), 404
+
+if __name__ == "__main__":
+    print("🚀 Starting Flask Server on http://localhost:8000 🚀")
+    app.run(host="0.0.0.0", port=8000, debug=True)
+

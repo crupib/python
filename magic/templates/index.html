@@ -22,9 +22,10 @@
       border-radius: 6px;
       border: 1px solid #ccc;
     }
-    #generateButton {
-      display: block;
-      margin: 10px auto;
+    .button-group {
+      margin-top: 10px;
+    }
+    button {
       padding: 12px 24px;
       font-size: 20px;
       color: white;
@@ -33,8 +34,9 @@
       border-radius: 6px;
       cursor: pointer;
       transition: background-color 0.3s;
+      margin: 0 5px;
     }
-    #generateButton:hover {
+    button:hover {
       background-color: #0056b3;
     }
     .loading {
@@ -137,6 +139,34 @@
     .strategy-box h2 {
       margin-bottom: 10px;
     }
+    /* New elements for optional headers */
+    #deck-name, #deck-details, #deck-list {
+      margin-top: 20px;
+      text-align: center;
+    }
+    #deck-name h3, #deck-details h3, #deck-list h3 {
+      margin: 5px;
+    }
+    /* Prompt History Styles */
+    #promptHistory {
+      margin-top: 15px;
+      text-align: left;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #333;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    #promptHistory h3 {
+      margin-top: 0;
+    }
+    .history-item {
+      cursor: pointer;
+      color: lightblue;
+      text-decoration: underline;
+      margin: 5px 0;
+    }
   </style>
 </head>
 <body>
@@ -144,7 +174,14 @@
   
   <div class="prompt-container">
     <input type="text" id="userPrompt" placeholder="Enter a deck theme">
-    <button id="generateButton" onclick="generateDeck()">Generate Deck</button>
+    <div class="button-group">
+      <button id="generateButton" onclick="generateDeck()">Generate Deck</button>
+      <button id="clearButton" onclick="clearDeck()" style="display:none;">Clear</button>
+    </div>
+    <div id="promptHistory">
+      <h3>Prompt History:</h3>
+      <div id="historyList"></div>
+    </div>
   </div>
   
   <div id="loadingMessage" class="loading">
@@ -159,40 +196,92 @@
   
   <div id="totalCount" class="total-count"></div>
   
+  <!-- Optional headers -->
+  <div id="deck-name" style="display: none;">
+    <h3 id="deckNameHeading"></h3>
+  </div>
+  <div id="deck-details" style="display: none;">
+    <h3 id="deckDetailsHeading"></h3>
+  </div>
+  <div id="deck-list" style="display: none;">
+    <h3 id="deckListHeading"></h3>
+  </div>
+  
   <div id="deck-categories"></div>
   
-  <!-- Strategy/Notes box (displayed only if strategy text exists) -->
+  <!-- Notes and Strategy box -->
   <div id="strategyNotes" style="display: none;">
     <div class="strategy-box">
-      <h2>Strategy / Overview / Notes / Final</h2>
+      <h2>Notes and Strategy</h2>
       <p id="strategyText"></p>
     </div>
   </div>
-
+  
   <script>
     let timerInterval;
     let startTime;
-
+  
+    // Load prompt history from localStorage
+    function loadPromptHistory() {
+      let history = JSON.parse(localStorage.getItem("promptHistory")) || [];
+      const historyList = document.getElementById("historyList");
+      historyList.innerHTML = "";
+      history.forEach(prompt => {
+        const div = document.createElement("div");
+        div.className = "history-item";
+        div.textContent = prompt;
+        div.onclick = () => {
+          document.getElementById("userPrompt").value = prompt;
+        };
+        historyList.appendChild(div);
+      });
+    }
+  
+    // Add a new prompt to history
+    function addPromptToHistory(prompt) {
+      if (!prompt) return;
+      let history = JSON.parse(localStorage.getItem("promptHistory")) || [];
+      if (!history.includes(prompt)) {
+        history.push(prompt);
+        localStorage.setItem("promptHistory", JSON.stringify(history));
+      }
+      loadPromptHistory();
+    }
+  
     function updateTimer() {
       const now = Date.now();
       const elapsed = Math.floor((now - startTime) / 1000);
       document.getElementById("timerText").textContent = elapsed + "s";
     }
-
+  
     function generateDeck() {
       document.getElementById("loadingMessage").style.display = "block";
       document.getElementById("generationComplete").style.display = "none";
       document.getElementById("strategyNotes").style.display = "none";
       document.getElementById("totalCount").textContent = "";
+      document.getElementById("deck-categories").innerHTML = "";
+      document.getElementById("clearButton").style.display = "none";
+  
+      // Clear optional header fields.
+      document.getElementById("deckNameHeading").textContent = "";
+      document.getElementById("deckDetailsHeading").textContent = "";
+      document.getElementById("deckListHeading").textContent = "";
+      document.getElementById("deck-name").style.display = "none";
+      document.getElementById("deck-details").style.display = "none";
+      document.getElementById("deck-list").style.display = "none";
+  
+      const promptText = document.getElementById("userPrompt").value;
+      addPromptToHistory(promptText);
+  
       startTime = Date.now();
       timerInterval = setInterval(updateTimer, 1000);
       fetch("/generate_deck", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt: document.getElementById("userPrompt").value })
+        body: JSON.stringify({ prompt: promptText })
       }).then(() => setTimeout(loadDeck, 5000));
     }
-
+  
     function loadDeck() {
       fetch("/deck.json")
       .then(response => response.json())
@@ -201,12 +290,25 @@
         document.getElementById("loadingMessage").style.display = "none";
         document.getElementById("generationComplete").style.display = "block";
         clearInterval(timerInterval);
-        document.getElementById("timerText").textContent = ""; // Clear timer
-
+        document.getElementById("timerText").textContent = "";
+  
+        // Display optional header fields if provided.
+        if (data.deck_name) {
+          document.getElementById("deckNameHeading").textContent = data.deck_name;
+          document.getElementById("deck-name").style.display = "block";
+        }
+        if (data.deck_details) {
+          document.getElementById("deckDetailsHeading").textContent = data.deck_details;
+          document.getElementById("deck-details").style.display = "block";
+        }
+        if (data.deck_list) {
+          document.getElementById("deckListHeading").textContent = data.deck_list;
+          document.getElementById("deck-list").style.display = "block";
+        }
+  
         const categoriesContainer = document.getElementById("deck-categories");
         categoriesContainer.innerHTML = "";
-
-        // Calculate overall total card count.
+  
         let overallTotal = 0;
         for (const [category, cards] of Object.entries(data.categories)) {
           if (category.toLowerCase().includes("land")) {
@@ -216,8 +318,7 @@
           }
         }
         document.getElementById("totalCount").textContent = `Total Cards: ${overallTotal}`;
-
-        // Loop through each category and its cards.
+  
         Object.entries(data.categories).forEach(([category, cards]) => {
           let headerCount;
           if (category.toLowerCase().includes("land")) {
@@ -225,15 +326,12 @@
           } else {
             headerCount = cards.length;
           }
-          // Display the category name with the count appended only once.
           let categoryTitle = `${category} (${headerCount})`;
           let sectionHTML = `<div class="deck-section"><h2>${categoryTitle}</h2><div class="card-container">`;
-
+  
           cards.forEach((card, index) => {
             let quantityText = "";
-            if (category.toLowerCase().includes("land") &&
-                (card.name.toLowerCase() === "plains" || card.name.toLowerCase() === "swamp" || card.name.toLowerCase() === "mountain") &&
-                card.quantity > 1) {
+            if (category.toLowerCase().includes("land") && card.quantity > 1) {
               quantityText = ` (x${card.quantity})`;
             }
             let uniqueId = `${category.replace(/\s+/g, '_')}_${index}`;
@@ -246,16 +344,34 @@
           sectionHTML += `</div></div>`;
           categoriesContainer.innerHTML += sectionHTML;
         });
-
-        // Display strategy/notes text if available.
-        if (data.strategy) {
-          document.getElementById("strategyText").textContent = data.strategy;
+  
+        if (data.notes) {
+          document.getElementById("strategyText").textContent = data.notes;
           document.getElementById("strategyNotes").style.display = "block";
         }
         console.log("Raw ChatGPT Response:", data.raw_response);
+        document.getElementById("clearButton").style.display = "inline-block";
       });
     }
-
+  
+    function clearDeck() {
+      document.getElementById("deck-categories").innerHTML = "";
+      document.getElementById("totalCount").textContent = "";
+      document.getElementById("strategyNotes").style.display = "none";
+      document.getElementById("generationComplete").style.display = "none";
+      document.getElementById("clearButton").style.display = "none";
+      document.getElementById("deckNameHeading").textContent = "";
+      document.getElementById("deckDetailsHeading").textContent = "";
+      document.getElementById("deckListHeading").textContent = "";
+      document.getElementById("deck-name").style.display = "none";
+      document.getElementById("deck-details").style.display = "none";
+      document.getElementById("deck-list").style.display = "none";
+    }
+  
+    window.onload = function() {
+      loadPromptHistory();
+    };
+  
     function toggleImage(id, event) {
       event.stopPropagation();
       let img = document.getElementById(`card-image-${id}`);
