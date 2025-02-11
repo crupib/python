@@ -17,7 +17,7 @@ def show():
     global accountName, accountBalance, accountPassword
     print('       Name', accountName)
     print('       Balance:', accountBalance)
-    print('       Password:', getpass.getpass(accountPassword))
+    print('       Password:', accountPassword)
     print()
 
 def getBalance(password):
@@ -61,6 +61,8 @@ def withdraw(amountToWithdraw, password):
 
 newAccount("Joe", 100, 'soup')  # create an account
 
+userPassword = getpass.getpass('Please enter the password: ')
+
 while True:
     print()
     print('Press b to get the balance')
@@ -77,7 +79,6 @@ while True:
     
     if action == 'b':
         print('Get Balance:')
-        userPassword = getpass.getpass('Please enter the password: ')
         theBalance = getBalance(userPassword)
         if theBalance is not None:
             print('Your balance is:', theBalance)
@@ -86,7 +87,6 @@ while True:
         print('Deposit:')
         userDepositAmount = input('Please enter amount to deposit: ')
         userDepositAmount = int(userDepositAmount)
-        userPassword = getpass.getpass('Please enter the password: ')
 
         newBalance = deposit(userDepositAmount, userPassword)
         if newBalance is not None:
@@ -104,7 +104,6 @@ while True:
 
         userWithdrawAmount = input('Please enter the amount to withdraw: ')
         userWithdrawAmount = int(userWithdrawAmount)
-        userPassword = getpass.getpass('Please enter the password: ')
  
         newBalance = withdraw(userWithdrawAmount, userPassword)
         if newBalance is not None:

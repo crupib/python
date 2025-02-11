@@ -122,7 +122,9 @@ def withdraw(accountNumber, amountToWithdraw, password):
 
 # Create one test account
 newAccount(nAccounts, "Joe", 100, 'soup')
-nAccounts = 1
+nAccounts+=1
+newAccount(nAccounts, "Tata", 1000000, 'whore')
+nAccounts = 2
 
 while True:
     print()
