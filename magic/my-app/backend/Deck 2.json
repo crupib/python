@@ -1,0 +1,46 @@
+{
+  "commander": "Edgar Markov",
+  "theme": "Vampire Tribal",
+  "distribution": [
+    {
+      "label": "Card Advantage",
+      "value": 8
+    },
+    {
+      "label": "Ramp",
+      "value": 7
+    },
+    {
+      "label": "Disruption",
+      "value": 6
+    },
+    {
+      "label": "Land",
+      "value": 37
+    },
+    {
+      "label": "Creature",
+      "value": 20
+    },
+    {
+      "label": "Artifact",
+      "value": 5
+    },
+    {
+      "label": "Enchantment",
+      "value": 5
+    },
+    {
+      "label": "Planeswalker",
+      "value": 1
+    },
+    {
+      "label": "Sorcery",
+      "value": 5
+    },
+    {
+      "label": "Instant",
+      "value": 5
+    }
+  ]
+}

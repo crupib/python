@@ -1,0 +1,23 @@
+Based on the distribution provided in the JSON file, the deck is composed as follows:
+
+1. Commander: Edgar Markov
+2. Card Advantage: 8 cards
+3. Ramp: 7 cards
+4. Disruption: 6 cards
+5. Land: 37 cards
+6. Creature: 20 cards
+7. Artifact: 5 cards
+8. Enchantment: 5 cards
+9. Planeswalker: 1 card
+10. Sorcery: 5 cards
+11. Instant: 5 cards
+
+This deck is a Vampire Tribal themed deck led by Edgar Markov. The deck is heavily focused on lands, with 37% of the deck being land cards. This suggests a strategy that relies on having plenty of resources available to play powerful cards. 
+
+The next largest category is creatures, which makes sense given the tribal theme of the deck. With 20% of the deck being creature cards, it's clear that this deck aims to control the board with a variety of vampire creatures.
+
+The deck also includes a good mix of card advantage, ramp, and disruption cards. These will help the player draw more cards, accelerate their mana production, and disrupt the opponent's plans, respectively.
+
+The deck also includes a small number of artifacts, enchantments, sorceries, and instants, which can provide a variety of effects to support the deck's main strategies. There is also a single planeswalker card, which can provide a powerful ongoing advantage if it's able to stay on the board.
+
+Overall, this deck seems to be a well-rounded, resource-heavy deck that aims to dominate the board with vampire creatures while disrupting the opponent's strategies.
