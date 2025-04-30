@@ -1,0 +1,8 @@
+              Technician       AI Specialist          Engineer
+
+Number of 
+People        1                 1                     2
+
+Total number  1 x 20 = 20       1 x 30 = 30           2 x 22 =
+of days in a  days              days                  44 days
+cycle

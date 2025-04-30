@@ -1,0 +1,13 @@
+1611928236551	geckodriver	INFO	Listening on 127.0.0.1:52792
+1611928237552	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/3s/q8mtw3pn3znc1lwd9g04yj640000gn/T/rust_mozprofilekj8N6U"
+2021-01-29 08:50:39.203 firefox-bin[83269:764932] Warning: Expected min height of view: (<NSButton: 0x124fe0c00>) to be less than or equal to 30 but got a height of 32.000000. This error will be logged once per view in violation.
+2021-01-29 08:50:39.203 firefox-bin[83269:764932] Warning: Expected min height of view: (<NSButton: 0x13094fc00>) to be less than or equal to 30 but got a height of 32.000000. This error will be logged once per view in violation.
+2021-01-29 08:50:39.204 firefox-bin[83269:764932] Warning: Expected min height of view: (<NSButton: 0x130d6fc00>) to be less than or equal to 30 but got a height of 32.000000. This error will be logged once per view in violation.
+2021-01-29 08:50:39.204 firefox-bin[83269:764932] Warning: Expected min height of view: (<NSButton: 0x130d70000>) to be less than or equal to 30 but got a height of 32.000000. This error will be logged once per view in violation.
+2021-01-29 08:50:39.205 firefox-bin[83269:764932] Warning: Expected min height of view: (<NSButton: 0x130d6d000>) to be less than or equal to 30 but got a height of 32.000000. This error will be logged once per view in violation.
+2021-01-29 08:50:39.206 firefox-bin[83269:764932] Warning: Expected min height of view: (<NSPopoverTouchBarItemButton: 0x130d71c00>) to be less than or equal to 30 but got a height of 32.000000. This error will be logged once per view in violation.
+2021-01-29 08:50:39.206 firefox-bin[83269:764932] Warning: Expected min height of view: (<NSPopoverTouchBarItemButton: 0x1318a3400>) to be less than or equal to 30 but got a height of 32.000000. This error will be logged once per view in violation.
+console.error: SearchCache: "_readCacheFile: Error reading cache file:" (new Error("", "(unknown module)"))
+1611928240044	Marionette	INFO	Listening on port 52804
+1611928240130	Marionette	WARN	TLS certificate errors will be ignored for this session
+1611928249800	Marionette	INFO	Stopped listening on port 52804

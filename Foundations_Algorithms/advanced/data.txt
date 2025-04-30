@@ -1,0 +1,6 @@
+          Ottawa  Montreal  Kingston  Toronto  Sudbury
+Ottawa       -      199      196       450      484
+Montreal    199     -        287       543      680
+Kingston    196     287       -        263      634
+Toronto     450     542      263        -       400
+Sudbury     484     680      634       400       -
