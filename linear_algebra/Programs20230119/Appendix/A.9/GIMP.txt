@@ -1,8 +1,0 @@
-Windows:
-https://www.gimp.org/downloads/
-
-macOS;
-brew install --cask gimp
-
-Raspberry Pi OS or Ubuntu Desktop:
-sudo apt install gimp -y
