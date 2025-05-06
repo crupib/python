@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="82fdac7d-41a9-4f8b-824f-5c6bbcac62cf" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../addVectors/.idea/addVectors.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../addVectors/addVectors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_error_handling/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_error_handling/.idea/cuda_error_handling.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_error_handling/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_error_handling/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_error_handling/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_error_handling/cuda_error_handling.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_first/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_first/.idea/cuda_first.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_first/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_first/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_first/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_first/cuda_first.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_memory/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_memory/.idea/cuda_memory.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_memory/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_memory/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_memory/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_memory/cuda_memory.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_shared_memory/cuda_shared_memory.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_streams/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_streams/.idea/cuda_streams.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_streams/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_streams/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_streams/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_streams/cuda_stream.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_thread_sync/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_thread_sync/.idea/cuda_thread_sync.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_thread_sync/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_thread_sync/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_thread_sync/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_thread_sync/cuda_thread_sync.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_thread_sync2/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_thread_sync2/.idea/cuda_thread_sync2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_thread_sync2/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_thread_sync2/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_thread_sync2/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cuda_thread_sync2/cuda_thread_sync2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cuda_warp.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cudamem/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cudamem/.idea/cudamem.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cudamem/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cudamem/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cudamem/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cudamem/cudamem.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "crupib"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/crupib/python.git",
+    "accountId": "9d94dc13-1ef9-4e34-9a9b-b22dfd9682a6"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2sOk1zArTYV3T4TK5iwap1zEmE2" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Python.cuda_warp.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "terminal",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-PY-243.22562.220" />
+        <option value="bundled-python-sdk-0fc6c617c4bd-9a18a617cbe4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.22562.220" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="82fdac7d-41a9-4f8b-824f-5c6bbcac62cf" name="Changes" comment="" />
+      <created>1738333797991</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1738333797991</updated>
+      <workItem from="1738333799069" duration="3295000" />
+      <workItem from="1740697366068" duration="39000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/cuda_warp$cuda_warp.coverage" NAME="cuda_warp Coverage Results" MODIFIED="1740697382171" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
