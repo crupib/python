@@ -3,7 +3,8 @@ import pycuda.driver as drv
 from pycuda.compiler import SourceModule
 import numpy as np
 import gc  # Garbage collector module
-
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
 # CUDA kernel code
 mod = SourceModule("""
 __global__ void process_data(float *data, int size) {
@@ -12,7 +13,7 @@ __global__ void process_data(float *data, int size) {
         data[idx] = data[idx] * data[idx];
     }
 }
-""", options=["-arch=sm_75", "--std=c++14"])  # Adding compilation options
+""", options=["-arch=sm_75", "--std=c++14", "-w"])  # Adding compilation options
 
 
 def gpu_square_array(data):

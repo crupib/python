@@ -2,7 +2,8 @@ import numpy as np
 import pycuda.driver as cuda
 import pycuda.autoinit
 from pycuda.compiler import SourceModule
-
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
 # CUDA Kernel Code
 mod = SourceModule("""
 __global__ void simple_kernel(float *a, float *b, float *c, int N) {
@@ -11,7 +12,7 @@ __global__ void simple_kernel(float *a, float *b, float *c, int N) {
         c[idx] = a[idx] + b[idx];
     }
 }
-""", options=["-arch=sm_75", "--std=c++14"])
+""", options=["-arch=sm_75", "--std=c++14", "-w"])
 
 # Input data
 N = 1024

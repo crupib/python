@@ -2,7 +2,8 @@ import numpy as np
 import pycuda.driver as cuda
 import pycuda.autoinit
 from pycuda.compiler import SourceModule
-
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
 kernel_code = """
 __global__ void add(int *d_array, int N) {
     int idx = threadIdx.x + blockIdx.x * blockDim.x;
@@ -11,7 +12,7 @@ __global__ void add(int *d_array, int N) {
     }
 }
 """
-mod = SourceModule(kernel_code,options=["--std=c++14"])
+mod = SourceModule(kernel_code,options=["--std=c++14", "-w"])
 add = mod.get_function("add")
 
 def initialize_data(N):

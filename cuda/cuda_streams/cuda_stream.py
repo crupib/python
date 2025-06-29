@@ -2,6 +2,8 @@ import numpy as np
 import pycuda.driver as cuda
 import pycuda.autoinit
 from pycuda.compiler import SourceModule
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
 
 # CUDA Kernel Code
 mod = SourceModule("""
@@ -11,7 +13,7 @@ __global__ void matAddKernel(float *A, float *B, float *C, int width) {
         C[idx] = A[idx] + B[idx];
     }
 }
-""", options=["-arch=sm_75", "--std=c++14"])
+""", options=["-arch=sm_75", "--std=c++14", "-w"])
 
 def execute_cuda_streams(A, B, width):
     A = A.astype(np.float32)

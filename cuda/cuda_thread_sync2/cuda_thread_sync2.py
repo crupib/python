@@ -2,7 +2,8 @@ import numpy as np
 import pycuda.driver as drv
 import pycuda.autoinit
 from pycuda.compiler import SourceModule
-
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
 # CUDA Kernel Code
 kernel_code = """
 __global__ void incrementArray(float *arr, int N, float v) {
