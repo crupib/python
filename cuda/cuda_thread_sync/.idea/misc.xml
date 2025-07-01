@@ -3,4 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.10 (cuda_thread_sync)" />
   </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11 virtualenv at C:\Users\crupi\source\repos\python\cuda\mult_gpu\.venv" project-jdk-type="Python SDK" />
 </project>

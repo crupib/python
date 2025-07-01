@@ -3,7 +3,8 @@ import pycuda.driver as cuda
 from pycuda.compiler import SourceModule
 import numpy as np
 import gc  # Garbage collector module
-
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
 # CUDA kernel code
 kernel_code = """
 __global__ void addVectors(float *a, float *b, float *c, int n) {
@@ -29,7 +30,7 @@ c_gpu = cuda.mem_alloc(c.nbytes)
 
 cuda.memcpy_htod(a_gpu, a)
 cuda.memcpy_htod(b_gpu, b)
-mod = SourceModule(kernel_code, options=["--std=c++14"])
+mod = SourceModule(kernel_code, options=["--std=c++14", "-w"])
 addVectors = mod.get_function("addVectors")
 block_size = 128
 grid_size = (n + block_size -1) // block_size

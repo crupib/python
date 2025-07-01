@@ -2,7 +2,8 @@ import numpy as np
 import pycuda.driver as drv
 import pycuda.autoinit
 from pycuda.compiler import SourceModule
-
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
 kernel_code = """
 __global__ void incrementArray(float *arr, int N, float v) {
     int idx = blockIdx.x * blockDim.x + threadIdx.x;
@@ -26,7 +27,7 @@ __global__ void parallelReduction(float *g_idata, float *g_odata, unsigned int n
   if (tid == 0) g_odata[blockIdx.x] = sdata[0];
  }
  """
-mod = SourceModule(kernel_code,options=["--std=c++14"])
+mod = SourceModule(kernel_code,options=["--std=c++14","-w"])
 increment = mod.get_function("incrementArray")
 parallel_reduction = mod.get_function("parallelReduction")
 N = 1024

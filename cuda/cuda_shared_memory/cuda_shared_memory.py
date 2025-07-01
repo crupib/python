@@ -2,6 +2,8 @@ import pycuda.autoinit
 import pycuda.driver as cuda
 import numpy as np
 from pycuda.compiler import SourceModule
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
 #Kernel code for matrix multiplication with shared memory tiling
 kernel_code = """  __global__ void matrixMulShared(float *A, float *B, float *C, int N)
  {  

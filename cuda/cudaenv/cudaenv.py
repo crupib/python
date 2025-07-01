@@ -3,7 +3,8 @@ import pycuda.autoinit
 import numpy as np
 from pycuda.compiler import SourceModule
 import os
-
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
 def check_cuda_devices():
     cuda.init()
     print(f"Detected {cuda.Device.count()} CUDA devices")
@@ -36,7 +37,7 @@ def verify_cuda_installation():
     cuda.memcpy_htod(b_gpu, b)
 
     # Compile and launch kernel
-    mod = SourceModule(kernel_code, options=["--std=c++14"])
+    mod = SourceModule(kernel_code, options=["--std=c++14", "-w"])
     func = mod.get_function("verify_installation")
 
     block_size = 256

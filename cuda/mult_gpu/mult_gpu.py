@@ -4,6 +4,7 @@ import numpy as np
 from pycuda.compiler import SourceModule
 cuda.init()
 num_gpus = cuda.Device.count()
+print(num_gpus)
 if num_gpus < 2:
     raise RuntimeError("Not enough GPUs available")
 contexts = [cuda.Device(i).make_context() for i in range(num_gpus)]
