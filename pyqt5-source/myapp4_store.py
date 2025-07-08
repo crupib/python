@@ -8,17 +8,19 @@ from PyQt5.QtWidgets import (
 class MainWindow(QMainWindow):
 	def __init__(self):
 		super().__init__()
-		self.setWindowTitle("My APP 2")
+		self.setWindowTitle("My APP 4")
+		self.button_is_checked = True
 		button = QPushButton("Fuck Me!")
 		button.setCheckable(True)
-		button.clicked.connect(self.the_button_was_clicked)
 		button.clicked.connect(self.the_button_was_toggled)
+		button.setChecked(self.button_is_checked)
 		self.setFixedSize(QSize(400,300))
 		self.setCentralWidget(button)
 	def the_button_was_clicked(self):
 		print("Fuck me in the ass!")
 	def the_button_was_toggled(self, checked):
-		print("Checked?",checked)
+		self.button_is_checked = checked
+		print(self.button_is_checked)
 app = QApplication(sys.argv)
 window = MainWindow()
 window.show()
