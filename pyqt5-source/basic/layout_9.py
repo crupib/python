@@ -16,10 +16,10 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("My App")
 
         tabs = QTabWidget()
-        tabs.setTabPosition(QTabWidget.West)
+        tabs.setTabPosition(QTabWidget.North)
         tabs.setMovable(True)
 
-        for color in ["red", "green", "blue", "yellow"]:
+        for color in ["violet","red", "green", "blue", "yellow"]:
             tabs.addTab(Color(color), color)
 
         self.setCentralWidget(tabs)
