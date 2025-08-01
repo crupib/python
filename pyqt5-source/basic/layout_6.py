@@ -20,6 +20,7 @@ class MainWindow(QMainWindow):
 
         layout.addWidget(Color("red"), 0, 0)
         layout.addWidget(Color("green"), 1, 0)
+        layout.addWidget(Color("yellow"), 0, 1)
         layout.addWidget(Color("blue"), 1, 1)
         layout.addWidget(Color("purple"), 2, 1)
 

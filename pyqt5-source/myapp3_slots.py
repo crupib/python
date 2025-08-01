@@ -17,10 +17,8 @@ class MainWindow(QMainWindow):
 		self.setCentralWidget(button)
 	def the_button_was_clicked(self):
 		print("Fuck me in the ass!")
-	def the_button_was_toggled(self):
-		print("Checked?,checked")
-	    
-	    
+	def the_button_was_toggled(self, checked):
+		print("Checked?",checked)
 app = QApplication(sys.argv)
 window = MainWindow()
 window.show()
