@@ -1,3 +1,5 @@
+import os
+os.add_dll_directory(r"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.4\bin")
 from idlelib.browser import transform_children
 
 import pycuda.autoinit
