@@ -43,7 +43,7 @@ class MainWindow(QMainWindow):
         toolbar.addSeparator()
 
         button_action2 = QAction(
-            QIcon(os.path.join(basedir, "bug.png")),
+            QIcon(os.path.join(basedir, "abacus.png")),
             "Your button2",
             self,
         )

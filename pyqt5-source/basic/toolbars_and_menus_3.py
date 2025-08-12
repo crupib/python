@@ -26,7 +26,7 @@ class MainWindow(QMainWindow):
         toolbar = QToolBar("My main toolbar")
         toolbar.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)  # <-- KEY LINE
         self.addToolBar(toolbar)
-
+        self.S = "Hello"
         # Add an action to the toolbar
         button_action = QAction("Your button", self)
         button_action.setStatusTip("This is your button")
@@ -36,8 +36,8 @@ class MainWindow(QMainWindow):
         # Set status bar
         self.setStatusBar(QStatusBar(self))
 
-    def onMyToolBarButtonClick(self, is_checked):
-        print("click", is_checked)
+    def onMyToolBarButtonClick(self):
+        print("click", self.S)
 
 
 app = QApplication(sys.argv)

@@ -66,6 +66,8 @@ class MainWindow(QMainWindow):
 
         file_submenu = file_menu.addMenu("Submenu")
         file_submenu.addAction(button_action2)
+        file_submenu = file_menu.addMenu("Submenu 2")
+        file_submenu.addAction(button_action2)
 
     def onMyToolBarButtonClick(self, is_checked):
         print("click", is_checked)
