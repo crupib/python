@@ -1,0 +1,41 @@
+/* --- Global page background --- */
+body {
+  background-color: #b30000; /* Red background behind everything */
+  color: #000;
+}
+
+/* --- Section styling --- */
+.tiles-section {
+  background-color: #b30000; /* Red area behind tiles */
+  padding: 2rem;
+  border-radius: 0.5rem;
+}
+
+/* --- Tile cards --- */
+.tile {
+  background-color: #fff; /* White cards for contrast */
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+  border-radius: 1rem;
+}
+.tile:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+}
+
+/* --- Tile text --- */
+.card-title {
+  font-weight: 600;
+  color: #000;
+}
+.card-text {
+  color: #555;
+}
+
+/* --- Arrow opacity on hover --- */
+.list-group-item .chev {
+  opacity: 0.5;
+}
+.list-group-item:hover .chev {
+  opacity: 1;
+}
+

@@ -1,0 +1,25 @@
+ {% extends "base.html" %}
+{% block content %}
+<div class="tiles-section py-4">
+  <h1 class="mb-4 d-flex align-items-center text-white">
+    <img src="{{ url_for('static', filename='75th_rangers_patch.png') }}"
+         alt="75th Rangers Patch"
+         style="height: 48px; width: auto; margin-right: 12px;">
+    Pick a Function
+  </h1>
+
+  <div class="row g-3">
+    {% for f in functions %}
+    <div class="col-12 col-sm-6 col-lg-4">
+      <a class="tile card h-100 text-decoration-none" href="{{ url_for('function_page', slug=f.slug) }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ f.title }}</h5>
+          <p class="card-text text-muted">{{ f.description }}</p>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
+

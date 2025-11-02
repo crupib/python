@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<a href="{{ url_for('function_page', slug=func.slug) }}" class="btn btn-link p-0 mb-3">&larr; Back to {{ func.title }}</a>
+<h1 class="mb-3">{{ opt.label }}</h1>
+<p class="text-muted">Function: {{ func.title }}</p>
+
+<div class="card">
+  <div class="card-body">
+    <p class="mb-3">
+      This is where you'd implement <strong>{{ opt.label }}</strong>.
+      Wire your server-side logic here or route to a form if you need inputs.
+    </p>
+
+    <div class="d-flex gap-2">
+      <a class="btn btn-primary" href="{{ url_for('function_page', slug=func.slug) }}">Done</a>
+      <a class="btn btn-outline-secondary" href="{{ url_for('index') }}">Home</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
