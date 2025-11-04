@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="tiles-section py-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="d-flex align-items-center text-white mb-0">
+      <img src="{{ url_for('static', filename='images/75th_main.jpeg') }}"
+           alt="75th Main Patch"
+           class="main-patch">
+      Functions
+    </h1>
+    <a href="{{ url_for('index') }}" class="btn btn-outline-light btn-lg px-4">← Back to Main</a>
+  </div>
+
+  <!-- Top actions -->
+  <div class="row g-3 mb-4">
+    <div class="col-12 col-md-6 col-lg-4">
+      <a class="btn btn-primary w-100 py-3" href="http://10.59.0.0" target="_blank" rel="noopener noreferrer">
+        Console 10.59.0.0
+      </a>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
+      <button class="btn btn-secondary w-100 py-3" type="button">Service Matrix</button>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
+      <form method="post" action="{{ url_for('functions_action', action='reboot') }}">
+        <button class="btn btn-danger w-100 py-3" type="submit">Reboot</button>
+      </form>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
+      <form method="post" action="{{ url_for('functions_action', action='shutdown') }}">
+        <button class="btn btn-danger w-100 py-3" type="submit">Shutdown</button>
+      </form>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
+      <button class="btn btn-outline-light w-100 py-3" type="button">Set LAN IP</button>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
+      <form method="post" action="{{ url_for('functions_action', action='start-mgmt-service') }}">
+        <button class="btn btn-success w-100 py-3" type="submit">Start MGMT Service</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Netplan Configuration -->
+  <div class="card shadow-sm">
+    <div class="card-header bg-dark text-white">
+      Netplan Configuration
+    </div>
+    <div class="card-body bg-light">
+      <div class="row g-3 align-items-end">
+        <div class="col-12 col-md-8">
+          <label for="netplanSelect" class="form-label">Select Netplan File</label>
+          <select id="netplanSelect" class="form-select">
+            {% for f in netplan_files %}
+              <option value="{{ f }}">{{ f }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-12 col-md-4 d-grid gap-2 d-md-flex justify-content-md-end">
+          <button id="btnShow" class="btn btn-primary">Show</button>
+          <button id="btnImport" class="btn btn-outline-secondary">Import</button>
+          <button id="btnApply" class="btn btn-success">Apply</button>
+          <button id="btnDelete" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+
+      <!-- Optional: preview/output area -->
+      <div id="netplanOutput" class="mt-3 d-none">
+        <pre class="p-3 bg-white border rounded small mb-0" style="max-height: 50vh; overflow:auto;">
+# Output will appear here after "Show"
+        </pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Minimal JS to demo the Show toggle; replace with real fetch later -->
+<script>
+  const btnShow = document.getElementById('btnShow');
+  const output = document.getElementById('netplanOutput');
+  const sel = document.getElementById('netplanSelect');
+
+  if (btnShow) {
+    btnShow.addEventListener('click', () => {
+      const name = sel?.value || '(none)';
+      output.classList.remove('d-none');
+      output.querySelector('pre').textContent =
+`# Selected: ${name}
+
+# TODO: Wire backend to read/display the file contents.`;
+    });
+  }
+</script>
+{% endblock %}
+
