@@ -1,0 +1,11 @@
+slug: diagnostics
+title: Diagnostics
+description: Run checks and reports
+bg_color: "#004d00"
+options:
+  - slug: disk-check
+    label: Check Disk
+  - slug: mem-check
+    label: Check Memory
+  - slug: net-check
+    label: Network Check
