@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="tiles-section py-4">
+  <!-- Header + Back -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="d-flex align-items-center text-white mb-0">
+      <img src="{{ url_for('static', filename='images/75th_main.jpeg') }}"
+           alt="75th Main Patch"
+           class="main-patch">
+      Settings
+    </h1>
+    <a href="{{ url_for('index') }}" class="btn btn-outline-light btn-lg px-4">← Back to Main</a>
+  </div>
+
+  <!-- Button grid -->
+  <div class="row g-4 mb-4">
+    <div class="col-12 col-md-6">
+      <form method="post" action="{{ url_for('settings_action', action='change-password-pin') }}">
+        <button class="btn btn-danger w-100 py-3 fs-4">Change Password / Pin</button>
+      </form>
+    </div>
+    <div class="col-12 col-md-6">
+      <form method="post" action="{{ url_for('settings_action', action='enable-rallypointd') }}">
+        <button class="btn btn-danger w-100 py-3 fs-4">Enable Rallypointd</button>
+      </form>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <form method="post" action="{{ url_for('settings_action', action='change-boot-options') }}">
+        <button class="btn btn-danger w-100 py-3 fs-4">Change Boot Options</button>
+      </form>
+    </div>
+    <div class="col-12 col-md-6">
+      <form method="post" action="{{ url_for('settings_action', action='enable-engagebridged') }}">
+        <button class="btn btn-danger w-100 py-3 fs-4">Enable EngageBridged</button>
+      </form>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <form method="post" action="{{ url_for('settings_action', action='disable-viderra') }}">
+        <button class="btn btn-danger w-100 py-3 fs-4">Disable Viderra</button>
+      </form>
+    </div>
+    <div class="col-12 col-md-6">
+      <form method="post" action="{{ url_for('settings_action', action='remove-viderra') }}">
+        <button class="btn btn-danger w-100 py-3 fs-4">Remove Viderra</button>
+      </form>
+    </div>
+  </div>
+
+  <hr class="border-light opacity-50 my-4">
+
+  <!-- Update Mantle -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-header bg-dark text-white text-center">
+      <strong class="fs-3">Update Mantle</strong>
+    </div>
+    <div class="card-body bg-light">
+      <form class="row g-3 align-items-center" method="post" action="{{ url_for('settings_upload_mantle') }}" enctype="multipart/form-data">
+        <div class="col-12 col-lg-8">
+          <input class="form-control form-control-lg" type="file" id="mantle_pkg" name="mantle_pkg" />
+        </div>
+        <div class="col-12 col-lg-4 d-grid">
+          <button class="btn btn-danger btn-lg py-3" type="submit">Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <hr class="border-light opacity-50 my-4">
+
+  <!-- Launch Mantle Enterprise -->
+  <div class="row">
+    <div class="col-12 col-lg-6 mx-auto">
+      <form method="post" action="{{ url_for('settings_action', action='launch-mantle-enterprise') }}">
+        <button class="btn btn-danger w-100 py-3 fs-3">Launch Mantle Enterprise</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+

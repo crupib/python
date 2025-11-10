@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Match Settings/Help styling -->
+<div class="tiles-section py-4" style="background-color:#8B0000;">
+  <div class="container">
+
+    <!-- Header + Back -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h1 class="d-flex align-items-center text-white mb-0">
+        <img src="{{ url_for('static', filename='images/75th_main.jpeg') }}"
+             alt="Patch"
+             class="me-3 rounded"
+             style="width: 120px; height: 120px; object-fit: cover;">
+        <span class="fw-bold" style="font-size:2.5rem;">{{ func.title }}</span>
+      </h1>
+      <a href="{{ url_for('index') }}" class="btn btn-outline-light btn-lg px-4">← Back to Main</a>
+    </div>
+
+    <!-- Description (optional) -->
+    {% if func.description %}
+      <p class="text-white-50 mb-4 fs-5">{{ func.description }}</p>
+    {% endif %}
+
+    <!-- Options laid out like Settings buttons -->
+    {% if func.options and func.options|length > 0 %}
+      <div class="row g-4">
+        {% for opt in func.options %}
+          <div class="col-12 col-md-6">
+            <a class="btn btn-danger w-100 py-3 fs-4"
+               href="{{ url_for('option_page', slug=func.slug, opt_slug=opt.slug) }}">
+              {{ opt.label or opt.slug }}
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="card shadow-sm mt-3">
+        <div class="card-body bg-light">
+          <div class="text-muted">No options defined yet for this function.</div>
+        </div>
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+
+{% endblock %}
+

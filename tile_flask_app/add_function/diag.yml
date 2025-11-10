@@ -1,0 +1,38 @@
+---
+- name: Add external tiles to Flask app
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    app_dir: "/Users/williamcrupi/Documents/github/python/tile_flask_app"   # CHANGE THIS
+    tiles_dir: "{{ app_dir }}/config/functions.d"
+
+  tasks:
+    - name: Ensure functions.d exists
+      file:
+        path: "{{ tiles_dir }}"
+        state: directory
+        mode: "0755"
+
+    - name: Install Diagnostics tile
+      copy:
+        dest: "{{ tiles_dir }}/diagnostics.yml"
+        mode: "0644"
+        content: |
+          slug: diagnostics
+          title: Diagnostics
+          description: Run checks and reports
+          bg_color: "#004d00"
+          options:
+            - slug: disk-check
+              label: Check Disk
+            - slug: mem-check
+              label: Check Memory
+            - slug: net-check
+              label: Network Check
+
+    - name: Touch dir to bump mtime (forces auto-reload)
+      file:
+        path: "{{ tiles_dir }}"
+        state: touch
+

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Red Background Section -->
+<div class="container-fluid py-5" style="background-color: #8B0000; min-height: 100vh;">
+  <div class="container text-center text-white py-5">
+
+    <!-- Title with image -->
+    <div class="d-flex align-items-center justify-content-center mb-5">
+      <img src="{{ url_for('static', filename='images/75th_main.jpeg') }}"
+           alt="75th Main"
+           class="me-3 rounded"
+           style="height:100px; object-fit:contain;">
+      <h1 class="display-5 fw-bold mb-0">Pick a Function</h1>
+    </div>
+
+    <!-- Function Tiles -->
+    <div class="row justify-content-center g-4">
+      {% for f in functions %}
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <a href="{{ url_for('function_page', slug=f.slug) }}" class="text-decoration-none">
+          <div class="card shadow-sm p-4 h-100 bg-light text-dark">
+            <h3 class="fw-bold mb-2">{{ f.title }}</h3>
+            <p class="text-muted mb-0">{{ f.description }}</p>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
+

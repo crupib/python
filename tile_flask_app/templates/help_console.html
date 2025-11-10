@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="tiles-section py-4">
+  <!-- Header + Back -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="d-flex align-items-center text-white mb-0">
+      <img src="{{ url_for('static', filename='images/75th_main.jpeg') }}"
+           alt="75th Main Patch"
+           class="main-patch">
+      Help
+    </h1>
+    <a href="{{ url_for('index') }}" class="btn btn-outline-light btn-lg px-4">← Back to Main</a>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+      <strong>Step 1</strong> <span>Check Connections</span>
+    </div>
+    <div class="card-body bg-light">
+      <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center gap-3 justify-content-between">
+        <button id="btnCheckConnections" class="btn btn-primary btn-lg">
+          Check Connections
+        </button>
+
+        <div class="d-flex align-items-center gap-4 flex-wrap">
+          <button class="status-pill" id="pillAdapter" data-state="off" aria-pressed="false">
+            <span class="dot"></span><span class="lbl">Adapter</span>
+          </button>
+          <button class="status-pill" id="pillGateway" data-state="off" aria-pressed="false">
+            <span class="dot"></span><span class="lbl">Gateway</span>
+          </button>
+          <button class="status-pill" id="pillService" data-state="off" aria-pressed="false">
+            <span class="dot"></span><span class="lbl">Service</span>
+          </button>
+        </div>
+      </div>
+      <small class="text-muted d-block mt-2">Dots start red and turn green if the checks succeed.</small>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+      <strong>Step 2</strong> <span>Restart Services</span>
+    </div>
+    <div class="card-body bg-light">
+      <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center gap-3 justify-content-between">
+        <button id="btnRestartServices" class="btn btn-warning btn-lg">
+          Restart Services
+        </button>
+
+        <button class="status-pill" id="pillServicesStarted" data-state="off" aria-pressed="false">
+          <span class="dot"></span><span class="lbl">Services</span>
+        </button>
+      </div>
+      <small class="text-muted d-block mt-2">Indicator turns green when services are started.</small>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="card shadow-sm">
+    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+      <strong>Step 3</strong> <span>Redeploy Services</span>
+    </div>
+    <div class="card-body bg-light">
+      <button id="btnRedeploy" class="btn btn-success btn-lg">Redeploy Services</button>
+    </div>
+  </div>
+</div>
+
+<!-- Logic: Check Connections -> ping via Flask -> light dots -->
+<script>
+  const setPill = (el, on) => {
+    if (!el) return;
+    el.dataset.state = on ? "on" : "off";   // CSS turns green/red
+    el.setAttribute("aria-pressed", on ? "true" : "false");
+  };
+
+  // Step 1: Check Connections
+  const btnCheck = document.getElementById("btnCheckConnections");
+  const pills = {
+    adapter: document.getElementById("pillAdapter"),
+    gateway: document.getElementById("pillGateway"),
+    service: document.getElementById("pillService")
+  };
+
+  if (btnCheck) {
+    btnCheck.addEventListener("click", async () => {
+      // reset to red before each check
+      setPill(pills.adapter, false);
+      setPill(pills.gateway, false);
+      setPill(pills.service, false);
+
+      btnCheck.disabled = true;
+      btnCheck.textContent = "Checking...";
+
+      try {
+        const res = await fetch("/function/help/check_connections", { method: "POST" });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+
+        // Light indicators based on results
+        setPill(pills.adapter, !!data.adapter);
+        setPill(pills.gateway, !!data.gateway);
+        setPill(pills.service, !!data.service);
+      } catch (err) {
+        console.error("Check Connections error:", err);
+        // leave pills red on error
+      } finally {
+        btnCheck.textContent = "Check Connections";
+        btnCheck.disabled = false;
+      }
+    });
+  }
+
+  // Step 2: Restart Services (demo only; wire to backend if needed)
+  const btnRestart = document.getElementById("btnRestartServices");
+  const pillServicesStarted = document.getElementById("pillServicesStarted");
+  if (btnRestart) {
+    btnRestart.addEventListener("click", () => {
+      // simulate success
+      setTimeout(() => setPill(pillServicesStarted, true), 300);
+    });
+  }
+
+  // Step 3: Redeploy Services (placeholder button)
+  const btnRedeploy = document.getElementById("btnRedeploy");
+  if (btnRedeploy) {
+    btnRedeploy.addEventListener("click", () => {
+      // no-op for now
+      console.log("Redeploy requested");
+    });
+  }
+</script>
+
+{% endblock %}
+
