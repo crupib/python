@@ -3,6 +3,7 @@ import ssl
 import certifi
 import urllib.request
 from pathlib import Path
+import re
 
 url = (
     "https://raw.githubusercontent.com/rasbt/"
@@ -21,10 +22,12 @@ with urllib.request.urlopen(url, context=ctx) as r:
 file_path.write_bytes(raw_data)
 print(f"Saved to {file_path.resolve()}")
 
-# Decode bytes → string (UTF-8 is correct for this file)
+# Decode bytes → string
 text = raw_data.decode("utf-8")
 
-# Count stats
-print("Total number of characters:", len(text))
-print("Total number of words:", len(text.split()))
-print(text[:99])
+# Tokenize: words and punctuation separate; collapse whitespace
+pattern = r'([,.:;?_!"()\']|--|\s+)'   # capture punctuation & whitespace
+tokens = re.split(pattern, text)
+preprocessed = [t for t in tokens if t and not t.isspace()]
+
+print(preprocessed[:30])
