@@ -1,8 +1,8 @@
-from flask import Flask, render_template, abort, send_from_directory, jsonify, request, redirect, url_for
-import os, socket, subprocess, platform, glob
+from flask import Flask, render_template, abort, send_from_directory, jsonify, request, redirect, url_for, flash
+import os, socket, subprocess, platform, glob, shutil, sys
 from werkzeug.utils import secure_filename
 
-# External tiles require PyYAML
+# External tiles require PyYAML to read config/functions.d/*.y*ml
 try:
     import yaml
 except Exception:
@@ -24,14 +24,11 @@ def favicon():
 def inject_system_info():
     """Inject Hostname, OS info, and IP address into all templates."""
     system = platform.system()
-    if system == "Darwin":
-        os_name = "macOS"
-    elif system == "Linux":
-        os_name = "Linux"
-    elif system == "Windows":
-        os_name = "Windows"
-    else:
-        os_name = system or "Unknown"
+    os_name = {
+        "Darwin": "macOS",
+        "Linux":  "Linux",
+        "Windows": "Windows"
+    }.get(system, system or "Unknown")
     os_version = platform.release()
     hostname = socket.gethostname()
 
@@ -51,7 +48,7 @@ def inject_system_info():
         "ip_address": ip_address
     }
 
-# ---------------- Built-in tiles ----------------
+# ---------------- Built-in tiles (leave behavior unchanged) ----------------
 BUILTIN_FUNCTIONS = [
     {"slug": "settings",  "title": "Settings",  "description": "Configure system options and preferences", "options": []},
     {"slug": "functions", "title": "Functions", "description": "System utilities and network tools",       "options": []},
@@ -78,6 +75,7 @@ def _validate_tile(d: dict) -> bool:
     return True
 
 def _merge_tiles(builtin, externals):
+    # Keep built-ins first, preserve their order; append externals
     by_slug = {b["slug"]: b for b in builtin}
     for e in externals:
         by_slug[e["slug"]] = e
@@ -112,10 +110,10 @@ def _load_external_tiles():
                 if not _validate_tile(t):
                     print(f"[WARN] Invalid tile in {path}: {t}")
                     continue
-                # defaults for external tiles
+                # harmless defaults for external tiles (if you ever use images on cards)
                 t.setdefault("options", [])
-                t.setdefault("bg_color", "#8B0000")                 # deep red
-                t.setdefault("image", "images/75th_main.jpeg")      # relative to /static
+                t.setdefault("bg_color", "#8B0000")
+                t.setdefault("image", "images/75th_main.jpeg")
                 tiles.append(t)
         except Exception as e:
             print(f"[WARN] Failed to load {path}: {e}")
@@ -140,6 +138,106 @@ def get_function(slug: str):
             return f
     return None
 
+# ---------------- Per-OS command runner (ONLY for external options with 'commands') ----------------
+def run_command_for_os(commands_dict):
+    """
+    Run the appropriate command for the current OS and return output text.
+    YAML should provide keys: linux / macos / windows
+    """
+    sysname = platform.system().lower()
+    if "darwin" in sysname:
+        key = "macos"
+    elif "windows" in sysname:
+        key = "windows"
+    else:
+        key = "linux"
+    cmd = commands_dict.get(key)
+    if not cmd:
+        return f"No command defined for {key}."
+    try:
+        result = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        if result.returncode != 0:
+            stderr = (result.stderr or "").strip()
+            return f"[ERROR] Command exited {result.returncode}\n{stderr}"
+        return (result.stdout or "").strip() or "(no output)"
+    except Exception as e:
+        return f"[EXCEPTION] {e}"
+
+# ---------------- Helpers: safe, non-blocking power actions ----------------
+def _spawn_detached(cmd_list):
+    """
+    Start a process detached from the Flask request so the HTTP handler can return immediately.
+    """
+    system = platform.system()
+    try:
+        if system == "Windows":
+            # DETACHED_PROCESS | CREATE_NEW_PROCESS_GROUP
+            DETACHED_PROCESS = 0x00000008
+            CREATE_NEW_PROCESS_GROUP = 0x00000200
+            subprocess.Popen(
+                cmd_list,
+                close_fds=True,
+                creationflags=DETACHED_PROCESS | CREATE_NEW_PROCESS_GROUP
+            )
+        else:
+            subprocess.Popen(
+                cmd_list,
+                close_fds=True,
+                start_new_session=True
+            )
+        return True, ""
+    except Exception as e:
+        return False, str(e)
+
+def _power_action(action: str):
+    """
+    action in {"shutdown", "reboot"}
+    Returns (ok: bool, message: str)
+    """
+    system = platform.system()
+    is_windows = system == "Windows"
+    is_macos = system == "Darwin"
+    is_linux = system == "Linux"
+
+    # Build command per OS
+    if action == "shutdown":
+        if is_windows:
+            cmd = ["shutdown", "/s", "/t", "0", "/f"]
+        elif is_macos:
+            # AppleScript avoids needing sudo; works from a logged-in user session.
+            # Fallback to `shutdown -h now` if osascript is missing.
+            if shutil.which("osascript"):
+                cmd = ["osascript", "-e", 'tell application "System Events" to shut down']
+            else:
+                cmd = ["shutdown", "-h", "now"]
+        else:  # Linux
+            # Prefer systemctl; fallback to shutdown
+            cmd = ["systemctl", "poweroff", "-i"] if shutil.which("systemctl") else ["shutdown", "-h", "now"]
+    elif action == "reboot":
+        if is_windows:
+            cmd = ["shutdown", "/r", "/t", "0", "/f"]
+        elif is_macos:
+            if shutil.which("osascript"):
+                cmd = ["osascript", "-e", 'tell application "System Events" to restart']
+            else:
+                cmd = ["shutdown", "-r", "now"]
+        else:
+            cmd = ["systemctl", "reboot", "-i"] if shutil.which("systemctl") else ["shutdown", "-r", "now"]
+    else:
+        return False, f"Unsupported action: {action}"
+
+    # Fire and forget
+    ok, err = _spawn_detached(cmd)
+    if not ok:
+        return False, f"Failed to invoke power action: {err}"
+
+    # Most power operations require elevated privileges on Unix.
+    # If not running as root and using shutdown/systemctl, the OS may deny it.
+    if (is_linux or is_macos) and os.geteuid() != 0 and cmd[0] in ("shutdown", "systemctl"):
+        return True, f"{action.capitalize()} command issued (note: may require root privileges)."
+
+    return True, f"{action.capitalize()} command issued."
+
 # ---------------- Routes ----------------
 @app.route("/")
 def index():
@@ -151,6 +249,10 @@ def debug_functions():
 
 @app.route("/function/<slug>")
 def function_page(slug):
+    """
+    Built-ins: render your existing custom pages unchanged.
+    Externals: render the generic function page listing options.
+    """
     func = get_function(slug)
     if not func:
         abort(404)
@@ -161,21 +263,32 @@ def function_page(slug):
         return render_template("functions_console.html", func=func, netplan_files=netplan_files)
     if slug == "help":
         return render_template("help_console.html", func=func)
+    # External tiles: generic page
     return render_template("function.html", func=func)
 
 @app.route("/function/<slug>/option/<opt_slug>")
 def option_page(slug, opt_slug):
+    """
+    Built-ins: have no options (will 404 if crafted).
+    Externals: if option has 'commands', execute for current OS and show output.
+    """
     func = get_function(slug)
     if not func:
         abort(404)
     opt = next((o for o in func.get("options", []) if o.get("slug") == opt_slug), None)
     if not opt:
         abort(404)
-    return render_template("option.html", func=func, opt=opt)
+
+    output = None
+    if "commands" in opt and isinstance(opt["commands"], dict):
+        output = run_command_for_os(opt["commands"])
+
+    return render_template("option.html", func=func, opt=opt, output=output)
 
 # --------- Settings actions / uploads (placeholders) ----------
 @app.route("/function/settings/action/<action>", methods=["POST"])
 def settings_action(action):
+    # Exists so settings_console.html forms like url_for('settings_action', action='change-password-pin') resolve
     return ("", 204)
 
 UPLOAD_DIR = os.path.join(app.root_path, "uploads")
@@ -190,9 +303,23 @@ def settings_upload_mantle():
     f.save(os.path.join(UPLOAD_DIR, fname))
     return redirect(url_for("function_page", slug="settings"))
 
-# --------- Functions actions (placeholders) ----------
+# --------- Functions actions (real power controls) ----------
 @app.route("/function/functions/action/<action>", methods=["POST"])
 def functions_action(action):
+    action = (action or "").strip().lower()
+
+    if action in ("shutdown", "reboot"):
+        ok, msg = _power_action(action)
+        # We redirect back to the Functions page immediately with a flash message.
+        # If the host goes down fast enough, the redirect may not render — that's fine.
+        try:
+            flash(msg, "info" if ok else "danger")
+        except Exception:
+            # Flash requires a request context & secret key; ignore if unavailable.
+            pass
+        return redirect(url_for("function_page", slug="functions"))
+
+    # Stub for future actions
     return ("", 204)
 
 # --------- Help (ping) ----------
@@ -236,5 +363,6 @@ def not_found(e):
 
 # --------- Run ----------
 if __name__ == "__main__":
+    # If you ever bind to 0.0.0.0 in production, keep debug=False.
     app.run(host="127.0.0.1", port=4500, debug=True)
 

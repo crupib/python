@@ -1,0 +1,101 @@
+---
+- name: Install external Ollama tile + form template
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    app_dir: "/Users/williamcrupi/Documents/github/python/tile_flask_app"
+    tiles_dir: "{{ app_dir }}/config/functions.d"
+    templates_dir: "{{ app_dir }}/templates"
+    sentinel: "{{ tiles_dir }}/.reload"
+
+  tasks:
+    - name: Ensure required directories exist
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        mode: "0755"
+      loop:
+        - "{{ tiles_dir }}"
+        - "{{ templates_dir }}"
+
+    - name: Install option_form.html (form UI)
+      ansible.builtin.copy:
+        dest: "{{ templates_dir }}/option_form.html"
+        mode: "0644"
+        content: |
+          {% raw %}{% extends "base.html" %} 
+          {% block content %} 
+          {% set banner = func.bg_color or "#8B0000" %} 
+          <div class="container py-4"><div class="row justify-content-center"><div class="col-xl-10">
+          <div class="p-4 p-md-5 rounded-4 text-white d-flex align-items-center justify-content-between" style="background-color: {{ banner }};">
+          <div class="d-flex align-items-center"><img src="{{ url_for('static', filename=(func.image or 'images/75th_main.jpeg')) }}" alt="{{ func.title }}" class="rounded me-3" style="width:84px;height:84px;object-fit:cover;" />
+          <div><h1 class="h2 mb-1">{{ func.title }}</h1><p class="mb-0 opacity-75">{{ func.description }}</p></div></div>
+          <a href="{{ url_for('function_page', slug=func.slug) }}" class="btn btn-outline-light d-none d-md-inline-flex">← Back to {{ func.title }}</a></div>
+          <div class="card shadow-sm rounded-4 mt-4 overflow-hidden position-relative"><div class="px-4 py-2 d-flex align-items-center justify-content-between" style="background:#1f1f1f;color:#fff;"><strong>Step</strong><span class="fw-semibold">{{ opt.label or opt.slug }}</span></div>
+          <div class="card-body">
+          <form id="optForm" method="post"><div class="row g-3">
+          {% for field in (opt.form.fields or []) %}
+          <div class="col-12 {% if field.type != 'textarea' %}col-md-6{% endif %}">
+          <label class="form-label">{{ field.label or field.name }}</label>
+          {% if field.type == 'textarea' %}
+          <textarea class="form-control" name="{{ field.name }}" rows="{{ field.rows or 5 }}" placeholder="{{ field.placeholder or '' }}" {% if field.required %}required{% endif %}>{{ last_values.get(field.name, '') }}</textarea>
+          {% else %}
+          <input class="form-control" type="{{ field.type or 'text' }}" name="{{ field.name }}" value="{{ last_values.get(field.name, field.default or '') }}" placeholder="{{ field.placeholder or '' }}" {% if field.required %}required{% endif %}>
+          {% endif %}
+          </div>
+          {% endfor %}
+          </div>
+          <div class="d-flex gap-2 mt-3"><button id="runBtn" class="btn btn-primary btn-lg" type="submit">{{ opt.button_text or 'Run' }}</button>
+          <a href="{{ url_for('function_page', slug=func.slug) }}" class="btn btn-outline-secondary">← Back to {{ func.title }}</a>
+          <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">Back to Main</a></div>
+          <div id="spinnerOverlay" class="d-none position-absolute top-0 start-0 w-100 h-100" style="background: rgba(255,255,255,.7);"><div class="d-flex justify-content-center align-items-center h-100"><div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div></div></div>
+          </form>
+          {% if output is not none %}<hr class="my-4"><h5 class="mb-2">Result</h5><pre class="bg-light p-3 rounded" style="white-space:pre-wrap">{{ output }}</pre>{% endif %}
+          </div></div></div></div>
+          <script>(function(){const f=document.getElementById('optForm');const o=document.getElementById('spinnerOverlay');const b=document.getElementById('runBtn');if(f&&o&&b){f.addEventListener('submit',function(){b.disabled=true;o.classList.remove('d-none');});}})();</script>
+          {% endblock %}{% endraw %}
+
+    - name: Install external tile ollama.yml (form + command_template)
+      ansible.builtin.copy:
+        dest: "{{ tiles_dir }}/ollama.yml"
+        mode: "0644"
+        content: |
+          slug: ollama
+          title: Ollama
+          description: Run local LLM prompts via ollama
+          bg_color: "#8B0000"
+          image: "images/75th_main.jpeg"
+          options:
+            - slug: run
+              label: Run Prompt (llama)
+              button_text: Run
+              description: Type a prompt and choose a model; runs via the Ollama CLI.
+              form:
+                fields:
+                  - name: model
+                    label: Model
+                    type: text
+                    default: llama3
+                    required: true
+                    placeholder: llama3
+                  - name: prompt
+                    label: Prompt
+                    type: textarea
+                    required: true
+                    rows: 5
+                    placeholder: "e.g., Explain quantum computing in simple terms."
+              command_template:
+                macos: |-
+                  bash -lc 'echo {prompt_sh} | ollama run {model_sh}'
+                linux: |-
+                  bash -lc 'echo {prompt_sh} | ollama run {model_sh}'
+                windows: |-
+                  powershell -NoProfile -Command "$p = {prompt_sh}; $m = {model_sh}; $p | ollama run $m"
+
+    - name: Touch reload sentinel
+      ansible.builtin.file:
+        path: "{{ sentinel }}"
+        state: touch
+

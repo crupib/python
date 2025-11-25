@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% set banner = '#8B0000' %}
+
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-xl-10">
+
+      <!-- Banner -->
+      <div class="p-4 p-md-5 rounded-4 text-white d-flex align-items-center justify-content-between"
+           style="background-color: {{ banner }};">
+        <div class="d-flex align-items-center">
+          <img
+            src="{{ url_for('static', filename='images/75th_main.jpeg') }}"
+            alt="Ollama"
+            class="rounded me-3"
+            style="width:84px;height:84px;object-fit:cover;"
+          />
+          <div>
+            <h1 class="h2 mb-1">Ollama</h1>
+            <p class="mb-0 opacity-75">Run local LLM prompts via <code>ollama run</code></p>
+          </div>
+        </div>
+        <a href="{{ url_for('index') }}" class="btn btn-outline-light d-none d-md-inline-flex">
+          ← Back to Main
+        </a>
+      </div>
+
+      <!-- Card -->
+      <div class="card shadow-sm rounded-4 mt-4 overflow-hidden">
+        <div class="px-4 py-2 d-flex align-items-center justify-content-between"
+             style="background:#1f1f1f;color:#fff;">
+          <strong>Step 1</strong>
+          <span class="fw-semibold">Run Prompt</span>
+        </div>
+
+        <div class="card-body position-relative">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ 'danger' if category == 'danger' else 'info' }} mb-3">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+          {% endwith %}
+
+          <form id="ollamaForm" method="post" action="{{ url_for('ollama_run') }}">
+            <div class="row g-3 align-items-end">
+              <div class="col-md-3">
+                <label class="form-label">Model</label>
+                <input type="text" class="form-control" name="model" value="{{ last_model or 'llama3' }}" placeholder="llama3">
+              </div>
+              <div class="col-md-9">
+                <label class="form-label">Prompt</label>
+                <textarea class="form-control" name="prompt" rows="3" placeholder="Type your prompt...">{{ last_prompt or '' }}</textarea>
+              </div>
+              <div class="col-12 d-flex gap-2">
+                <button id="runBtn" class="btn btn-primary btn-lg" type="submit">Run</button>
+                <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">← Back to Main</a>
+              </div>
+            </div>
+
+            <!-- Spinner overlay -->
+            <div id="spinnerOverlay" class="d-none position-absolute top-0 start-0 w-100 h-100"
+                 style="background: rgba(255,255,255,.7);">
+              <div class="d-flex justify-content-center align-items-center h-100">
+                <img src="{{ url_for('static', filename='images/spinner.gif') }}" alt="Loading..." width="72" height="72">
+              </div>
+            </div>
+          </form>
+
+          {% if output is not none or error %}
+            <hr class="my-4">
+            <h5 class="mb-2">Result</h5>
+            {% if error %}
+              <pre class="bg-dark text-white p-3 rounded" style="white-space:pre-wrap">{{ error }}</pre>
+            {% else %}
+              <pre class="bg-light p-3 rounded" style="white-space:pre-wrap">{{ output }}</pre>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const form = document.getElementById('ollamaForm');
+  const overlay = document.getElementById('spinnerOverlay');
+  const runBtn = document.getElementById('runBtn');
+  if (form && overlay && runBtn) {
+    form.addEventListener('submit', function() {
+      runBtn.disabled = true;
+      overlay.classList.remove('d-none');
+    });
+  }
+})();
+</script>
+
+{% endblock %}
