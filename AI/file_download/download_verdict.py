@@ -31,3 +31,11 @@ tokens = re.split(pattern, text)
 preprocessed = [t for t in tokens if t and not t.isspace()]
 
 print(preprocessed[:30])
+all_words = sorted(set(preprocessed))
+vocab = len(all_words)
+print(vocab)
+vocab = {token:integer for integer, token in enumerate(all_words)}
+for i, item in enumerate(vocab.items()):
+    print(item)
+    if i >= 50:
+        break
