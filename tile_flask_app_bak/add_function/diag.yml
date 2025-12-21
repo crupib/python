@@ -1,21 +1,23 @@
 ---
 - name: Add external tiles to Flask app
   hosts: localhost
+  connection: local
   gather_facts: false
 
   vars:
-    app_dir: "/Users/williamcrupi/Documents/github/python/tile_flask_app"   # CHANGE THIS
+    app_dir: "/Users/williamcrupi/Documents/github/python/tile_flask_app"   # CHANGE THIS IF NEEDED
     tiles_dir: "{{ app_dir }}/config/functions.d"
+    sentinel: "{{ tiles_dir }}/.reload"   # touched to trigger app auto-reload
 
   tasks:
     - name: Ensure functions.d exists
-      file:
+      ansible.builtin.file:
         path: "{{ tiles_dir }}"
         state: directory
         mode: "0755"
 
-    - name: Install Diagnostics tile
-      copy:
+    - name: Install Diagnostics tile (write diagnostics.yml)
+      ansible.builtin.copy:
         dest: "{{ tiles_dir }}/diagnostics.yml"
         mode: "0644"
         content: |
@@ -26,13 +28,36 @@
           options:
             - slug: disk-check
               label: Check Disk
+              commands:
+                linux: |-
+                  bash -lc 'lsblk -o NAME,SIZE,TYPE,MOUNTPOINT; echo; df -h'
+                macos: |-
+                  bash -lc 'diskutil list; echo; df -h'
+                windows: |-
+                  powershell -NoProfile -Command "Get-Volume | Select DriveLetter,FileSystemLabel,SizeRemaining,Size | Format-Table -AutoSize"
+
             - slug: mem-check
               label: Check Memory
+              commands:
+                linux: |-
+                  bash -lc 'free -h; echo; vmstat -s | head -n 20'
+                macos: |-
+                  bash -lc 'memory_pressure -Q 2>/dev/null || echo "memory_pressure not found"; echo; vm_stat; echo; sysctl hw.memsize'
+                windows: |-
+                  powershell -NoProfile -Command "(Get-CimInstance Win32_OperatingSystem) | Select TotalVisibleMemorySize,FreePhysicalMemory | Format-List"
+
             - slug: net-check
               label: Network Check
+              commands:
+                linux: |-
+                  bash -lc 'ping -c 1 8.8.8.8; echo; (ip -brief address || ifconfig)'
+                macos: |-
+                  bash -lc 'ping -c 1 8.8.8.8; echo; ifconfig'
+                windows: |-
+                  powershell -NoProfile -Command "Test-Connection 8.8.8.8 -Count 1; echo; ipconfig"
 
-    - name: Touch dir to bump mtime (forces auto-reload)
-      file:
-        path: "{{ tiles_dir }}"
+    - name: Bump app reload sentinel
+      ansible.builtin.file:
+        path: "{{ sentinel }}"
         state: touch
 

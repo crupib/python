@@ -5,7 +5,30 @@ bg_color: "#004d00"
 options:
   - slug: disk-check
     label: Check Disk
+    commands:
+      linux: |-
+        bash -lc 'lsblk -o NAME,SIZE,TYPE,MOUNTPOINT; echo; df -h'
+      macos: |-
+        bash -lc 'diskutil list; echo; df -h'
+      windows: |-
+        powershell -NoProfile -Command "Get-Volume | Select DriveLetter,FileSystemLabel,SizeRemaining,Size | Format-Table -AutoSize"
+
   - slug: mem-check
     label: Check Memory
+    commands:
+      linux: |-
+        bash -lc 'free -h; echo; vmstat -s | head -n 20'
+      macos: |-
+        bash -lc 'memory_pressure -Q 2>/dev/null || echo "memory_pressure not found"; echo; vm_stat; echo; sysctl hw.memsize'
+      windows: |-
+        powershell -NoProfile -Command "(Get-CimInstance Win32_OperatingSystem) | Select TotalVisibleMemorySize,FreePhysicalMemory | Format-List"
+
   - slug: net-check
     label: Network Check
+    commands:
+      linux: |-
+        bash -lc 'ping -c 1 8.8.8.8; echo; (ip -brief address || ifconfig)'
+      macos: |-
+        bash -lc 'ping -c 1 8.8.8.8; echo; ifconfig'
+      windows: |-
+        powershell -NoProfile -Command "Test-Connection 8.8.8.8 -Count 1; echo; ipconfig"

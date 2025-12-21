@@ -17,7 +17,8 @@ ctx = ssl.create_default_context(cafile=certifi.where())
 # Read the file contents
 with urllib.request.urlopen(url, context=ctx) as r:
     raw_data = r.read()  # bytes
-
+print("Total number of character:",len(raw_data))
+print(raw_data[:99])
 # Save to disk
 file_path.write_bytes(raw_data)
 print(f"Saved to {file_path.resolve()}")
