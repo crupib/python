@@ -5,13 +5,95 @@
 <div class="container-fluid py-5" style="background-color: #8B0000; min-height: 100vh;">
   <div class="container text-center text-white py-5">
 
-    <!-- Title with image -->
-    <div class="d-flex align-items-center justify-content-center mb-5">
+    <!-- Title area with ONLY image (no text) -->
+    <div class="d-flex align-items-center justify-content-center mb-4">
       <img src="{{ url_for('static', filename='images/75th_main.jpeg') }}"
            alt="75th Main"
            class="me-3 rounded"
            style="height:100px; object-fit:contain;">
-      <h1 class="display-5 fw-bold mb-0">Pick a Function</h1>
+    </div>
+
+    <!-- VPN + Share + TAK + RallyPoint + Engagebridged + Compass row(s) -->
+    <div class="row justify-content-center g-4 mb-4">
+
+      <div class="col-12 col-lg-4">
+        <div id="vpn-tile"
+             class="card shadow-sm h-100 border-0 vpn-black user-select-none"
+             style="cursor: pointer;">
+          <div class="card-body p-4">
+            <h3 class="fw-bold mb-1">VPN</h3>
+            <p class="mb-0 text-light opacity-75 small">
+              Click to toggle off (black). Double-click to restart. Hold to view configuration.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-4">
+        <div id="share-tile"
+             class="card shadow-sm h-100 border-0 vpn-black user-select-none"
+             style="cursor: pointer;">
+          <div class="card-body p-4">
+            <h3 class="fw-bold mb-1">Share</h3>
+            <p class="mb-0 text-light opacity-75 small">
+              Click to toggle off (black). Double-click to restart. Hold to view configuration.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-4">
+        <div id="tak-tile"
+             class="card shadow-sm h-100 border-0 vpn-black user-select-none"
+             style="cursor: pointer;">
+          <div class="card-body p-4">
+            <h3 class="fw-bold mb-1">TAK</h3>
+            <p class="mb-0 text-light opacity-75 small">
+              Click to toggle off (black). Double-click to restart. Hold to view configuration.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-4">
+        <div id="rallypoint-tile"
+             class="card shadow-sm h-100 border-0 vpn-black user-select-none"
+             style="cursor: pointer; margin-top: 1rem;">
+          <div class="card-body p-4">
+            <h3 class="fw-bold mb-1">RallyPoint</h3>
+            <p class="mb-0 text-light opacity-75 small">
+              Click to toggle off (black). Double-click to restart. Hold to view configuration.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-4">
+        <div id="engagebridged-tile"
+             class="card shadow-sm h-100 border-0 vpn-black user-select-none"
+             style="cursor: pointer; margin-top: 1rem;">
+          <div class="card-body p-4">
+            <h3 class="fw-bold mb-1">Engagebridged</h3>
+            <p class="mb-0 text-light opacity-75 small">
+              Click to toggle off (black). Double-click to restart. Hold to view configuration.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-4">
+        <div id="compass-tile"
+             class="card shadow-sm h-100 border-0 vpn-black user-select-none"
+             style="cursor: pointer; margin-top: 1rem;">
+          <div class="card-body p-4">
+            <h3 class="fw-bold mb-1">Compass (Vidterra)</h3>
+            <p class="mb-0 text-light opacity-75 small">
+              Click to toggle off (black). Double-click to restart. Hold to view configuration.
+            </p>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- Function Tiles -->
@@ -30,6 +112,255 @@
 
   </div>
 </div>
+
+<!-- VPN Config Modal -->
+<div class="modal fade" id="vpnModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">VPN Configuration (Dummy)</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <pre id="vpn-config" class="mb-0" style="white-space: pre-wrap;"></pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Share Config Modal -->
+<div class="modal fade" id="shareModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Share Configuration (Dummy)</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <pre id="share-config" class="mb-0" style="white-space: pre-wrap;"></pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAK Config Modal -->
+<div class="modal fade" id="takModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">TAK Configuration (Dummy)</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <pre id="tak-config" class="mb-0" style="white-space: pre-wrap;"></pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RallyPoint Config Modal -->
+<div class="modal fade" id="rallypointModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">RallyPoint Configuration (Dummy)</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <pre id="rallypoint-config" class="mb-0" style="white-space: pre-wrap;"></pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Engagebridged Config Modal -->
+<div class="modal fade" id="engagebridgedModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Engagebridged Configuration (Dummy)</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <pre id="engagebridged-config" class="mb-0" style="white-space: pre-wrap;"></pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Compass (Vidterra) Config Modal -->
+<div class="modal fade" id="compassModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Compass (Vidterra) Configuration (Dummy)</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <pre id="compass-config" class="mb-0" style="white-space: pre-wrap;"></pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  // ----- Common helper for all service tiles -----
+  function setupServiceTile(opts) {
+    const tile = document.getElementById(opts.id);
+    if (!tile) return;
+
+    let currentState = 'down';
+    let manualOff    = false;
+    let holdTimer    = null;
+
+    const notifyVpnState = (state) => {
+      if (opts.id === 'vpn-tile') {
+        document.dispatchEvent(new CustomEvent('vpn-state-changed', { detail: state }));
+      }
+    };
+
+    const applyClasses = (state) => {
+      tile.classList.remove('vpn-black','vpn-yellow','vpn-green','vpn-red');
+      if (state === 'starting') tile.classList.add('vpn-yellow');
+      else if (state === 'up')   tile.classList.add('vpn-green');
+      else if (state === 'error')tile.classList.add('vpn-red');
+      else                       tile.classList.add('vpn-black');
+    };
+
+    const setState = (state) => {
+      currentState = state;
+      if (!manualOff) {
+        applyClasses(state);
+      }
+    };
+
+    const fetchStatus = async () => {
+      if (manualOff) return;
+      try {
+        const r = await fetch(opts.statusUrl);
+        const j = await r.json();
+        const state = j.state || 'down';
+        setState(state);
+        notifyVpnState(state);
+      } catch (e) {
+        setState('error');
+        notifyVpnState('error');
+      }
+    };
+
+    // Hold => show config
+    tile.addEventListener('mousedown', () => {
+      holdTimer = setTimeout(async () => {
+        holdTimer = null;
+        try {
+          const r = await fetch(opts.configUrl);
+          const text = await r.text();
+          document.getElementById(opts.configElementId).textContent = text;
+          const m = new bootstrap.Modal(document.getElementById(opts.modalId));
+          m.show();
+        } catch (e) {
+          alert('Failed to load config');
+        }
+      }, 600);
+    });
+    ['mouseup','mouseleave'].forEach(evt => tile.addEventListener(evt, () => {
+      if (holdTimer) { clearTimeout(holdTimer); holdTimer = null; }
+    }));
+
+    // Click => toggle OFF/ON (OFF = black)
+    tile.addEventListener('click', (e) => {
+      if (e.detail > 1) return;  // ignore part of dblclick
+      manualOff = !manualOff;
+      if (manualOff) {
+        applyClasses('down');
+        notifyVpnState('down');          // <-- when tile goes black, button goes red
+      } else {
+        applyClasses(currentState);
+        notifyVpnState(currentState);    // <-- when tile resumes, reflect actual state
+      }
+    });
+
+    // Double-click => restart
+    tile.addEventListener('dblclick', async (e) => {
+      e.preventDefault();
+      manualOff = false;
+      setState('starting');
+      notifyVpnState('starting');
+      try {
+        await fetch(opts.restartUrl, { method: 'POST' });
+      } catch (e) {
+        setState('error');
+        notifyVpnState('error');
+      }
+    });
+
+    // Initial + polling
+    fetchStatus();
+    setInterval(fetchStatus, 2000);
+  }
+
+  // VPN tile
+  setupServiceTile({
+    id: 'vpn-tile',
+    statusUrl: '/api/vpn/status',
+    restartUrl: '/api/vpn/restart',
+    configUrl: '/api/vpn/config',
+    modalId: 'vpnModal',
+    configElementId: 'vpn-config'
+  });
+
+  // Share tile
+  setupServiceTile({
+    id: 'share-tile',
+    statusUrl: '/api/share/status',
+    restartUrl: '/api/share/restart',
+    configUrl: '/api/share/config',
+    modalId: 'shareModal',
+    configElementId: 'share-config'
+  });
+
+  // TAK tile
+  setupServiceTile({
+    id: 'tak-tile',
+    statusUrl: '/api/tak/status',
+    restartUrl: '/api/tak/restart',
+    configUrl: '/api/tak/config',
+    modalId: 'takModal',
+    configElementId: 'tak-config'
+  });
+
+  // RallyPoint tile
+  setupServiceTile({
+    id: 'rallypoint-tile',
+    statusUrl: '/api/rallypoint/status',
+    restartUrl: '/api/rallypoint/restart',
+    configUrl: '/api/rallypoint/config',
+    modalId: 'rallypointModal',
+    configElementId: 'rallypoint-config'
+  });
+
+  // Engagebridged tile
+  setupServiceTile({
+    id: 'engagebridged-tile',
+    statusUrl: '/api/engagebridged/status',
+    restartUrl: '/api/engagebridged/restart',
+    configUrl: '/api/engagebridged/config',
+    modalId: 'engagebridgedModal',
+    configElementId: 'engagebridged-config'
+  });
+
+  // Compass (Vidterra) tile
+  setupServiceTile({
+    id: 'compass-tile',
+    statusUrl: '/api/compass/status',
+    restartUrl: '/api/compass/restart',
+    configUrl: '/api/compass/config',
+    modalId: 'compassModal',
+    configElementId: 'compass-config'
+  });
+})();
+</script>
 
 {% endblock %}
 

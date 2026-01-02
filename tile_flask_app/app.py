@@ -1,5 +1,6 @@
-from flask import Flask, render_template, abort, send_from_directory, jsonify, request, redirect, url_for, flash
-import os, socket, subprocess, platform, glob, shutil, sys, shlex
+from flask import Flask, render_template, abort, send_from_directory, jsonify, request, redirect, url_for, flash, make_response
+import os, socket, subprocess, platform, glob, shutil, sys, shlex, threading, time
+
 from werkzeug.utils import secure_filename
 
 # External tiles require PyYAML to read config/functions.d/*.y*ml
@@ -36,7 +37,7 @@ def inject_system_info():
         pass
     return {"hostname": hostname, "os_info": f"{os_name} {os_version}", "ip_address": ip_address}
 
-# ---------------- Built-in tiles (no ollama hardcoding) ----------------
+# ---------------- Built-in tiles ----------------
 BUILTIN_FUNCTIONS = [
     {"slug": "settings",  "title": "Settings",  "description": "Configure system options and preferences", "options": []},
     {"slug": "functions", "title": "Functions", "description": "System utilities and network tools",       "options": []},
@@ -124,12 +125,12 @@ def get_function(slug: str):
             return f
     return None
 
-# ---------------- Runners ----------------
+# ---------------- Per-OS command runners ----------------
 def run_command_for_os(commands_dict):
-    sysname = platform.system().lower()
-    if "darwin" in sysname:
+    sysname = platform.system()  # strict equality
+    if sysname == "Darwin":
         key = "macos"
-    elif "windows" in sysname:
+    elif sysname == "Windows":
         key = "windows"
     else:
         key = "linux"
@@ -146,10 +147,10 @@ def run_command_for_os(commands_dict):
         return f"[EXCEPTION] {e}"
 
 def run_command_template_for_os(template_dict, form_data: dict):
-    sysname = platform.system().lower()
-    if "darwin" in sysname:
+    sysname = platform.system()
+    if sysname == "Darwin":
         key = "macos"
-    elif "windows" in sysname:
+    elif sysname == "Windows":
         key = "windows"
     else:
         key = "linux"
@@ -182,12 +183,8 @@ def run_command_template_for_os(template_dict, form_data: dict):
     except Exception as e:
         return f"[EXCEPTION] {e}"
 
-# ---------------- Helpers: make sure a form exists if a template exists ----------------
+# ---------------- Helpers ----------------
 def _normalize_form_option(opt: dict) -> dict:
-    """
-    If an option declares command_template but no valid form, synthesize a default
-    (Model + Prompt). Returns a shallow copy used for rendering.
-    """
     new_opt = dict(opt or {})
     has_template = bool(new_opt.get("command_template"))
     form = new_opt.get("form") if isinstance(new_opt.get("form"), dict) else None
@@ -201,6 +198,287 @@ def _normalize_form_option(opt: dict) -> dict:
                 ]
             }
     return new_opt
+
+# ---------------- Service state: VPN + Share + TAK + RallyPoint + Engagebridged + Compass ----------------
+VPN_STATE   = {"state": "down"}   # black/down | starting(yellow) | up(green) | error(red)
+VPN_LOCK    = threading.Lock()
+
+SHARE_STATE = {"state": "down"}
+SHARE_LOCK  = threading.Lock()
+
+TAK_STATE   = {"state": "down"}
+TAK_LOCK    = threading.Lock()
+
+RALLY_STATE = {"state": "down"}
+RALLY_LOCK  = threading.Lock()
+
+ENGAGEBRIDGED_STATE = {"state": "down"}
+ENGAGEBRIDGED_LOCK  = threading.Lock()
+
+COMPASS_STATE = {"state": "down"}
+COMPASS_LOCK  = threading.Lock()
+
+def _net_ok():
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.settimeout(1.5)
+        s.connect(("1.1.1.1", 53))
+        s.close()
+        return True
+    except Exception:
+        return False
+
+def _vpn_restart_worker():
+    time.sleep(0.8)
+    try:
+        time.sleep(1.2)  # simulate work
+    except Exception:
+        pass
+    ok = _net_ok()
+    with VPN_LOCK:
+        VPN_STATE["state"] = "up" if ok else "error"
+
+def _share_restart_worker():
+    time.sleep(0.8)
+    try:
+        time.sleep(1.2)
+    except Exception:
+        pass
+    ok = _net_ok()
+    with SHARE_LOCK:
+        SHARE_STATE["state"] = "up" if ok else "error"
+
+def _tak_restart_worker():
+    time.sleep(0.8)
+    try:
+        time.sleep(1.2)
+    except Exception:
+        pass
+    ok = _net_ok()
+    with TAK_LOCK:
+        TAK_STATE["state"] = "up" if ok else "error"
+
+def _rally_restart_worker():
+    time.sleep(0.8)
+    try:
+        time.sleep(1.2)
+    except Exception:
+        pass
+    ok = _net_ok()
+    with RALLY_LOCK:
+        RALLY_STATE["state"] = "up" if ok else "error"
+
+def _engagebridged_restart_worker():
+    time.sleep(0.8)
+    try:
+        time.sleep(1.2)
+    except Exception:
+        pass
+    ok = _net_ok()
+    with ENGAGEBRIDGED_LOCK:
+        ENGAGEBRIDGED_STATE["state"] = "up" if ok else "error"
+
+def _compass_restart_worker():
+    time.sleep(0.8)
+    try:
+        time.sleep(1.2)
+    except Exception:
+        pass
+    ok = _net_ok()
+    with COMPASS_LOCK:
+        COMPASS_STATE["state"] = "up" if ok else "error"
+
+# ---- VPN endpoints ----
+@app.route("/api/vpn/status")
+def vpn_status():
+    with VPN_LOCK:
+        return jsonify(VPN_STATE)
+
+@app.route("/api/vpn/restart", methods=["POST"])
+def vpn_restart():
+    with VPN_LOCK:
+        VPN_STATE["state"] = "starting"
+    t = threading.Thread(target=_vpn_restart_worker, daemon=True)
+    t.start()
+    return jsonify({"ok": True})
+
+@app.route("/api/vpn/config")
+def vpn_config():
+    cfg = (
+        "# Dummy VPN configuration\n"
+        "client\n"
+        "dev tun\n"
+        "proto udp\n"
+        "remote vpn.example.com 1194\n"
+        "resolv-retry infinite\n"
+        "nobind\n"
+        "persist-key\n"
+        "persist-tun\n"
+        "cipher AES-256-GCM\n"
+        "verb 3\n"
+    )
+    resp = make_response(cfg, 200)
+    resp.mimetype = "text/plain"
+    return resp
+
+# ---- Share endpoints ----
+@app.route("/api/share/status")
+def share_status():
+    with SHARE_LOCK:
+        return jsonify(SHARE_STATE)
+
+@app.route("/api/share/restart", methods=["POST"])
+def share_restart():
+    with SHARE_LOCK:
+        SHARE_STATE["state"] = "starting"
+    t = threading.Thread(target=_share_restart_worker, daemon=True)
+    t.start()
+    return jsonify({"ok": True})
+
+@app.route("/api/share/config")
+def share_config():
+    cfg = (
+        "# Dummy Share configuration\n"
+        "share_root = /srv/share\n"
+        "mode       = read-write\n"
+        "max_clients= 32\n"
+        "protocol   = smb\n"
+    )
+    resp = make_response(cfg, 200)
+    resp.mimetype = "text/plain"
+    return resp
+
+# ---- TAK endpoints ----
+@app.route("/api/tak/status")
+def tak_status():
+    with TAK_LOCK:
+        return jsonify(TAK_STATE)
+
+@app.route("/api/tak/restart", methods=["POST"])
+def tak_restart():
+    with TAK_LOCK:
+        TAK_STATE["state"] = "starting"
+    t = threading.Thread(target=_tak_restart_worker, daemon=True)
+    t.start()
+    return jsonify({"ok": True})
+
+@app.route("/api/tak/config")
+def tak_config():
+    cfg = (
+        "# Dummy TAK configuration\n"
+        "tak_server   = 10.0.0.10\n"
+        "tak_port     = 8089\n"
+        "tls_enabled  = true\n"
+        "protocol     = cot\n"
+    )
+    resp = make_response(cfg, 200)
+    resp.mimetype = "text/plain"
+    return resp
+
+# ---- RallyPoint endpoints ----
+@app.route("/api/rallypoint/status")
+def rallypoint_status():
+    with RALLY_LOCK:
+        return jsonify(RALLY_STATE)
+
+@app.route("/api/rallypoint/restart", methods=["POST"])
+def rallypoint_restart():
+    with RALLY_LOCK:
+        RALLY_STATE["state"] = "starting"
+    t = threading.Thread(target=_rally_restart_worker, daemon=True)
+    t.start()
+    return jsonify({"ok": True})
+
+@app.route("/api/rallypoint/config")
+def rallypoint_config():
+    cfg = (
+        "# Dummy RallyPoint configuration\n"
+        "service_name   = RallyPoint\n"
+        "endpoint       = 10.0.0.20\n"
+        "port           = 9000\n"
+        "tls_enabled    = true\n"
+        "protocol       = custom\n"
+    )
+    resp = make_response(cfg, 200)
+    resp.mimetype = "text/plain"
+    return resp
+
+# ---- Engagebridged endpoints ----
+@app.route("/api/engagebridged/status")
+def engagebridged_status():
+    with ENGAGEBRIDGED_LOCK:
+        return jsonify(ENGAGEBRIDGED_STATE)
+
+@app.route("/api/engagebridged/restart", methods=["POST"])
+def engagebridged_restart():
+    with ENGAGEBRIDGED_LOCK:
+        ENGAGEBRIDGED_STATE["state"] = "starting"
+    t = threading.Thread(target=_engagebridged_restart_worker, daemon=True)
+    t.start()
+    return jsonify({"ok": True})
+
+@app.route("/api/engagebridged/config")
+def engagebridged_config():
+    cfg = (
+        "# Dummy Engagebridged configuration\n"
+        "service_name   = Engagebridged\n"
+        "bridge_host    = 10.0.0.30\n"
+        "bridge_port    = 9443\n"
+        "mode           = active\n"
+        "protocol       = https\n"
+    )
+    resp = make_response(cfg, 200)
+    resp.mimetype = "text/plain"
+    return resp
+
+# ---- Compass (Vidterra) endpoints ----
+@app.route("/api/compass/status")
+def compass_status():
+    with COMPASS_LOCK:
+        return jsonify(COMPASS_STATE)
+
+@app.route("/api/compass/restart", methods=["POST"])
+def compass_restart():
+    with COMPASS_LOCK:
+        COMPASS_STATE["state"] = "starting"
+    t = threading.Thread(target=_compass_restart_worker, daemon=True)
+    t.start()
+    return jsonify({"ok": True})
+
+@app.route("/api/compass/config")
+def compass_config():
+    cfg = (
+        "# Dummy Compass (Vidterra) configuration\n"
+        "service_name   = Compass (Vidterra)\n"
+        "api_host       = compass.vidterra.local\n"
+        "api_port       = 8443\n"
+        "tls_enabled    = true\n"
+        "protocol       = https\n"
+    )
+    resp = make_response(cfg, 200)
+    resp.mimetype = "text/plain"
+    return resp
+
+# ---------------- Static images API for dropdown ----------------
+@app.route("/api/static-images")
+def api_static_images():
+    """
+    Return a list of image files under static/images with their URLs.
+    """
+    images_dir = os.path.join(app.static_folder or os.path.join(app.root_path, "static"), "images")
+    exts = {".png", ".jpg", ".jpeg", ".svg", ".gif", ".ico", ".webp"}
+    items = []
+    if os.path.isdir(images_dir):
+        for name in sorted(os.listdir(images_dir)):
+            _, ext = os.path.splitext(name)
+            if ext.lower() in exts:
+                rel = f"images/{name}"
+                items.append({
+                    "name": name,
+                    "path": rel,
+                    "url": url_for("static", filename=rel)
+                })
+    return jsonify(items)
 
 # ---------------- Routes ----------------
 @app.route("/")
@@ -234,29 +512,23 @@ def option_page(slug, opt_slug):
     if not raw_opt:
         abort(404)
 
-    # Make sure a form exists if there is a command_template
     opt = _normalize_form_option(raw_opt)
 
     has_template = bool(opt.get("command_template"))
     has_form = bool(opt.get("form")) and bool((opt.get("form") or {}).get("fields"))
-    print(f"[DEBUG] option_page slug={slug} opt={opt_slug} has_form={has_form} has_template={has_template} keys={list(opt.keys())}")
 
     if request.method == "GET":
         if has_template:
-            # show form (either real or synthesized)
             return render_template("option_form.html", func=func, opt=opt, output=None, error=None, last_values={})
-        # legacy fixed-command path
         output = None
         if isinstance(opt.get("commands"), dict):
             output = run_command_for_os(opt["commands"])
         return render_template("option.html", func=func, opt=opt, output=output)
 
-    # POST: handle form submit (real or synthesized)
     if not has_template:
         flash("This option does not accept a prompt.", "danger")
         return redirect(url_for("function_page", slug=slug))
 
-    # Collect declared fields
     values = {}
     for f in (opt.get("form") or {}).get("fields", []):
         name = f.get("name")

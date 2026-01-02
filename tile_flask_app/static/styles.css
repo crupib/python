@@ -216,4 +216,12 @@ footer strong {
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
+/* VPN tile state colors */
+.vpn-black  { background-color: #111; color: #fff; }
+.vpn-yellow { background-color: #c9a503; color: #000; }
+.vpn-green  { background-color: #1a7f37; color: #fff; }
+.vpn-red    { background-color: #b3261e; color: #fff; }
+
+/* Make card corners match your aesthetic */
+#vpn-tile.card { border-radius: 1rem; }
 

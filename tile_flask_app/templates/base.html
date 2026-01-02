@@ -9,15 +9,46 @@
 </head>
 <body class="bg-light">
 
-  <!-- Navbar with battalion images -->
+  <!-- Navbar: left = selectable patch (double-click shows dropdown), middle = Mantle Edge, right = NTS -->
   <nav class="navbar navbar-expand-lg" style="background-color: #006400;">
-    <div class="container justify-content-center">
-      <div class="d-flex align-items-center justify-content-between w-100" style="gap: 20px;">
-        <img src="{{ url_for('static', filename='images/175.png') }}" alt="1st" class="img-fluid rounded" style="height:90px; object-fit:contain;">
-        <img src="{{ url_for('static', filename='images/275.svg') }}" alt="2nd" class="img-fluid rounded" style="height:90px; object-fit:contain;">
-        <img src="{{ url_for('static', filename='images/nts_logo_red.png') }}" alt="NTS" class="img-fluid rounded" style="height:90px; object-fit:contain;">
-        <img src="{{ url_for('static', filename='images/375.svg') }}" alt="3rd" class="img-fluid rounded" style="height:90px; object-fit:contain;">
-        <img src="{{ url_for('static', filename='images/stb.png') }}" alt="STB" class="img-fluid rounded" style="height:90px; object-fit:contain;">
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-between w-100">
+
+        <!-- Left image with hidden dropdown toggle -->
+        <div class="position-relative d-flex align-items-center">
+          <button id="unit-dd-toggle"
+                  class="btn btn-sm btn-secondary"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  style="position:absolute; left:0; top:0; opacity:0; width:1px; height:1px; padding:0; z-index:-1;">
+          </button>
+          <ul class="dropdown-menu" id="unit-dd-menu" aria-labelledby="unit-dd-toggle"></ul>
+
+          <img
+            id="unit-badge"
+            src="{{ url_for('static', filename='images/75th_main.jpeg') }}"
+            alt="Unit Patch"
+            class="img-fluid rounded"
+            style="height:90px; object-fit:contain; cursor: pointer;"
+            title="Double-click to change image"
+          />
+        </div>
+
+        <!-- Center title -->
+        <div class="text-center flex-grow-1">
+          <span class="navbar-title text-white fw-bold fs-3">
+            Mantle Edge
+          </span>
+        </div>
+
+        <!-- Right image -->
+        <img
+          src="{{ url_for('static', filename='images/nts_logo_red.png') }}"
+          alt="NTS"
+          class="img-fluid rounded"
+          style="height:90px; object-fit:contain;"
+        />
       </div>
     </div>
   </nav>
@@ -27,16 +58,158 @@
     {% block content %}{% endblock %}
   </main>
 
-  <!-- Global Footer (always visible) -->
+  <!-- Global Footer -->
   <footer class="border-top py-3 mt-5">
-    <div class="container text-muted small">
-      Hostname: {{ hostname }} &nbsp; | &nbsp;
-      OS: {{ os_info }} &nbsp; | &nbsp;
-      IP: {{ ip_address }}
+    <div class="container position-relative">
+
+      <!-- Centered footer text -->
+      <div class="text-muted small d-flex justify-content-center">
+        Hostname: {{ hostname }} &nbsp; | &nbsp;
+        OS: {{ os_info }} &nbsp; | &nbsp;
+        IP: {{ ip_address }}
+      </div>
+
+      <!-- Right-side round button with dropdown -->
+      <div class="position-absolute top-50 end-0 translate-middle-y dropdown">
+        <button id="footer-green-btn"
+                class="btn rounded-circle dropdown-toggle p-0"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                style="width:32px; height:32px; background-color:#dc3545; border:none;">
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="footer-green-btn">
+          <li>
+            <a class="dropdown-item" href="#" id="edge-update-services">
+              Update Services (configureEdge.sh)
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#" id="edge-update-software">
+              Update Software (configureEdge.sh -u)
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#" id="edge-reset-interfaces">
+              Reset interfaces (configureEdge.sh -r)
+            </a>
+          </li>
+        </ul>
+      </div>
+
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+
+  <!-- Double-click dropdown logic for unit badge -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const badge   = document.getElementById('unit-badge');
+    const ddToggle= document.getElementById('unit-dd-toggle');
+    const ddMenu  = document.getElementById('unit-dd-menu');
+    if (!badge || !ddToggle || !ddMenu) return;
+
+    const storageKey = 'unit-badge-path';
+
+    const applyPath = (relPath) => {
+      badge.src = "{{ url_for('static', filename='') }}" + relPath;
+      try { localStorage.setItem(storageKey, relPath); } catch(_) {}
+    };
+
+    // Restore saved selection
+    try {
+      const saved = localStorage.getItem(storageKey);
+      if (saved) applyPath(saved);
+    } catch(_) {}
+
+    async function openDropdownWithFiles() {
+      try {
+        const r = await fetch('{{ url_for("api_static_images") }}');
+        const items = await r.json();
+        ddMenu.innerHTML = '';
+        (items || []).forEach(it => {
+          const li = document.createElement('li');
+          const a  = document.createElement('a');
+          a.className = 'dropdown-item d-flex align-items-center';
+          a.href = '#';
+          a.textContent = it.name;
+          a.title = it.path;
+          a.addEventListener('click', (ev) => {
+            ev.preventDefault();
+            applyPath(it.path);
+          });
+          li.appendChild(a);
+          ddMenu.appendChild(li);
+        });
+        const dd = new bootstrap.Dropdown(ddToggle, { autoClose: true });
+        dd.show();
+      } catch (e) {
+        console.error('Failed to load images list', e);
+      }
+    }
+
+    // Double-click to open the chooser
+    badge.addEventListener('dblclick', (e) => {
+      e.preventDefault();
+      openDropdownWithFiles();
+    });
+
+    // Prevent accidental text selection on dblclick
+    badge.addEventListener('mousedown', (e) => e.preventDefault());
+  });
+  </script>
+
+  <!-- Footer dropdown item handlers -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const updateServices   = document.getElementById('edge-update-services');
+    const updateSoftware   = document.getElementById('edge-update-software');
+    const resetInterfaces  = document.getElementById('edge-reset-interfaces');
+
+    if (updateServices) {
+      updateServices.addEventListener('click', async (e) => {
+        e.preventDefault();
+        // TODO: replace with real API call to run configureEdge.sh
+        alert('Update Services: configureEdge.sh');
+      });
+    }
+
+    if (updateSoftware) {
+      updateSoftware.addEventListener('click', async (e) => {
+        e.preventDefault();
+        // TODO: replace with real API call to run configureEdge.sh -u
+        alert('Update Software: configureEdge.sh -u');
+      });
+    }
+
+    if (resetInterfaces) {
+      resetInterfaces.addEventListener('click', async (e) => {
+        e.preventDefault();
+        // TODO: replace with real API call to run configureEdge.sh -r
+        alert('Reset interfaces: configureEdge.sh -r');
+      });
+    }
+  });
+  </script>
+
+  <!-- Sync footer button color with VPN state -->
+  <script>
+  document.addEventListener('vpn-state-changed', (ev) => {
+    const btn = document.getElementById('footer-green-btn');
+    if (!btn) return;
+
+    const state = ev.detail;
+
+    if (state === 'up') {
+      // VPN OK → green button
+      btn.style.backgroundColor = '#28a745';
+    } else {
+      // VPN not OK → red button
+      btn.style.backgroundColor = '#dc3545';
+    }
+  });
+  </script>
 </body>
 </html>
 
