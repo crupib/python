@@ -10,112 +10,84 @@ class Edge:
         self.weight: float = weight
 
     def print_edge(self):
-        """Display the edge information in a human readable form."""
         print(f"{self.from_node} -> {self.to_node} = {self.weight}")
+
+
 class Node:
     def __init__(self, index: int, label=None):
         self.index: int = index
         self.edges: dict = {}
         self.label: str = label
+
     def num_edges(self) -> int:
         return len(self.edges)
+
     def get_edge(self, neighbor: int) -> Union[Edge, None]:
-        if neighbor in self.edges:
-            return self.edges[neighbor]
-        return None
+        return self.edges.get(neighbor)
+
     def add_edge(self, neighbor: int, weight: float):
-        self.edges[neighbor] = Edge(self.index, neighbor,weight)
+        self.edges[neighbor] = Edge(self.index, neighbor, weight)
+
     def remove_edge(self, neighbor: int):
-        if neighbor in self.edges:
-            del self.edges[neighbor]
+        self.edges.pop(neighbor, None)
+
     def get_edge_list(self) -> list:
         return list(self.edges.values())
-    def get_sorted_edge_list(self) -> list:
-        result = []
-        neighbors = (list)(self.edges.keys())
-        neighbors.sort()
-        for n in neighbors:
-            result.append(self.edges[n])
-        return result
+
 
 class Graph:
     def __init__(self, num_nodes: int, undirected: bool = False):
         self.num_nodes: int = num_nodes
         self.undirected: bool = undirected
-        self.nodes: list = [Node(j) for j in range(num_nodes)]
+        self.nodes: list = [Node(i) for i in range(num_nodes)]
+
     def get_edge(self, from_node: int, to_node: int) -> Union[Edge, None]:
-        if from_node < 0 or from_node >= self.num_nodes:
-            raise IndexError
-        if to_node < 0 or to_node >= self.num_nodes:
-            raise IndexError
         return self.nodes[from_node].get_edge(to_node)
-    def is_edge(self, from_node: int, to_node: int) -> bool:
-        return self.get_edge(from_node,to_node) is not None
+
     def make_edge_list(self) -> list:
-        all_edges: list = []
+        edges = []
         for node in self.nodes:
-            for edge in node.edges.values():
-                all_edges.append(edge)
-        return all_edges
+            edges.extend(node.edges.values())
+        return edges
+
     def insert_edge(self, from_node: int, to_node: int, weight: float):
-        if from_node < 0 or from_node >= self.num_nodes:
-            raise IndexError
-        if to_node < 0 or to_node >= self.num_nodes:
-            raise IndexError
         self.nodes[from_node].add_edge(to_node, weight)
         if self.undirected:
             self.nodes[to_node].add_edge(from_node, weight)
-    def remove_edge(self, from_node: int, to_node: int):
-        if from_node < 0 or from_node >= self.num_nodes:
-            raise IndexError
-        if to_node < 0 or to_node >= self.num_nodes:
-            raise IndexError
-        self.nodes[from_node].remove_edge(to_node)
-        if self.undirected:
-            self.nodes[to_node].remove_edge(from_node)
-    def make_copy(self):
-        """Create and return a copy of the graph."""
-        g2: Graph = Graph(self.num_nodes, undirected=self.undirected)
-        for node in self.nodes:
-            g2.nodes[node.index].label = node.label
-            for edge in node.edges.values():
-                g2.insert_edge(edge.from_node, edge.to_node, edge.weight)
-        return g2
 
-def draw_graph(g: Graph):
+
+def draw_graph(g: Graph, title: str | None = None):
     G = nx.DiGraph() if not g.undirected else nx.Graph()
 
-    # add nodes
     for node in g.nodes:
         G.add_node(node.index)
 
-    # add edges
     for edge in g.make_edge_list():
         G.add_edge(edge.from_node, edge.to_node, weight=edge.weight)
 
-    # layout
-    pos = nx.spring_layout(G)  # physics-based, good default
+    # Increased spacing + stable layout
+    pos = nx.spring_layout(G, k=1.2, seed=42)
 
-    # draw nodes (circles)
     nx.draw_networkx_nodes(
         G, pos,
         node_size=800,
         node_color="lightblue"
     )
 
-    # draw edges (lines)
     nx.draw_networkx_edges(
         G, pos,
         arrowstyle="->",
-        arrowsize=15
+        arrowsize=15,
+        edge_color="red"   # 🔴 arrows are now red
     )
 
-    # draw labels
     nx.draw_networkx_labels(G, pos)
 
-    # draw edge weights
     edge_labels = nx.get_edge_attributes(G, "weight")
     nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels)
+
+    if title:
+        plt.title(title, fontsize=14)
 
     plt.axis("off")
     plt.show()
