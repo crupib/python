@@ -1,93 +1,109 @@
-from typing import Union
+from typing import Iterable
 import networkx as nx
 import matplotlib.pyplot as plt
+from matplotlib import cm, colors
+import mplcursors
 
 
 class Edge:
     def __init__(self, from_node: int, to_node: int, weight: float):
-        self.from_node: int = from_node
-        self.to_node: int = to_node
-        self.weight: float = weight
-
-    def print_edge(self):
-        print(f"{self.from_node} -> {self.to_node} = {self.weight}")
+        self.from_node = from_node
+        self.to_node = to_node
+        self.weight = weight
 
 
 class Node:
-    def __init__(self, index: int, label=None):
-        self.index: int = index
-        self.edges: dict = {}
-        self.label: str = label
-
-    def num_edges(self) -> int:
-        return len(self.edges)
-
-    def get_edge(self, neighbor: int) -> Union[Edge, None]:
-        return self.edges.get(neighbor)
+    def __init__(self, index: int):
+        self.index = index
+        self.edges = {}
 
     def add_edge(self, neighbor: int, weight: float):
         self.edges[neighbor] = Edge(self.index, neighbor, weight)
 
-    def remove_edge(self, neighbor: int):
-        self.edges.pop(neighbor, None)
-
-    def get_edge_list(self) -> list:
-        return list(self.edges.values())
-
 
 class Graph:
     def __init__(self, num_nodes: int, undirected: bool = False):
-        self.num_nodes: int = num_nodes
-        self.undirected: bool = undirected
-        self.nodes: list = [Node(i) for i in range(num_nodes)]
+        self.num_nodes = num_nodes
+        self.undirected = undirected
+        self.nodes = [Node(i) for i in range(num_nodes)]
 
-    def get_edge(self, from_node: int, to_node: int) -> Union[Edge, None]:
-        return self.nodes[from_node].get_edge(to_node)
+    def insert_edge(self, u: int, v: int, w: float):
+        self.nodes[u].add_edge(v, w)
+        if self.undirected:
+            self.nodes[v].add_edge(u, w)
 
-    def make_edge_list(self) -> list:
+    def make_edge_list(self):
         edges = []
         for node in self.nodes:
             edges.extend(node.edges.values())
         return edges
 
-    def insert_edge(self, from_node: int, to_node: int, weight: float):
-        self.nodes[from_node].add_edge(to_node, weight)
-        if self.undirected:
-            self.nodes[to_node].add_edge(from_node, weight)
 
-
-def draw_graph(g: Graph, title: str | None = None):
+def draw_graph_on_axes(
+    ax,
+    g: Graph,
+    pos,
+    title: str,
+    highlight_edges: Iterable[tuple[int, int]] = (),
+    show_hover: bool = True
+):
     G = nx.DiGraph() if not g.undirected else nx.Graph()
 
-    for node in g.nodes:
-        G.add_node(node.index)
+    edge_list = []
+    weights = []
 
-    for edge in g.make_edge_list():
-        G.add_edge(edge.from_node, edge.to_node, weight=edge.weight)
+    for e in g.make_edge_list():
+        G.add_edge(e.from_node, e.to_node, weight=e.weight)
+        edge_list.append((e.from_node, e.to_node))
+        weights.append(e.weight)
 
-    # Increased spacing + stable layout
-    pos = nx.spring_layout(G, k=1.2, seed=42)
+    # ---- Correct normalization ----
+    norm = colors.Normalize(vmin=min(weights), vmax=max(weights))
+    cmap = cm.viridis
+
+    edge_colors = [cmap(norm(G[u][v]["weight"])) for u, v in edge_list]
+    edge_widths = [
+        4.0 if (u, v) in highlight_edges else 2.5
+        for u, v in edge_list
+    ]
 
     nx.draw_networkx_nodes(
         G, pos,
-        node_size=800,
-        node_color="lightblue"
+        node_size=900,
+        node_color="lightblue",
+        ax=ax
     )
 
-    nx.draw_networkx_edges(
-        G, pos,
+    edges = nx.draw_networkx_edges(
+        G,
+        pos,
+        edgelist=edge_list,        # 🔑 explicit ordering
+        edge_color=edge_colors,
+        width=edge_widths,
+        arrows=True,
         arrowstyle="->",
-        arrowsize=15,
-        edge_color="red"   # 🔴 arrows are now red
+        arrowsize=30,              # bigger arrows
+        connectionstyle="arc3,rad=0.25",
+        ax=ax
     )
 
-    nx.draw_networkx_labels(G, pos)
+    nx.draw_networkx_labels(G, pos, ax=ax)
 
-    edge_labels = nx.get_edge_attributes(G, "weight")
-    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels)
+    nx.draw_networkx_edge_labels(
+        G, pos,
+        edge_labels={(u, v): G[u][v]["weight"] for u, v in edge_list},
+        ax=ax
+    )
 
-    if title:
-        plt.title(title, fontsize=14)
+    ax.set_title(title)
+    ax.axis("off")
 
-    plt.axis("off")
-    plt.show()
+    # ---- Hover labels ----
+    if show_hover:
+        cursor = mplcursors.cursor(edges, hover=True)
+
+        @cursor.connect("add")
+        def on_add(sel):
+            u, v = edge_list[sel.index]
+            w = G[u][v]["weight"]
+            sel.annotation.set_text(f"{u} → {v}\nweight = {w}")
