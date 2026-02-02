@@ -7,7 +7,26 @@ from matplotlib.colors import Normalize
 from graphclass import Graph, draw_graph_on_axes
 from GraphMatrix import GraphMatrix
 
+def clustering_coefficient(g: Graph, ind: int) -> float:
+    neighbors: set = g.nodes[ind].get_neighbors()
+    num_neighbors: int = len(neighbors)
+    count: int = 0
+    for n1 in neighbors:
+        for edge in g.nodes[n1].get_edges_list():
+            if edge.to_node > n1 and edge.to_node in neighbors:
+                count += 1
+        total_possible = (num_neighbors * (num_neighbors - 1)) / 2.0
+        if total_possible == 0.0:
+            return 0.0
+        return count / total_possible
 
+def avg_clustering_coefficent(g:Graph) ->float:
+    total : float = 0.0
+    for n in range(g.num_nodes):
+        total += clustering_coefficient(g,n)
+    if g.num_nodes == 0:
+        return 0.0
+    return total / g.num_nodes
 def edge_keys(g: Graph):
     """Return set of (u, v) edge keys from a Graph."""
     return {(e.from_node, e.to_node) for e in g.make_edge_list()}

@@ -19,6 +19,16 @@ class Node:
 
     def add_edge(self, neighbor: int, weight: float):
         self.edges[neighbor] = Edge(self.index, neighbor, weight)
+    def get_neighbors(self) -> set:
+        neighbors: set = set()
+        for edge in self.edges.values():
+            neighbors.add(edge.to_node)
+        return neighbors
+    def get_out_neighbors(self) -> set:
+        neighbors: set = set()
+        for edge in self.edges.values():
+            neighbors.add(edge.to_node)
+        return neighbors
 
 
 class Graph:
@@ -37,7 +47,48 @@ class Graph:
         for node in self.nodes:
             edges.extend(node.edges.values())
         return edges
+    # inefficient
+    def get_in_neighbors(self, target:int) -> set:
+        neighbors: set = set()
+        for node in self.nodes:
+            if target in node.edges:
+                neighbors.add(node.index)
+        return neighbors
+    def make_undirected_neighborhood_subgraph(self, ind: int, closed: bool):
+        """Create the subgraph of neighbors to a given node in an undirected graph.
 
+        Parameters
+        ----------
+        ind : int
+            The index of the query node.
+        closed : bool
+            Indicates whether to include the given node (True) or not (False).
+
+        Returns
+        -------
+        g_new : Graph
+            The subgraph consisting of the node's neighborhood.
+        """
+        if not self.undirected:
+            raise ValueError
+
+        nodes_to_use: set = self.nodes[ind].get_neighbors()
+        if closed:
+            nodes_to_use.add(ind)
+
+        index_map = {}
+        for new_index, old_index in enumerate(nodes_to_use):
+            index_map[old_index] = new_index
+
+        g_new: Graph = Graph(len(nodes_to_use), undirected=True)
+        for n in nodes_to_use:
+            for edge in self.nodes[n].get_edge_list():
+                if edge.to_node in nodes_to_use and edge.to_node > n:
+                    ind1_new = index_map[n]
+                    ind2_new = index_map[edge.to_node]
+                    g_new.insert_edge(ind1_new, ind2_new, edge.weight)
+
+        return g_new
 
 def draw_graph_on_axes(
     ax,
