@@ -54,52 +54,6 @@ def setup_gaugamela(state):
     state.turn_number = 0
 
 
-def setup_austerlitz(state):
-    make_base_tiles(state)
-
-    for pos, tile in state.tiles.items():
-        q, r = pos
-
-        if 7 <= q <= 11 and 3 <= r <= 6:
-            tile.terrain = "heights"
-        if q >= 10 and r >= 7:
-            tile.terrain = "frozen"
-        if 5 <= q <= 6 and 5 <= r <= 7:
-            tile.terrain = "village"
-        if q <= 2 and 4 <= r <= 8:
-            tile.terrain = "supply"
-        if q <= 6:
-            tile.revealed = True
-
-    state.units = [
-        Unit("Napoleon", "France", 2, 6, 12, 4, 3, 1, "commander"),
-        Unit("Soult IV Corps", "France", 3, 5, 12, 4, 2, 1, "infantry"),
-        Unit("Vandamme Div", "France", 3, 6, 11, 4, 2, 1, "infantry"),
-        Unit("Legrand Right", "France", 4, 8, 10, 3, 2, 1, "infantry"),
-        Unit("Murat Cavalry", "France", 2, 4, 10, 4, 4, 1, "cavalry"),
-        Unit("Imperial Guard", "France", 2, 7, 13, 5, 2, 1, "guard"),
-        Unit("French Artillery", "France", 3, 7, 8, 3, 1, 3, "artillery"),
-        Unit("Tsar Alexander", "Coalition", 14, 4, 10, 2, 2, 1, "commander", hidden=True),
-        Unit("Pratzen Center", "Coalition", 10, 5, 13, 3, 1, 1, "infantry", hidden=True),
-        Unit("Bagration Wing", "Coalition", 13, 3, 10, 4, 3, 1, "cavalry", hidden=True),
-        Unit("Allied Left Column", "Coalition", 12, 8, 13, 3, 2, 1, "infantry", hidden=True),
-        Unit("Allied Right Column", "Coalition", 12, 2, 11, 3, 2, 1, "infantry", hidden=True),
-        Unit("Russian Guard", "Coalition", 14, 5, 13, 5, 2, 1, "guard", hidden=True),
-        Unit("Coalition Artillery", "Coalition", 13, 6, 8, 3, 1, 3, "artillery", hidden=True),
-    ]
-
-    state.selected = None
-    state.turn = "France"
-    state.phase = "DEPLOY"
-    state.message = "Austerlitz deployment. Look weak, lure the enemy, then strike the Pratzen Heights."
-    state.assessment_points = 3
-    state.deployment_points = 6
-    state.player_morale = 100
-    state.enemy_morale = 100
-    state.logistics = 100
-    state.turn_number = 0
-
-
 def setup_normaninv(state):
     make_base_tiles(state)
 
@@ -156,7 +110,7 @@ def setup_normaninv(state):
     state.selected = None
     state.turn = "Allies"
     state.phase = "DEPLOY"
-    state.message = "Normandy deployment. Scout defenses, coordinate airborne drops, naval fire, and beach logistics."
+    state.message = "Normandy deployment. Scout defenses, coordinate airborne drops, naval fire, armor, and beach logistics."
     state.assessment_points = 3
     state.deployment_points = 8
     state.player_morale = 100
@@ -217,24 +171,73 @@ def setup_sixdaywar(state):
     state.turn_number = 0
 
 
+def setup_austerlitz(state):
+    make_base_tiles(state)
+
+    for pos, tile in state.tiles.items():
+        q, r = pos
+
+        if 7 <= q <= 11 and 3 <= r <= 6:
+            tile.terrain = "heights"
+        if q >= 10 and r >= 7:
+            tile.terrain = "frozen"
+        if 5 <= q <= 6 and 5 <= r <= 7:
+            tile.terrain = "village"
+        if q <= 2 and 4 <= r <= 8:
+            tile.terrain = "supply"
+        if q <= 6:
+            tile.revealed = True
+
+    state.units = [
+        Unit("Napoleon", "France", 2, 6, 12, 4, 3, 1, "commander"),
+        Unit("Soult IV Corps", "France", 3, 5, 12, 4, 2, 1, "infantry"),
+        Unit("Vandamme Div", "France", 3, 6, 11, 4, 2, 1, "infantry"),
+        Unit("Legrand Right", "France", 4, 8, 10, 3, 2, 1, "infantry"),
+        Unit("Murat Cavalry", "France", 2, 4, 10, 4, 4, 1, "cavalry"),
+        Unit("Imperial Guard", "France", 2, 7, 13, 5, 2, 1, "guard"),
+        Unit("French Artillery", "France", 3, 7, 8, 3, 1, 3, "artillery"),
+        Unit("Tsar Alexander", "Coalition", 14, 4, 10, 2, 2, 1, "commander", hidden=True),
+        Unit("Pratzen Center", "Coalition", 10, 5, 13, 3, 1, 1, "infantry", hidden=True),
+        Unit("Bagration Wing", "Coalition", 13, 3, 10, 4, 3, 1, "cavalry", hidden=True),
+        Unit("Allied Left Column", "Coalition", 12, 8, 13, 3, 2, 1, "infantry", hidden=True),
+        Unit("Allied Right Column", "Coalition", 12, 2, 11, 3, 2, 1, "infantry", hidden=True),
+        Unit("Russian Guard", "Coalition", 14, 5, 13, 5, 2, 1, "guard", hidden=True),
+        Unit("Coalition Artillery", "Coalition", 13, 6, 8, 3, 1, 3, "artillery", hidden=True),
+    ]
+
+    state.selected = None
+    state.turn = "France"
+    state.phase = "DEPLOY"
+    state.message = "Austerlitz stratagem deployment. Appear weak, lure the Allies forward, then strike the Pratzen center."
+    state.assessment_points = 3
+    state.deployment_points = 6
+    state.player_morale = 100
+    state.enemy_morale = 100
+    state.logistics = 100
+    state.turn_number = 0
+
+
 def setup_yorktown(state):
     make_base_tiles(state)
 
     for pos, tile in state.tiles.items():
         q, r = pos
 
-        if q >= 13:
-            tile.terrain = "sea"
-        elif q in [10, 11, 12] and 3 <= r <= 8:
-            tile.terrain = "river"
-        elif q in [8, 9] and 3 <= r <= 8:
-            tile.terrain = "city"
-        elif q in [6, 7] and 2 <= r <= 9:
-            tile.terrain = "prepared"
+        if q <= 3 and 4 <= r <= 7:
+            tile.terrain = "supply"
         elif q in [4, 5] and r in [2, 9]:
             tile.terrain = "forest"
-        elif q <= 3 and 4 <= r <= 7:
-            tile.terrain = "supply"
+        elif q in [5, 6, 7] and 2 <= r <= 9:
+            tile.terrain = "prepared"
+        elif q in [8, 9] and 3 <= r <= 8:
+            tile.terrain = "city"
+        elif q in [10, 11, 12] and 3 <= r <= 8:
+            tile.terrain = "river"
+        elif q >= 13:
+            tile.terrain = "sea"
+
+        if q in [13, 14, 15] and r in [5, 6, 7]:
+            tile.terrain = "blockade"
 
         if q in [10, 11] and r in [4, 7]:
             tile.terrain = "bridge"
@@ -248,7 +251,7 @@ def setup_yorktown(state):
         if q in [9, 10] and r == 5:
             tile.terrain = "objective"
 
-        if q <= 6:
+        if q <= 6 or tile.terrain == "blockade":
             tile.revealed = True
 
     state.units = [
@@ -258,7 +261,10 @@ def setup_yorktown(state):
         Unit("French Infantry", "Allies", 3, 6, 12, 4, 2, 1, "infantry"),
         Unit("Siege Artillery", "Allies", 4, 5, 9, 5, 1, 3, "artillery"),
         Unit("Light Infantry", "Allies", 4, 7, 9, 4, 3, 1, "skirmisher"),
-        Unit("French Fleet", "Allies", 13, 6, 12, 5, 2, 4, "naval"),
+
+        Unit("French Fleet Center", "Allies", 14, 6, 12, 5, 2, 4, "naval"),
+        Unit("French Fleet North", "Allies", 14, 5, 10, 4, 2, 3, "naval"),
+        Unit("French Fleet South", "Allies", 14, 7, 10, 4, 2, 3, "naval"),
 
         Unit("Cornwallis", "Britain", 9, 5, 10, 2, 2, 1, "commander", hidden=True),
         Unit("Yorktown Garrison", "Britain", 9, 6, 14, 3, 1, 1, "infantry", hidden=True),
@@ -272,12 +278,77 @@ def setup_yorktown(state):
     state.selected = None
     state.turn = "Allies"
     state.phase = "DEPLOY"
-    state.message = "Yorktown deployment. Trap Cornwallis with siege lines, fleet control, and coordinated pressure."
+    state.message = "Yorktown deployment. Keep French naval units on the blockade line, reduce the redoubts, and prevent British escape."
     state.assessment_points = 3
     state.deployment_points = 7
     state.player_morale = 100
     state.enemy_morale = 100
     state.logistics = 115
+    state.turn_number = 0
+
+    state.yorktown_escape_progress = 0
+    state.yorktown_blockade_active = True
+
+
+def setup_constantinople(state):
+    make_base_tiles(state)
+
+    for pos, tile in state.tiles.items():
+        q, r = pos
+
+        if q <= 2:
+            tile.terrain = "supply"
+        elif 3 <= q <= 5 and 3 <= r <= 8:
+            tile.terrain = "prepared"
+        elif 6 <= q <= 7 and 3 <= r <= 8:
+            tile.terrain = "bunker"
+        elif 8 <= q <= 10 and 3 <= r <= 8:
+            tile.terrain = "city"
+        elif q >= 12:
+            tile.terrain = "sea"
+
+        if q in [4, 5, 6] and r in [2, 9]:
+            tile.terrain = "forest"
+
+        if q in [5, 6, 7, 8] and r == 6:
+            tile.terrain = "road"
+
+        if q in [7, 8] and r in [4, 7]:
+            tile.terrain = "objective"
+
+        if q in [11, 12] and r in [4, 7]:
+            tile.terrain = "bridge"
+
+        if q <= 6:
+            tile.revealed = True
+
+    state.units = [
+        Unit("Mehmed II", "Ottomans", 2, 5, 12, 3, 2, 1, "commander"),
+        Unit("Janissaries", "Ottomans", 3, 5, 13, 5, 2, 1, "guard"),
+        Unit("Anatolian Infantry", "Ottomans", 3, 6, 12, 4, 2, 1, "infantry"),
+        Unit("Rumelian Infantry", "Ottomans", 3, 4, 12, 4, 2, 1, "infantry"),
+        Unit("Great Bombard", "Ottomans", 4, 5, 10, 6, 1, 4, "artillery"),
+        Unit("Sappers", "Ottomans", 4, 7, 8, 3, 2, 1, "skirmisher"),
+        Unit("Ottoman Fleet", "Ottomans", 12, 5, 10, 4, 2, 3, "naval"),
+
+        Unit("Constantine XI", "Byzantines", 9, 5, 10, 3, 2, 1, "commander", hidden=True),
+        Unit("Theodosian Walls", "Byzantines", 7, 5, 16, 4, 0, 3, "bunker", hidden=True),
+        Unit("Gate Defenders", "Byzantines", 8, 6, 12, 4, 1, 1, "guard", hidden=True),
+        Unit("Genoese Guard", "Byzantines", 8, 4, 11, 4, 1, 1, "infantry", hidden=True),
+        Unit("Greek Fire Ships", "Byzantines", 12, 6, 9, 4, 2, 3, "naval", hidden=True),
+        Unit("City Militia", "Byzantines", 9, 7, 10, 3, 1, 1, "infantry", hidden=True),
+        Unit("Wall Artillery", "Byzantines", 7, 7, 8, 3, 0, 3, "artillery", hidden=True),
+    ]
+
+    state.selected = None
+    state.turn = "Ottomans"
+    state.phase = "DEPLOY"
+    state.message = "Constantinople deployment. Use bombardment, engineering, fleet pressure, and psychological shock to break the city."
+    state.assessment_points = 3
+    state.deployment_points = 7
+    state.player_morale = 100
+    state.enemy_morale = 110
+    state.logistics = 120
     state.turn_number = 0
 
 
@@ -296,7 +367,7 @@ def register_content(state):
         Principle(
             key="principle3",
             title="3. Attack by Stratagem / Win Before Fighting",
-            description="Shape the battlefield before direct combat. Use positioning, deception, alliances, and blockade to make victory inevitable.",
+            description="Shape the battlefield before direct combat. Use positioning, deception, engineering, morale pressure, and blockade to make victory inevitable.",
         ),
     ]
 
@@ -310,16 +381,6 @@ def register_content(state):
             player_side="Macedon",
             enemy_side="Persia",
             setup_func=setup_gaugamela,
-        ),
-        Scenario(
-            key="austerlitz",
-            principle_key="principle1",
-            title="Austerlitz, 1805",
-            subtitle="Napoleon vs. Third Coalition",
-            description="Appear weak on the right, lure the Coalition off the heights, then smash the exposed center.",
-            player_side="France",
-            enemy_side="Coalition",
-            setup_func=setup_austerlitz,
         ),
         Scenario(
             key="normaninv",
@@ -342,13 +403,34 @@ def register_content(state):
             setup_func=setup_sixdaywar,
         ),
         Scenario(
+            key="austerlitz",
+            principle_key="principle3",
+            title="Austerlitz, 1805",
+            subtitle="Napoleon vs. Third Coalition",
+            description="Napoleon deliberately appeared weak to lure the Allies into a fatal attack against a prepared trap.",
+            player_side="France",
+            enemy_side="Coalition",
+            setup_func=setup_austerlitz,
+        ),
+        Scenario(
             key="yorktown",
             principle_key="principle3",
             title="Yorktown, 1781",
             subtitle="Washington and Rochambeau vs. Cornwallis",
-            description="Strategic positioning traps Cornwallis. Use siege lines, French naval control, and coordinated pressure to win before a costly assault.",
+            description="Strategic positioning traps Cornwallis. Keep the French blockade active, reduce redoubts with siege artillery, and prevent British escape.",
             player_side="Allies",
             enemy_side="Britain",
             setup_func=setup_yorktown,
         ),
+        Scenario(
+            key="constantinople",
+            principle_key="principle3",
+            title="Fall of Constantinople, 1453",
+            subtitle="Mehmed II vs. Byzantine defenders",
+            description="Psychological and engineering superiority. Use bombards, sappers, fleet pressure, and morale shock to crack the city before the final assault.",
+            player_side="Ottomans",
+            enemy_side="Byzantines",
+            setup_func=setup_constantinople,
+        ),
     ]
+

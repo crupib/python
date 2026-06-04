@@ -66,6 +66,54 @@ def all_enemy_visible(state):
     )
 
 
+
+def yorktown_french_fleet(state):
+    return next((u for u in state.units if u.name.startswith("French Fleet") and u.hp > 0), None)
+
+
+def yorktown_escape_boats(state):
+    return next((u for u in state.units if u.name == "Escape Boats" and u.hp > 0), None)
+
+
+def yorktown_blockade_active(state):
+    if state.current_scenario.key != "yorktown":
+        return False
+
+    fleet_units = [u for u in state.units if u.name.startswith("French Fleet") and u.hp > 0]
+    active = any(state.tiles.get(u.pos) and state.tiles[u.pos].terrain == "blockade" for u in fleet_units)
+    state.yorktown_blockade_active = active
+    return active
+
+
+def update_yorktown_blockade_status(state):
+    if state.current_scenario.key != "yorktown":
+        return ""
+
+    if not hasattr(state, "yorktown_escape_progress"):
+        state.yorktown_escape_progress = 0
+
+    escape_boats = yorktown_escape_boats(state)
+
+    if not escape_boats:
+        state.yorktown_escape_progress = 0
+        state.yorktown_blockade_active = True
+        return "British escape boats destroyed. The naval escape route is closed."
+
+    if yorktown_blockade_active(state):
+        if state.yorktown_escape_progress > 0:
+            state.yorktown_escape_progress -= 1
+        return f"French blockade active. British escape pressure: {state.yorktown_escape_progress}/5."
+
+    state.yorktown_escape_progress += 1
+    return f"WARNING: French blockade broken. British escape pressure: {state.yorktown_escape_progress}/5."
+
+
+def yorktown_siege_bonus_active(state):
+    if state.current_scenario.key != "yorktown":
+        return False
+
+    return yorktown_blockade_active(state)
+
 def valid_deploy_preview(state, q, r):
     if state.current_scenario.key == "gaugamela":
         return q <= 4
@@ -80,7 +128,10 @@ def valid_deploy_preview(state, q, r):
         return q <= 4
 
     if state.current_scenario.key == "yorktown":
-        return q <= 5 or (q == 13 and 5 <= r <= 7)
+        return q <= 5 or (13 <= q <= 15 and 5 <= r <= 7)
+
+    if state.current_scenario.key == "constantinople":
+        return q <= 5 or (q == 12 and 4 <= r <= 6)
 
     return False
 
@@ -233,12 +284,26 @@ def attack_unit(state, attacker, defender):
     if state.current_scenario.key == "yorktown":
         if attacker.role == "artillery" and defender_tile.terrain in ["bunker", "prepared", "objective", "city"]:
             bonus += 2
+            if state.current_scenario.key == "yorktown" and yorktown_siege_bonus_active(state):
+                bonus += 2
         if attacker.role == "naval" and defender.role in ["naval", "commander"]:
             bonus += 2
         if attacker.role == "skirmisher" and defender.role in ["artillery", "bunker"]:
             bonus += 1
         if defender.role == "commander" and all_enemy_visible(state):
             bonus += 1
+
+    if state.current_scenario.key == "constantinople":
+        if attacker.role == "artillery" and defender_tile.terrain in ["bunker", "city", "objective"]:
+            bonus += 3
+        if attacker.role == "skirmisher" and defender.role in ["bunker", "artillery"]:
+            bonus += 2
+        if attacker.role == "naval" and defender.role == "naval":
+            bonus += 2
+        if attacker.role == "guard" and defender_tile.terrain in ["objective", "city"]:
+            bonus += 1
+        if defender.role == "bunker":
+            terrain_bonus += 1
 
     damage = max(1, attacker.atk + bonus + random.randint(-1, 2) - terrain_bonus)
 
@@ -292,9 +357,14 @@ def estimate_ai_intent(state):
         hints.append("Economy of force: avoid unnecessary attacks and keep logistics high.")
 
     elif state.current_scenario.key == "yorktown":
-        hints.append("Cornwallis is trapped if you hold the river crossings and keep the fleet in the bay.")
-        hints.append("Use artillery to reduce redoubts before assaulting.")
-        hints.append("Do not rush the city. Tighten the siege and reveal the escape route first.")
+        hints.append("Yorktown is about blockade first: keep French naval units on blockade hexes.")
+        hints.append("If the blockade breaks, British escape pressure rises each turn. At 5/5, Britain wins.")
+        hints.append("With the blockade active, siege artillery gains extra power against redoubts and city defenses.")
+
+    elif state.current_scenario.key == "constantinople":
+        hints.append("The walls are strong, but morale is fragile.")
+        hints.append("Use bombards and sappers to break defenses before committing Janissaries.")
+        hints.append("Fleet pressure can reveal and disrupt Byzantine naval escape or relief options.")
 
     state.message = " ".join(hints) if hints else "Enemy intent unclear."
 
@@ -362,7 +432,18 @@ def special_feint(state):
 
         state.enemy_morale -= 5
         state.logistics = min(state.logistics + 4, 130)
-        state.message = "Stratagem executed. Siege lines tighten and French naval control reveals British escape options."
+        blockade_report = update_yorktown_blockade_status(state)
+        state.message = f"Stratagem executed. Siege lines tighten and French naval control reveals British escape options. {blockade_report}"
+
+    elif state.current_scenario.key == "constantinople":
+        for enemy in ai_units(state):
+            if enemy.role in ["bunker", "commander", "artillery", "naval"] and random.random() < 0.75:
+                enemy.hidden = False
+                enemy.hp -= 1
+
+        state.enemy_morale -= 7
+        state.logistics = min(state.logistics + 3, 135)
+        state.message = "Psychological and engineering pressure applied. Bombards, sappers, and fleet maneuvers shake the defense."
 
 
 def ai_turn(state):
@@ -402,6 +483,10 @@ def ai_turn(state):
             siege_targets = [p for p in targets if p.role in ["artillery", "naval", "commander"]]
             target = min(siege_targets or targets, key=lambda p: hex_distance(e.pos, p.pos))
 
+        elif state.current_scenario.key == "constantinople":
+            high_value = [p for p in targets if p.role in ["artillery", "guard", "commander", "naval"]]
+            target = min(high_value or targets, key=lambda p: hex_distance(e.pos, p.pos))
+
         else:
             target = min(targets, key=lambda p: hex_distance(e.pos, p.pos))
 
@@ -421,7 +506,7 @@ def ai_turn(state):
         elif e.role in ["cavalry", "armor", "mechanized"]:
             candidates.sort(key=lambda c: (hex_distance(c, target.pos), 0 if state.tiles[c].terrain in ["plain", "desert", "road"] else 1))
         elif e.role == "naval":
-            candidates.sort(key=lambda c: (0 if state.tiles[c].terrain in ["sea", "river"] else 5, hex_distance(c, target.pos)))
+            candidates.sort(key=lambda c: (0 if state.tiles[c].terrain in ["sea", "river", "blockade"] else 5, hex_distance(c, target.pos)))
         elif e.role == "commander":
             player_commander = next((p for p in players if p.role == "commander"), None)
             if player_commander:
@@ -450,6 +535,10 @@ def ai_turn(state):
     state.logistics -= 4
     state.turn_number += 1
     state.message = "New turn. Assess before committing."
+
+    blockade_report = update_yorktown_blockade_status(state)
+    if blockade_report:
+        state.message = f"{state.message} {blockade_report}"
 
 
 def begin_battle(state):
@@ -498,3 +587,4 @@ def check_victory(state):
         return f"{state.current_scenario.enemy_side} wins. Cornwallis escapes before the trap fully closes."
 
     return None
+

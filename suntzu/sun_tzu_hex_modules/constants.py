@@ -38,6 +38,7 @@ FROZEN = (112, 132, 140)
 VILLAGE = (120, 85, 70)
 BEACH = (185, 160, 105)
 SEA = (55, 85, 120)
+BLOCKADE = (40, 120, 155)
 BOCAGE = (60, 95, 55)
 BUNKER = (95, 95, 95)
 DROPZONE = (90, 110, 80)
@@ -76,6 +77,7 @@ TERRAIN_COLORS = {
     "village": VILLAGE,
     "beach": BEACH,
     "sea": SEA,
+    "blockade": BLOCKADE,
     "bocage": BOCAGE,
     "bunker": BUNKER,
     "dropzone": DROPZONE,
@@ -88,3 +90,5 @@ TERRAIN_COLORS = {
     "river": RIVER,
     "road": ROAD,
 }
+
+
