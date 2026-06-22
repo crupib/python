@@ -1,4 +1,3 @@
-#sun_tzu_hex_modular/constants.py
 from pathlib import Path
 import pygame
 
@@ -56,7 +55,7 @@ PRINCIPLE_DROPDOWN_RECT = pygame.Rect(230, 105, 740, 42)
 
 DROPDOWN_OPTION_HEIGHT = 44
 DROPDOWN_PANEL_PADDING = 6
-DROPDOWN_MAX_VISIBLE_OPTIONS = 6
+DROPDOWN_MAX_VISIBLE_OPTIONS = 13
 
 DIRECTIONS = [
     (1, 0),
@@ -90,5 +89,3 @@ TERRAIN_COLORS = {
     "river": RIVER,
     "road": ROAD,
 }
-
-
