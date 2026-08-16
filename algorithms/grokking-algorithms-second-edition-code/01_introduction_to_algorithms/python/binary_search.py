@@ -52,7 +52,7 @@ if __name__ == "__main__":
   bs = BinarySearch()
   my_list = [1, 3, 5, 7, 9]
   
-  print(bs.search_iterative(my_list, 3)) # => 1
+  print(bs.search_iterative(my_list, 7)) # => 1
 
   # 'None' means nil in Python. We use to indicate that the item wasn't found.
   print(bs.search_iterative(my_list, -1)) # => None
