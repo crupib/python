@@ -15,4 +15,4 @@ def binary_search(arr, target):
 
 
 print(binary_search([6, 7, 8, 9, 10], 8))
-print(binary_search([6, 7, 8, 9, 10], 6))
+print(binary_search([6, 7, 8, 9, 10], 7))
