@@ -24,3 +24,4 @@ end
 
 arr = [5,3,6,2,10]
 @test selection_sort(arr) == [2,3,5,6,10]
+println(selection_sort([5,3,6,2,10]))

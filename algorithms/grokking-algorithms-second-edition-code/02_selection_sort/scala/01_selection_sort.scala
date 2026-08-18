@@ -22,4 +22,10 @@ def selectionSort(arr: Array[Int]): Array[Int] = {
   }
   return newArr
 }
-selectionSort(Array(5, 3, 6, 2, 10))
+@main
+def runSelectionSort(): Unit =
+  val arr = Array(5, 3, 6, 2, 10)
+
+  val sorted = selectionSort(arr)
+
+  println(sorted.mkString("[", ", ", "]"))
