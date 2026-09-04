@@ -10,6 +10,8 @@ function countdown(i)
 end
 
 result = @capture_out(countdown(10)) # return stdout result
+println("Countdown:")
+print(result)
 @test result == "10
 9
 8

@@ -7,3 +7,4 @@ def find_max(arr):
         return arr[0] if arr[0] > arr[1] else arr[1]
     sub_max = find_max(arr[1:])
     return arr[0] if arr[0] > sub_max else sub_max
+print(find_max([3,99,200,1,15]))

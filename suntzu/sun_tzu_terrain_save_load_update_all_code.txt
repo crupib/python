@@ -1,0 +1,863 @@
+
+========================================================================================
+input_handlers.py
+========================================================================================
+
+import pygame
+
+from constants import (
+    WIDTH,
+    BACK_BUTTON_RECT,
+    PRINCIPLE_DROPDOWN_RECT,
+    DROPDOWN_OPTION_HEIGHT,
+    DROPDOWN_PANEL_PADDING,
+    DROPDOWN_MAX_VISIBLE_OPTIONS,
+    CAMERA_STEP,
+    CAMERA_WHEEL_STEP,
+    MAP_VIEW_RECT,
+)
+from hex_utils import pixel_to_axial
+from logic import (
+    start_scenario,
+    reveal_around,
+    estimate_ai_intent,
+    special_feint,
+    begin_battle,
+    end_player_turn,
+    deploy_unit,
+    move_unit,
+    attack_unit,
+    get_unit_at,
+    supply_status,
+    resupply_units,
+)
+from persistence import save_game, load_game
+
+
+def handle_game_key(state, event):
+    if event.key == pygame.K_F5:
+        save_game(state)
+        return
+
+    if event.key == pygame.K_F9:
+        load_game(state)
+        return
+
+    if event.key in [pygame.K_LEFT, pygame.K_a]:
+        state.move_camera(CAMERA_STEP, 0)
+        return
+
+    if event.key in [pygame.K_RIGHT, pygame.K_d]:
+        state.move_camera(-CAMERA_STEP, 0)
+        return
+
+    if event.key in [pygame.K_UP, pygame.K_w]:
+        state.move_camera(0, CAMERA_STEP)
+        return
+
+    if event.key in [pygame.K_DOWN]:
+        state.move_camera(0, -CAMERA_STEP)
+        return
+
+    if event.key == pygame.K_HOME:
+        state.reset_camera()
+        return
+
+    if event.key in [pygame.K_m, pygame.K_ESCAPE]:
+        state.go_to_scenario_select()
+        return
+
+    if event.key == pygame.K_l:
+        state.message = f"Logistics: {state.logistics}. {supply_status(state)}"
+        return
+
+    if event.key == pygame.K_r and state.turn == state.current_scenario.player_side:
+        resupply_units(state)
+        return
+
+    if event.key == pygame.K_b and state.phase == "DEPLOY":
+        begin_battle(state)
+        return
+
+    if event.key == pygame.K_e and state.turn == state.current_scenario.player_side:
+        end_player_turn(state)
+        return
+
+    if event.key == pygame.K_s and state.selected and state.turn == state.current_scenario.player_side:
+        if state.phase == "DEPLOY":
+            if state.deployment_points > 0:
+                reveal_around(state, state.selected.pos, radius=3)
+                state.deployment_points -= 1
+            else:
+                state.message = "No deployment points left."
+        else:
+            if state.assessment_points > 0:
+                reveal_around(state, state.selected.pos, radius=2)
+                state.assessment_points -= 1
+            else:
+                state.message = "No assessment points left."
+        return
+
+    if event.key == pygame.K_i and state.turn == state.current_scenario.player_side:
+        if state.phase == "DEPLOY":
+            if state.deployment_points > 0:
+                estimate_ai_intent(state)
+                state.deployment_points -= 1
+            else:
+                state.message = "No deployment points left."
+        else:
+            if state.assessment_points > 0:
+                estimate_ai_intent(state)
+                state.assessment_points -= 1
+            else:
+                state.message = "No assessment points left."
+        return
+
+    if event.key == pygame.K_f and state.turn == state.current_scenario.player_side:
+        special_feint(state)
+
+
+def handle_game_scroll(state, event):
+    keys = pygame.key.get_pressed()
+
+    if keys[pygame.K_LSHIFT] or keys[pygame.K_RSHIFT]:
+        state.move_camera(event.y * CAMERA_WHEEL_STEP, 0)
+    else:
+        state.move_camera(0, event.y * CAMERA_WHEEL_STEP)
+
+
+def handle_game_click(state, mx, my):
+    if BACK_BUTTON_RECT.collidepoint(mx, my):
+        state.go_to_scenario_select()
+        return
+
+    if not MAP_VIEW_RECT.collidepoint(mx, my):
+        return
+
+    if state.turn != state.current_scenario.player_side:
+        return
+
+    clicked = pixel_to_axial(mx, my, state.camera_x, state.camera_y)
+    clicked_unit = get_unit_at(state, clicked)
+
+    if clicked_unit and clicked_unit.side == state.current_scenario.player_side:
+        state.selected = clicked_unit
+        state.message = f"Selected {state.selected.name}."
+        return
+
+    if state.selected and state.phase == "DEPLOY" and not clicked_unit:
+        deploy_unit(state, state.selected, clicked)
+        return
+
+    if state.selected and state.phase != "DEPLOY" and clicked_unit and clicked_unit.side != state.selected.side:
+        attack_unit(state, state.selected, clicked_unit)
+        return
+
+    if state.selected and state.phase != "DEPLOY" and not clicked_unit:
+        move_unit(state, state.selected, clicked)
+
+
+def handle_scenario_click(state, mx, my):
+    if PRINCIPLE_DROPDOWN_RECT.collidepoint(mx, my):
+        state.dropdown_open = not state.dropdown_open
+        return
+
+    if state.dropdown_open:
+        visible_count = min(len(state.principles), DROPDOWN_MAX_VISIBLE_OPTIONS)
+
+        panel_rect = pygame.Rect(
+            PRINCIPLE_DROPDOWN_RECT.x,
+            PRINCIPLE_DROPDOWN_RECT.bottom + 6,
+            PRINCIPLE_DROPDOWN_RECT.width,
+            visible_count * DROPDOWN_OPTION_HEIGHT + DROPDOWN_PANEL_PADDING * 2,
+        )
+
+        for principle_index in range(visible_count):
+            option_rect = pygame.Rect(
+                panel_rect.x + DROPDOWN_PANEL_PADDING,
+                panel_rect.y + DROPDOWN_PANEL_PADDING + principle_index * DROPDOWN_OPTION_HEIGHT,
+                panel_rect.width - DROPDOWN_PANEL_PADDING * 2,
+                DROPDOWN_OPTION_HEIGHT,
+            )
+
+            if option_rect.collidepoint(mx, my):
+                state.selected_principle_index = principle_index
+                state.dropdown_open = False
+                return
+
+        state.dropdown_open = False
+        return
+
+    visible_scenarios = state.scenarios_for_selected_principle()
+
+    card_w = 820
+    card_h = 125
+    x = (WIDTH - card_w) // 2
+    start_y = 215
+    gap = 140
+
+    for scenario_index, scenario in enumerate(visible_scenarios):
+        y = start_y + scenario_index * gap
+
+        if x <= mx <= x + card_w and y <= my <= y + card_h:
+            start_scenario(state, scenario)
+            return
+
+
+def handle_scenario_key(state, event):
+    if event.key == pygame.K_F9:
+        load_game(state)
+        return
+
+    if event.key == pygame.K_ESCAPE:
+        state.dropdown_open = False
+        return
+
+    if event.key == pygame.K_UP:
+        state.selected_principle_index = (state.selected_principle_index - 1) % len(state.principles)
+        state.dropdown_open = False
+        return
+
+    if event.key == pygame.K_DOWN:
+        state.selected_principle_index = (state.selected_principle_index + 1) % len(state.principles)
+        state.dropdown_open = False
+        return
+
+    if event.key == pygame.K_SPACE:
+        state.dropdown_open = not state.dropdown_open
+        return
+
+    if pygame.K_1 <= event.key <= pygame.K_9:
+        idx = event.key - pygame.K_1
+        visible_scenarios = state.scenarios_for_selected_principle()
+
+        if idx < len(visible_scenarios):
+            start_scenario(state, visible_scenarios[idx])
+
+
+========================================================================================
+main.py
+========================================================================================
+
+import pygame
+
+from constants import WIDTH, HEIGHT, FPS, BACK_BUTTON_RECT
+from state import GameState
+from scenarios import register_content
+from logic import ai_turn, check_victory
+from render import draw_scenario_select, draw_game, draw_game_over
+from input_handlers import (
+    handle_scenario_key,
+    handle_scenario_click,
+    handle_game_key,
+    handle_game_click,
+    handle_game_scroll,
+)
+from persistence import load_game
+
+
+def main():
+    pygame.init()
+
+    screen = pygame.display.set_mode((WIDTH, HEIGHT))
+    pygame.display.set_caption("Sun Tzu Hex Tactics")
+
+    clock = pygame.time.Clock()
+    font = pygame.font.SysFont("consolas", 18)
+    small_font = pygame.font.SysFont("consolas", 15)
+    big_font = pygame.font.SysFont("consolas", 28)
+
+    state = GameState()
+    register_content(state)
+
+    running = True
+
+    while running:
+        clock.tick(FPS)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+
+            if state.screen_mode == "SCENARIO_SELECT":
+                if event.type == pygame.KEYDOWN:
+                    handle_scenario_key(state, event)
+
+                elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                    handle_scenario_click(state, *pygame.mouse.get_pos())
+
+            elif state.screen_mode == "GAME":
+                if event.type == pygame.USEREVENT:
+                    pygame.time.set_timer(pygame.USEREVENT, 0)
+                    if not state.game_over:
+                        ai_turn(state)
+
+                if event.type == pygame.KEYDOWN:
+                    if state.game_over:
+                        if event.key in [pygame.K_m, pygame.K_ESCAPE]:
+                            state.go_to_scenario_select()
+                        elif event.key == pygame.K_F9:
+                            load_game(state)
+                    else:
+                        handle_game_key(state, event)
+
+                if event.type == pygame.MOUSEWHEEL and not state.game_over:
+                    handle_game_scroll(state, event)
+
+                if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                    if state.game_over and BACK_BUTTON_RECT.collidepoint(*pygame.mouse.get_pos()):
+                        state.go_to_scenario_select()
+                    elif not state.game_over:
+                        handle_game_click(state, *pygame.mouse.get_pos())
+
+        if state.screen_mode == "SCENARIO_SELECT":
+            if state.current_scenario is None:
+                state.game_over = None
+            draw_scenario_select(screen, font, small_font, big_font, state)
+
+        elif state.screen_mode == "GAME":
+            state.game_over = check_victory(state)
+            draw_game(screen, font, small_font, big_font, state)
+            draw_game_over(screen, font, big_font, state)
+
+        pygame.display.flip()
+
+    pygame.quit()
+
+
+if __name__ == "__main__":
+    main()
+
+
+========================================================================================
+persistence.py
+========================================================================================
+
+import json
+from pathlib import Path
+
+from models import Tile, Unit
+
+
+SAVE_DIR = Path("saves")
+DEFAULT_SAVE_FILE = SAVE_DIR / "autosave.json"
+
+
+def unit_to_dict(unit):
+    return {
+        "name": unit.name,
+        "side": unit.side,
+        "q": unit.q,
+        "r": unit.r,
+        "hp": unit.hp,
+        "atk": unit.atk,
+        "move": unit.move,
+        "range": unit.range,
+        "role": unit.role,
+        "hidden": unit.hidden,
+        "acted": unit.acted,
+    }
+
+
+def tile_to_dict(tile):
+    return {
+        "q": tile.q,
+        "r": tile.r,
+        "terrain": tile.terrain,
+        "revealed": tile.revealed,
+    }
+
+
+def dict_to_unit(data):
+    unit = Unit(
+        data["name"],
+        data["side"],
+        data["q"],
+        data["r"],
+        data["hp"],
+        data["atk"],
+        data["move"],
+        data["range"],
+        data["role"],
+        hidden=data.get("hidden", False),
+    )
+    unit.acted = data.get("acted", False)
+    return unit
+
+
+def dict_to_tile(data):
+    tile = Tile(data["q"], data["r"], data.get("terrain", "plain"))
+    tile.revealed = data.get("revealed", False)
+    return tile
+
+
+def save_game(state, path=DEFAULT_SAVE_FILE):
+    if state.current_scenario is None:
+        state.message = "No active scenario to save."
+        return False
+
+    SAVE_DIR.mkdir(parents=True, exist_ok=True)
+
+    payload = {
+        "version": 1,
+        "scenario_key": state.current_scenario.key,
+        "screen_mode": state.screen_mode,
+        "turn": state.turn,
+        "phase": state.phase,
+        "message": state.message,
+        "assessment_points": state.assessment_points,
+        "deployment_points": state.deployment_points,
+        "player_morale": state.player_morale,
+        "enemy_morale": state.enemy_morale,
+        "logistics": state.logistics,
+        "turn_number": state.turn_number,
+        "game_over": state.game_over,
+        "camera_x": state.camera_x,
+        "camera_y": state.camera_y,
+        "selected_unit_name": state.selected.name if state.selected else None,
+        "tiles": [tile_to_dict(tile) for tile in state.tiles.values()],
+        "units": [unit_to_dict(unit) for unit in state.units],
+        "extra_state": {
+            "yorktown_escape_progress": getattr(state, "yorktown_escape_progress", 0),
+            "yorktown_blockade_active": getattr(state, "yorktown_blockade_active", False),
+        },
+    }
+
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+
+    state.message = f"Game saved to {path}."
+    return True
+
+
+def load_game(state, path=DEFAULT_SAVE_FILE):
+    path = Path(path)
+
+    if not path.exists():
+        state.message = f"No save file found at {path}."
+        return False
+
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    scenario_key = payload.get("scenario_key")
+    scenario = next((s for s in state.scenarios if s.key == scenario_key), None)
+
+    if scenario is None:
+        state.message = f"Save file scenario '{scenario_key}' is not registered."
+        return False
+
+    state.current_scenario = scenario
+    state.screen_mode = "GAME"
+    state.turn = payload.get("turn", scenario.player_side)
+    state.phase = payload.get("phase", "ASSESS")
+    state.message = payload.get("message", "Game loaded.")
+    state.assessment_points = payload.get("assessment_points", 3)
+    state.deployment_points = payload.get("deployment_points", 0)
+    state.player_morale = payload.get("player_morale", 100)
+    state.enemy_morale = payload.get("enemy_morale", 100)
+    state.logistics = payload.get("logistics", 100)
+    state.turn_number = payload.get("turn_number", 1)
+    state.game_over = payload.get("game_over", None)
+    state.camera_x = payload.get("camera_x", 0)
+    state.camera_y = payload.get("camera_y", 0)
+
+    state.tiles = {}
+    for tile_data in payload.get("tiles", []):
+        tile = dict_to_tile(tile_data)
+        state.tiles[(tile.q, tile.r)] = tile
+
+    state.units = [dict_to_unit(unit_data) for unit_data in payload.get("units", [])]
+
+    selected_name = payload.get("selected_unit_name")
+    state.selected = next((u for u in state.units if u.name == selected_name and u.hp > 0), None)
+
+    extra_state = payload.get("extra_state", {})
+    state.yorktown_escape_progress = extra_state.get("yorktown_escape_progress", 0)
+    state.yorktown_blockade_active = extra_state.get("yorktown_blockade_active", False)
+
+    state.message = f"Game loaded from {path}."
+    return True
+
+
+========================================================================================
+render.py
+========================================================================================
+
+import pygame
+
+from constants import (
+    WIDTH, HEIGHT, BG, PANEL, GRID, TEXT, MUTED, SELECT, BUTTON, BUTTON_HOVER,
+    BLUE, RED, BROWN, HIDDEN, DEPLOY, PLAIN, TERRAIN_COLORS, BACK_BUTTON_RECT,
+    PRINCIPLE_DROPDOWN_RECT, DROPDOWN_OPTION_HEIGHT, DROPDOWN_PANEL_PADDING,
+    DROPDOWN_MAX_VISIBLE_OPTIONS, MAP_VIEW_RECT,
+)
+from hex_utils import axial_to_screen, hex_corners
+from assets import UNIT_IMAGES
+from logic import valid_deploy_preview
+
+
+def draw_text(screen, font, text, x, y, color=TEXT, center=False, center_x=None):
+    img = font.render(str(text), True, color)
+    rect = img.get_rect()
+    if center and center_x is not None:
+        rect.centerx = center_x
+        rect.y = y
+        screen.blit(img, rect)
+    else:
+        screen.blit(img, (x, y))
+
+
+def wrap_text(text, width):
+    words = str(text).split()
+    lines = []
+    line = ""
+    for word in words:
+        if len(line) + len(word) + 1 > width:
+            if line:
+                lines.append(line)
+            line = word
+        else:
+            line += (" " if line else "") + word
+    if line:
+        lines.append(line)
+    return lines
+
+
+def draw_wrapped_text(screen, font, text, x, y, width_chars, color=TEXT, line_height=21, max_lines=None, center=False, center_x=None):
+    lines = wrap_text(text, width_chars)
+    if max_lines is not None:
+        lines = lines[:max_lines]
+    for line in lines:
+        draw_text(screen, font, line, x, y, color, center=center, center_x=center_x)
+        y += line_height
+    return y
+
+
+def stable_noise(q, r, salt=0):
+    value = (q * 73856093) ^ (r * 19349663) ^ (salt * 83492791)
+    value &= 0xFFFFFFFF
+    return value / 0xFFFFFFFF
+
+
+def shade_color(color, amount):
+    return tuple(max(0, min(255, int(c + amount))) for c in color)
+
+
+def tile_color(state, tile):
+    if state.phase == "DEPLOY" and valid_deploy_preview(state, tile.q, tile.r):
+        return DEPLOY
+    if not tile.revealed and tile.q > 6:
+        return HIDDEN
+    base = TERRAIN_COLORS.get(tile.terrain, PLAIN)
+    amount = int((stable_noise(tile.q, tile.r, 11) - 0.5) * 24)
+    return shade_color(base, amount)
+
+
+def draw_historical_ground_texture(screen, tile, cx, cy):
+    q, r = tile.q, tile.r
+    terrain = tile.terrain
+
+    if terrain in ["plain", "prepared"]:
+        for i in range(3):
+            ox = int((stable_noise(q, r, i) - 0.5) * 38)
+            oy = int((stable_noise(q, r, i + 20) - 0.5) * 28)
+            pygame.draw.line(screen, (105, 120, 70), (cx + ox - 8, cy + oy), (cx + ox + 10, cy + oy + 3), 1)
+
+    elif terrain == "desert":
+        for i in range(4):
+            ox = int((stable_noise(q, r, i) - 0.5) * 42)
+            oy = int((stable_noise(q, r, i + 40) - 0.5) * 28)
+            pygame.draw.arc(screen, (190, 155, 90), (cx + ox - 12, cy + oy - 5, 24, 10), 0, 3.14, 1)
+
+    elif terrain == "beach":
+        pygame.draw.line(screen, (220, 195, 130), (cx - 23, cy - 9), (cx + 23, cy - 5), 2)
+        pygame.draw.line(screen, (220, 195, 130), (cx - 23, cy + 8), (cx + 23, cy + 12), 1)
+
+    elif terrain in ["sea", "river"]:
+        for i in range(3):
+            oy = -12 + i * 10
+            pygame.draw.arc(screen, (90, 145, 185), (cx - 18, cy + oy, 36, 10), 0, 3.14, 2)
+
+    elif terrain == "blockade":
+        pygame.draw.circle(screen, (190, 230, 240), (cx, cy), 16, 2)
+        pygame.draw.line(screen, (190, 230, 240), (cx, cy - 16), (cx, cy + 15), 2)
+        pygame.draw.line(screen, (190, 230, 240), (cx - 11, cy + 8), (cx, cy + 15), 2)
+        pygame.draw.line(screen, (190, 230, 240), (cx + 11, cy + 8), (cx, cy + 15), 2)
+
+    elif terrain == "forest":
+        for ox, oy, radius in [(-11, 4, 7), (-2, -7, 8), (9, 5, 7)]:
+            pygame.draw.circle(screen, (24, 70, 30), (cx + ox, cy + oy), radius)
+            pygame.draw.circle(screen, (35, 95, 40), (cx + ox, cy + oy - 2), max(3, radius - 3))
+        pygame.draw.rect(screen, (80, 48, 25), (cx - 2, cy + 4, 4, 10))
+
+    elif terrain == "bocage":
+        pygame.draw.line(screen, (25, 70, 28), (cx - 22, cy - 10), (cx + 20, cy - 6), 4)
+        pygame.draw.line(screen, (25, 70, 28), (cx - 18, cy + 11), (cx + 22, cy + 8), 4)
+        for ox in [-13, 0, 13]:
+            pygame.draw.circle(screen, (35, 95, 38), (cx + ox, cy), 5)
+
+    elif terrain == "rough":
+        for i in range(4):
+            ox = int((stable_noise(q, r, i) - 0.5) * 36)
+            oy = int((stable_noise(q, r, i + 30) - 0.5) * 26)
+            pygame.draw.polygon(screen, (80, 75, 65), [(cx + ox, cy + oy - 6), (cx + ox - 6, cy + oy + 5), (cx + ox + 7, cy + oy + 5)])
+
+    elif terrain == "heights":
+        pygame.draw.arc(screen, (145, 120, 80), (cx - 22, cy - 15, 44, 22), 0, 3.14, 2)
+        pygame.draw.arc(screen, (145, 120, 80), (cx - 16, cy - 5, 32, 20), 0, 3.14, 2)
+
+    elif terrain == "frozen":
+        pygame.draw.line(screen, (190, 220, 230), (cx - 18, cy - 8), (cx + 15, cy + 10), 1)
+        pygame.draw.line(screen, (190, 220, 230), (cx - 12, cy + 9), (cx + 18, cy - 10), 1)
+
+    elif terrain in ["city", "village"]:
+        building_color = (75, 65, 55) if terrain == "city" else (90, 60, 45)
+        roof_color = (120, 70, 55)
+        pygame.draw.rect(screen, building_color, (cx - 15, cy - 8, 9, 17))
+        pygame.draw.rect(screen, building_color, (cx - 3, cy - 13, 9, 22))
+        pygame.draw.rect(screen, building_color, (cx + 9, cy - 6, 8, 15))
+        pygame.draw.polygon(screen, roof_color, [(cx - 17, cy - 8), (cx - 10, cy - 15), (cx - 4, cy - 8)])
+        pygame.draw.line(screen, (160, 145, 115), (cx - 18, cy + 13), (cx + 18, cy + 13), 2)
+
+    elif terrain == "bunker":
+        pygame.draw.rect(screen, (50, 50, 48), (cx - 16, cy - 9, 32, 18))
+        pygame.draw.rect(screen, (20, 20, 20), (cx - 7, cy - 4, 14, 7))
+        pygame.draw.line(screen, (125, 125, 120), (cx - 14, cy - 10), (cx + 14, cy - 10), 2)
+
+    elif terrain == "road":
+        pygame.draw.line(screen, (160, 135, 90), (cx - 24, cy), (cx + 24, cy), 6)
+        pygame.draw.line(screen, (95, 80, 55), (cx - 24, cy), (cx + 24, cy), 1)
+
+    elif terrain == "bridge":
+        pygame.draw.line(screen, (70, 130, 165), (cx - 23, cy + 8), (cx + 23, cy - 8), 7)
+        pygame.draw.line(screen, (100, 65, 38), (cx - 22, cy), (cx + 22, cy), 8)
+        pygame.draw.line(screen, (185, 135, 78), (cx - 22, cy), (cx + 22, cy), 3)
+
+    elif terrain == "airfield":
+        pygame.draw.line(screen, (205, 205, 190), (cx - 23, cy), (cx + 23, cy), 4)
+        pygame.draw.line(screen, (205, 205, 190), (cx, cy - 17), (cx, cy + 17), 2)
+        pygame.draw.circle(screen, (55, 55, 55), (cx, cy), 4)
+
+    elif terrain == "objective":
+        pygame.draw.circle(screen, (205, 170, 60), (cx, cy), 12, 3)
+        pygame.draw.line(screen, (205, 170, 60), (cx, cy - 15), (cx, cy + 15), 2)
+        pygame.draw.line(screen, (205, 170, 60), (cx - 15, cy), (cx + 15, cy), 2)
+
+    elif terrain == "supply":
+        pygame.draw.rect(screen, (45, 85, 120), (cx - 14, cy - 11, 28, 22), 2)
+        pygame.draw.rect(screen, (80, 120, 150), (cx - 8, cy - 5, 16, 10))
+        pygame.draw.circle(screen, (170, 200, 215), (cx - 6, cy + 12), 3)
+        pygame.draw.circle(screen, (170, 200, 215), (cx + 8, cy + 12), 3)
+
+
+def draw_map(screen, state):
+    pygame.draw.rect(screen, BG, MAP_VIEW_RECT)
+    for pos, tile in state.tiles.items():
+        cx, cy = axial_to_screen(tile.q, tile.r, state.camera_x, state.camera_y)
+        if not (-60 <= cx <= MAP_VIEW_RECT.right + 60 and -60 <= cy <= MAP_VIEW_RECT.bottom + 60):
+            continue
+        pygame.draw.polygon(screen, tile_color(state, tile), hex_corners(cx, cy))
+        pygame.draw.polygon(screen, GRID, hex_corners(cx, cy), 2)
+        if tile.revealed or tile.q <= 6:
+            draw_historical_ground_texture(screen, tile, cx, cy)
+        if state.selected and state.selected.pos == pos:
+            pygame.draw.polygon(screen, SELECT, hex_corners(cx, cy), 4)
+    pygame.draw.rect(screen, GRID, MAP_VIEW_RECT, 2)
+
+
+def draw_terrain_decorations(screen, state):
+    return
+
+
+def tint_image(img, color):
+    tinted = img.copy()
+    tint = pygame.Surface(tinted.get_size(), pygame.SRCALPHA)
+    tint.fill((*color, 90))
+    tinted.blit(tint, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+    return tinted
+
+
+def draw_fallback_unit_icon(screen, small_font, state, unit, cx, cy):
+    if unit.role == "elephant":
+        color = BROWN
+    elif unit.side == state.current_scenario.player_side:
+        color = BLUE
+    else:
+        color = RED
+    pygame.draw.circle(screen, color, (cx, cy), 19)
+    pygame.draw.circle(screen, (20, 20, 20), (cx, cy), 19, 2)
+    label = {
+        "commander": "CM", "cavalry": "CV", "infantry": "IN", "elite infantry": "EI",
+        "phalanx": "PH", "skirmisher": "SK", "guard": "GD", "artillery": "AR",
+        "chariot": "CH", "elephant": "EL", "paratrooper": "PT", "armor": "TK",
+        "naval": "NV", "bunker": "BK", "aircraft": "JF", "mechanized": "MC",
+        "airdefense": "AD",
+    }.get(unit.role, unit.name[:2].upper())
+    draw_text(screen, small_font, label, 0, cy - 9, (255, 255, 255), center=True, center_x=cx)
+
+
+def draw_units(screen, small_font, state):
+    for unit in state.units:
+        if unit.hp <= 0 or unit.hidden:
+            continue
+        cx, cy = axial_to_screen(unit.q, unit.r, state.camera_x, state.camera_y)
+        if not (-60 <= cx <= MAP_VIEW_RECT.right + 60 and -60 <= cy <= MAP_VIEW_RECT.bottom + 60):
+            continue
+        img = UNIT_IMAGES.get(unit.role)
+        if img:
+            border_color = BLUE if unit.side == state.current_scenario.player_side else RED
+            if unit.role == "elephant":
+                border_color = BROWN
+            pygame.draw.circle(screen, border_color, (cx, cy), 23)
+            pygame.draw.circle(screen, (20, 20, 20), (cx, cy), 23, 2)
+            final_img = tint_image(img, border_color)
+            rect = final_img.get_rect(center=(cx, cy))
+            screen.blit(final_img, rect)
+        else:
+            draw_fallback_unit_icon(screen, small_font, state, unit, cx, cy)
+        draw_text(screen, small_font, str(unit.hp), 0, cy + 21, TEXT, center=True, center_x=cx)
+
+
+def draw_dropdown(screen, font, state):
+    mx, my = pygame.mouse.get_pos()
+    hover = PRINCIPLE_DROPDOWN_RECT.collidepoint(mx, my)
+    color = BUTTON_HOVER if hover else BUTTON
+    pygame.draw.rect(screen, color, PRINCIPLE_DROPDOWN_RECT, border_radius=8)
+    pygame.draw.rect(screen, GRID, PRINCIPLE_DROPDOWN_RECT, 2, border_radius=8)
+    selected_principle = state.principles[state.selected_principle_index]
+    draw_text(screen, font, f"Principle: {selected_principle.title}  v", 0, PRINCIPLE_DROPDOWN_RECT.y + 11, TEXT, center=True, center_x=PRINCIPLE_DROPDOWN_RECT.centerx)
+    if not state.dropdown_open:
+        return
+    visible_count = min(len(state.principles), DROPDOWN_MAX_VISIBLE_OPTIONS)
+    panel_rect = pygame.Rect(PRINCIPLE_DROPDOWN_RECT.x, PRINCIPLE_DROPDOWN_RECT.bottom + 6, PRINCIPLE_DROPDOWN_RECT.width, visible_count * DROPDOWN_OPTION_HEIGHT + DROPDOWN_PANEL_PADDING * 2)
+    pygame.draw.rect(screen, (10, 10, 10), panel_rect.move(4, 4), border_radius=10)
+    pygame.draw.rect(screen, (30, 28, 24), panel_rect, border_radius=10)
+    pygame.draw.rect(screen, SELECT, panel_rect, 2, border_radius=10)
+    for principle_index, principle in enumerate(state.principles[:visible_count]):
+        option_rect = pygame.Rect(panel_rect.x + DROPDOWN_PANEL_PADDING, panel_rect.y + DROPDOWN_PANEL_PADDING + principle_index * DROPDOWN_OPTION_HEIGHT, panel_rect.width - DROPDOWN_PANEL_PADDING * 2, DROPDOWN_OPTION_HEIGHT)
+        is_selected = principle_index == state.selected_principle_index
+        is_hovered = option_rect.collidepoint(mx, my)
+        option_color = (75, 65, 35) if is_selected else (BUTTON_HOVER if is_hovered else PANEL)
+        pygame.draw.rect(screen, option_color, option_rect, border_radius=6)
+        draw_text(screen, font, principle.title, 0, option_rect.y + 12, SELECT if is_selected else TEXT, center=True, center_x=option_rect.centerx)
+
+
+def draw_scenario_select(screen, font, small_font, big_font, state):
+    screen.fill(BG)
+    center_x = WIDTH // 2
+    draw_text(screen, big_font, "SUN TZU HEX TACTICS", 0, 35, TEXT, center=True, center_x=center_x)
+    draw_text(screen, font, "Select a principle, then choose a scenario", 0, 72, MUTED, center=True, center_x=center_x)
+    principle = state.principles[state.selected_principle_index]
+    draw_wrapped_text(screen, small_font, principle.description, 180, 162, 95, MUTED, 18, max_lines=2, center=True, center_x=center_x)
+    visible_scenarios = state.scenarios_for_selected_principle()
+    card_w, card_h = 820, 125
+    x = (WIDTH - card_w) // 2
+    start_y, gap = 215, 140
+    for scenario_index, scenario in enumerate(visible_scenarios):
+        y = start_y + scenario_index * gap
+        card_center = x + card_w // 2
+        pygame.draw.rect(screen, PANEL, (x, y, card_w, card_h), border_radius=12)
+        pygame.draw.rect(screen, GRID, (x, y, card_w, card_h), 2, border_radius=12)
+        draw_text(screen, big_font, f"{scenario_index + 1}. {scenario.title}", 0, y + 18, TEXT, center=True, center_x=card_center)
+        draw_text(screen, small_font, scenario.subtitle, 0, y + 53, MUTED, center=True, center_x=card_center)
+        draw_wrapped_text(screen, small_font, scenario.description, x + 25, y + 78, 80, TEXT, 18, max_lines=2, center=True, center_x=card_center)
+    draw_text(screen, font, "Press 1-9, click a scenario, or click the principle selector. F9 loads your save.", 0, 720, TEXT, center=True, center_x=center_x)
+    draw_dropdown(screen, font, state)
+
+
+def draw_back_button(screen, small_font):
+    mx, my = pygame.mouse.get_pos()
+    hover = BACK_BUTTON_RECT.collidepoint(mx, my)
+    color = BUTTON_HOVER if hover else BUTTON
+    pygame.draw.rect(screen, color, BACK_BUTTON_RECT, border_radius=8)
+    pygame.draw.rect(screen, GRID, BACK_BUTTON_RECT, 2, border_radius=8)
+    draw_text(screen, small_font, "Back to Scenarios  (M / ESC)", 0, BACK_BUTTON_RECT.y + 8, TEXT, center=True, center_x=BACK_BUTTON_RECT.centerx)
+
+
+def draw_supply_bar(screen, small_font, x, y, width, height, state):
+    logistics = max(0, min(state.logistics, 140))
+    pct = min(logistics / 140, 1.0)
+    if state.logistics >= 80:
+        fill = (70, 145, 90)
+    elif state.logistics >= 50:
+        fill = (185, 155, 60)
+    elif state.logistics >= 30:
+        fill = (190, 105, 45)
+    else:
+        fill = (190, 60, 45)
+    pygame.draw.rect(screen, (25, 25, 25), (x, y, width, height), border_radius=5)
+    pygame.draw.rect(screen, fill, (x, y, int(width * pct), height), border_radius=5)
+    pygame.draw.rect(screen, GRID, (x, y, width, height), 1, border_radius=5)
+    draw_text(screen, small_font, f"Logistics / Supply: {state.logistics}", 0, y + height + 4, TEXT, center=True, center_x=x + width // 2)
+
+
+def draw_sidebar(screen, font, small_font, big_font, state):
+    x, w = 750, 430
+    center_x = x + w // 2
+    pygame.draw.rect(screen, PANEL, (740, 0, 460, HEIGHT))
+    draw_text(screen, big_font, "SUN TZU HEX TACTICS", 0, 18, TEXT, center=True, center_x=center_x)
+    y = 54
+    principle = next(p for p in state.principles if p.key == state.current_scenario.principle_key)
+    y = draw_wrapped_text(screen, small_font, principle.title, x, y, 38, SELECT, 18, max_lines=2, center=True, center_x=center_x)
+    y = draw_wrapped_text(screen, font, state.current_scenario.title, x, y + 3, 38, TEXT, 21, max_lines=2, center=True, center_x=center_x)
+    y += 10
+    draw_text(screen, font, f"Turn: {state.turn_number if state.turn_number else 'Pre-Battle'}", 0, y, TEXT, center=True, center_x=center_x)
+    y += 23
+    draw_text(screen, font, f"Phase: {state.phase}", 0, y, TEXT, center=True, center_x=center_x)
+    y += 25
+    draw_supply_bar(screen, small_font, x + 30, y, 360, 14, state)
+    y += 43
+    if state.phase == "DEPLOY":
+        draw_text(screen, font, f"Deployment Points: {state.deployment_points}", 0, y, TEXT, center=True, center_x=center_x)
+        y += 25
+    else:
+        draw_text(screen, font, f"Assessment Points: {state.assessment_points}", 0, y, TEXT, center=True, center_x=center_x)
+        y += 22
+        draw_text(screen, font, f"{state.current_scenario.player_side} Morale: {state.player_morale}", 0, y, TEXT, center=True, center_x=center_x)
+        y += 22
+        draw_text(screen, font, f"{state.current_scenario.enemy_side} Morale: {state.enemy_morale}", 0, y, TEXT, center=True, center_x=center_x)
+        y += 25
+    draw_text(screen, big_font, "Controls", 0, y, TEXT, center=True, center_x=center_x)
+    y += 34
+    controls = [
+        "Arrow keys / WASD: scroll map", "Mouse wheel: scroll vertical",
+        "Shift + wheel: scroll horizontal", "Home: reset map camera",
+        "F5: save game", "F9: load game", "L: check logistics",
+        "R: resupply on supply/road/bridge",
+    ]
+    if state.phase == "DEPLOY":
+        controls += ["Click player unit: select", "Click blue hex: redeploy", "S: scout selected unit area", "I: estimate enemy intent", "F: scenario special action", "B: begin battle"]
+    else:
+        controls += ["Click unit: select", "Click empty hex: move", "Click enemy: attack", "S: scout selected unit area", "I: estimate enemy intent", "F: scenario special action", "E: end turn"]
+    for item in controls:
+        y = draw_wrapped_text(screen, small_font, item, x, y, 39, TEXT, 18, max_lines=2, center=True, center_x=center_x)
+    report_y = 638
+    pygame.draw.rect(screen, (30, 28, 24), (750, report_y - 8, 430, 90), border_radius=8)
+    pygame.draw.rect(screen, GRID, (750, report_y - 8, 430, 90), 1, border_radius=8)
+    draw_text(screen, font, "Report", 0, report_y, TEXT, center=True, center_x=center_x)
+    draw_wrapped_text(screen, small_font, state.message, x, report_y + 26, 41, TEXT, 18, max_lines=3, center=True, center_x=center_x)
+    draw_back_button(screen, small_font)
+
+
+def draw_legend(screen, small_font):
+    pygame.draw.rect(screen, (25, 24, 21), (25, 732, 700, 42), border_radius=8)
+    draw_wrapped_text(screen, small_font, "Terrain uses top-down historical symbols: dunes, waves, woods, bocage, villages, fortifications, roads, bridges, walls, and supply trains.", 35, 739, 80, TEXT, 18, max_lines=2, center=True, center_x=375)
+
+
+def draw_game(screen, font, small_font, big_font, state):
+    screen.fill(BG)
+    draw_map(screen, state)
+    draw_terrain_decorations(screen, state)
+    draw_units(screen, small_font, state)
+    draw_sidebar(screen, font, small_font, big_font, state)
+    draw_legend(screen, small_font)
+
+
+def draw_game_over(screen, font, big_font, state):
+    if not state.game_over:
+        return
+    pygame.draw.rect(screen, (20, 20, 20), (210, 300, 760, 150))
+    pygame.draw.rect(screen, SELECT, (210, 300, 760, 150), 2)
+    draw_wrapped_text(screen, big_font, state.game_over, 245, 328, 60, TEXT, 32, max_lines=2, center=True, center_x=590)
+    draw_text(screen, font, "Press M or ESC to return to scenarios. F9 loads your save.", 0, 405, TEXT, center=True, center_x=590)
+

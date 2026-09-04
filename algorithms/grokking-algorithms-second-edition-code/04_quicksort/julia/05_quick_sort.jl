@@ -1,4 +1,5 @@
 using Test
+using Suppressor
 
 function quick_sort(arr)
     if length(arr) < 2 return arr end
@@ -7,5 +8,8 @@ function quick_sort(arr)
     greater = [i for i in arr[2:end] if i > pivot]
     return vcat(quick_sort(less), [pivot], quick_sort(greater))
 end
-
+result = quick_sort([3,5,2,1,4])
+println("Array sorted")
+print(result)
+println()
 @test quick_sort([3,5,2,1,4]) == [1,2,3,4,5]
