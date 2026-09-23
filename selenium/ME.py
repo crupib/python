@@ -17,7 +17,8 @@ from typing import Optional
 from selenium.webdriver.remote.webelement import WebElement
 
 
-URL = "https://192.168.210.221:4443"
+URL = "https://192.168.133.131:4443"
+DASHBOARD_URL = URL.rstrip("/") + "/dashboard"
 USERNAME = "admin"
 PASSWORD = "75@dm1nPa$$W0rd"
 
@@ -2308,65 +2309,137 @@ def test_sidebar_options():
 # Dashboard
 # ============================================================
 
-def return_to_dashboard():
-    print_header(
-        "RETURNING TO DASHBOARD"
-    )
+def _dashboard_is_loaded(timeout=6):
+    """Return True only when the normal Dashboard application is visible.
+
+    Settings is a separate front-end view.  A successful Settings login leaves
+    Selenium on that application, where there is no left-side Dashboard link.
+    Checking for Dashboard-specific content prevents the suite from accidentally
+    running the Dashboard JavaScript against the Settings DOM.
+    """
+    dashboard_markers = [
+        (By.XPATH, "//*[normalize-space()='System Status']"),
+        (By.XPATH, "//*[normalize-space()='Services']"),
+        (By.XPATH, "//*[normalize-space()='Compose Projects']"),
+        (By.XPATH, "//*[normalize-space()='Execute System Action']"),
+    ]
+
+    end_time = time.time() + timeout
+    while time.time() < end_time:
+        for locator in dashboard_markers:
+            try:
+                for element in driver.find_elements(*locator):
+                    if element.is_displayed():
+                        return True
+            except Exception:
+                continue
+        safe_sleep(0.2)
+
+    return False
+
+
+def _open_dashboard_directly():
+    """Open /dashboard directly while preserving the current browser session.
+
+    driver.get() keeps the same Selenium browser profile/cookies, so the admin
+    Settings session is not discarded.  This is the reliable bridge between the
+    Settings SPA and the normal Dashboard SPA.
+    """
+    print(f"INFO: Opening Dashboard directly: {DASHBOARD_URL}")
 
     try:
-        clicked = click_text(
-            "Dashboard"
-        )
-
-        if not clicked:
-            print(
-                "WARNING: Dashboard "
-                "could not be clicked."
-            )
-
-            print(
-                "Continuing test."
-            )
-
-            return False
-
+        driver.get(DASHBOARD_URL)
+        wait_for_page(timeout=12)
+        safe_sleep(1.0)
     except Exception as e:
-        print(
-            f"WARNING: Dashboard click "
-            f"failed: {e}"
-        )
-
+        print(f"WARNING: Direct Dashboard navigation failed: {e}")
         return False
 
+    if _dashboard_is_loaded(timeout=8):
+        print("PASS: Dashboard loaded using direct /dashboard navigation")
+        print_current_url()
+        return True
+
+    print(
+        "WARNING: /dashboard was opened but Dashboard-specific content "
+        "was not detected."
+    )
+    print_current_url()
+    return False
+
+
+def return_to_dashboard():
+    """Return to the normal Dashboard from either Settings or a Dashboard page.
+
+    The Settings area and Dashboard do not share the same navigation DOM.  If
+    Selenium is still in Settings, do not look for the Dashboard sidebar link;
+    navigate directly to /dashboard.  Once back in the Dashboard application,
+    the original sidebar-navigation test can continue normally.
+    """
+    print_header("RETURNING TO DASHBOARD")
+
     try:
-        WebDriverWait(
-            driver,
-            5
-        ).until(
-            EC.visibility_of_element_located(
-                (
-                    By.XPATH,
-                    "//*[normalize-space()="
-                    "'System Status']"
-                )
-            )
-        )
-
-        print(
-            "PASS: Dashboard loaded"
-        )
-
+        current_url = driver.current_url or ""
     except Exception:
+        current_url = ""
+
+    # If Dashboard content is already present, no navigation is necessary.
+    if _dashboard_is_loaded(timeout=1):
+        print("PASS: Already on Dashboard")
+        print_current_url()
+        return True
+
+    # Settings is a separate application/view.  It does not expose the normal
+    # Dashboard sidebar, so go straight back to the Dashboard route.
+    if "/settings" in current_url.lower() or "/admin" in current_url.lower():
         print(
-            "WARNING: Dashboard clicked, "
-            "but System Status was not detected."
+            "INFO: Currently in Settings/Admin UI; switching to the "
+            "Dashboard application before running Dashboard tests."
+        )
+        return _open_dashboard_directly()
+
+    # When already inside the Dashboard shell, prefer the visible sidebar link.
+    clicked = False
+    try:
+        elements = driver.find_elements(
+            By.XPATH,
+            "//*[self::a or self::button][normalize-space()='Dashboard']"
+        )
+        for element in elements:
+            try:
+                if not (element.is_displayed() and element.is_enabled()):
+                    continue
+                driver.execute_script(
+                    "arguments[0].scrollIntoView({block:'center'});",
+                    element,
+                )
+                safe_sleep(0.2)
+                if _raw_click(element):
+                    clicked = True
+                    break
+            except Exception:
+                continue
+    except Exception as e:
+        print(f"WARNING: Dashboard sidebar lookup failed: {e}")
+
+    if clicked:
+        wait_for_page(timeout=8)
+        safe_sleep(0.6)
+        if _dashboard_is_loaded(timeout=6):
+            print("PASS: Dashboard loaded from sidebar")
+            print_current_url()
+            return True
+        print(
+            "WARNING: Dashboard sidebar was clicked but Dashboard content "
+            "was not detected; trying direct route."
+        )
+    else:
+        print(
+            "INFO: No usable Dashboard link exists in the current DOM; "
+            "trying the direct Dashboard route."
         )
 
-        print(
-            "Continuing test."
-        )
-
-    return True
+    return _open_dashboard_directly()
 
 
 # ============================================================
@@ -3229,8 +3302,24 @@ def test_every_page_and_every_item():
     )
 
     # Start from the normal Dashboard shell for dynamic sidebar discovery.
-    return_to_dashboard()
-    safe_sleep(0.5)
+    # Settings and Dashboard use different DOM/navigation structures, so do not
+    # run the Dashboard interaction JavaScript until Dashboard is confirmed.
+    if not return_to_dashboard():
+        print(
+            "WARNING: Could not enter the Dashboard application. "
+            "Skipping Dashboard page/item sweep instead of running against "
+            "the Settings DOM."
+        )
+        return False
+
+    safe_sleep(1.0)
+
+    if not _dashboard_is_loaded(timeout=6):
+        print(
+            "WARNING: Dashboard markers disappeared before page discovery. "
+            "Skipping Dashboard sweep."
+        )
+        return False
 
     pages = discover_sidebar_entries()
 
@@ -3572,6 +3661,26 @@ def main():
                         "Continuing test."
                     )
 
+                # ------------------------------------------------
+                # Settings and Dashboard are separate UI contexts.
+                # Explicitly leave Settings before Dashboard tests.
+                # ------------------------------------------------
+                try:
+                    print_header(
+                        "LEAVING SETTINGS AND OPENING DASHBOARD"
+                    )
+                    if not _open_dashboard_directly():
+                        print(
+                            "WARNING: Dashboard did not load immediately "
+                            "after Settings traversal. The full UI test will "
+                            "retry Dashboard navigation."
+                        )
+                except Exception as e:
+                    print(
+                        f"WARNING: Could not switch from Settings to "
+                        f"Dashboard: {e}"
+                    )
+
             else:
                 print_header(
                     "SETTINGS LOGIN NOT CONFIRMED"
@@ -3709,4 +3818,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
